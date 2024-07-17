@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('index');
 });
 
@@ -36,6 +36,7 @@ Route::get('/dashboard/artikel', [DashboardController::class, 'artikel'])->name(
 Route::get('/dashboard/pengaduan', [DashboardController::class, 'pengaduan'])->name('pengaduan');
 Route::get('/dashboard/tanggapan', [DashboardController::class, 'tanggapan'])->name('tanggapan');
 Route::get('/dashboard/petugas', [DashboardController::class, 'petugas'])->name('petugas');
+Route::get('/dashboard/penduduk', [DashboardController::class, 'penduduk'])->name('penduduk');
 Route::get('/dashboard/surat', [DashboardController::class, 'surat'])->name('surat');
 Route::get('/dashboard/pemetaan', [DashboardController::class, 'pemetaan'])->name('pemetaan');
     // other protected routes

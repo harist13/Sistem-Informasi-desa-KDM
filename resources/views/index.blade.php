@@ -12,6 +12,7 @@
         #mobile-menu {
             display: none;
         }
+
         #mobile-menu.show {
             display: block;
         }
@@ -117,7 +118,8 @@
                             <p class="max-w-2xl mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
                                 dignissimos quis, sapiente, ea asperiores temporibus libero error reiciendis fugit
                                 fugiat corrupti autem neque, quidem facere.</p>
-                            <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-calendar-days mr-3"></i> Periode
+                            <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-calendar-days mr-3"></i>
+                                Periode
                                 Juli - September 2024</p>
                         </div>
                     </div>
@@ -129,7 +131,8 @@
                             <p class="max-w-2xl mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
                                 dignissimos quis, sapiente, ea asperiores temporibus libero error reiciendis fugit
                                 fugiat corrupti autem neque, quidem facere.</p>
-                            <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-calendar-days mr-3"></i> Periode
+                            <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-calendar-days mr-3"></i>
+                                Periode
                                 April 2024</p>
                         </div>
                     </div>
@@ -141,7 +144,8 @@
                             <p class="max-w-2xl mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
                                 dignissimos quis, sapiente, ea asperiores temporibus libero error reiciendis fugit
                                 fugiat corrupti autem neque, quidem facere.</p>
-                            <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-calendar-days mr-3"></i> Periode
+                            <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-calendar-days mr-3"></i>
+                                Periode
                                 Januari - Februari 2024</p>
                         </div>
                     </div>
