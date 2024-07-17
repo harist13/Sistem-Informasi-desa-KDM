@@ -28,7 +28,7 @@
                     <div class="p-3 mb-0 text-sm text-blue-800 rounded-lg lg:w-full bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
                         role="alert">
                         <i class="fa-solid fa-house mr-1"></i> >
-                        <span class="font-medium">Dashboard</span> > Artikel > Administrator / Staff
+                        <span class="font-medium">Dashboard</span> > Penduduk > Administrator / Staff
                     </div>
                     <button data-drawer-target="sidebar-multi-level-sidebar"
                         data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar"
@@ -43,27 +43,27 @@
                         </svg>
                     </button>
                 </div>
+                <div class="flex items-center justify-end gap-3 mt-3">
+                    <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
+                        class="block lg:w-1/6 my-2 lg:float-end text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">
+                        Tambah Data
+                    </button>
+                    @include('admin.components.modals.penduduk.tambahdata')
+                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                        class="text-white bg-green-500 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+                        type="button">Filter Data <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+                    @include('admin.components.modals.penduduk.sort')
+                    @include('admin.components.modals.penduduk.search')
+                </div>
             </div>
-            <div class="relative overflow-x-auto mt-4">
+            <div class="relative overflow-x-auto mt-2">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <div class="flex justify-end items-center gap-2">
-                        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
-                            class="block my-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                            type="button">
-                            Tambah Data
-                        </button>
-                        @include('admin.components.modals.artikel.tambahdata')
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                            class="text-white bg-green-500 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
-                            type="button">Filter Data <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        @include('admin.components.modals.artikel.sort')
-                        @include('admin.components.modals.artikel.search')
-                    </div>
                     <thead
                         class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -71,19 +71,49 @@
                                 No
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                ID Petugas
+                                NIK
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Tanggal Upload
+                                Nama
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Judul
+                                Tempat Lahir
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Gambar
+                                Tanggal Lahir
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Deskripsi
+                                Jenis Kelamin
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Alamat
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                RT RW
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Kelurahan
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Kecamatan
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Kabupaten
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Provinsi
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Agama
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Status Perkawinan
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Pekerjaan
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Status Penduduk
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Aksi
@@ -102,17 +132,48 @@
                             </th>
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                17-07-2024
+                                Kim ZhongLi
                             </th>
                             <td class="px-6 py-4">
-                                Silver Laptop
+                                Konoha
                             </td>
                             <td class="px-6 py-4">
-                                Laptop
+                                18-01-2001
                             </td>
                             <td class="px-6 py-4">
-                                $2999
+                                Laki - Laki
                             </td>
+                            <td class="px-6 py-4">
+                                Desa Konoha 10
+                            </td>
+                            <td class="px-6 py-4">
+                                05/12
+                            </td>
+                            <td class="px-6 py-4">
+                                Negeri Api
+                            </td>
+                            <td class="px-6 py-4">
+                                Konoha Barat
+                            </td>
+                            <td class="px-6 py-4">
+                                Konoha
+                            </td>
+                            <td class="px-6 py-4">
+                                Konohagakure
+                            </td>
+                            <td class="px-6 py-4">
+                                Apa aja
+                            </td>
+                            <td class="px-6 py-4">
+                                Belum
+                            </td>
+                            <td class="px-6 py-4">
+                                Shinobi
+                            </td>
+                            <td class="px-6 py-4">
+                                Tetap
+                            </td>
+                            {{-- bang nanti kalo logika backend udah dilesein, cht aku bang aku bantu buat logika front buat kolom yang punya statement enum. semangat bang kkn --}}
                             <td class="px-6 py-4">
                                 <div class="flex justify-center items-center space-x-2">
                                     <button data-modal-target="edit-modal" data-modal-toggle="edit-modal"
@@ -128,7 +189,7 @@
                                 </div>
                             </td>
                         </tr>
-                        @include('admin.components.modals.artikel.editdata')
+                        @include('admin.components.modals.penduduk.editdata')
                     </tbody>
                 </table>
             </div>
@@ -140,8 +201,8 @@
                         <button type="button"
                             class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                             data-modal-hide="popup-modal">
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 14 14">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 14 14">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                             </svg>
