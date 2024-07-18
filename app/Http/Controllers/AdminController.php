@@ -76,6 +76,30 @@ class AdminController extends Controller
     }
 
 
+    public function filterPetugas(Request $request)
+{
+    $role = $request->role;
+    $petugas = Petugas::whereHas('roles', function($query) use ($role) {
+        $query->where('name', $role);
+    })->get();
+
+    $roles = Role::all();
+    return view('admin.components.pages.petugas', compact('petugas', 'roles'));
+}
+
+public function searchPetugas(Request $request)
+{
+    $search = $request->search;
+    $petugas = Petugas::where('nama_petugas', 'like', "%$search%")
+                ->orWhere('username', 'like', "%$search%")
+                ->get();
+
+    $roles = Role::all();
+    return view('admin.components.pages.petugas', compact('petugas', 'roles'));
+}
+
+
+
     public function dashboard()
     {
         return view('admin.dashboard');
