@@ -47,7 +47,12 @@
             <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
                 <marquee class="text-3xl">Halaman masyarakat</marque>
             </div>
+
+            <!-- resources/views/masyarakat/dashboard.blade.php -->
+
+
         </div>
+        
     </section>
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>

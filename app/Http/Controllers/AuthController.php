@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Petugas;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 
@@ -47,32 +48,41 @@ class AuthController extends Controller
 }
 
 
+   
+
     public function handleMasyarakatRegister(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'nik' => 'required|string|size:16|unique:masyarakat',
-            'nama' => 'required|string|max:100',
-            'password' => 'required|string|min:6|confirmed',
-            'telp' => 'nullable|string|max:15',
-            'foto' => 'nullable|string|max:255',
-            'email' => 'nullable|string|email|max:100|unique:masyarakat',
-        ]);
+{
+    $validator = Validator::make($request->all(), [
+        'nik' => 'required|string|size:16|unique:masyarakat',
+        'nama' => 'required|string|max:100',
+        'password' => 'required|string|min:6|confirmed',
+        'telp' => 'nullable|string|max:15',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'email' => 'nullable|string|email|max:100|unique:masyarakat',
+    ]);
 
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-
-        Masyarakat::create([
-            'nik' => $request->nik,
-            'nama' => $request->nama,
-            'password' => Hash::make($request->password),
-            'telp' => $request->telp,
-            'foto' => $request->foto,
-            'email' => $request->email,
-        ]);
-
-        return redirect()->route('loginMasyarakat')->with('success', 'Registrasi berhasil. Silakan login.');
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
     }
+
+    // Handle file upload
+    $fotoPath = null;
+    if ($request->hasFile('foto')) {
+        $fotoPath = $request->file('foto')->store('public/fotos');
+    }
+
+    Masyarakat::create([
+        'nik' => $request->nik,
+        'nama' => $request->nama,
+        'password' => Hash::make($request->password),
+        'telp' => $request->telp,
+        'foto' => $fotoPath,
+        'email' => $request->email,
+    ]);
+
+    return redirect()->route('loginMasyarakat')->with('success', 'Registrasi berhasil. Silakan login.');
+}
+
 
      
 
