@@ -91,28 +91,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                1
-                            </th>
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Kim ZhongLi
-                            </th>
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                ZhongLi Cruest
-                            </th>
-                            <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                012345678
-                            </td>
-                            <td class="px-6 py-4">
-                                Jungler
-                            </td>
+                    @foreach($petugas as $index => $p)
+                    <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $index + 1 }}
+                        </th>
+                        <td class="px-6 py-4">{{ $p->nama_petugas }}</td>
+                        <td class="px-6 py-4">{{ $p->username }}</td>
+                        <td class="px-6 py-4">********</td>
+                        <td class="px-6 py-4">{{ $p->telp }}</td>
+                        <td class="px-6 py-4">{{ $p->roles->pluck('name')->implode(', ') }}</td>
+                        <td class="px-6 py-4">
                             <td class="px-6 py-4">
                                 <div class="flex justify-center items-center space-x-2">
                                     <button data-modal-target="edit-modal" data-modal-toggle="edit-modal"
@@ -127,7 +116,9 @@
                                     </button>
                                 </div>
                             </td>
-                        </tr>
+                    </tr>
+                    @endforeach
+
                         @include('admin.components.modals.petugas.editdata')
                     </tbody>
                 </table>

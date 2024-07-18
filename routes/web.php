@@ -43,4 +43,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard/admin/penduduk', [AdminController::class, 'penduduk'])->name('penduduk.admin');
     Route::get('/dashboard/admin/surat', [AdminController::class, 'surat'])->name('surat.admin');
     Route::get('/dashboard/admin/pemetaan', [AdminController::class, 'pemetaan'])->name('pemetaan.admin');
+     Route::get('/dashboard/admin/petugas', [AdminController::class, 'petugas'])->name('petugas.admin');
+    Route::post('/dashboard/admin/petugas/tambah', [AdminController::class, 'tambahPetugas'])->name('petugas.tambah');
 });

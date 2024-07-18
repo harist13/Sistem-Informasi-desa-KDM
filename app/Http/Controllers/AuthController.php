@@ -87,34 +87,6 @@ class AuthController extends Controller
         ]);
     }
 
-    public function handleAdminRegister(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'nama_petugas' => 'required|string|max:100',
-            'username' => 'required|string|max:50|unique:petugas',
-            'password' => 'required|string|min:6|confirmed',
-            'telp' => 'nullable|string|max:15',
-            'foto' => 'nullable|string|max:255',
-            'role' => 'required|string|exists:roles,name', // assuming you have a roles table
-        ]);
-
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-
-        $petugas = Petugas::create([
-            'nama_petugas' => $request->nama_petugas,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-            'telp' => $request->telp,
-            'foto' => $request->foto,
-            'role' => $request->role,
-        ]);
-
-        $petugas->assignRole($request->role);
-
-        return redirect()->route('loginAdmin')->with('success', 'Registrasi berhasil. Silakan login.');
-    }
 
     public function logout(Request $request)
     {
