@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\RTController;
+use Illuminate\Support\Facades\Route;
+
 
 Route::get('/login', function () {
     return view('index');
@@ -45,4 +48,29 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard/admin/pemetaan', [AdminController::class, 'pemetaan'])->name('pemetaan.admin');
      Route::get('/dashboard/admin/petugas', [AdminController::class, 'petugas'])->name('petugas.admin');
     Route::post('/dashboard/admin/petugas/tambah', [AdminController::class, 'tambahPetugas'])->name('petugas.tambah');
+});
+
+
+Route::middleware(['auth', 'role:staff'])->group(function () {
+    Route::get('/dashboard/staff', [StaffController::class, 'Staffdashboard'])->name('dashboard.staff');
+    Route::get('/dashboard/staff/artikel', [StaffController::class, 'artikel'])->name('artikel.staff');
+    Route::get('/dashboard/staff/pengaduan', [StaffController::class, 'pengaduan'])->name('pengaduan.staff');
+    Route::get('/dashboard/staff/tanggapan', [StaffController::class, 'tanggapan'])->name('tanggapan.staff');
+    Route::get('/dashboard/staff/petugas', [StaffController::class, 'petugas'])->name('petugas.staff');
+    Route::get('/dashboard/staff/penduduk', [StaffController::class, 'penduduk'])->name('penduduk.staff');
+    Route::get('/dashboard/staff/surat', [StaffController::class, 'surat'])->name('surat.staff');
+    Route::get('/dashboard/staff/pemetaan', [StaffController::class, 'pemetaan'])->name('pemetaan.staff');
+    Route::post('/dashboard/staff/petugas/tambah', [StaffController::class, 'tambahPetugas'])->name('petugas.tambah');
+});
+
+Route::middleware(['auth', 'role:rt'])->group(function () {
+    Route::get('/dashboard/rt', [RTController::class, 'dashboard'])->name('dashboard.rt');
+    Route::get('/dashboard/rt/artikel', [RTController::class, 'artikel'])->name('artikel.rt');
+    Route::get('/dashboard/rt/pengaduan', [RTController::class, 'pengaduan'])->name('pengaduan.rt');
+    Route::get('/dashboard/rt/tanggapan', [RTController::class, 'tanggapan'])->name('tanggapan.rt');
+    Route::get('/dashboard/rt/petugas', [RTController::class, 'petugas'])->name('petugas.rt');
+    Route::get('/dashboard/rt/penduduk', [RTController::class, 'penduduk'])->name('penduduk.rt');
+    Route::get('/dashboard/rt/surat', [RTController::class, 'surat'])->name('surat.rt');
+    Route::get('/dashboard/rt/pemetaan', [RTController::class, 'pemetaan'])->name('pemetaan.rt');
+    Route::post('/dashboard/rt/petugas/tambah', [RTController::class, 'tambahPetugas'])->name('petugas.tambah');
 });

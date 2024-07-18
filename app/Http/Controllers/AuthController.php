@@ -74,12 +74,23 @@ class AuthController extends Controller
         return redirect()->route('loginMasyarakat')->with('success', 'Registrasi berhasil. Silakan login.');
     }
 
+     
+
      public function handleAdminLogin(Request $request)
     {
         $credentials = $request->only('username', 'password');
-
+        
         if (Auth::guard('web')->attempt($credentials)) {
-            return redirect()->intended('/dashboard/admin');
+            // Determine the role of the authenticated user
+            $user = Auth::user();
+            
+            if ($user->hasRole('admin')) {
+                return redirect()->intended('/dashboard/admin');
+            } elseif ($user->hasRole('staff')) {
+                return redirect()->intended('/dashboard/staff');
+            } elseif ($user->hasRole('rt')) { // Assuming 'rt' is a role
+                return redirect()->intended('/dashboard/rt');
+            }
         }
 
         return back()->withErrors([
