@@ -29,32 +29,50 @@
                     <div class="p-8 md:p-12">
                         <h1 class="text-3xl font-bold mb-2">Login Masyarakat</h1>
                         <p class="text-slate-500 mb-6">Login to your account to get access easily</p>
-                     <form action="{{ route('loginMasyarakat') }}" method="POST">
-    @csrf
-    <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="nik">Nik</label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nik" name="nik" type="text" placeholder="Masukkan Nik anda" required>
-    </div>
-    <div class="mb-6">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="Masukkan password anda" required>
-    </div>
-    <button class="bg-green-500 text-white font-bold py-2 px-4 rounded w-full">Login</button>
-    <p class="text-center mt-4">Belum punya akun?
-        <a class="no-underline font-bold text-sky-500" href="{{ route('registerMasyarakat') }}">Daftar disini</a>
-    </p>
-    <p class="text-center mt-4">
-        <a class="no-underline font-bold text-sky-500" href="{{ route('loginAdmin') }}">Login petugas/rt</a>
-    </p>
-</form>
+                        
+                        @if(session('success'))
+                            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                                <strong class="font-bold">Success!</strong>
+                                <span class="block sm:inline">{{ session('success') }}</span>
+                            </div>
+                        @endif
 
+                        @if(session('error'))
+                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                                <strong class="font-bold">Error!</strong>
+                                <span class="block sm:inline">{{ session('error') }}</span>
+                            </div>
+                        @endif
+
+                        <form action="{{ route('loginMasyarakat') }}" method="POST">
+                            @csrf
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="nik">Nik</label>
+                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('nik') border-red-500 @enderror" id="nik" name="nik" type="text" placeholder="Masukkan Nik anda" required>
+                                @error('nik')
+                                    <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('password') border-red-500 @enderror" id="password" name="password" type="password" placeholder="Masukkan password anda" required>
+                                @error('password')
+                                    <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <button class="bg-green-500 text-white font-bold py-2 px-4 rounded w-full">Login</button>
+                            <p class="text-center mt-4">Belum punya akun?
+                                <a class="no-underline font-bold text-sky-500" href="{{ route('registerMasyarakat') }}">Daftar disini</a>
+                            </p>
+                            <p class="text-center mt-4">
+                                <a class="no-underline font-bold text-sky-500" href="{{ route('loginAdmin') }}">Login petugas/rt</a>
+                            </p>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
 </body>
 
 </html>

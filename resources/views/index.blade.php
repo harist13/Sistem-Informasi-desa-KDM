@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desa Kertamulya | Website Profile</title>
+    <title>Desa Kedang murung | Website Profile</title>
 
     {{-- logo --}}
     <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
