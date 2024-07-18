@@ -48,6 +48,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard/admin/pemetaan', [AdminController::class, 'pemetaan'])->name('pemetaan.admin');
      Route::get('/dashboard/admin/petugas', [AdminController::class, 'petugas'])->name('petugas.admin');
     Route::post('/dashboard/admin/petugas/tambah', [AdminController::class, 'tambahPetugas'])->name('petugas.tambah');
+    // Route untuk menampilkan halaman edit
+Route::get('/dashboard/admin/petugas/edit/{id}', [AdminController::class, 'edit'])->name('petugas.edit');
+Route::post('/dashboard/admin/petugas/edit/{id}', [AdminController::class, 'update'])->name('petugas.update');
+    Route::delete('/dashboard/admin/petugas/hapus/{id}', [AdminController::class, 'hapusPetugas'])->name('petugas.hapus');
 });
 
 

@@ -48,6 +48,33 @@ class AdminController extends Controller
         return redirect()->route('petugas.admin')->with('success', 'Petugas berhasil ditambahkan.');
     }
 
+     public function edit($id)
+    {
+        $petugas = Petugas::findOrFail($id);
+        $roles = Role::all();
+
+        return view('admin.components.modals.petugas.editdata', compact('petugas', 'roles'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $petugas = Petugas::findOrFail($id);
+
+        $petugas->nama_petugas = $request->nama_petugas;
+        $petugas->username = $request->username;
+
+        if ($request->password) {
+            $petugas->password = bcrypt($request->password);
+        }
+
+        $petugas->telp = $request->telp;
+
+        $petugas->syncRoles($request->role);
+        $petugas->save();
+
+        return redirect()->route('petugas.admin')->with('success', 'Data petugas berhasil diperbarui.');
+    }
+
 
     public function dashboard()
     {
@@ -78,4 +105,7 @@ class AdminController extends Controller
     {
         return view('admin.components.pages.pemetaan');
     }
+
+
+
 }
