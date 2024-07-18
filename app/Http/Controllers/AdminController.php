@@ -76,6 +76,19 @@ class AdminController extends Controller
     }
 
 
+     public function hapusPetugas($id)
+    {
+        $petugas = Petugas::findOrFail($id);
+        
+        // Hapus roles yang terkait dengan petugas
+        $petugas->roles()->detach();
+        
+        // Hapus petugas
+        $petugas->delete();
+
+        return redirect()->route('petugas.admin')->with('success', 'Petugas berhasil dihapus.');
+    }
+
     public function filterPetugas(Request $request)
 {
     $role = $request->role;

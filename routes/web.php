@@ -67,7 +67,7 @@ Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::get('/dashboard/staff/penduduk', [StaffController::class, 'penduduk'])->name('penduduk.staff');
     Route::get('/dashboard/staff/surat', [StaffController::class, 'surat'])->name('surat.staff');
     Route::get('/dashboard/staff/pemetaan', [StaffController::class, 'pemetaan'])->name('pemetaan.staff');
-    Route::post('/dashboard/staff/petugas/tambah', [StaffController::class, 'tambahPetugas'])->name('petugas.tambah');
+    Route::post('/dashboard/staff/petugas/tambah', [StaffController::class, 'tambahPetugas'])->name('petugas.tambah.staff');
 });
 
 Route::middleware(['auth', 'role:rt'])->group(function () {
@@ -79,5 +79,5 @@ Route::middleware(['auth', 'role:rt'])->group(function () {
     Route::get('/dashboard/rt/penduduk', [RTController::class, 'penduduk'])->name('penduduk.rt');
     Route::get('/dashboard/rt/surat', [RTController::class, 'surat'])->name('surat.rt');
     Route::get('/dashboard/rt/pemetaan', [RTController::class, 'pemetaan'])->name('pemetaan.rt');
-    Route::post('/dashboard/rt/petugas/tambah', [RTController::class, 'tambahPetugas'])->name('petugas.tambah');
+    Route::post('/dashboard/rt/petugas/tambah', [RTController::class, 'tambahPetugas'])->name('petugas.tambah.rt');
 });
