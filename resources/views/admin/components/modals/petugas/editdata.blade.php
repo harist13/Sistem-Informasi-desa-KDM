@@ -17,8 +17,8 @@
             </button>
             <div class="px-6 py-6 lg:px-8">
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Edit Data Petugas</h3>
-                <form class="space-y-6" action="{{ route('petugas.update', $petugas->id) }}" method="POST">
-                    @csrf
+                <form class="space-y-6" action="{{ route('petugas.update', $petugas->id) }}" method="POST" enctype="multipart/form-data">
+                     @csrf
                     <div>
                         <label for="nama_petugas"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
@@ -48,6 +48,14 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             value="{{ $petugas->telp }}">
                     </div>
+
+                    <div>
+        <label for="foto" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto</label>
+        <input type="file" name="foto" id="foto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        @if($petugas->foto)
+            <img src="{{ asset('storage/petugas/' . $petugas->foto) }}" alt="Foto Petugas" class="mt-2 w-32 h-32 object-cover">
+        @endif
+    </div>
                     <div>
                         <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
                         <select name="role" id="role"

@@ -5,8 +5,8 @@
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <!-- ... modal header ... -->
             <div class="p-4 md:p-5">
-                <form class="space-y-4" action="{{ route('petugas.tambah') }}" method="POST">
-                    @csrf
+                 <form class="space-y-4" action="{{ route('petugas.tambah') }}" method="POST" enctype="multipart/form-data">
+                     @csrf
                     <div>
                         <label for="nama_petugas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Petugas</label>
                         <input type="text" name="nama_petugas" id="nama_petugas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
@@ -22,6 +22,11 @@
                     <div>
                         <label for="telp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No. Telp</label>
                         <input type="text" name="telp" id="telp" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
+                    </div>
+
+                     <div>
+                        <label for="foto" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto</label>
+                        <input type="file" name="foto" id="foto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
                     </div>
                     <div>
                         <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>

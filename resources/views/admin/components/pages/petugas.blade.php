@@ -82,6 +82,9 @@
                             No. Telp
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Foto
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Role
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -99,6 +102,15 @@
                         <td class="px-6 py-4">{{ $p->username }}</td>
                         <td class="px-6 py-4">********</td>
                         <td class="px-6 py-4">{{ $p->telp }}</td>
+                        <!-- resources/views/admin/components/pages/petugas.blade.php -->
+
+<td class="px-6 py-4">
+    @if($p->foto)
+        <img src="{{ asset('storage/petugas/' . $p->foto) }}" alt="Foto {{ $p->nama_petugas }}" class="w-16 h-16 object-cover rounded-full">
+    @else
+        <span>No Photo</span>
+    @endif
+</td>
                         <td class="px-6 py-4">{{ $p->roles->pluck('name')->implode(', ') }}</td>
                         <td class="px-6 py-4">
                             <div class="flex justify-center items-center space-x-2">
