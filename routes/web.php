@@ -3,15 +3,11 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\AdminController;
 
-
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('index');
 });
-
-
-
 
 // Admin login & register
 Route::get('/admin/login', [AuthController::class, 'loginAdmin'])->name('loginAdmin');
@@ -23,20 +19,28 @@ Route::post('/admin/register', [AuthController::class, 'handleAdminRegister']);
 Route::get('/masyarakat/login', [AuthController::class, 'loginMasyarakat'])->name('loginMasyarakat');
 Route::post('/masyarakat/login', [AuthController::class, 'handleMasyarakatLogin']);
 Route::get('/masyarakat/register', [AuthController::class, 'registerMasyarakat'])->name('registerMasyarakat');
-Route::post('/masyarakat/register', [AuthController::class, 'handleMasyarakatRegister'])->name('registerMasyarakat');
+Route::post('/masyarakat/register', [AuthController::class, 'handleMasyarakatRegister']);
 
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Protected routes
+// Protected routes for masyarakat
+Route::middleware(['auth:masyarakat'])->group(function () {
+    Route::get('/dashboard/masyarakat', [DashboardController::class, 'masyarakatDashboard'])->name('dashboard.masyarakat');
+    Route::get('/dashboard/masyarakat/artikel', [DashboardController::class, 'masyarakatartikel'])->name('artikel.masyarakat');
+    Route::get('/dashboard/masyarakat/pengaduan', [DashboardController::class, 'masyarakatpengaduan'])->name('pengaduan');
+   
 
-    // dashboard admin staff
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-Route::get('/dashboard/artikel', [DashboardController::class, 'artikel'])->name('artikel');
-Route::get('/dashboard/pengaduan', [DashboardController::class, 'pengaduan'])->name('pengaduan');
-Route::get('/dashboard/tanggapan', [DashboardController::class, 'tanggapan'])->name('tanggapan');
-Route::get('/dashboard/petugas', [DashboardController::class, 'petugas'])->name('petugas');
-Route::get('/dashboard/penduduk', [DashboardController::class, 'penduduk'])->name('penduduk');
-Route::get('/dashboard/surat', [DashboardController::class, 'surat'])->name('surat');
-Route::get('/dashboard/pemetaan', [DashboardController::class, 'pemetaan'])->name('pemetaan');
-    // other protected routes
+    // other protected routes for masyarakat
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/dashboard/admin', [AdminController::class, 'dashboard'])->name('dashboard.admin');
+    Route::get('/dashboard/admin/artikel', [AdminController::class, 'artikel'])->name('artikel.admin');
+    Route::get('/dashboard/admin/pengaduan', [AdminController::class, 'pengaduan'])->name('pengaduan.admin');
+    Route::get('/dashboard/admin/tanggapan', [AdminController::class, 'tanggapan'])->name('tanggapan.admin');
+    Route::get('/dashboard/admin/petugas', [AdminController::class, 'petugas'])->name('petugas.admin');
+    Route::get('/dashboard/admin/penduduk', [AdminController::class, 'penduduk'])->name('penduduk.admin');
+    Route::get('/dashboard/admin/surat', [AdminController::class, 'surat'])->name('surat.admin');
+    Route::get('/dashboard/admin/pemetaan', [AdminController::class, 'pemetaan'])->name('pemetaan.admin');
+});

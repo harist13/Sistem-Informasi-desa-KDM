@@ -5,19 +5,18 @@
                 <div class="flex items-center gap-3">
                     <img class="h-12 w-auto" src="{{ asset('img/logo.png') }}" alt="Your Company">
                     <div>
-                        <h3 class="text-white text-2xl mb-0 uppercase font-semibold">Website Resmi Desa Kertamulya
+                        <h3 class="text-white text-2xl mb-0 uppercase font-semibold">Website Resmi Desa kedang murung
                         </h3>
                         <p class="text-white text-[14px] font-bold">Kabupaten Bandung Barat, Jawa Barat</p>
                     </div>
                 </div>
-                <p class="text-white text-sm">Jl. Raya Tagog No. 128 Padalarang, Kabupaten Bandung Barat, Jawa
-                    Barat. Kode Pos 40553</p>
+                <p class="text-white text-sm">Jl. kedang murung</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12">
                 <div>
                     <h3 class="text-white text-lg mb-2 uppercase font-semibold">Hubungi Kami</h3>
                     <p class="text-white text-[14px]">+62 822-6623181</p>
-                    <p class="text-white text-[14px]">pemdes@kertamulya-padalarang.desa.id</p>
+                    <p class="text-white text-[14px]">pemdes@kedang murung-padalarang.desa.id</p>
                 </div>
                 <div>
                     <h3 class="text-white text-lg mb-2 uppercase font-semibold">Kategori</h3>
@@ -27,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <p class="text-white text-[12px] text-center mt-8 lg:mt-12">Copyright © 2024 KKN Desa Kertamulya. All Rights
+        <p class="text-white text-[12px] text-center mt-8 lg:mt-12">Copyright © 2024 KKN Desa kedang murung. All Rights
             Reserved.</p>
     </div>
 </section>

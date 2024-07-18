@@ -4,11 +4,11 @@
             <div class="flex justify-between items-center gap-3">
                 <img class="h-12 w-auto hidden md:block lg:block" src="{{ asset('img/logo.png') }}" alt="Your Company">
                 <div class="mr-auto">
-                    <h3 class="text-[#282828] text-2xl mb-0 uppercase font-semibold">Website Resmi Desa Kertamulya
+                    <h3 class="text-[#282828] text-2xl mb-0 uppercase font-semibold">Website Resmi Desa Kedang murung
                     </h3>
-                    <p class="text-slate-500 text-[14px] font-bold">Kabupaten Bandung Barat, Jawa Barat</p>
+                    <p class="text-slate-500 text-[14px] font-bold">Kabupaten kutai kartanegara, Kalimantan timur</p>
                 </div>
-                <p class="text-[#282828] text-[14px] hidden lg:block"><i class="fa-solid fa-envelope mr-1"></i> pemdes@kertamulya-padalarang.desa.id</p>
+                <p class="text-[#282828] text-[14px] hidden lg:block"><i class="fa-solid fa-envelope mr-1"></i> pemdes@kedangmurung.desa.id</p>
             </div>
         </div>
     </div>

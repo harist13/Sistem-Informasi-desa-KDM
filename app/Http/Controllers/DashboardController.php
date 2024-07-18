@@ -7,36 +7,19 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function dashboard()
+        public function masyarakatDashboard()
     {
-        return view('admin.dashboard');
+        return view('masyarakat.dashboard');
     }
-    public function artikel()
+
+    public function masyarakatartikel()
     {
-        return view('admin.components.pages.artikel');
+        return view('masyarakat.components.pages.artikel');
     }
-    public function pengaduan()
+    public function masyarakatpengaduan()
     {
-        return view('admin.components.pages.pengaduan');
+        return view('masyarakat.components.pages.pengaduan');
     }
-    public function tanggapan()
-    {
-        return view('admin.components.pages.tanggapan');
-    }
-    public function petugas()
-    {
-        return view('admin.components.pages.petugas');
-    }
-    public function penduduk()
-    {
-        return view('admin.components.pages.rumahtangga');
-    }
-    public function surat()
-    {
-        return view('admin.components.pages.surat');
-    }
-    public function pemetaan()
-    {
-        return view('admin.components.pages.pemetaan');
-    }
+ 
+
 }

@@ -36,14 +36,14 @@
                                     for="username">Username</label>
                                 <input
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="username" type="text" placeholder="Masukkan username anda">
+                                    id="username" name="username" type="text" placeholder="Masukkan username anda">
                             </div>
                             <div class="mb-6">
                                 <label class="block text-gray-700 text-sm font-bold mb-2"
                                     for="password">Password</label>
                                 <input
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="password" type="password" placeholder="Masukkan password anda">
+                                    id="password" type="password" name="password" placeholder="Masukkan password anda">
                             </div>
                             <button class="bg-green-500 text-white font-bold py-2 px-4 rounded w-full">Login</button>
                             <p class="text-center mt-4">

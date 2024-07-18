@@ -38,8 +38,19 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'petugas',
         ],
+
+         'admin' => [
+            'driver' => 'session',
+            'provider' => 'petugas',  // Use the petugas provider for admin guard
+        ],
+
+
+         'masyarakat' => [
+        'driver' => 'session',
+        'provider' => 'masyarakats', // Sesuaikan dengan provider yang Anda gunakan
+    ],
     ],
 
     /*
@@ -60,11 +71,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'petugas' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Petugas::class,
         ],
 
+         'masyarakats' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Masyarakat::class, // Sesuaikan dengan model masyarakat Anda
+    ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

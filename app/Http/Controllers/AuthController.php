@@ -2,14 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Petugas;
 use App\Models\Masyarakat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Petugas;
 
 class AuthController extends Controller
+
 {
+    public function loginAdmin()
+    {
+        return view('admin.login');
+                                        
+    }
+
+    public function registerAdmin()
+    {
+        return view('admin.register');
+    }
+
     public function loginMasyarakat()
     {
         return view('masyarakat.login');
@@ -21,68 +34,94 @@ class AuthController extends Controller
     }
 
     public function handleMasyarakatLogin(Request $request)
-    {
-        $credentials = $request->only('nik', 'password');
-        if (Auth::guard('masyarakat')->attempt($credentials)) {
-            return redirect()->route('home');
-        }
-        return back()->withErrors(['nik' => 'Invalid credentials.']);
+{
+    $credentials = $request->only('nik', 'password');
+
+    if (Auth::guard('masyarakat')->attempt($credentials)) {
+        return redirect()->intended('/dashboard/masyarakat');
     }
+
+    return back()->withErrors([
+        'nik' => 'NIK atau password salah.',
+    ]);
+}
+
 
     public function handleMasyarakatRegister(Request $request)
     {
-        $data = $request->validate([
-            'nik' => 'required|string|unique:masyarakat',
+        $validator = Validator::make($request->all(), [
+            'nik' => 'required|string|size:16|unique:masyarakat',
             'nama' => 'required|string|max:100',
             'password' => 'required|string|min:6|confirmed',
             'telp' => 'nullable|string|max:15',
-            'email' => 'nullable|email|max:100',
+            'foto' => 'nullable|string|max:255',
+            'email' => 'nullable|string|email|max:100|unique:masyarakat',
         ]);
 
-        $data['password'] = Hash::make($data['password']);
-        Masyarakat::create($data);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
 
-        return redirect()->route('loginMasyarakat')->with('success', 'Registration successful.');
+        Masyarakat::create([
+            'nik' => $request->nik,
+            'nama' => $request->nama,
+            'password' => Hash::make($request->password),
+            'telp' => $request->telp,
+            'foto' => $request->foto,
+            'email' => $request->email,
+        ]);
+
+        return redirect()->route('loginMasyarakat')->with('success', 'Registrasi berhasil. Silakan login.');
     }
 
-    public function loginAdmin()
-    {
-        return view('admin.login');
-    }
-
-    public function registerAdmin()
-    {
-        return view('admin.register');
-    }
-
-    public function handleAdminLogin(Request $request)
+     public function handleAdminLogin(Request $request)
     {
         $credentials = $request->only('username', 'password');
-        if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('dashboard');
+
+        if (Auth::guard('web')->attempt($credentials)) {
+            return redirect()->intended('/dashboard/admin');
         }
-        return back()->withErrors(['username' => 'Invalid credentials.']);
+
+        return back()->withErrors([
+            'username' => 'Username or password is incorrect.',
+        ]);
     }
 
     public function handleAdminRegister(Request $request)
     {
-        $data = $request->validate([
+        $validator = Validator::make($request->all(), [
             'nama_petugas' => 'required|string|max:100',
             'username' => 'required|string|max:50|unique:petugas',
             'password' => 'required|string|min:6|confirmed',
             'telp' => 'nullable|string|max:15',
-            'role' => 'required|string|in:admin,editor,user',
+            'foto' => 'nullable|string|max:255',
+            'role' => 'required|string|exists:roles,name', // assuming you have a roles table
         ]);
 
-        $data['password'] = Hash::make($data['password']);
-        Petugas::create($data);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
 
-        return redirect()->route('loginAdmin')->with('success', 'Registration successful.');
+        $petugas = Petugas::create([
+            'nama_petugas' => $request->nama_petugas,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'telp' => $request->telp,
+            'foto' => $request->foto,
+            'role' => $request->role,
+        ]);
+
+        $petugas->assignRole($request->role);
+
+        return redirect()->route('loginAdmin')->with('success', 'Registrasi berhasil. Silakan login.');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
-        return redirect('/');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }
