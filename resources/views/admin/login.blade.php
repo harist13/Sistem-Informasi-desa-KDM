@@ -24,7 +24,7 @@
                         <p>Welcome back to Website Desa Kedang murung</p>
                     </div>
                     <div class="p-8 md:p-12">
-                        <h1 class="text-3xl font-bold mb-2">Login Form</h1>
+                        <h1 class="text-3xl font-bold mb-2">Login Petugas</h1>
                         <p class="text-slate-500 mb-6">Login to your account to get access easily</p>
                         
                         @if(session('success'))
