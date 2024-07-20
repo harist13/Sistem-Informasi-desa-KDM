@@ -13,7 +13,7 @@
     style="background-image: url('https://okeborneo.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-05-at-10.25.12.jpeg')">
     <section>
         <div class="container mx-auto">
-            <div class="flex items-center justify-center min-h-screen shadow-md">
+            <div class="flex items-center justify-center min-h-screen">
                 <div class="bg-white rounded-lg shadow-lg md:w-3/4 lg:w-1/2 xl:w-1/3">
                     <div class="text-white text-center bg-cover bg-center object-cover py-4 bg-opacity-50"
                         style="background-image: url('https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/177/2024/06/06/kedng-murung-873423276.jpg')">

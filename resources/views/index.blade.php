@@ -33,7 +33,7 @@
 
     {{-- hero --}}
     <section>
-        <div class="container mx-auto">
+        <div class="container mx-auto mb-16">
             <div id="default-carousel" class="relative w-full" data-carousel="slide">
                 <!-- Carousel wrapper -->
                 <div class="relative h-56 overflow-hidden md:h-[550px] z-10">
@@ -103,57 +103,197 @@
     </section>
 
     {{-- kontent dan informasi --}}
-    <section>
+    <section class="bg-white py-6">
         <div class="container mx-auto px-4 mt-12">
-            <div class="flex flex-col gap-4">
-                <h1 class="text-3xl font-semibold text-[#282828]">Artikel <span
-                        class="font-bold text-green-500">Terbaru</span></h1>
-                <hr class="border-2 w-1/2">
-                <div class="flex flex-col gap-4">
-                    <div class="bg-white flex flex-col lg:flex-row items-center max-w-screen-lg gap-6">
+            <div class="flex flex-col lg:flex-row gap-8 mt-3">
+                <!-- Artikel Terbaru -->
+                <div class="flex flex-col lg:w-2/3">
+                    <h1 class="text-3xl font-semibold text-[#282828] mb-2">Artikel <span
+                            class="font-bold text-green-500">Terbaru</span></h1>
+                    <hr class="border-2 w-1/2 mb-4">
+
+                    <!-- Artikel 1 -->
+                    <div class="flex flex-col lg:flex-row items-center max-w-screen-lg gap-6 mb-6">
                         <img src="https://img.freepik.com/free-photo/indigenous-person-doing-daily-chores-showcasing-lifestyle_23-2149711134.jpg?t=st=1721134490~exp=1721138090~hmac=6b46c13c75eb8d8aebc232cc21e5df7e100e250a91de68f3676fd7aabbb9663e&w=996"
-                            class="w-full lg:w-auto h-52 object-cover" alt="">
+                            class="w-full lg:w-1/3 h-52 object-cover" alt="">
                         <div>
                             <h3 class="text-xl font-semibold">Kegiatan KKN oleh Beberapa Mahasiswa Tahun 2024</h3>
                             <p class="max-w-2xl mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
                                 dignissimos quis, sapiente, ea asperiores temporibus libero error reiciendis fugit
                                 fugiat corrupti autem neque, quidem facere.</p>
                             <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-calendar-days mr-3"></i>
-                                Periode
-                                Juli - September 2024</p>
+                                Periode Juli - September 2024</p>
                         </div>
                     </div>
-                    <div class="bg-white flex flex-col lg:flex-row items-center max-w-screen-lg gap-4">
+
+                    <!-- Artikel 2 -->
+                    <div class="flex flex-col lg:flex-row items-center max-w-screen-lg gap-6 mb-6">
                         <img src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg?t=st=1721134786~exp=1721138386~hmac=ac6632128d6013902b8a7ddf731f88c3d425c575ad9977325bef447ef5aa0064&w=996"
-                            class="w-full lg:w-auto h-52 object-cover" alt="">
+                            class="w-full lg:w-1/3 h-52 object-cover" alt="">
                         <div>
                             <h3 class="text-xl font-semibold">Kegiatan Gotong Royong Membersihkan Lingkungan</h3>
                             <p class="max-w-2xl mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
                                 dignissimos quis, sapiente, ea asperiores temporibus libero error reiciendis fugit
                                 fugiat corrupti autem neque, quidem facere.</p>
                             <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-calendar-days mr-3"></i>
-                                Periode
-                                April 2024</p>
+                                Periode April 2024</p>
                         </div>
                     </div>
-                    <div class="bg-white flex flex-col lg:flex-row items-center max-w-screen-lg gap-4">
+
+                    <!-- Artikel 3 -->
+                    <div class="flex flex-col lg:flex-row items-center max-w-screen-lg gap-6 mb-6">
                         <img src="https://img.freepik.com/free-photo/aerial-view-terraced-rice-fields-bali-indonesia_335224-312.jpg?t=st=1721134960~exp=1721138560~hmac=9d589e1e8ae1c401ad35630ed95463b13acf7f809cb8162bc91952a4732af237&w=996"
-                            class="w-full lg:w-auto h-52 object-cover" alt="">
+                            class="w-full lg:w-1/3 h-52 object-cover" alt="">
                         <div>
-                            <h3 class="text-xl font-semibold">Sejarah Tentang Desa Kedang murung</h3>
+                            <h3 class="text-xl font-semibold">Sejarah Tentang Desa Kedang Murung</h3>
                             <p class="max-w-2xl mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
                                 dignissimos quis, sapiente, ea asperiores temporibus libero error reiciendis fugit
                                 fugiat corrupti autem neque, quidem facere.</p>
                             <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-calendar-days mr-3"></i>
-                                Periode
-                                Januari - Februari 2024</p>
+                                Periode Januari - Februari 2024</p>
                         </div>
                     </div>
                 </div>
-                <aside>
+                <!-- Sidebar -->
+                <aside class="lg:w-1/3">
+                    <!-- Pengumuman Terbaru -->
+                    <div>
+                        <h3 class="text-3xl font-semibold mb-2">Pengumuman Terbaru</h3>
+                        <hr class="border-2 w-1/2">
+                        <div class="mt-4">
+                            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400"
+                                role="alert">
+                                <span class="font-medium">Kegiatan KKN Mahasiswa 2024</span>
+                            </div>
+                            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400"
+                                role="alert">
+                                <span class="font-medium">Kegiatan Rapat Program Desa 2024</span>
+                            </div>
+                            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400"
+                                role="alert">
+                                <span class="font-medium">Pengaduan Masyarakat Desa</span>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Struktur Pemerintahan -->
+                    <div class="pt-8">
+                        <h1 class="text-3xl font-semibold">Struktur Pemerintahan</h1>
+                        <hr class="border-2 w-1/2 mb-4">
+                        <div id="default-carousel" class="relative w-full" data-carousel="slide">
+                            <!-- Carousel wrapper -->
+                            <div class="relative h-64 md:h-80 lg:h-96 overflow-hidden rounded-lg">
+                                <!-- Item 1 -->
+                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                    <img src="https://img.freepik.com/free-photo/army-it-professional-examining-national-satellite-surveillance-footage_482257-89885.jpg?t=st=1721407818~exp=1721411418~hmac=15166820f8eb77a038895508d49bbbe7bb35886de798596164f30581ddd5eb3c&w=1380"
+                                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                        alt="...">
+                                </div>
+                                <!-- Item 2 -->
+                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                    <img src="https://img.freepik.com/free-photo/army-it-professional-examining-national-satellite-surveillance-footage_482257-89885.jpg?t=st=1721407818~exp=1721411418~hmac=15166820f8eb77a038895508d49bbbe7bb35886de798596164f30581ddd5eb3c&w=1380"
+                                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                        alt="...">
+                                </div>
+                                <!-- Item 3 -->
+                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                    <img src="https://img.freepik.com/free-photo/army-it-professional-examining-national-satellite-surveillance-footage_482257-89885.jpg?t=st=1721407818~exp=1721411418~hmac=15166820f8eb77a038895508d49bbbe7bb35886de798596164f30581ddd5eb3c&w=1380"
+                                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                        alt="...">
+                                </div>
+                            </div>
+                            <!-- Slider indicators -->
+                            <div
+                                class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                                <button type="button" class="w-3 h-3 rounded-full" aria-current="true"
+                                    aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                                <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
+                                    aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                                <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
+                                    aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                            </div>
+                            <!-- Slider controls -->
+                            <button type="button"
+                                class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                data-carousel-prev>
+                                <span
+                                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 6 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="M5 1 1 5l4 4" />
+                                    </svg>
+                                    <span class="sr-only">Previous</span>
+                                </span>
+                            </button>
+                            <button type="button"
+                                class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                data-carousel-next>
+                                <span
+                                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                    <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 6 10">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 9 4-4-4-4" />
+                                    </svg>
+                                    <span class="sr-only">Next</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
                 </aside>
             </div>
+        </div>
+    </section>
+
+
+    {{-- galeri kegiatan desa --}}
+    <section>
+        <div class="container mx-auto px-4 mt-14">
+            <div class="lg:flex lg:justify-between lg:items-center">
+                <div>
+                    <h1 class="text-3xl font-semibold">Galeri <span class="font-bold text-green-500">
+                            Kegiatan Desa</span></h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias minus veritatis ipsum
+                        reprehenderit alias iure.</p>
+                </div>
+                <button class="bg-green-500 text-white px-4 py-2 rounded hidden lg:block">Lihat Semua</button>
+            </div>
+            <div class="flex flex-col justify-center items-center lg:grid lg:grid-cols-4 gap-4 mt-10">
+                <div>
+                    <img class="w-96"
+                        src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
+                        alt="">
+                </div>
+                <div>
+                    <img class="w-96"
+                        src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
+                        alt="">
+                </div>
+                <div>
+                    <img class="w-96"
+                        src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
+                        alt="">
+                </div>
+                <div>
+                    <img class="w-96"
+                        src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
+                        alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- map location --}}
+    <section>
+        <div class="container mx-auto px-4 mt-12">
+            <h1 class="text-3xl font-semibold mb-3">Lokasi Kami</h1>
+            <iframe class="w-full h-96"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127671.90574228844!2d116.48197115814146!3d-0.3424542760586103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df648b37cc98429%3A0x579d0d08f7a1a02!2sKedang%20Murung%2C%20Kec.%20Kota%20Bangun%2C%20Kabupaten%20Kutai%20Kartanegara%2C%20Kalimantan%20Timur!5e0!3m2!1sid!2sid!4v1721395470852!5m2!1sid!2sid"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
 

@@ -16,7 +16,7 @@
 
     <section>
         <div class="container mx-auto">
-            <div class="flex items-center justify-center min-h-screen shadow-md">
+            <div class="flex items-center justify-center min-h-screen">
                 <div class="bg-white rounded-lg shadow-lg md:w-3/4 lg:w-1/2 xl:w-1/3">
                     <div class="text-white text-center bg-cover bg-center object-cover py-4 bg-opacity-50"
                         style="background-image: url('https://img.freepik.com/free-photo/beautiful-horizontal-shot-forest-with-green-trees-daytime_181624-4297.jpg?t=st=1721143979~exp=1721147579~hmac=9fe2feec492ce3457a5d51a07571e5da7a053b70a0804ec5374d90ae7f8dbfc9&w=996')">
