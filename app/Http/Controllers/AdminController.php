@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Petugas;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Pengaduan;
+use App\Models\Tanggapan;
+use App\Models\Masyarakat;
 
 
 class AdminController extends Controller
@@ -152,17 +155,66 @@ public function searchPetugas(Request $request)
     {
         return view('admin.components.pages.artikel');
     }
-    public function pengaduan()
+   
+
+     public function pengaduan()
     {
-        return view('admin.components.pages.pengaduan');
+        $pengaduan = Pengaduan::with('masyarakat')->where('status', '0')->get();
+        return view('admin.components.pages.pengaduan', compact('pengaduan'));
     }
+
     public function pengaduandiproses()
     {
-        return view('admin.components.pages.pengaduandiproses');
+        $pengaduan = Pengaduan::with(['masyarakat', 'tanggapans'])
+            ->whereIn('status', ['proses', 'selesai'])
+            ->get();
+        return view('admin.components.pages.pengaduandiproses', compact('pengaduan'));
     }
+
     public function pengaduanselesai()
     {
-        return view('admin.components.pages.pengaduanselesai');
+        $pengaduan = Pengaduan::with(['masyarakat', 'tanggapans'])
+            ->where('status', 'selesai')
+            ->get();
+        return view('admin.components.pages.pengaduanselesai', compact('pengaduan'));
+    }
+
+    public function tanggapiPengaduan(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'tanggapan' => 'required|string',
+            'status' => 'required|in:proses,selesai',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $pengaduan = Pengaduan::findOrFail($id);
+        $pengaduan->status = $request->status;
+        $pengaduan->save();
+
+        Tanggapan::create([
+            'id_pengaduan' => $id,
+            'tgl_tanggapan' => now(),
+            'tanggapan' => $request->tanggapan,
+            'id_petugas' => auth()->id(),
+        ]);
+
+        return redirect()->route('pengaduan.admin')->with('success', 'Pengaduan berhasil ditanggapi.');
+    }
+
+    public function detailPengaduan($id)
+    {
+        $pengaduan = Pengaduan::with(['masyarakat', 'tanggapans'])->findOrFail($id);
+        return view('admin.components.modals.pengaduan.detail', compact('pengaduan'));
+    }
+
+    public function hapusPengaduan($id)
+    {
+        $pengaduan = Pengaduan::findOrFail($id);
+        $pengaduan->delete();
+        return redirect()->back()->with('success', 'Pengaduan berhasil dihapus.');
     }
     
     public function penduduk()

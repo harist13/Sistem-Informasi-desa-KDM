@@ -42,9 +42,13 @@ Route::middleware(['auth:masyarakat'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard/admin', [AdminController::class, 'dashboard'])->name('dashboard.admin');
     Route::get('/dashboard/admin/artikel', [AdminController::class, 'artikel'])->name('artikel.admin');
-    Route::get('/dashboard/admin/pengaduan', [AdminController::class, 'pengaduan'])->name('pengaduan.admin');
+   
+     Route::get('/dashboard/admin/pengaduan', [AdminController::class, 'pengaduan'])->name('pengaduan.admin');
     Route::get('/dashboard/admin/pengaduanproses', [AdminController::class, 'pengaduandiproses'])->name('pengaduandiproses.admin');
     Route::get('/dashboard/admin/pengaduanselesai', [AdminController::class, 'pengaduanselesai'])->name('pengaduanselesai.admin');
+    Route::post('/dashboard/admin/pengaduan/{id}/tanggapi', [AdminController::class, 'tanggapiPengaduan'])->name('pengaduan.tanggapi');
+    Route::get('/dashboard/admin/pengaduan/{id}/detail', [AdminController::class, 'detailPengaduan'])->name('pengaduan.detail');
+    Route::delete('/dashboard/admin/pengaduan/{id}', [AdminController::class, 'hapusPengaduan'])->name('pengaduan.hapus');
     Route::get('/dashboard/admin/petugas', [AdminController::class, 'petugas'])->name('petugas.admin');
     Route::get('/dashboard/admin/penduduk', [AdminController::class, 'penduduk'])->name('penduduk.admin');
     Route::get('/dashboard/admin/surat', [AdminController::class, 'surat'])->name('surat.admin');
