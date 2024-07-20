@@ -227,6 +227,7 @@
                     </div>
                 </div>
             </div>
+            @include('admin.components.modals.editprofile.editprofil')
         </div>
     </section>
 

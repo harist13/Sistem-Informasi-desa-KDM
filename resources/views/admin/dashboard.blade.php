@@ -45,11 +45,12 @@
             </div>
             <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
                 <marquee class="text-3xl">
-                
+
                     Hallo selamat datang {{ Auth::user()->nama_petugas }}
                     Sebagai {{ Auth::user()->roles->pluck('name')->implode(', ') }}
                 </marquee>
             </div>
+            @include('admin.components.modals.editprofile.editprofil')
         </div>
     </section>
 
