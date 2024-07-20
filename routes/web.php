@@ -9,7 +9,7 @@ use App\Http\Controllers\TampilanAwalController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('', function () {
+Route::get('/', function () {
     return view('index');
 });
 
