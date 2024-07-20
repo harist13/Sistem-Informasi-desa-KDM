@@ -9,7 +9,7 @@ use App\Http\Controllers\TampilanAwalController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('index');
 });
 
@@ -43,7 +43,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard/admin', [AdminController::class, 'dashboard'])->name('dashboard.admin');
     Route::get('/dashboard/admin/artikel', [AdminController::class, 'artikel'])->name('artikel.admin');
     Route::get('/dashboard/admin/pengaduan', [AdminController::class, 'pengaduan'])->name('pengaduan.admin');
-    Route::get('/dashboard/admin/tanggapan', [AdminController::class, 'tanggapan'])->name('tanggapan.admin');
+    Route::get('/dashboard/admin/pengaduanproses', [AdminController::class, 'pengaduandiproses'])->name('pengaduandiproses.admin');
+    Route::get('/dashboard/admin/pengaduanselesai', [AdminController::class, 'pengaduanselesai'])->name('pengaduanselesai.admin');
     Route::get('/dashboard/admin/petugas', [AdminController::class, 'petugas'])->name('petugas.admin');
     Route::get('/dashboard/admin/penduduk', [AdminController::class, 'penduduk'])->name('penduduk.admin');
     Route::get('/dashboard/admin/surat', [AdminController::class, 'surat'])->name('surat.admin');
