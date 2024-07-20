@@ -22,46 +22,22 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5">
-                <form class="space-y-4" action="#">
-                    <div>
-                        <label for="nik" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
-                        <input type="number" name="nik" id="nik"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            placeholder="A001" required />
-                    </div>
-                    <div>
-                        <label for="tgl_pengaduan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
-                            Pengaduan</label>
-                        <input type="date" name="tgl_pengaduan" id="tgl_pengaduan"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required />
-                    </div>
-                    <div>
-                        <label for="laporan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Laporan</label>
-                        <input type="text" name="laporan" id="laporan" placeholder="Laptop"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required />
-                    </div>
-                    <div>
-                        <label for="foto"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto</label>
-                        <input type="file" name="foto" id="foto" placeholder="••••••••"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required />
-                    </div>
-                    <div>
-                        <label for="status"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
-                        <input type="text" name="status" id="status" placeholder="Semangat"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required />
-                    </div>
-                    <button type="submit"
-                        class="w-full mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Simpan
-                        </button>
-                </form>
+                <form class="space-y-4" action="{{ route('pengaduan.ajukan') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div>
+        <label for="tgl_pengaduan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Pengaduan</label>
+        <input type="date" name="tgl_pengaduan" id="tgl_pengaduan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+    </div>
+    <div>
+        <label for="isi_laporan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Isi Laporan</label>
+        <textarea name="isi_laporan" id="isi_laporan" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required></textarea>
+    </div>
+    <div>
+        <label for="foto" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto</label>
+        <input type="file" name="foto" id="foto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+    </div>
+    <button type="submit" class="w-full mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Simpan</button>
+</form>
             </div>
         </div>
     </div>

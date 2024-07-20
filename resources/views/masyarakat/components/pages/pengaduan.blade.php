@@ -50,7 +50,7 @@
                         <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
                             class="block my-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
-                            Tambah Data
+                            Ajukan pengaduan
                         </button>
                         @include('masyarakat.components.modals.pengaduan.tambahdata')
                         <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
@@ -90,50 +90,42 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                1
-                            </th>
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                A001
-                            </th>
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                17-07-2024
-                            </th>
-                            <td class="px-6 py-4">
-                                Silver Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                <button
-                                    class="px-4 py-2 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-500"
-                                    role="alert">
-                                    <span class="font-medium">Success</span>
-                                </button>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex justify-center items-center space-x-2">
-                                    <button data-modal-target="edit-modal" data-modal-toggle="edit-modal"
-                                        class="block text-white bg-yellow-300 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                        type="button">
-                                        Edit
-                                    </button>
-                                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                        class="block text-white bg-red-700 hover:bg-red-800  font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                        type="button">
-                                        Delete
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        @include('masyarakat.components.modals.pengaduan.editdata')
-                    </tbody>
+                   <tbody>
+    @foreach($pengaduan as $p)
+    <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ $loop->iteration }}
+        </th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ $p->nik }}
+        </th>
+        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ $p->tgl_pengaduan }}
+        </th>
+        <td class="px-6 py-4">
+            {{ $p->isi_laporan }}
+        </td>
+        <td class="px-6 py-4">
+            <img src="{{ asset('images/'.$p->foto) }}" alt="Foto Pengaduan" class="w-20 h-20 object-cover">
+        </td>
+        <td class="px-6 py-4">
+            <button class="px-4 py-2 text-sm text-{{ $p->status == '0' ? 'yellow' : ($p->status == 'proses' ? 'blue' : 'green') }}-800 rounded-lg bg-{{ $p->status == '0' ? 'yellow' : ($p->status == 'proses' ? 'blue' : 'green') }}-50 dark:bg-gray-800 dark:text-{{ $p->status == '0' ? 'yellow' : ($p->status == 'proses' ? 'blue' : 'green') }}-500" role="alert">
+                <span class="font-medium">{{ $p->status == '0' ? 'Belum diproses' : ($p->status == 'proses' ? 'Sedang diproses' : 'Selesai') }}</span>
+            </button>
+        </td>
+        <td class="px-6 py-4">
+            <div class="flex justify-center items-center space-x-2">
+                <button data-modal-target="edit-modal-{{ $p->id_pengaduan }}" data-modal-toggle="edit-modal-{{ $p->id_pengaduan }}" class="block text-white bg-yellow-300 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+                    Edit
+                </button>
+                <button data-modal-target="popup-modal-{{ $p->id_pengaduan }}" data-modal-toggle="popup-modal-{{ $p->id_pengaduan }}" class="block text-white bg-red-700 hover:bg-red-800  font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+                    Delete
+                </button>
+            </div>
+        </td>
+    </tr>
+    @endforeach
+</tbody>
                 </table>
             </div>
             {{-- delete --}}
