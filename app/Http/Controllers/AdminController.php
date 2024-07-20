@@ -156,9 +156,13 @@ public function searchPetugas(Request $request)
     {
         return view('admin.components.pages.pengaduan');
     }
-    public function tanggapan()
+    public function pengaduandiproses()
     {
-        return view('admin.components.pages.tanggapan');
+        return view('admin.components.pages.pengaduandiproses');
+    }
+    public function pengaduanselesai()
+    {
+        return view('admin.components.pages.pengaduanselesai');
     }
     
     public function penduduk()
