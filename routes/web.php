@@ -8,7 +8,7 @@ use App\Http\Controllers\RTController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('index');
 });
 
