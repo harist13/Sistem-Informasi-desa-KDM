@@ -128,7 +128,7 @@
                                 </div>
                             </td>
                         </tr>
-                        @include('admin.components.modals.pengaduan.editdata')
+                        @include('admin.components.modals.pengaduan.tanggapi')
                     </tbody>
                 </table>
             </div>

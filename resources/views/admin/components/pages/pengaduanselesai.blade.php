@@ -122,13 +122,18 @@
                                     <button data-modal-target="edit-modal" data-modal-toggle="edit-modal"
                                         class="block text-white bg-yellow-300 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                         type="button">
-                                        Tanggapi
+                                        Detail
+                                    </button>
+                                     <button data-modal-target="edit-modal" data-modal-toggle="edit-modal"
+                                        class="block text-white bg-red-700 hover:bg-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                                        type="button">
+                                        Hapus
                                     </button>
                                    
                                 </div>
                             </td>
                         </tr>
-                        @include('admin.components.modals.pengaduan.editdata')
+                        @include('admin.components.modals.pengaduan.tanggapi')
                     </tbody>
                 </table>
             </div>

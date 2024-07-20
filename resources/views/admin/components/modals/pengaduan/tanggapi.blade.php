@@ -7,7 +7,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Edit Data Pengaduan
+                    Tanggapi Data Pengaduan
                 </h3>
                 <button type="button"
                     class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -28,7 +28,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
                         <input type="number" name="nik" id="nik"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            placeholder="A001" required />
+                            placeholder="A001" readonly />
                     </div>
                     <div>
                         <label for="tgl_pengaduan"
@@ -36,11 +36,11 @@
                             Pengaduan</label>
                         <input type="date" name="tgl_pengaduan" id="tgl_pengaduan"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required />
+                            readonly />
                     </div>
                     <div>
                         <label for="laporan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Laporan</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggapan</label>
                         <input type="text" name="laporan" id="laporan" placeholder="Laptop"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             required />
@@ -48,16 +48,14 @@
                     <div>
                         <label for="foto"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto</label>
-                        <input type="file" name="foto" id="foto" placeholder="••••••••"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required />
+                       
                     </div>
                     <div>
                         <label for="status"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                         <input type="text" name="status" id="status" placeholder="Semangat"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required />
+                            readonly />
                     </div>
                     <button type="submit"
                         class="w-full mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Simpan
