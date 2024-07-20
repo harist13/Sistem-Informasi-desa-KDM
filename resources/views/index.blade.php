@@ -117,7 +117,10 @@
                         <img src="https://img.freepik.com/free-photo/indigenous-person-doing-daily-chores-showcasing-lifestyle_23-2149711134.jpg?t=st=1721134490~exp=1721138090~hmac=6b46c13c75eb8d8aebc232cc21e5df7e100e250a91de68f3676fd7aabbb9663e&w=996"
                             class="w-full lg:w-1/3 h-52 object-cover" alt="">
                         <div>
-                            <h3 class="text-xl font-semibold">Kegiatan KKN oleh Beberapa Mahasiswa Tahun 2024</h3>
+                            <a href="{{ route('berita') }}">
+                                <h3 class="text-2xl font-bold text-green-500 hover:text-green-600">Kegiatan KKN oleh Beberapa Mahasiswa Tahun
+                                    2024</h3>
+                            </a>
                             <p class="max-w-2xl mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
                                 dignissimos quis, sapiente, ea asperiores temporibus libero error reiciendis fugit
                                 fugiat corrupti autem neque, quidem facere.</p>
@@ -131,7 +134,9 @@
                         <img src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg?t=st=1721134786~exp=1721138386~hmac=ac6632128d6013902b8a7ddf731f88c3d425c575ad9977325bef447ef5aa0064&w=996"
                             class="w-full lg:w-1/3 h-52 object-cover" alt="">
                         <div>
-                            <h3 class="text-xl font-semibold">Kegiatan Gotong Royong Membersihkan Lingkungan</h3>
+                            <a href="{{ route('berita') }}">
+                                <h3 class="text-2xl font-bold text-green-500 hover:text-green-600">Kegiatan Gotong Royong Membersihkan Lingkungan</h3>
+                            </a>
                             <p class="max-w-2xl mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
                                 dignissimos quis, sapiente, ea asperiores temporibus libero error reiciendis fugit
                                 fugiat corrupti autem neque, quidem facere.</p>
@@ -145,7 +150,9 @@
                         <img src="https://img.freepik.com/free-photo/aerial-view-terraced-rice-fields-bali-indonesia_335224-312.jpg?t=st=1721134960~exp=1721138560~hmac=9d589e1e8ae1c401ad35630ed95463b13acf7f809cb8162bc91952a4732af237&w=996"
                             class="w-full lg:w-1/3 h-52 object-cover" alt="">
                         <div>
-                            <h3 class="text-xl font-semibold">Sejarah Tentang Desa Kedang Murung</h3>
+                            <a href="{{ route('berita') }}">
+                                <h3 class="text-2xl font-bold text-green-500 hover:text-green-600">Sejarah Tentang Desa Kedang Murung</h3>
+                            </a>
                             <p class="max-w-2xl mb-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
                                 dignissimos quis, sapiente, ea asperiores temporibus libero error reiciendis fugit
                                 fugiat corrupti autem neque, quidem facere.</p>

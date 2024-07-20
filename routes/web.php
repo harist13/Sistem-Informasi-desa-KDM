@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\RTController;
+use App\Http\Controllers\TampilanAwalController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -58,6 +59,9 @@ Route::get('/dashboard/admin/petugas/search', [AdminController::class, 'searchPe
 
 });
 
+// detail berita view
+Route::get('/berita', [TampilanAwalController::class, 'berita'])->name('berita');
+Route::get('/sejarah', [TampilanAwalController::class, 'sejarah'])->name('sejarah');
 
 Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::get('/dashboard/staff', [StaffController::class, 'Staffdashboard'])->name('dashboard.staff');
