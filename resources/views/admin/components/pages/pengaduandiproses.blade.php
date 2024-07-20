@@ -47,12 +47,7 @@
             <div class="relative overflow-x-auto mt-4 px-4">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <div class="flex justify-end items-center gap-2">
-                        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
-                            class="block my-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                            type="button">
-                            Tambah Data
-                        </button>
-                        @include('admin.components.modals.pengaduan.tambahdata')
+                       
                         <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
                             class="text-white bg-green-500 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
                             type="button">Filter Data <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
@@ -64,6 +59,11 @@
                         @include('admin.components.modals.artikel.sort')
                         @include('admin.components.modals.artikel.search')
                     </div>
+                    @if(session('success'))
+                        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+                            <p>{{ session('success') }}</p>
+                        </div>
+                    @endif
                     <thead
                         class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -114,18 +114,32 @@
                             <td class="px-6 py-4">
                                 {{ $p->isi_laporan }}
                             </td>
-                            <td class="px-6 py-4">
-                                <img src="{{ asset('storage/pengaduan/'.$p->foto) }}" alt="Foto Pengaduan" width="100">
+                             <td class="px-6 py-4">
+                                <img src="{{ asset('images/'.$p->foto) }}" alt="Foto Pengaduan" class="w-20 h-20 object-cover">
                             </td>
                               <td class="px-6 py-4">
                                 {{ $p->tanggapans->last()->tanggapan ?? '-' }}
                             </td>
                              <td class="px-6 py-4">
-                                <button
-                                    class="px-4 py-2 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-500"
-                                    role="alert">
-                                    <span class="font-medium">{{ $p->status }}</span>
-                                </button>
+                                @if($p->status == 'proses')
+                                    <button
+                                        class="px-4 py-2 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-500"
+                                        role="alert">
+                                        <span class="font-medium">{{ $p->status }}</span>
+                                    </button>
+                                @elseif($p->status == 'selesai')
+                                    <button
+                                        class="px-4 py-2 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-500"
+                                        role="alert">
+                                        <span class="font-medium">{{ $p->status }}</span>
+                                    </button>
+                                @else
+                                    <button
+                                        class="px-4 py-2 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-500"
+                                        role="alert">
+                                        <span class="font-medium">{{ $p->status }}</span>
+                                    </button>
+                                @endif
                             </td>
                              <td class="px-6 py-4">
                                 {{ $p->masyarakat->telp }}
@@ -133,6 +147,14 @@
                            
                             <td class="px-6 py-4">
                                 <div class="flex justify-center items-center space-x-2">
+
+
+                                     @if($p->status != 'selesai')
+                                        <form action="{{ route('pengaduan.selesai', $p->id_pengaduan) }}" method="POST" class="inline">
+                                            @csrf
+                                            <button type="submit" class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center" onclick="return confirm('Apakah Anda yakin ingin menyelesaikan pengaduan ini?')">Selesai</button>
+                                        </form>
+                                    @endif
                                     <button data-modal-target="detail-modal-{{ $p->id_pengaduan }}" data-modal-toggle="detail-modal-{{ $p->id_pengaduan }}"
                                         class="block text-white bg-blue-800 hover:bg-blue-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                         type="button">

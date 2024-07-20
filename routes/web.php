@@ -61,7 +61,7 @@ Route::post('/dashboard/admin/petugas/edit/{id}', [AdminController::class, 'upda
     Route::delete('/dashboard/admin/petugas/hapus/{id}', [AdminController::class, 'hapusPetugas'])->name('petugas.hapus');
     Route::get('/dashboard/admin/petugas/filter', [AdminController::class, 'filterPetugas'])->name('petugas.filter');
 Route::get('/dashboard/admin/petugas/search', [AdminController::class, 'searchPetugas'])->name('petugas.search');
-
+Route::post('/dashboard/admin/pengaduan/{id}/selesai', [AdminController::class, 'selesaikanPengaduan'])->name('pengaduan.selesai');
 });
 
 // detail berita view

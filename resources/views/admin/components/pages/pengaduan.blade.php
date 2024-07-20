@@ -64,6 +64,11 @@
                         @include('admin.components.modals.artikel.sort')
                         @include('admin.components.modals.artikel.search')
                     </div>
+                    @if(session('success'))
+                        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+                            <p>{{ session('success') }}</p>
+                        </div>
+                    @endif
                     <thead
                         class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -111,8 +116,8 @@
                             <td class="px-6 py-4">
                                 {{ $p->isi_laporan }}
                             </td>
-                             <td class="px-6 py-4">
-                                <img src="{{ asset('storage/pengaduan/'.$p->foto) }}" alt="Foto Pengaduan" width="100">
+                              <td class="px-6 py-4">
+                                <img src="{{ asset('images/'.$p->foto) }}" alt="Foto Pengaduan" class="w-20 h-20 object-cover">
                             </td>
                            
                              <td class="px-6 py-4">

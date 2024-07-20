@@ -216,6 +216,15 @@ public function searchPetugas(Request $request)
         $pengaduan->delete();
         return redirect()->back()->with('success', 'Pengaduan berhasil dihapus.');
     }
+
+    public function selesaikanPengaduan(Request $request, $id)
+{
+    $pengaduan = Pengaduan::findOrFail($id);
+    $pengaduan->status = 'selesai';
+    $pengaduan->save();
+
+    return redirect()->route('pengaduandiproses.admin')->with('success', 'Pengaduan berhasil diselesaikan.');
+}
     
     public function penduduk()
     {
@@ -229,6 +238,7 @@ public function searchPetugas(Request $request)
     {
         return view('admin.components.pages.pemetaan');
     }
+
 
 
 

@@ -83,6 +83,9 @@
                                 Foto
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Tanggapan Admin
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Status
                             </th>
                             <th scope="col" class="px-6 py-3">
@@ -112,6 +115,13 @@
             <button class="px-4 py-2 text-sm text-{{ $p->status == '0' ? 'yellow' : ($p->status == 'proses' ? 'blue' : 'green') }}-800 rounded-lg bg-{{ $p->status == '0' ? 'yellow' : ($p->status == 'proses' ? 'blue' : 'green') }}-50 dark:bg-gray-800 dark:text-{{ $p->status == '0' ? 'yellow' : ($p->status == 'proses' ? 'blue' : 'green') }}-500" role="alert">
                 <span class="font-medium">{{ $p->status == '0' ? 'Belum diproses' : ($p->status == 'proses' ? 'Sedang diproses' : 'Selesai') }}</span>
             </button>
+        </td>
+        <td class="px-6 py-4">
+            @if($p->tanggapan)
+                {{ $p->tanggapan->tanggapan }}
+            @else
+                Belum ada tanggapan
+            @endif
         </td>
         <td class="px-6 py-4">
             <div class="flex justify-center items-center space-x-2">
