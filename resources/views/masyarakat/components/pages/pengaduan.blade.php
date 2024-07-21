@@ -82,11 +82,12 @@
                             <th scope="col" class="px-6 py-3">
                                 Foto
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                Tanggapan Admin
-                            </th>
+                
                             <th scope="col" class="px-6 py-3">
                                 Status
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Tanggapan
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Aksi
