@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pengaduan;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Tanggapan;
 
 class DashboardController extends Controller
 {
@@ -19,13 +20,14 @@ class DashboardController extends Controller
         return view('masyarakat.components.pages.artikel');
     }
      
-    public function masyarakatpengaduan()
-{
-    $pengaduan = Pengaduan::where('nik', Auth::guard('masyarakat')->user()->nik)
-                    ->with('tanggapans')
-                    ->get();
-    return view('masyarakat.components.pages.pengaduan', compact('pengaduan'));
-}
+    
+     public function masyarakatpengaduan()
+    {
+        $pengaduan = Pengaduan::where('nik', Auth::guard('masyarakat')->user()->nik)
+            ->with('tanggapans.petugas')
+            ->get();
+        return view('masyarakat.components.pages.pengaduan', compact('pengaduan'));
+    }
 
     public function pengajuanPengaduan(Request $request)
     {

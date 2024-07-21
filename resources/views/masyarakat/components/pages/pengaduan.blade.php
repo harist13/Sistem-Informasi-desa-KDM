@@ -93,7 +93,8 @@
                             </th>
                         </tr>
                     </thead>
-                   <tbody>
+                  
+                    <tbody>
     @foreach($pengaduan as $p)
     <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -117,8 +118,13 @@
             </button>
         </td>
         <td class="px-6 py-4">
-            @if($p->tanggapan)
-                {{ $p->tanggapan->tanggapan }}
+            @if($p->tanggapans->isNotEmpty())
+                @foreach($p->tanggapans as $tanggapan)
+                    <div class="mb-2">
+                     
+                        <p>{{ $tanggapan->tanggapan }}</p>
+                    </div>
+                @endforeach
             @else
                 Belum ada tanggapan
             @endif
