@@ -11,7 +11,8 @@ class TampilanAwalController extends Controller
     public function index()
     {
         $artikels = Artikel::with('petugas')->latest()->take(3)->get();
-        return view('index', compact('artikels'));
+        $artikelTerbaru = Artikel::latest()->take(3)->get();
+        return view('index', compact('artikels', 'artikelTerbaru'));
     }
 
     public function berita($id)

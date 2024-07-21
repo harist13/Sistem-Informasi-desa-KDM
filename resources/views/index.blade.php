@@ -140,18 +140,14 @@ use Carbon\Carbon;
                         <h3 class="text-3xl font-semibold mb-2">Pengumuman Terbaru</h3>
                         <hr class="border-2 w-1/2">
                         <div class="mt-4">
-                            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400"
-                                role="alert">
-                                <span class="font-medium">Kegiatan KKN Mahasiswa 2024</span>
-                            </div>
-                            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400"
-                                role="alert">
-                                <span class="font-medium">Kegiatan Rapat Program Desa 2024</span>
-                            </div>
-                            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400"
-                                role="alert">
-                                <span class="font-medium">Pengaduan Masyarakat Desa</span>
-                            </div>
+                                       @foreach($artikelTerbaru as $artikelBaru)
+                                        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400" role="alert">
+                                            <a href="{{ route('berita.detail', $artikelBaru->id) }}">
+                                                <span class="font-medium">{{ $artikelBaru->judul }}</span>
+                                            </a>
+                                        </div>
+            @endforeach
+
                         </div>
                     </div>
 
