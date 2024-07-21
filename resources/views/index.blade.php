@@ -1,6 +1,7 @@
 @php
 use Carbon\Carbon;
 @endphp
+
 <!doctype html>
 <html>
 
@@ -116,21 +117,20 @@ use Carbon\Carbon;
                     <hr class="border-2 w-1/2 mb-4">
 
                    @foreach($artikels as $artikel)
-<div class="flex flex-col lg:flex-row items-center max-w-screen-lg gap-6 mb-6">
-    <img src="{{ asset('storage/artikel/' . $artikel->gambar) }}" class="w-full lg:w-1/3 h-52 object-cover" alt="">
-    <div>
-        <a href="{{ route('berita.detail', $artikel->id) }}">
-            <h3 class="text-2xl font-bold text-green-500 hover:text-green-600">{{ $artikel->judul }}</h3>
-        </a>
-        <p class="max-w-2xl mb-5">{{ Str::limit($artikel->deskripsi, 150) }}</p>
-       <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-calendar-days mr-3"></i>
+                    <div class="flex flex-col lg:flex-row items-center max-w-screen-lg gap-6 mb-6">
+                        <img src="{{ asset('storage/artikel/' . $artikel->gambar) }}" class="w-full lg:w-1/3 h-52 object-cover" alt="">
+                        <div>
+                            <a href="{{ route('berita.detail', $artikel->id) }}">
+                                <h3 class="text-2xl font-bold text-green-500 hover:text-green-600">{{ $artikel->judul }}</h3>
+                            </a>
+                            <p class="max-w-2xl mb-5">{{ Str::limit($artikel->deskripsi, 150) }}</p>
+                            <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-calendar-days mr-3"></i>
     {{ Carbon::parse($artikel->tanggal_upload)->format('d F Y') }}</p>
-    </div>
-</div>
-@endforeach
+                        </div>
+                    </div>
+                    @endforeach
 
-                   
-
+                  
                    
                 </div>
                 <!-- Sidebar -->

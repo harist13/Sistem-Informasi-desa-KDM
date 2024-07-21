@@ -1,6 +1,7 @@
 @php
 use Carbon\Carbon;
 @endphp
+
 <!doctype html>
 <html>
 
