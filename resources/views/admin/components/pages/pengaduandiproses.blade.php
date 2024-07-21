@@ -91,6 +91,9 @@
                             <th scope="col" class="px-6 py-3">
                                 No telp/wa
                             </th>
+                             <th scope="col" class="px-6 py-3">
+                                Proses Selesai
+                            </th>
                             <th scope="col" class="px-6 py-3">
                                 Aksi
                             </th>
@@ -144,17 +147,24 @@
                              <td class="px-6 py-4">
                                 {{ $p->masyarakat->telp }}
                             </td>
+                            <td class="px-6 py-4">
+                                @if($p->status != 'selesai')
+                                        <form action="{{ route('pengaduan.selesai', $p->id_pengaduan) }}" method="POST" class="inline">
+                                            @csrf
+                                            <button type="submit" class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center" onclick="return confirm('Apakah Anda yakin ingin menyelesaikan pengaduan ini?')">Selesai</button>
+                                        </form>
+                                    @else
+                             
+                                    berhasil 
+                              
+                                    @endif
+                            </td>
                            
                             <td class="px-6 py-4">
                                 <div class="flex justify-center items-center space-x-2">
 
 
-                                     @if($p->status != 'selesai')
-                                        <form action="{{ route('pengaduan.selesai', $p->id_pengaduan) }}" method="POST" class="inline">
-                                            @csrf
-                                            <button type="submit" class="text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center" onclick="return confirm('Apakah Anda yakin ingin menyelesaikan pengaduan ini?')">Selesai</button>
-                                        </form>
-                                    @endif
+                                     
                                     <button data-modal-target="detail-modal-{{ $p->id_pengaduan }}" data-modal-toggle="detail-modal-{{ $p->id_pengaduan }}"
                                         class="block text-white bg-blue-800 hover:bg-blue-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                         type="button">

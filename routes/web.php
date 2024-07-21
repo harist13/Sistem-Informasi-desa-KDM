@@ -13,6 +13,7 @@ Route::get('/', function () {
     return view('index');
 });
 
+
 // Admin login & register
 Route::get('/admin/login', [AuthController::class, 'loginAdmin'])->name('loginAdmin');
 Route::post('/admin/login', [AuthController::class, 'handleAdminLogin']);
@@ -42,6 +43,10 @@ Route::middleware(['auth:masyarakat'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard/admin', [AdminController::class, 'dashboard'])->name('dashboard.admin');
     Route::get('/dashboard/admin/artikel', [AdminController::class, 'artikel'])->name('artikel.admin');
+    Route::post('/dashboard/admin/artikel/tambah', [AdminController::class, 'tambahArtikel'])->name('artikel.tambah');
+Route::get('/dashboard/admin/artikel/edit/{id}', [AdminController::class, 'editArtikel'])->name('artikel.edit');
+Route::put('/dashboard/admin/artikel/update/{id}', [AdminController::class, 'updateArtikel'])->name('artikel.update');
+Route::delete('/dashboard/admin/artikel/hapus/{id}', [AdminController::class, 'hapusArtikel'])->name('artikel.hapus');
    
      Route::get('/dashboard/admin/pengaduan', [AdminController::class, 'pengaduan'])->name('pengaduan.admin');
     Route::get('/dashboard/admin/pengaduanproses', [AdminController::class, 'pengaduandiproses'])->name('pengaduandiproses.admin');

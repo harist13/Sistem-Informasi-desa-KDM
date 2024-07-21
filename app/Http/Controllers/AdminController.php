@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Pengaduan;
 use App\Models\Tanggapan;
 use App\Models\Masyarakat;
+use App\Models\Artikel;
 
 
 class AdminController extends Controller
@@ -151,10 +152,94 @@ public function searchPetugas(Request $request)
     {
         return view('admin.dashboard');
     }
+    
+
     public function artikel()
-    {
-        return view('admin.components.pages.artikel');
+{
+    $artikels = Artikel::with('petugas')->get();
+    return view('admin.components.pages.artikel', compact('artikels'));
+}
+
+public function tambahArtikel(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'judul' => 'required|string|max:255',
+        'deskripsi' => 'required|string',
+        'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
     }
+
+    $data = $request->all();
+    $data['id_petugas'] = auth()->id();
+    $data['tanggal_upload'] = now();
+
+    if ($request->hasFile('gambar')) {
+        $gambar = $request->file('gambar');
+        $filename = time() . '.' . $gambar->getClientOriginalExtension();
+        $path = $gambar->storeAs('public/artikel', $filename);
+        $data['gambar'] = $filename;
+    }
+
+    Artikel::create($data);
+
+    return redirect()->route('artikel.admin')->with('success', 'Artikel berhasil ditambahkan.');
+}
+
+public function editArtikel($id)
+{
+    $artikel = Artikel::findOrFail($id);
+    return view('admin.components.modals.artikel.editdata', compact('artikel'));
+}
+
+public function updateArtikel(Request $request, $id)
+{
+    $artikel = Artikel::findOrFail($id);
+
+    $validator = Validator::make($request->all(), [
+        'judul' => 'required|string|max:255',
+        'deskripsi' => 'required|string',
+        'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    }
+
+    $data = $request->except(['_token', '_method']);
+
+    if ($request->hasFile('gambar')) {
+        // Delete old image
+        if ($artikel->gambar) {
+            Storage::delete('public/artikel/' . $artikel->gambar);
+        }
+
+        $gambar = $request->file('gambar');
+        $filename = time() . '.' . $gambar->getClientOriginalExtension();
+        $path = $gambar->storeAs('public/artikel', $filename);
+        $data['gambar'] = $filename;
+    }
+
+    $artikel->update($data);
+
+    return redirect()->route('artikel.admin')->with('success', 'Artikel berhasil diperbarui.');
+}
+
+public function hapusArtikel($id)
+{
+    $artikel = Artikel::findOrFail($id);
+    
+    // Delete image if exists
+    if ($artikel->gambar) {
+        Storage::delete('public/artikel/' . $artikel->gambar);
+    }
+    
+    $artikel->delete();
+
+    return redirect()->route('artikel.admin')->with('success', 'Artikel berhasil dihapus.');
+}
    
 
      public function pengaduan()
