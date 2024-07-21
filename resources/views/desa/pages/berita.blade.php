@@ -1,3 +1,6 @@
+@php
+use Carbon\Carbon;
+@endphp
 <!doctype html>
 <html>
 
@@ -24,63 +27,22 @@
         <div class="container mx-auto px-4 mt-8">
             <div class="flex flex-col lg:flex-row gap-12 mt-3">
                 <!-- Artikel Terbaru -->
-                <div class="flex flex-col lg:w-2/3">
-                    <div class="p-4 mb-2 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2"
-                        role="alert">
-                        <span class="font-medium"><a href="/">Home</a> / Berita / </span> Artikel 1
-                    </div>
-                    <h1 class="text-4xl font-bold text-green-500 my-6">Kegiatan KKN oleh Beberapa Mahasiswa Tahun
-                        2024</h1>
-                    <img src="https://img.freepik.com/free-photo/indigenous-person-doing-daily-chores-showcasing-lifestyle_23-2149711134.jpg?t=st=1721134490~exp=1721138090~hmac=6b46c13c75eb8d8aebc232cc21e5df7e100e250a91de68f3676fd7aabbb9663e&w=996"
-                        class="w-full h-auto object-cover" alt="">
-                    <div class="flex items-center justify-between mt-4">
-                        <p class="text-sm text-slate-500 mb-2">
-                            by Administrator</p>
-                        <p class="text-sm text-slate-500 mb-2">
-                            Periode Juli - September 2024</p>
-                    </div>
-                    <h3 class="text-3xl font-semibold my-3">Judul Deskripsi</h3>
-                    <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam aspernatur laudantium deleniti
-                        accusamus et quam velit veritatis eveniet molestias natus vero ad culpa illum suscipit, iusto
-                        corrupti rerum iure delectus temporibus quisquam debitis nulla sed aut. Earum atque explicabo,
-                        consequatur molestias dolorem quia, corporis ipsam saepe soluta incidunt facere magnam enim
-                        assumenda ducimus quos natus tenetur consequuntur animi reiciendis aut eveniet maiores amet
-                        nihil laudantium! Magni, molestiae? Ducimus provident, sunt perspiciatis placeat velit nihil
-                        ipsam facilis distinctio. Sed quod deleniti quas soluta harum a fuga assumenda quia, porro
-                        aliquam. Nemo, itaque ad fuga odio sequi vero harum eos a alias neque molestiae provident. Rem,
-                        sit quae hic labore nisi vel amet id quos ab earum odio nam mollitia beatae quod aliquam soluta
-                        dignissimos, quisquam ipsum eveniet corporis veritatis alias dolore blanditiis. Perspiciatis,
-                        quidem minima maxime laboriosam amet quibusdam, molestias similique voluptatem, non nesciunt
-                        modi. Reiciendis impedit nostrum quaerat corporis assumenda animi molestiae expedita placeat
-                        quam magnam corrupti veritatis obcaecati, officia modi atque facere laboriosam doloremque!
-                        Quisquam, tempore ratione nesciunt sed harum nam minima corporis, voluptatum, delectus non
-                        deserunt ducimus iure optio nulla est perferendis repellendus quos expedita. Corrupti molestiae
-                        voluptate minus ab, culpa, nobis delectus dolorem sunt sed accusamus dolor deleniti
-                        reprehenderit quam distinctio quaerat odio ipsum consequatur hic, commodi soluta perspiciatis
-                        adipisci quo ullam. Placeat molestias cumque quo voluptatibus? Deleniti laborum, vel ut error
-                        similique culpa rerum labore ad maiores corporis incidunt, nesciunt amet omnis accusantium
-                        impedit earum nulla illo adipisci maxime commodi cupiditate eum. Error dolorum blanditiis
-                        ducimus animi reiciendis delectus iusto ex neque possimus facilis. Dolorum, reiciendis facilis,
-                        ad a sint tenetur quasi consectetur earum tempore nihil soluta perferendis minima corporis
-                        voluptatem repudiandae placeat inventore aliquam. Natus quas veniam eaque inventore sunt dicta
-                        necessitatibus corrupti doloribus quidem. Ipsa tempore nisi libero ex recusandae facere
-                        cupiditate quam! Officia dolorem voluptatibus sequi placeat suscipit veritatis et fugiat
-                        pariatur omnis. Excepturi vel ratione ex temporibus nam molestias autem non distinctio
-                        exercitationem soluta ad dolor accusamus, fugit quo a consectetur rem ab animi veritatis eaque
-                        sunt dolorem praesentium. Repellendus, perferendis explicabo cum, dolorum quam vel autem nulla
-                        ab omnis molestias voluptatum est ea doloremque, eos quod culpa eveniet officiis minus sed nam
-                        aspernatur numquam? Dolorum architecto necessitatibus, adipisci doloribus consequuntur amet
-                        praesentium tenetur sapiente odio quae officia fuga neque suscipit magni. Officia dignissimos
-                        illum, eum eaque a nesciunt. Sint fuga aspernatur reiciendis dolore dolores porro reprehenderit
-                        illum dolor repellat sit odit accusantium quisquam nostrum, necessitatibus laudantium sunt
-                        nesciunt, maxime soluta animi asperiores nemo ut? Facere recusandae aliquam placeat reiciendis
-                        dolorem, non laboriosam illum nisi, cum quo quasi tenetur qui quos facilis voluptate odit iste
-                        provident minus nam perspiciatis expedita voluptatibus porro at obcaecati. Voluptatem quia
-                        officia obcaecati deserunt! Ut corrupti dolorem iusto reiciendis harum culpa excepturi neque
-                        esse aut sunt at error officiis voluptate, exercitationem animi repudiandae nobis numquam unde,
-                        tempore velit sequi nam rem, tenetur non. Nemo quidem facilis suscipit veniam vel natus odio
-                        similique deleniti? Deleniti molestias ipsam et nostrum unde nemo?</p>
-                </div>
+              <div class="flex flex-col lg:w-2/3">
+    <div class="p-4 mb-2 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2" role="alert">
+        <span class="font-medium"><a href="/">Home</a> / Berita / </span> {{ $artikel->judul }}
+    </div>
+    <h1 class="text-4xl font-bold text-green-500 my-6">{{ $artikel->judul }}</h1>
+    <img src="{{ asset('storage/artikel/' . $artikel->gambar) }}" class="w-full h-auto object-cover" alt="">
+    <div class="flex items-center justify-between mt-4">
+        <p class="text-sm text-slate-500 mb-2">
+            by {{ $artikel->petugas->nama_petugas }}</p>
+        <p class="text-sm text-slate-500 mb-2">
+    {{ Carbon::parse($artikel->tanggal_upload)->format('d F Y') }}</p>
+    </div>
+    <div class="mt-6">
+        {!! $artikel->deskripsi !!}
+    </div>
+</div>
                 <!-- Sidebar -->
                 <aside class="lg:w-1/3">
                     <!-- Pengumuman Terbaru -->

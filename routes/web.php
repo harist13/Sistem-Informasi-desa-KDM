@@ -9,9 +9,9 @@ use App\Http\Controllers\TampilanAwalController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [TampilanAwalController::class, 'index']);
+Route::get('/berita/{id}', [TampilanAwalController::class, 'berita'])->name('berita.detail');
+Route::get('/sejarah', [TampilanAwalController::class, 'sejarah'])->name('sejarah');
 
 
 // Admin login & register
@@ -69,9 +69,7 @@ Route::get('/dashboard/admin/petugas/search', [AdminController::class, 'searchPe
 Route::post('/dashboard/admin/pengaduan/{id}/selesai', [AdminController::class, 'selesaikanPengaduan'])->name('pengaduan.selesai');
 });
 
-// detail berita view
-Route::get('/berita', [TampilanAwalController::class, 'berita'])->name('berita');
-Route::get('/sejarah', [TampilanAwalController::class, 'sejarah'])->name('sejarah');
+
 
 Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::get('/dashboard/staff', [StaffController::class, 'Staffdashboard'])->name('dashboard.staff');
