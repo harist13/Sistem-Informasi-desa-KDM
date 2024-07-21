@@ -52,4 +52,10 @@ class DashboardController extends Controller
     }
  
 
+    public function detailPengaduan($id)
+{
+    $pengaduan = Pengaduan::with(['tanggapans.petugas'])->findOrFail($id);
+    return view('masyarakat.components.modals.pengaduan.detail', compact('pengaduan'));
+}
+
 }

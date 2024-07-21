@@ -35,7 +35,7 @@ Route::middleware(['auth:masyarakat'])->group(function () {
     Route::get('/dashboard/masyarakat/artikel', [DashboardController::class, 'masyarakatartikel'])->name('artikel.masyarakat');
     Route::get('/dashboard/masyarakat/pengaduan', [DashboardController::class, 'masyarakatpengaduan'])->name('pengaduan');
     Route::post('/dashboard/masyarakat/pengaduan', [DashboardController::class, 'pengajuanPengaduan'])->name('pengaduan.ajukan');
-   
+   Route::get('/dashboard/masyarakat/pengaduan/{id}', [DashboardController::class, 'detailPengaduan'])->name('pengaduan.detail');
 
     // other protected routes for masyarakat
 });
