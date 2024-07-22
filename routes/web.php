@@ -58,7 +58,11 @@ Route::delete('/dashboard/admin/artikel/hapus/{id}', [AdminController::class, 'h
     Route::get('/dashboard/admin/pengaduan/{id}/detail', [AdminController::class, 'detailPengaduan'])->name('pengaduan.detail');
     Route::delete('/dashboard/admin/pengaduan/{id}', [AdminController::class, 'hapusPengaduan'])->name('pengaduan.hapus');
     Route::get('/dashboard/admin/petugas', [AdminController::class, 'petugas'])->name('petugas.admin');
-    Route::get('/dashboard/admin/penduduk', [AdminController::class, 'penduduk'])->name('penduduk.admin');
+     Route::get('/dashboard/admin/penduduk', [AdminController::class, 'penduduk'])->name('penduduk.admin');
+    Route::post('/dashboard/admin/penduduk/tambah', [AdminController::class, 'tambahPenduduk'])->name('penduduk.tambah');
+    Route::get('/dashboard/admin/penduduk/edit/{id}', [AdminController::class, 'editPenduduk'])->name('penduduk.edit');
+    Route::put('/dashboard/admin/penduduk/update/{id}', [AdminController::class, 'updatePenduduk'])->name('penduduk.update');
+    Route::delete('/dashboard/admin/penduduk/hapus/{id}', [AdminController::class, 'hapusPenduduk'])->name('penduduk.hapus');
     Route::get('/dashboard/admin/surat', [AdminController::class, 'surat'])->name('surat.admin');
     Route::get('/dashboard/admin/pemetaan', [AdminController::class, 'pemetaan'])->name('pemetaan.admin');
      Route::get('/dashboard/admin/petugas', [AdminController::class, 'petugas'])->name('petugas.admin');

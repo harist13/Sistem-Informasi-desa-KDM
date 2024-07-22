@@ -12,6 +12,7 @@ use App\Models\Pengaduan;
 use App\Models\Tanggapan;
 use App\Models\Masyarakat;
 use App\Models\Artikel;
+use App\Models\Penduduk;
 
 
 class AdminController extends Controller
@@ -313,7 +314,115 @@ public function hapusArtikel($id)
     
     public function penduduk()
     {
-        return view('admin.components.pages.rumahtangga');
+        $penduduk = Penduduk::all();
+        return view('admin.components.pages.datapenduduk', compact('penduduk'));
+    }
+
+    public function tambahPenduduk(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nik' => 'required|string|max:16|unique:penduduk',
+            'nama' => 'required|string|max:100',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'tempat_lahir' => 'required|string|max:100',
+            'tanggal_lahir' => 'required|date',
+            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+            'alamat' => 'required|string',
+            'rt_rw' => 'required|string|max:10',
+            'kelurahan' => 'required|string|max:100',
+            'kecamatan' => 'required|string|max:100',
+            'kabupaten' => 'required|string|max:100',
+            'provinsi' => 'required|string|max:100',
+            'agama' => 'required|string|max:20',
+            'status_perkawinan' => 'required|string|max:20',
+            'pekerjaan' => 'required|string|max:50',
+            'status_penduduk' => 'required|string|max:20',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $data = $request->all();
+        
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $filename = time() . '.' . $foto->getClientOriginalExtension();
+            $path = $foto->storeAs('public/penduduk', $filename);
+            $data['foto'] = $filename;
+        }
+
+        $data['petugas_id'] = auth()->id();
+
+        Penduduk::create($data);
+
+        return redirect()->route('penduduk.admin')->with('success', 'Data penduduk berhasil ditambahkan.');
+    }
+
+    public function editPenduduk($id)
+    {
+        $penduduk = Penduduk::findOrFail($id);
+        return view('admin.components.modals.penduduk.editdata', compact('penduduk'));
+    }
+
+    public function updatePenduduk(Request $request, $id)
+    {
+        $penduduk = Penduduk::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'nik' => 'required|string|max:16|unique:penduduk,nik,' . $id,
+            'nama' => 'required|string|max:100',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'tempat_lahir' => 'required|string|max:100',
+            'tanggal_lahir' => 'required|date',
+            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+            'alamat' => 'required|string',
+            'rt_rw' => 'required|string|max:10',
+            'kelurahan' => 'required|string|max:100',
+            'kecamatan' => 'required|string|max:100',
+            'kabupaten' => 'required|string|max:100',
+            'provinsi' => 'required|string|max:100',
+            'agama' => 'required|string|max:20',
+            'status_perkawinan' => 'required|string|max:20',
+            'pekerjaan' => 'required|string|max:50',
+            'status_penduduk' => 'required|string|max:20',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $data = $request->all();
+
+        if ($request->hasFile('foto')) {
+            // Delete old photo
+            if ($penduduk->foto) {
+                Storage::delete('public/penduduk/' . $penduduk->foto);
+            }
+
+            $foto = $request->file('foto');
+            $filename = time() . '.' . $foto->getClientOriginalExtension();
+            $path = $foto->storeAs('public/penduduk', $filename);
+            $data['foto'] = $filename;
+        }
+
+        $penduduk->update($data);
+
+        return redirect()->route('penduduk.admin')->with('success', 'Data penduduk berhasil diperbarui.');
+    }
+
+    public function hapusPenduduk($id)
+    {
+        $penduduk = Penduduk::findOrFail($id);
+        
+        // Delete photo if exists
+        if ($penduduk->foto) {
+            Storage::delete('public/penduduk/' . $penduduk->foto);
+        }
+        
+        $penduduk->delete();
+
+        return redirect()->route('penduduk.admin')->with('success', 'Data penduduk berhasil dihapus.');
     }
     public function surat()
     {
