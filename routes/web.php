@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [TampilanAwalController::class, 'index']);
 Route::get('/berita/{id}', [TampilanAwalController::class, 'berita'])->name('berita.detail');
 Route::get('/sejarah', [TampilanAwalController::class, 'sejarah'])->name('sejarah');
+Route::get('/visi-misi', [TampilanAwalController::class, 'visimisi'])->name('visimisi');
+Route::get('/pemerintahan-desa', [TampilanAwalController::class, 'pemerintahan'])->name('pemerintahan');
+Route::get('/dokumentasi-kegiatan', [TampilanAwalController::class, 'kegiatan'])->name('kegiatan');
 
 
 // Admin login & register

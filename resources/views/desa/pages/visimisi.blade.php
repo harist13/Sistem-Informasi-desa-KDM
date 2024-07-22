@@ -24,9 +24,10 @@
             <div>
                 <div class="p-4 mb-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2"
                     role="alert">
-                    <span class="font-medium"><a href="/">Home</a> / </span> Sejarah Desa
+                    <span class="font-medium"><a href="/">Home</a> / </span> Visi Misi
                 </div>
-                <h1 class="text-3xl font-bold">Sejarah Desa Kedang Murung</h1>
+                <img src="" alt="">
+                <h1 class="text-3xl font-bold">Visi Misi Desa Kedang Murung</h1>
                 <p class="my-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa omnis ducimus beatae
                     cum obcaecati
                     similique mollitia deserunt magnam architecto recusandae, nostrum non quo perspiciatis delectus

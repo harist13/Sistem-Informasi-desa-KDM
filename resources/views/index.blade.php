@@ -1,5 +1,5 @@
 @php
-use Carbon\Carbon;
+    use Carbon\Carbon;
 @endphp
 
 <!doctype html>
@@ -116,22 +116,24 @@ use Carbon\Carbon;
                             class="font-bold text-green-500">Terbaru</span></h1>
                     <hr class="border-2 w-1/2 mb-4">
 
-                   @foreach($artikels as $artikel)
-                    <div class="flex flex-col lg:flex-row items-center max-w-screen-lg gap-6 mb-6">
-                        <img src="{{ asset('storage/artikel/' . $artikel->gambar) }}" class="w-full lg:w-1/3 h-52 object-cover" alt="">
-                        <div>
-                            <a href="{{ route('berita.detail', $artikel->id) }}">
-                                <h3 class="text-2xl font-bold text-green-500 hover:text-green-600">{{ $artikel->judul }}</h3>
-                            </a>
-                            <p class="max-w-2xl mb-5">{{ Str::limit($artikel->deskripsi, 150) }}</p>
-                            <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-calendar-days mr-3"></i>
-    {{ Carbon::parse($artikel->tanggal_upload)->format('d F Y') }}</p>
+                    @foreach ($artikels as $artikel)
+                        <div class="flex flex-col lg:flex-row items-center max-w-screen-lg gap-6 mb-6">
+                            <img src="{{ asset('storage/artikel/' . $artikel->gambar) }}"
+                                class="w-full lg:w-1/3 h-52 object-cover" alt="">
+                            <div>
+                                <a href="{{ route('berita.detail', $artikel->id) }}">
+                                    <h3 class="text-2xl font-bold text-green-500 hover:text-green-600">
+                                        {{ $artikel->judul }}</h3>
+                                </a>
+                                <p class="max-w-2xl mb-5">{{ Str::limit($artikel->deskripsi, 150) }}</p>
+                                <p class="text-sm text-slate-500 mb-2"><i class="fa-solid fa-calendar-days mr-3"></i>
+                                    {{ Carbon::parse($artikel->tanggal_upload)->format('d F Y') }}</p>
+                            </div>
                         </div>
-                    </div>
                     @endforeach
 
-                  
-                   
+
+
                 </div>
                 <!-- Sidebar -->
                 <aside class="lg:w-1/3">
@@ -140,13 +142,14 @@ use Carbon\Carbon;
                         <h3 class="text-3xl font-semibold mb-2">Pengumuman Terbaru</h3>
                         <hr class="border-2 w-1/2">
                         <div class="mt-4">
-                                       @foreach($artikelTerbaru as $artikelBaru)
-                                        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400" role="alert">
-                                            <a href="{{ route('berita.detail', $artikelBaru->id) }}">
-                                                <span class="font-medium">{{ $artikelBaru->judul }}</span>
-                                            </a>
-                                        </div>
-            @endforeach
+                            @foreach ($artikelTerbaru as $artikelBaru)
+                                <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400"
+                                    role="alert">
+                                    <a href="{{ route('berita.detail', $artikelBaru->id) }}">
+                                        <span class="font-medium">{{ $artikelBaru->judul }}</span>
+                                    </a>
+                                </div>
+                            @endforeach
 
                         </div>
                     </div>
@@ -234,7 +237,8 @@ use Carbon\Carbon;
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias minus veritatis ipsum
                         reprehenderit alias iure.</p>
                 </div>
-                <button class="bg-green-500 text-white px-4 py-2 rounded hidden lg:block">Lihat Semua</button>
+                <button class="bg-green-500 text-white px-4 py-2 rounded hidden lg:block"><a
+                        href="{{ route('kegiatan') }}">Lihat Semua</a></button>
             </div>
             <div class="flex flex-col justify-center items-center lg:grid lg:grid-cols-4 gap-4 mt-10">
                 <div>

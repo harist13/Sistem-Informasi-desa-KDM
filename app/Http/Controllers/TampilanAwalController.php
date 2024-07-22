@@ -26,4 +26,16 @@ class TampilanAwalController extends Controller
     {
         return view('desa.pages.sejarah');
     }
+    public function visimisi()
+    {
+        return view('desa.pages.visimisi');
+    }
+    public function pemerintahan()
+    {
+        return view('desa.pages.pemerintahan');
+    }
+    public function kegiatan()
+    {
+        return view('desa.pages.dokkegiatan');
+    }
 }

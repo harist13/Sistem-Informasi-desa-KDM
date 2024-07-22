@@ -37,12 +37,12 @@
                                 Desa</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="{{ route('visimisi') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Visi
                                 dan Misi</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="{{ route('pemerintahan') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pemerintahan
                                 Desa</a>
                         </li>
@@ -114,7 +114,7 @@
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownAvtivityButton">
                         <li>
-                            <a href="#"
+                            <a href="{{ route('kegiatan') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dokumentasi
                                 Kegiatan Desa</a>
                         </li>
