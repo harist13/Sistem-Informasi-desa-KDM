@@ -16,6 +16,15 @@ use Carbon\Carbon;
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+    <style>
+        #mobile-menu {
+            display: none;
+        }
+
+        #mobile-menu.show {
+            display: block;
+        }
+    </style>
     @vite('resources/css/app.css')
 </head>
 
@@ -138,6 +147,13 @@ use Carbon\Carbon;
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+    <script>
+        // JavaScript untuk mengontrol visibilitas menu mobile
+        document.getElementById('menu-button').onclick = function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('show');
+        };
+    </script>
 </body>
 
 </html>

@@ -12,6 +12,15 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+    <style>
+        #mobile-menu {
+            display: none;
+        }
+
+        #mobile-menu.show {
+            display: block;
+        }
+    </style>
     @vite('resources/css/app.css')
 </head>
 
@@ -27,37 +36,55 @@
                     <span class="font-medium"><a href="/">Home</a> / </span> Dokumentasi Kegiatan
                 </div>
                 <img src="" alt="">
-                <h1 class="text-3xl font-bold">Galeri Kegiatan Desa Kedang Murung</h1>
-                <div class="flex flex-col justify-center items-center lg:grid lg:grid-cols-4 gap-4 mt-8">
+                <h1 class="text-3xl font-bold text-[#44b744]">Galeri Kegiatan Desa Kedang Murung</h1>
+                <div class="flex flex-col justify-center items-center lg:grid lg:grid-cols-4 gap-6 mt-8">
                     <div>
                         <img class="w-96"
                             src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
                             alt="">
+                        <div class="text-center mt-4">
+                            <h1 class="text-xl font-bold">Kegiatan KKN Mahasiswa 2024</h1>
+                        </div>
                     </div>
                     <div>
                         <img class="w-96"
                             src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
                             alt="">
+                        <div class="text-center mt-4">
+                            <h1 class="text-xl font-bold">Kegiatan KKN Mahasiswa 2024</h1>
+                        </div>
                     </div>
                     <div>
                         <img class="w-96"
                             src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
                             alt="">
+                        <div class="text-center mt-4">
+                            <h1 class="text-xl font-bold">Kegiatan KKN Mahasiswa 2024</h1>
+                        </div>
                     </div>
                     <div>
                         <img class="w-96"
                             src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
                             alt="">
+                        <div class="text-center mt-4">
+                            <h1 class="text-xl font-bold">Kegiatan KKN Mahasiswa 2024</h1>
+                        </div>
                     </div>
                     <div>
                         <img class="w-96"
                             src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
                             alt="">
+                        <div class="text-center mt-4">
+                            <h1 class="text-xl font-bold">Kegiatan KKN Mahasiswa 2024</h1>
+                        </div>
                     </div>
                     <div>
                         <img class="w-96"
                             src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
                             alt="">
+                        <div class="text-center mt-4">
+                            <h1 class="text-xl font-bold">Kegiatan KKN Mahasiswa 2024</h1>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -70,6 +97,13 @@
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+    <script>
+        // JavaScript untuk mengontrol visibilitas menu mobile
+        document.getElementById('menu-button').onclick = function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('show');
+        };
+    </script>
 </body>
 
 </html>

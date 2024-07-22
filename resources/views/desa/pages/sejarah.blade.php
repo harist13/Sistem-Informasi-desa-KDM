@@ -12,6 +12,15 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+    <style>
+        #mobile-menu {
+            display: none;
+        }
+
+        #mobile-menu.show {
+            display: block;
+        }
+    </style>
     @vite('resources/css/app.css')
 </head>
 
@@ -27,7 +36,8 @@
                     <span class="font-medium"><a href="/">Home</a> / </span> Sejarah Desa
                 </div>
                 <h1 class="text-3xl font-bold">Sejarah Desa Kedang Murung</h1>
-                <p class="my-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa omnis ducimus beatae
+                <p class="text-justify my-5">Kedang Murung adalah salah satu desa di wilayah kecamatan Kota Bangun, Kabupaten Kutai Kartanegara, Provinsi Kalimantan Timur, Indonesia.</p>
+                <p class="text-justify my-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa omnis ducimus beatae
                     cum obcaecati
                     similique mollitia deserunt magnam architecto recusandae, nostrum non quo perspiciatis delectus
                     saepe consequatur, harum optio facere vitae possimus dicta reiciendis id incidunt voluptate. Laborum
@@ -40,7 +50,7 @@
                     Quasi quia harum nobis dolorem ea quisquam, nihil voluptatibus earum excepturi autem veritatis
                     obcaecati rem aperiam ipsam. Voluptatum quo nemo, sequi eum non minus quod illo optio nobis modi
                     quisquam cum voluptas iusto, explicabo, distinctio cupiditate!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus pariatur sunt tempora architecto,
+                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus pariatur sunt tempora architecto,
                     ipsum nam non blanditiis id animi, tempore quidem delectus expedita sapiente consequuntur ipsa dolor
                     incidunt eius, debitis minima odio. Natus excepturi, dolor nostrum error quia obcaecati recusandae,
                     magni quo id consectetur in reiciendis veniam iusto eligendi blanditiis.</p>
@@ -54,6 +64,13 @@
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+    <script>
+        // JavaScript untuk mengontrol visibilitas menu mobile
+        document.getElementById('menu-button').onclick = function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('show');
+        };
+    </script>
 </body>
 
 </html>
