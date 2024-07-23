@@ -14,7 +14,7 @@ class CreatePengaduanTable extends Migration
             $table->string('nik', 16);
             $table->text('isi_laporan');
             $table->string('foto', 255);
-            $table->enum('status', ['0', 'proses', 'selesai']);
+            $table->enum('status', ['belum diproses', 'proses', 'selesai']);
             $table->timestamps();
 
             $table->foreign('nik')->references('nik')->on('masyarakat');

@@ -45,7 +45,7 @@ class DashboardController extends Controller
             'nik' => Auth::guard('masyarakat')->user()->nik,
             'isi_laporan' => $request->isi_laporan,
             'foto' => $imageName,
-            'status' => '0', // 0 untuk status belum diproses
+            'status' => 'belum diproses', // 0 untuk status belum diproses
         ]);
 
         return redirect()->route('pengaduan')->with('success', 'Pengaduan berhasil diajukan');

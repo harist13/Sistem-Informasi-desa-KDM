@@ -245,7 +245,7 @@ public function hapusArtikel($id)
 
      public function pengaduan()
     {
-        $pengaduan = Pengaduan::with('masyarakat')->where('status', '0')->get();
+        $pengaduan = Pengaduan::with('masyarakat')->where('status', 'belum diproses')->get();
         return view('admin.components.pages.pengaduan', compact('pengaduan'));
     }
 
