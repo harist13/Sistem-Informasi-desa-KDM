@@ -15,6 +15,12 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5">
+                <!-- Tambahkan bagian ini untuk menampilkan foto pengaduan -->
+                <div class="mb-4">
+                    <h4 class="text-lg font-semibold mb-2">Foto Pengaduan:</h4>
+                    <img src="{{ asset('images/'.$pengaduan->foto) }}" alt="Foto Pengaduan" class="w-full h-auto object-cover rounded-lg">
+                </div>
+
                 <form action="{{ route('pengaduan.tanggapi', $pengaduan->id_pengaduan) }}" method="POST" class="space-y-4">
                     @csrf
                     <div>

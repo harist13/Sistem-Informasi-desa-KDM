@@ -30,7 +30,7 @@
                 </p>
                 <div>
                     <strong class="text-base leading-relaxed text-gray-500 dark:text-gray-400">Foto:</strong>
-                    <img src="{{ asset('storage/pengaduan/'.$pengaduan->foto) }}" alt="Foto Pengaduan" class="mt-2 max-w-full h-auto">
+                    <img src="{{ asset('images/'.$pengaduan->foto) }}" alt="Foto Pengaduan" class="w-full h-auto object-cover rounded-lg">
                 </div>
                 @if($pengaduan->tanggapans->isNotEmpty())
                     <div>
