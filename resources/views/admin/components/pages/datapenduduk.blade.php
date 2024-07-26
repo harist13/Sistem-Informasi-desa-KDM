@@ -14,6 +14,21 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
     @vite('resources/css/app.css')
 </head>
+  <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 8px;
+            text-align: center;
+            font-size: 12px;
+        }
+        th {
+            background-color: #f3f4f6;
+        }
+    </style>
 
 <body>
 
@@ -54,76 +69,107 @@
             </div>
         </div>
         <div class="relative overflow-x-auto mt-2">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead
-                    class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">No</th>
-                        <th scope="col" class="px-6 py-3">Foto</th>
-                        <th scope="col" class="px-6 py-3">NIK</th>
-                        <th scope="col" class="px-6 py-3">Nama</th>
-                        <th scope="col" class="px-6 py-3">Tempat Lahir</th>
-                        <th scope="col" class="px-6 py-3">Tanggal Lahir</th>
-                        <th scope="col" class="px-6 py-3">Jenis Kelamin</th>
-                        <th scope="col" class="px-6 py-3">Alamat</th>
-                        <th scope="col" class="px-6 py-3">RT/RW</th>
-                        <th scope="col" class="px-6 py-3">Kelurahan</th>
-                        <th scope="col" class="px-6 py-3">Kecamatan</th>
-                        <th scope="col" class="px-6 py-3">Kabupaten</th>
-                        <th scope="col" class="px-6 py-3">Provinsi</th>
-                        <th scope="col" class="px-6 py-3">Agama</th>
-                        <th scope="col" class="px-6 py-3">Status Perkawinan</th>
-                        <th scope="col" class="px-6 py-3">Pekerjaan</th>
-                        <th scope="col" class="px-6 py-3">Status Penduduk</th>
-                        <th scope="col" class="px-6 py-3">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($penduduk as $index => $p)
+            <div class="overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th rowspan="3" class="px-6 py-3">NO</th>
+                <th rowspan="3" class="px-6 py-3">NAMA RT</th>
+                <th rowspan="3" class="px-6 py-3">RT</th>
+                <th rowspan="3" class="px-6 py-3">KK</th>
+                <th colspan="2" class="px-6 py-3">JUMLAH AWAL</th>
+                <th colspan="17" class="px-6 py-3">PENDUDUK</th>
+                <th colspan="8" class="px-6 py-3">MUTASI</th>
+                <th colspan="3" class="px-6 py-3">JUMLAH AKHIR</th>
+                <th rowspan="3" class="px-6 py-3">KETERANGAN</th>
+            </tr>
+            <tr>
+                <th rowspan="2" class="px-6 py-3">LAKI-LAKI</th>
+                <th rowspan="2" class="px-6 py-3">PEREMPUAN</th>
+                <th colspan="7" class="px-6 py-3">PENDIDIKAN</th>
+                <th colspan="5" class="px-6 py-3">MATA PENCAHARIAN</th>
+                <th colspan="3" class="px-6 py-3">AGAMA</th>
+                <th colspan="2" class="px-6 py-3">KEWARGANEGARAAN</th>
+                <th colspan="2" class="px-6 py-3">LAHIR</th>
+                <th colspan="2" class="px-6 py-3">MATI</th>
+                <th colspan="2" class="px-6 py-3">PINDAH</th>
+                <th colspan="2" class="px-6 py-3">DATANG</th>
+                <th rowspan="2" class="px-6 py-3">KK</th>
+                <th rowspan="2" class="px-6 py-3">LK</th>
+                <th rowspan="2" class="px-6 py-3">PR</th>
+            </tr>
+            <tr>
+                <th class="px-6 py-3">BH</th>
+                <th class="px-6 py-3">BS</th>
+                <th class="px-6 py-3">TK</th>
+                <th class="px-6 py-3">SD</th>
+                <th class="px-6 py-3">SLTP</th>
+                <th class="px-6 py-3">SLTA</th>
+                <th class="px-6 py-3">PT</th>
+                <th class="px-6 py-3">TANI</th>
+                <th class="px-6 py-3">DAGANG</th>
+                <th class="px-6 py-3">PNS</th>
+                <th class="px-6 py-3">TNI</th>
+                <th class="px-6 py-3">SWASTA</th>
+                <th class="px-6 py-3">ISLAM</th>
+                <th class="px-6 py-3">KHALOTIK</th>
+                <th class="px-6 py-3">PROTESTAN</th>
+                <th class="px-6 py-3">WNI</th>
+                <th class="px-6 py-3">WNA</th>
+                <th class="px-6 py-3">LK</th>
+                <th class="px-6 py-3">PR</th>
+                <th class="px-6 py-3">LK</th>
+                <th class="px-6 py-3">PR</th>
+                <th class="px-6 py-3">LK</th>
+                <th class="px-6 py-3">PR</th>
+                <th class="px-6 py-3">LK</th>
+                <th class="px-6 py-3">PR</th>
+            </tr>
+        </thead>
+        <tbody>
+                    @foreach($rekapulasi as $index => $data)
                     <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4">{{ $index + 1 }}</td>
-                        <td class="px-6 py-4">
-                            @if($p->foto)
-                                <img src="{{ asset('storage/penduduk/' . $p->foto) }}" alt="{{ $p->nama }}" class="w-16 h-16 rounded-full mx-auto">
-                            @else
-                                <span>No Photo</span>
-                            @endif
-                        </td>
-                        <td class="px-6 py-4">{{ $p->nik }}</td>
-                        <td class="px-6 py-4">{{ $p->nama }}</td>
-                        <td class="px-6 py-4">{{ $p->tempat_lahir }}</td>
-                        <td class="px-6 py-4">{{ $p->tanggal_lahir }}</td>
-                        <td class="px-6 py-4">{{ $p->jenis_kelamin }}</td>
-                        <td class="px-6 py-4">{{ $p->alamat }}</td>
-                        <td class="px-6 py-4">{{ $p->rt_rw }}</td>
-                        <td class="px-6 py-4">{{ $p->kelurahan }}</td>
-                        <td class="px-6 py-4">{{ $p->kecamatan }}</td>
-                        <td class="px-6 py-4">{{ $p->kabupaten }}</td>
-                        <td class="px-6 py-4">{{ $p->provinsi }}</td>
-                        <td class="px-6 py-4">{{ $p->agama }}</td>
-                        <td class="px-6 py-4">{{ $p->status_perkawinan }}</td>
-                        <td class="px-6 py-4">{{ $p->pekerjaan }}</td>
-                        <td class="px-6 py-4">{{ $p->status_penduduk }}</td>
-                        <td class="px-6 py-4">
-                            <div class="flex justify-center items-center space-x-2">
-                                <button data-modal-target="edit-modal-{{ $p->id }}" data-modal-toggle="edit-modal-{{ $p->id }}"
-                                    class="text-white bg-yellow-300 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                    type="button">
-                                    Edit
-                                </button>
-                                <button data-modal-target="delete-modal-{{ $p->id }}" data-modal-toggle="delete-modal-{{ $p->id }}"
-                                    class="text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                    type="button">
-                                    Delete
-                                </button>
-                            </div>
-                        </td>
+                        <td class="px-6 py-4">{{ $data->petugas->nama_petugas }}</td>
+                        <td class="px-6 py-4">{{ $data->RT }}</td>
+                        <td class="px-6 py-4">{{ $data->KK }}</td>
+                        <td class="px-6 py-4">{{ $data->LAKI_LAKI }}</td>
+                        <td class="px-6 py-4">{{ $data->PEREMPUAN }}</td>
+                        <td class="px-6 py-4">{{ $data->BH }}</td>
+                        <td class="px-6 py-4">{{ $data->BS }}</td>
+                        <td class="px-6 py-4">{{ $data->TK }}</td>
+                        <td class="px-6 py-4">{{ $data->SD }}</td>
+                        <td class="px-6 py-4">{{ $data->SLTP }}</td>
+                        <td class="px-6 py-4">{{ $data->SLTA }}</td>
+                        <td class="px-6 py-4">{{ $data->PT }}</td>
+                        <td class="px-6 py-4">{{ $data->TANI }}</td>
+                        <td class="px-6 py-4">{{ $data->DAGANG }}</td>
+                        <td class="px-6 py-4">{{ $data->PNS }}</td>
+                        <td class="px-6 py-4">{{ $data->TNI }}</td>
+                        <td class="px-6 py-4">{{ $data->SWASTA }}</td>
+                        <td class="px-6 py-4">{{ $data->ISLAM }}</td>
+                        <td class="px-6 py-4">{{ $data->KHALOTIK }}</td>
+                        <td class="px-6 py-4">{{ $data->PROTESTAN }}</td>
+                        <td class="px-6 py-4">{{ $data->WNI }}</td>
+                        <td class="px-6 py-4">{{ $data->WNA }}</td>
+                        <td class="px-6 py-4">{{ $data->LK1 }}</td>
+                        <td class="px-6 py-4">{{ $data->PR1 }}</td>
+                        <td class="px-6 py-4">{{ $data->LK2 }}</td>
+                        <td class="px-6 py-4">{{ $data->PR2 }}</td>
+                        <td class="px-6 py-4">{{ $data->LK3 }}</td>
+                        <td class="px-6 py-4">{{ $data->PR3 }}</td>
+                        <td class="px-6 py-4">{{ $data->LK4 }}</td>
+                        <td class="px-6 py-4">{{ $data->PR4 }}</td>
+                        <td class="px-6 py-4">{{ $data->KK2 }}</td>
+                        <td class="px-6 py-4">{{ $data->LK5 }}</td>
+                        <td class="px-6 py-4">{{ $data->PR5 }}</td>
+                        <td class="px-6 py-4">{{ $data->KETERANGAN }}</td>
                     </tr>
-                    @include('admin.components.modals.penduduk.editdata', ['penduduk' => $p])
-                    @include('admin.components.modals.penduduk.deleteconfirmation', ['penduduk' => $p])
                     @endforeach
                 </tbody>
-            </table>
+    </table>
+</div>
+
         </div>
     </div>
 </section>
