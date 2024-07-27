@@ -56,6 +56,7 @@
                             d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
                         </path>
                     </svg>
+                     
                 </button>
             </div>
             <div class="flex items-center justify-end gap-3 mt-3">
@@ -65,6 +66,8 @@
                     Tambah Data
                 </button>
                 @include('admin.components.modals.penduduk.tambahdata')
+                @include('admin.components.modals.penduduk.sort')
+                @include('admin.components.modals.penduduk.search')
                 <!-- Tambahkan komponen filter dan search jika diperlukan -->
             </div>
             @if(session('success'))
@@ -194,6 +197,42 @@
                                 </td>
                     </tr>
                     @endforeach
+                    <tr class="bg-gray-100 text-center font-bold">
+            <td colspan="2" class="px-6 py-4">Jumlah</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('RT') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('KK') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('LAKI_LAKI') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('PEREMPUAN') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('BH') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('BS') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('TK') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('SD') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('SLTP') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('SLTA') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('PT') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('TANI') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('DAGANG') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('PNS') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('TNI') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('SWASTA') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('ISLAM') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('KHALOTIK') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('PROTESTAN') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('WNI') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('WNA') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('LK1') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('PR1') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('LK2') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('PR2') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('LK3') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('PR3') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('LK4') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('PR4') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('KK2') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('LK5') }}</td>
+            <td class="px-6 py-4">{{ $rekapulasi->sum('PR5') }}</td>
+            <td colspan="2" class="px-6 py-4"></td>
+        </tr>
                 </tbody>
     </table>
 </div>
