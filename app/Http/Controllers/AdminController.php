@@ -328,8 +328,120 @@ public function hapusArtikel($id)
     public function penduduk()
 {
     $rekapulasi = RekapulasiPenduduk::with('petugas')->get();
-    return view('admin.components.pages.datapenduduk', compact('rekapulasi'));
+    $petugas = Petugas::all();
+    return view('admin.components.pages.datapenduduk', compact('rekapulasi', 'petugas'));
 }
 
+public function tambahPenduduk(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'petugas_id' => 'required|exists:petugas,id',
+        'RT' => 'required|string',
+        'KK' => 'required|integer',
+        'LAKI_LAKI' => 'required|integer',
+        'PEREMPUAN' => 'required|integer',
+        'BH' => 'required|integer',
+        'BS' => 'required|integer',
+        'TK' => 'required|integer',
+        'SD' => 'required|integer',
+        'SLTP' => 'required|integer',
+        'SLTA' => 'required|integer',
+        'PT' => 'required|integer',
+        'TANI' => 'required|integer',
+        'DAGANG' => 'required|integer',
+        'PNS' => 'required|integer',
+        'TNI' => 'required|integer',
+        'SWASTA' => 'required|integer',
+        'ISLAM' => 'required|integer',
+        'KHALOTIK' => 'required|integer',
+        'PROTESTAN' => 'required|integer',
+        'WNI' => 'required|integer',
+        'WNA' => 'required|integer',
+        'LK1' => 'required|integer',
+        'PR1' => 'required|integer',
+        'LK2' => 'required|integer',
+        'PR2' => 'required|integer',
+        'LK3' => 'required|integer',
+        'PR3' => 'required|integer',
+        'LK4' => 'required|integer',
+        'PR4' => 'required|integer',
+        'KK2' => 'required|integer',
+        'LK5' => 'required|integer',
+        'PR5' => 'required|integer',
+        'KETERANGAN' => 'nullable|string',
+    ]);
 
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    }
+
+    RekapulasiPenduduk::create($request->all());
+
+    return redirect()->route('penduduk.admin')->with('success', 'Data penduduk berhasil ditambahkan.');
 }
+
+public function editPenduduk($id)
+{
+    $rekapulasi = RekapulasiPenduduk::findOrFail($id);
+    $petugas = Petugas::all();
+    return view('admin.components.modals.penduduk.editdata', compact('rekapulasi', 'petugas'));
+}
+
+public function updatePenduduk(Request $request, $id)
+{
+    $validator = Validator::make($request->all(), [
+        'petugas_id' => 'required|exists:petugas,id',
+        'RT' => 'required|string',
+        'KK' => 'required|integer',
+        'LAKI_LAKI' => 'required|integer',
+        'PEREMPUAN' => 'required|integer',
+        'BH' => 'required|integer',
+        'BS' => 'required|integer',
+        'TK' => 'required|integer',
+        'SD' => 'required|integer',
+        'SLTP' => 'required|integer',
+        'SLTA' => 'required|integer',
+        'PT' => 'required|integer',
+        'TANI' => 'required|integer',
+        'DAGANG' => 'required|integer',
+        'PNS' => 'required|integer',
+        'TNI' => 'required|integer',
+        'SWASTA' => 'required|integer',
+        'ISLAM' => 'required|integer',
+        'KHALOTIK' => 'required|integer',
+        'PROTESTAN' => 'required|integer',
+        'WNI' => 'required|integer',
+        'WNA' => 'required|integer',
+        'LK1' => 'required|integer',
+        'PR1' => 'required|integer',
+        'LK2' => 'required|integer',
+        'PR2' => 'required|integer',
+        'LK3' => 'required|integer',
+        'PR3' => 'required|integer',
+        'LK4' => 'required|integer',
+        'PR4' => 'required|integer',
+        'KK2' => 'required|integer',
+        'LK5' => 'required|integer',
+        'PR5' => 'required|integer',
+        'KETERANGAN' => 'nullable|string',
+    ]);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    }
+
+    $rekapulasi = RekapulasiPenduduk::findOrFail($id);
+    $rekapulasi->update($request->all());
+
+    return redirect()->route('penduduk.admin')->with('success', 'Data penduduk berhasil diperbarui.');
+}
+
+public function hapusPenduduk($id)
+{
+    $rekapulasi = RekapulasiPenduduk::findOrFail($id);
+    $rekapulasi->delete();
+
+    return redirect()->route('penduduk.admin')->with('success', 'Data penduduk berhasil dihapus.');
+}
+}
+

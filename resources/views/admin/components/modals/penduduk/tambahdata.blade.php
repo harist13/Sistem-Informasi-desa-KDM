@@ -22,135 +22,167 @@
             </div>
             <!-- Modal body -->
             <div class="p-4 md:p-5">
-                <form class="space-y-4" action="#">
-                    <div>
-                        <label for="nik"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
-                        <input type="number" name="nik" id="nik"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            placeholder="A001" required />
-                    </div>
-                    <div class="flex item-center gap-2">
-                        <div class="flex-1">
-                            <label for="nama"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                            <input type="text" name="nama" id="nama"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                required />
-                        </div>
-                        <div class="flex-1">
-                            <label for="tmpt_lahir"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat
-                                Lahir</label>
-                            <input type="text" name="tmpt_lahir" id="tmpt_lahir" placeholder="Laptop"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                required />
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <div class="flex-1">
-                            <label for="tgl_lahir"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
-                                Lahir</label>
-                            <input type="date" name="tgl_lahir" id="tgl_lahir" placeholder="••••••••"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                required />
-                        </div>
-                        <div class="flex-1">
-                            <label for="jenis_kelamin"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis
-                                Kelamin</label>
-                            <input type="text" name="jenis_kelamin" id="jenis_kelamin" placeholder="Semangat"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                required />
-                        </div>
-                    </div>
-                    <div>
-                        <label for="alamat"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
-                        <input type="text" name="alamat" id="alamat" placeholder="Semangat"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required />
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <div class="flex-1">
-                            <label for="rtrw"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">RT
-                                RW</label>
-                            <input type="number" name="rtrw" id="rtrw" placeholder="Semangat"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                required />
-                        </div>
-                        <div class="flex-1">
-                            <label for="kelurahan"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelurahan</label>
-                            <input type="text" name="kelurahan" id="kelurahan" placeholder="Semangat"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                required />
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <div class="flex-1">
-                            <label for="kecamatan"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan</label>
-                            <input type="text" name="kecamatan" id="kecamatan" placeholder="Semangat"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                required />
-                        </div>
-                        <div class="flex-1">
-                            <label for="kabupaten"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kabupaten</label>
-                            <input type="text" name="kabupaten" id="kabupaten" placeholder="Semangat"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                required />
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <div class="flex-1">
-                            <label for="provinsi"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provinsi</label>
-                            <input type="text" name="provinsi" id="provinsi" placeholder="Semangat"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                required />
-                        </div>
-                        <div class="flex-1">
-                            <label for="agama"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Agama</label>
-                            <input type="text" name="agama" id="agama" placeholder="Semangat"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                required />
-                        </div>
-                    </div>
-                    <div>
-                        <label for="status_perkawinan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status
-                            Perkawinan</label>
-                        <input type="text" name="status_perkawinan" id="status_perkawinan" placeholder="Semangat"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            required />
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <div class="flex-1">
-                            <label for="pekerjaan"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pekerjaan</label>
-                            <input type="text" name="pekerjaan" id="pekerjaan" placeholder="Semangat"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                required />
-                        </div>
-                        <div class="flex-1">
-                            <label for="status_pekerjaan"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status
-                                Pekerjaan</label>
-                            <input type="text" name="status_pekerjaan" id="status_pekerjaan"
-                                placeholder="Semangat"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                required />
-                        </div>
-                    </div>
-                    <button type="submit"
-                        class="w-full mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Simpan
-                    </button>
-                </form>
+               <form class="space-y-4" action="{{ route('penduduk.tambah') }}" method="POST">
+    @csrf
+    <div>
+        <label for="petugas_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Petugas</label>
+        <select name="petugas_id" id="petugas_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+            @foreach($petugas as $p)
+                <option value="{{ $p->id }}">{{ $p->nama_petugas }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div>
+        <label for="RT" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">RT</label>
+        <input type="text" name="RT" id="RT" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+    </div>
+    <div>
+        <label for="KK" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">KK</label>
+        <input type="number" name="KK" id="KK" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+    </div>
+    <div class="flex gap-4">
+        <div class="flex-1">
+            <label for="LAKI_LAKI" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Laki-laki</label>
+            <input type="number" name="LAKI_LAKI" id="LAKI_LAKI" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div class="flex-1">
+            <label for="PEREMPUAN" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Perempuan</label>
+            <input type="number" name="PEREMPUAN" id="PEREMPUAN" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4">
+        <div>
+            <label for="BH" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">BH</label>
+            <input type="number" name="BH" id="BH" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="BS" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">BS</label>
+            <input type="number" name="BS" id="BS" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="TK" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">TK</label>
+            <input type="number" name="TK" id="TK" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+    </div>
+    <div class="grid grid-cols-4 gap-4">
+        <div>
+            <label for="SD" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SD</label>
+            <input type="number" name="SD" id="SD" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="SLTP" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SLTP</label>
+            <input type="number" name="SLTP" id="SLTP" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="SLTA" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SLTA</label>
+            <input type="number" name="SLTA" id="SLTA" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="PT" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PT</label>
+            <input type="number" name="PT" id="PT" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+    </div>
+    <div class="grid grid-cols-5 gap-4">
+        <div>
+            <label for="TANI" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">TANI</label>
+            <input type="number" name="TANI" id="TANI" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="DAGANG" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DAGANG</label>
+            <input type="number" name="DAGANG" id="DAGANG" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="PNS" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PNS</label>
+            <input type="number" name="PNS" id="PNS" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="TNI" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">TNI</label>
+            <input type="number" name="TNI" id="TNI" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="SWASTA" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SWASTA</label>
+            <input type="number" name="SWASTA" id="SWASTA" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+    </div>
+    <div class="grid grid-cols-3 gap-4">
+        <div>
+            <label for="ISLAM" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ISLAM</label>
+            <input type="number" name="ISLAM" id="ISLAM" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="KHALOTIK" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">KHALOTIK</label>
+            <input type="number" name="KHALOTIK" id="KHALOTIK" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="PROTESTAN" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PROTESTAN</label>
+            <input type="number" name="PROTESTAN" id="PROTESTAN" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+    </div>
+    <div class="flex gap-4">
+        <div class="flex-1">
+            <label for="WNI" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">WNI</label>
+            <input type="number" name="WNI" id="WNI" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div class="flex-1">
+            <label for="WNA" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">WNA</label>
+            <input type="number" name="WNA" id="WNA" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+    </div>
+    <div class="grid grid-cols-4 gap-4">
+        <div>
+            <label for="LK1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">LK1</label>
+            <input type="number" name="LK1" id="LK1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="PR1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PR1</label>
+            <input type="number" name="PR1" id="PR1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="LK2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">LK2</label>
+            <input type="number" name="LK2" id="LK2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="PR2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PR2</label>
+            <input type="number" name="PR2" id="PR2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+                <div>
+            <label for="LK3" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">LK3</label>
+            <input type="number" name="LK3" id="LK3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="PR3" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PR3</label>
+            <input type="number" name="PR3" id="PR3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="LK4" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">LK4</label>
+            <input type="number" name="LK4" id="LK4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="PR4" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PR4</label>
+            <input type="number" name="PR4" id="PR4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+    </div>
+    <div class="grid grid-cols-4 gap-4">
+        <div>
+            <label for="KK2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">KK2</label>
+            <input type="number" name="KK2" id="KK2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="LK5" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">LK5</label>
+            <input type="number" name="LK5" id="LK5" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="PR5" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PR5</label>
+            <input type="number" name="PR5" id="PR5" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+        </div>
+        <div>
+            <label for="KETERANGAN" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">KETERANGAN</label>
+            <textarea name="KETERANGAN" id="KETERANGAN" rows="3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"></textarea>
+        </div>
+    </div>
+    <button type="submit" class="text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+</form>
+
             </div>
         </div>
     </div>
