@@ -443,5 +443,37 @@ public function hapusPenduduk($id)
 
     return redirect()->route('penduduk.admin')->with('success', 'Data penduduk berhasil dihapus.');
 }
+
+public function searchPenduduk(Request $request)
+{
+    $search = $request->input('search');
+    $rekapulasi = RekapulasiPenduduk::with('petugas')
+        ->whereHas('petugas', function($query) use ($search) {
+            $query->where('nama_petugas', 'like', "%$search%");
+        })
+        ->orWhere('RT', 'like', "%$search%")
+        ->get();
+    $petugas = Petugas::all();
+    return view('admin.components.pages.datapenduduk', compact('rekapulasi', 'petugas'));
+}
+
+public function sortPenduduk(Request $request)
+{
+    $sort = $request->input('sort');
+    $order = $request->input('order', 'asc');
+
+    if ($sort === 'nama_petugas') {
+        $rekapulasi = RekapulasiPenduduk::with(['petugas' => function($query) use ($order) {
+            $query->orderBy('nama_petugas', $order);
+        }])->get();
+    } else {
+        $rekapulasi = RekapulasiPenduduk::with('petugas')->orderBy($sort, $order)->get();
+    }
+
+    $petugas = Petugas::all();
+    return view('admin.components.pages.datapenduduk', compact('rekapulasi', 'petugas'));
+}
+
+
 }
 

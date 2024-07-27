@@ -44,6 +44,8 @@ Route::middleware(['auth:masyarakat'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/dashboard/admin/penduduk/search', [AdminController::class, 'searchPenduduk'])->name('penduduk.search');
+Route::get('/dashboard/admin/penduduk/sort', [AdminController::class, 'sortPenduduk'])->name('penduduk.sort');
     Route::delete('/dashboard/admin/penduduk/hapus/{id}', [AdminController::class, 'hapusPenduduk'])->name('penduduk.hapus');
     Route::post('/dashboard/admin/penduduk/tambah', [AdminController::class, 'tambahPenduduk'])->name('penduduk.tambah');
     Route::get('/dashboard/admin/penduduk/edit/{id}', [AdminController::class, 'editPenduduk'])->name('penduduk.edit');
