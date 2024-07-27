@@ -244,6 +244,39 @@
                 </tbody>
     </table>
 </div>
+<div class="mt-4 text-sm">
+    <h4 class="font-bold mb-2">KETERANGAN:</h4>
+    <table class="w-full md:w-1/2 text-left">
+        <tr>
+            <td class="pr-4">BH</td>
+            <td>= BUTA HURUF</td>
+        </tr>
+        <tr>
+            <td class="pr-4">BS</td>
+            <td>= BELUM SEKOLAH</td>
+        </tr>
+        <tr>
+            <td class="pr-4">TK</td>
+            <td>= TAMAN KANAK-KANAK</td>
+        </tr>
+        <tr>
+            <td class="pr-4">SD</td>
+            <td>= SEKOLAH DASAR</td>
+        </tr>
+        <tr>
+            <td class="pr-4">SLTP</td>
+            <td>= SEKOLAH LANJUTAN TINGKAT PERTAMA</td>
+        </tr>
+        <tr>
+            <td class="pr-4">SLTA</td>
+            <td>= SEKOLAH LANJUTAN TINGKAT ATAS</td>
+        </tr>
+        <tr>
+            <td class="pr-4">PT/KULIAH</td>
+            <td>= PERGURUAN TINGGI</td>
+        </tr>
+    </table>
+</div>
 
         </div>
     </div>
