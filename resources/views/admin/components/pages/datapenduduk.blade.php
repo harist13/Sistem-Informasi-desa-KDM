@@ -301,6 +301,7 @@
 
             </div>
         </div>
+        @include('admin.components.modals.editprofile.editprofil')
     </section>
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>

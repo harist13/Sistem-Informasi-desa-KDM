@@ -119,6 +119,7 @@
                 </table>
             </div>
         </div>
+        @include('admin.components.modals.editprofile.editprofil')
     </section>
 
     @include('admin.components.modals.artikel.tambahdata')
