@@ -12,7 +12,6 @@ class CreateTanggapanTable extends Migration
             $table->id('id_tanggapan');
             $table->unsignedBigInteger('id_pengaduan');
             $table->date('tgl_tanggapan');
-            $table->text('tanggapan');
             $table->unsignedBigInteger('id_petugas');
             $table->timestamps();
 

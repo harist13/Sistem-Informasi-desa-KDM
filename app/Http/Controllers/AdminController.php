@@ -269,7 +269,6 @@ public function hapusArtikel($id)
     public function tanggapiPengaduan(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'tanggapan' => 'required|string',
             'status' => 'required|in:proses,selesai',
         ]);
 
@@ -284,7 +283,6 @@ public function hapusArtikel($id)
         Tanggapan::create([
             'id_pengaduan' => $id,
             'tgl_tanggapan' => now(),
-            'tanggapan' => $request->tanggapan,
             'id_petugas' => auth()->id(),
         ]);
 

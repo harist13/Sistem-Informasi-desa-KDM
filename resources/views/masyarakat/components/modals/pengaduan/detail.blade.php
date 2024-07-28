@@ -26,22 +26,7 @@
                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                     <strong>Status:</strong> {{ $pengaduan->status }}
                 </p>
-                @if($pengaduan->tanggapans->isNotEmpty())
-                    <div class="mt-4">
-                        <h4 class="text-lg font-semibold mb-2">Tanggapan:</h4>
-                        @foreach($pengaduan->tanggapans as $tanggapan)
-                            <div class="mb-2 p-2 bg-gray-100 rounded">
-                                <p><strong>Tanggal Tanggapan:</strong> {{ $tanggapan->tgl_tanggapan }}</p>
-                                <p><strong>Petugas:</strong> {{ $tanggapan->petugas->nama_petugas }}</p>
-                                <p><strong>Tanggapan:</strong> {{ $tanggapan->tanggapan }}</p>
-                            </div>
-                        @endforeach
-                    </div>
-                @else
-                    <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        Belum ada tanggapan.
-                    </p>
-                @endif
+              
             </div>
         </div>
     </div>

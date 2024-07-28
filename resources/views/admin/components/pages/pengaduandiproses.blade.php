@@ -98,9 +98,7 @@
                             <th scope="col" class="px-6 py-3">
                                 Foto
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                Tanggapan
-                            </th>
+                           
                             <th scope="col" class="px-6 py-3">
                                 Status
                             </th>
@@ -137,9 +135,7 @@
                                     <img src="{{ asset('images/' . $p->foto) }}" alt="Foto Pengaduan"
                                         class="w-20 h-20 object-cover">
                                 </td>
-                                <td class="px-6 py-4">
-                                    {{ $p->tanggapans->last()->tanggapan ?? '-' }}
-                                </td>
+                            
                                 <td class="px-6 py-4">
                                     @if ($p->status == 'proses')
                                         <button

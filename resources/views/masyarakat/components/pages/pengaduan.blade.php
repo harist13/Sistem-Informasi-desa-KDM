@@ -86,9 +86,7 @@
                             <th scope="col" class="px-6 py-3">
                                 Status
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                Tanggapan
-                            </th>
+                          
                             <th scope="col" class="px-6 py-3">
                                 Aksi
                             </th>
@@ -118,18 +116,7 @@
                 <span class="font-medium">{{ $p->status == 'belum diproses' ? 'Belum diproses' : ($p->status == 'proses' ? 'Sedang diproses' : 'Selesai') }}</span>
             </button>
         </td>
-        <td class="px-6 py-4">
-            @if($p->tanggapans->isNotEmpty())
-                @foreach($p->tanggapans as $tanggapan)
-                    <div class="mb-2">
-                     
-                        <p>{{ $tanggapan->tanggapan }}</p>
-                    </div>
-                @endforeach
-            @else
-                Belum ada tanggapan
-            @endif
-        </td>
+       
         <td class="px-6 py-4">
             <div class="flex justify-center items-center space-x-2">
                <button data-modal-target="detail-modal-{{ $p->id_pengaduan }}" data-modal-toggle="detail-modal-{{ $p->id_pengaduan }}" class="block text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
