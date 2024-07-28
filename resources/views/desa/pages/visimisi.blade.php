@@ -37,7 +37,7 @@
                 </div>
                 <img src="" alt="">
                 <h1 class="text-3xl font-bold">Visi Misi Desa Kedang Murung</h1>
-                <p class="my-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa omnis ducimus beatae
+                <p class="text-justify my-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa omnis ducimus beatae
                     cum obcaecati
                     similique mollitia deserunt magnam architecto recusandae, nostrum non quo perspiciatis delectus
                     saepe consequatur, harum optio facere vitae possimus dicta reiciendis id incidunt voluptate. Laborum
@@ -50,7 +50,7 @@
                     Quasi quia harum nobis dolorem ea quisquam, nihil voluptatibus earum excepturi autem veritatis
                     obcaecati rem aperiam ipsam. Voluptatum quo nemo, sequi eum non minus quod illo optio nobis modi
                     quisquam cum voluptas iusto, explicabo, distinctio cupiditate!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus pariatur sunt tempora architecto,
+                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus pariatur sunt tempora architecto,
                     ipsum nam non blanditiis id animi, tempore quidem delectus expedita sapiente consequuntur ipsa dolor
                     incidunt eius, debitis minima odio. Natus excepturi, dolor nostrum error quia obcaecati recusandae,
                     magni quo id consectetur in reiciendis veniam iusto eligendi blanditiis.</p>

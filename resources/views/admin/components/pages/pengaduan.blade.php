@@ -12,6 +12,22 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+    <style>
+        #sidebar-multi-level-sidebar {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        @media (min-width: 768px) {
+            #sidebar-multi-level-sidebar {
+                transform: translateX(0);
+            }
+        }
+
+        #sidebar-multi-level-sidebar.open {
+            transform: translateX(0);
+        }
+    </style>
     @vite('resources/css/app.css')
 </head>
 
@@ -47,7 +63,7 @@
             <div class="relative overflow-x-auto mt-4 px-4">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <div class="flex justify-end items-center gap-2">
-                       
+
                         <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
                             class="text-white bg-green-500 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
                             type="button">Filter Data <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
@@ -59,7 +75,7 @@
                         @include('admin.components.modals.artikel.sort')
                         @include('admin.components.modals.artikel.search')
                     </div>
-                    @if(session('success'))
+                    @if (session('success'))
                         <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
                             <p>{{ session('success') }}</p>
                         </div>
@@ -82,7 +98,7 @@
                             <th scope="col" class="px-6 py-3">
                                 Foto
                             </th>
-                             <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="px-6 py-3">
                                 No telepon/wa
                             </th>
                             <th scope="col" class="px-6 py-3">
@@ -94,52 +110,54 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($pengaduan as $index => $p)
-                        <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $index + 1 }}
-                            </th>
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $p->nik }}
-                            </th>
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $p->tgl_pengaduan }}
-                            </th>
-                            <td class="px-6 py-4">
-                                {{ $p->isi_laporan }}
-                            </td>
-                              <td class="px-6 py-4">
-                                <img src="{{ asset('images/'.$p->foto) }}" alt="Foto Pengaduan" class="w-20 h-20 object-cover">
-                            </td>
-                           
-                             <td class="px-6 py-4">
-                                {{ $p->masyarakat->telp }}
-                            </td>
-                            <td class="px-6 py-4">
-                                <button
-                                    class="px-4 py-2 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-500"
-                                    role="alert">
-                                    <span class="font-medium">{{ $p->status }}</span>
-                                </button>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex justify-center items-center space-x-2">
-                                    <button data-modal-target="tanggapi-modal-{{ $p->id_pengaduan }}" data-modal-toggle="tanggapi-modal-{{ $p->id_pengaduan }}"
-                                        class="block text-white bg-yellow-300 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                        type="button">
-                                        Tanggapi
+                        @foreach ($pengaduan as $index => $p)
+                            <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $index + 1 }}
+                                </th>
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $p->nik }}
+                                </th>
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $p->tgl_pengaduan }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $p->isi_laporan }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <img src="{{ asset('images/' . $p->foto) }}" alt="Foto Pengaduan"
+                                        class="w-20 h-20 object-cover">
+                                </td>
+
+                                <td class="px-6 py-4">
+                                    {{ $p->masyarakat->telp }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <button
+                                        class="px-4 py-2 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-500"
+                                        role="alert">
+                                        <span class="font-medium">{{ $p->status }}</span>
                                     </button>
-                                   
-                                </div>
-                            </td>
-                        </tr>
-                        @foreach($pengaduan as $p)
-    @include('admin.components.modals.pengaduan.tanggapi', ['pengaduan' => $p])
-@endforeach
-                          @endforeach
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex justify-center items-center space-x-2">
+                                        <button data-modal-target="tanggapi-modal-{{ $p->id_pengaduan }}"
+                                            data-modal-toggle="tanggapi-modal-{{ $p->id_pengaduan }}"
+                                            class="block text-white bg-yellow-300 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                                            type="button">
+                                            Tanggapi
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+                            @foreach ($pengaduan as $p)
+                                @include('admin.components.modals.pengaduan.tanggapi', ['pengaduan' => $p])
+                            @endforeach
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -183,6 +201,16 @@
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar-multi-level-sidebar');
+            const toggleButton = document.querySelector('[data-drawer-toggle="sidebar-multi-level-sidebar"]');
+
+            toggleButton.addEventListener('click', function() {
+                sidebar.classList.toggle('open');
+            });
+        });
+    </script>
 </body>
 
 </html>

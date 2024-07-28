@@ -1,5 +1,5 @@
 <nav>
-    <div class="mx-auto max-w-screen-2xl px-4 py-4">
+    <div class="mx-auto max-w-screen-2xl px-4 py-4 mb-8">
         <div class="relative h-14">
             <div class="flex justify-between items-center gap-3">
                 <img class="h-12 w-auto hidden md:block lg:block" src="{{ asset('img/logo.png') }}" alt="Your Company">
@@ -8,7 +8,8 @@
                     </h3>
                     <p class="text-slate-500 text-[14px] font-bold">Kabupaten kutai kartanegara, Kalimantan timur</p>
                 </div>
-                <p class="text-[#282828] text-[14px] hidden lg:block"><i class="fa-solid fa-envelope mr-1"></i> pemdes@kedangmurung.desa.id</p>
+                <p class="text-[#282828] text-[14px] hidden lg:block"><i class="fa-solid fa-envelope mr-1"></i>
+                    pemdes@kedangmurung.desa.id</p>
             </div>
         </div>
     </div>
@@ -72,7 +73,7 @@
                 <button id="dropdownServiceButton" data-dropdown-toggle="dropdownService" data-dropdown-trigger="hover"
                     class="text-white hover:bg-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
                     type="button">
-                    Layanan Desa
+                    Pemetaan Desa
                     <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -85,17 +86,7 @@
                         <li>
                             <a href="#"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pelayanan
-                                Administrasi</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Layanan
-                                Kesehatan</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Layanan
-                                Kependudukan</a>
+                                Data Pemetaan Desa</a>
                         </li>
                     </ul>
                 </div>
@@ -194,17 +185,17 @@
                     class="absolute z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-1/2 mt-1 origin-top-left">
                     <ul class="py-2 text-sm text-gray-700">
                         <li>
-                            <a href="#"
+                            <a href="{{ route('sejarah') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sejarah
                                 Desa</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="{{ route('visimisi') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Visi
                                 dan Misi</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="{{ route('pemerintahan') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pemerintahan
                                 Desa</a>
                         </li>
@@ -286,7 +277,7 @@
                     class="absolute z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-1/2 origin-top-left">
                     <ul class="py-2 text-sm text-gray-700">
                         <li>
-                            <a href="#"
+                            <a href="{{ route('kegiatan') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dokumentasi
                                 Kegiatan Desa</a>
                         </li>
@@ -310,12 +301,12 @@
                     class="absolute z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-1/2 origin-top-left">
                     <ul class="py-2 text-sm text-gray-700">
                         <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Administrator</a>
+                            <a href="{{ route('loginAdmin') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Administrator/Staff</a>
                         </li>
                         <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Staff</a>
+                            <a href="{{ route('loginMasyarakat') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Masyarakat</a>
                         </li>
                     </ul>
                 </div>

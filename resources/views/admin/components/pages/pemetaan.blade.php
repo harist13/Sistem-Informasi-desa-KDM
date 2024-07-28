@@ -12,6 +12,22 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+    <style>
+        #sidebar-multi-level-sidebar {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        @media (min-width: 768px) {
+            #sidebar-multi-level-sidebar {
+                transform: translateX(0);
+            }
+        }
+
+        #sidebar-multi-level-sidebar.open {
+            transform: translateX(0);
+        }
+    </style>
     @vite('resources/css/app.css')
 </head>
 
@@ -172,6 +188,16 @@
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar-multi-level-sidebar');
+            const toggleButton = document.querySelector('[data-drawer-toggle="sidebar-multi-level-sidebar"]');
+
+            toggleButton.addEventListener('click', function() {
+                sidebar.classList.toggle('open');
+            });
+        });
+    </script>
 </body>
 
 </html>
