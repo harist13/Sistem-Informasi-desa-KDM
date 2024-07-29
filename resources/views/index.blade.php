@@ -228,42 +228,42 @@
 
 
     {{-- galeri kegiatan desa --}}
-    <section>
-        <div class="container mx-auto px-4 mt-14">
-            <div class="lg:flex lg:justify-between lg:items-center">
-                <div>
-                    <h1 class="text-3xl font-semibold">Galeri <span class="font-bold text-green-500">
-                            Kegiatan Desa</span></h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias minus veritatis ipsum
-                        reprehenderit alias iure.</p>
-                </div>
-                <button class="bg-green-500 text-white px-4 py-2 rounded hidden lg:block"><a
-                        href="{{ route('kegiatan') }}">Lihat Semua</a></button>
+   <section>
+    <div class="container mx-auto px-4 mt-14">
+        <div class="lg:flex lg:justify-between lg:items-center">
+            <div>
+                <h1 class="text-3xl font-semibold">Galeri <span class="font-bold text-green-500">
+                        Kegiatan Desa</span></h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias minus veritatis ipsum
+                    reprehenderit alias iure.</p>
             </div>
-            <div class="flex flex-col justify-center items-center lg:grid lg:grid-cols-4 gap-4 mt-10">
-                <div>
-                    <img class="w-96"
-                        src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
-                        alt="">
-                </div>
-                <div>
-                    <img class="w-96"
-                        src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
-                        alt="">
-                </div>
-                <div>
-                    <img class="w-96"
-                        src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
-                        alt="">
-                </div>
-                <div>
-                    <img class="w-96"
-                        src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
-                        alt="">
-                </div>
-            </div>
+            <button class="bg-green-500 text-white px-4 py-2 rounded hidden lg:block">
+                    <a href="{{ route('kegiatan') }}">Lihat Semua</a></button>
         </div>
-    </section>
+         <div class="flex flex-col justify-center items-center lg:grid lg:grid-cols-4 gap-6 mt-8">
+                @foreach($dokumentasi as $item)
+                    <div>
+                        <img class="w-96 h-64 object-cover cursor-pointer" 
+                             src="{{ asset('storage/dokumentasi/' . $item->foto) }}" 
+                             alt="{{ $item->judul }}"
+                             onclick="openModal('{{ asset('storage/dokumentasi/' . $item->foto) }}', '{{ $item->judul }}')">
+                        <div class="text-center mt-4">
+                            <h1 class="text-xl font-bold">{{ $item->judul }}</h1>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white p-4 rounded-lg max-w-3xl max-h-full overflow-auto">
+            <img id="modalImage" src="" alt="" class="max-w-full h-auto">
+            <h2 id="modalTitle" class="text-xl font-bold mt-4 text-center"></h2>
+            <button onclick="closeModal()" class="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Close</button>
+        </div>
+    </div>
+</section>
 
     {{-- map location --}}
     <section>
@@ -293,6 +293,25 @@
             menu.classList.toggle('show');
         };
     </script>
+
+    <script>
+function openModal(imageSrc, title) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    
+    modalImage.src = imageSrc;
+    modalTitle.textContent = title;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+}
+
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+}
+</script>
 </body>
 
 </html>

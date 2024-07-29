@@ -13,7 +13,8 @@ class TampilanAwalController extends Controller
     {
         $artikels = Artikel::with('petugas')->latest()->take(3)->get();
         $artikelTerbaru = Artikel::latest()->take(3)->get();
-        return view('index', compact('artikels', 'artikelTerbaru'));
+        $dokumentasi = Dokumentasi::with('petugas')->get(); // Ambil semua data dokumentasi
+        return view('index', compact('artikels', 'artikelTerbaru', 'dokumentasi'));
     }
 
     public function berita($id)
