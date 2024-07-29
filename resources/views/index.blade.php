@@ -43,7 +43,7 @@
                 <div class="relative h-56 overflow-hidden md:h-[550px] z-10">
                     <!-- Item 1 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://img.freepik.com/free-photo/hut-rice-field-thailand_1150-10753.jpg?t=st=1721128447~exp=1721132047~hmac=14f97fdcf754a6c14897a1b2099c07800bc6e440d6b0552318b7a5bfbf41c6dd&w=996"
+                        <img src="https://img.freepik.com/free-photo/colorful-rainbow-appearing-sky-nature-landscape_23-2151521552.jpg?t=st=1722243810~exp=1722247410~hmac=a32c745f18744b8846fe87571e8997a3c90b9c763c060194dea0826c8e37189c&w=1380"
                             class="absolute block w-full xl:w-screen -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-cover bg-center object-cover"
                             alt="...">
                         <div
@@ -56,7 +56,7 @@
                     </div>
                     <!-- Item 2 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://img.freepik.com/free-photo/street-thailand-nature_1296-648.jpg?t=st=1721130488~exp=1721134088~hmac=e8299fa387db1e30dcb6489ac6d83f153e62e690d016cb3ce1a4aa3856e1165e&w=996"
+                        <img src="https://img.freepik.com/free-photo/beautiful-rainbow-nature_23-2151498349.jpg?t=st=1722243840~exp=1722247440~hmac=29f4657f6afc04263508c7b248715b95f3aa1d1e2296bd36cb3a658b439ccdf4&w=996"
                             class="absolute block w-full xl:w-screen -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-cover bg-center object-cover"
                             alt="...">
                         <div
