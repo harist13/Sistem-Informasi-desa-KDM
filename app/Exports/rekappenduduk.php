@@ -16,7 +16,48 @@ class rekappenduduk implements FromCollection, WithHeadings, WithMapping, WithSt
 {
     public function collection()
     {
-        return RekapulasiPenduduk::with('petugas')->get();
+        $data = RekapulasiPenduduk::with('petugas')->get();
+        $totals = $this->calculateTotals($data);
+        
+        return $data->push(new RekapulasiPenduduk($totals));
+    }
+
+    private function calculateTotals($collection)
+    {
+        return [
+            'RT' => $collection->sum('RT'),
+            'KK' => $collection->sum('KK'),
+            'LAKI_LAKI' => $collection->sum('LAKI_LAKI'),
+            'PEREMPUAN' => $collection->sum('PEREMPUAN'),
+            'BH' => $collection->sum('BH'),
+            'BS' => $collection->sum('BS'),
+            'TK' => $collection->sum('TK'),
+            'SD' => $collection->sum('SD'),
+            'SLTP' => $collection->sum('SLTP'),
+            'SLTA' => $collection->sum('SLTA'),
+            'PT' => $collection->sum('PT'),
+            'TANI' => $collection->sum('TANI'),
+            'DAGANG' => $collection->sum('DAGANG'),
+            'PNS' => $collection->sum('PNS'),
+            'TNI' => $collection->sum('TNI'),
+            'SWASTA' => $collection->sum('SWASTA'),
+            'ISLAM' => $collection->sum('ISLAM'),
+            'KHALOTIK' => $collection->sum('KHALOTIK'),
+            'PROTESTAN' => $collection->sum('PROTESTAN'),
+            'WNI' => $collection->sum('WNI'),
+            'WNA' => $collection->sum('WNA'),
+            'LK1' => $collection->sum('LK1'),
+            'PR1' => $collection->sum('PR1'),
+            'LK2' => $collection->sum('LK2'),
+            'PR2' => $collection->sum('PR2'),
+            'LK3' => $collection->sum('LK3'),
+            'PR3' => $collection->sum('PR3'),
+            'LK4' => $collection->sum('LK4'),
+            'PR4' => $collection->sum('PR4'),
+            'KK2' => $collection->sum('KK2'),
+            'LK5' => $collection->sum('LK5'),
+            'PR5' => $collection->sum('PR5'),
+        ];
     }
 
     public function headings(): array
@@ -56,6 +97,46 @@ class rekappenduduk implements FromCollection, WithHeadings, WithMapping, WithSt
 
     public function map($rekapulasi): array
     {
+        if ($rekapulasi->id === null) {
+            return [
+                'Jumlah',
+                '',
+                $rekapulasi->RT,
+                $rekapulasi->KK,
+                $rekapulasi->LAKI_LAKI,
+                $rekapulasi->PEREMPUAN,
+                $rekapulasi->BH,
+                $rekapulasi->BS,
+                $rekapulasi->TK,
+                $rekapulasi->SD,
+                $rekapulasi->SLTP,
+                $rekapulasi->SLTA,
+                $rekapulasi->PT,
+                $rekapulasi->TANI,
+                $rekapulasi->DAGANG,
+                $rekapulasi->PNS,
+                $rekapulasi->TNI,
+                $rekapulasi->SWASTA,
+                $rekapulasi->ISLAM,
+                $rekapulasi->KHALOTIK,
+                $rekapulasi->PROTESTAN,
+                $rekapulasi->WNI,
+                $rekapulasi->WNA,
+                $rekapulasi->LK1,
+                $rekapulasi->PR1,
+                $rekapulasi->LK2,
+                $rekapulasi->PR2,
+                $rekapulasi->LK3,
+                $rekapulasi->PR3,
+                $rekapulasi->LK4,
+                $rekapulasi->PR4,
+                $rekapulasi->KK2,
+                $rekapulasi->LK5,
+                $rekapulasi->PR5,
+                '',
+            ];
+        }
+
         return [
             $rekapulasi->id,
             $rekapulasi->petugas->nama_petugas,
@@ -121,11 +202,21 @@ class rekappenduduk implements FromCollection, WithHeadings, WithMapping, WithSt
         $sheet->mergeCells('AG2:AG3');
         $sheet->mergeCells('AH2:AH3');
 
+        $lastRow = $sheet->getHighestRow();
+        $sheet->getStyle('A' . $lastRow . ':AI' . $lastRow)->applyFromArray([
+            'font' => ['bold' => true],
+            'fill' => [
+                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                'startColor' => ['rgb' => 'F3F4F6'],
+            ],
+        ]);
+
         return [
             1    => ['font' => ['bold' => true]],
             2    => ['font' => ['bold' => true]],
             3    => ['font' => ['bold' => true]],
             'A1:AI3' => ['alignment' => ['horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, 'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER]],
+            $lastRow    => ['font' => ['bold' => true]],
         ];
     }
 
