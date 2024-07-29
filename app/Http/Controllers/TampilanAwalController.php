@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Artikel;
 use App\Models\Dokumentasi; // Tambahkan ini
+use App\Models\Petugas; // Tambahkan ini
+use App\Models\RekapulasiPenduduk;
 
 class TampilanAwalController extends Controller
 {
@@ -37,12 +39,43 @@ class TampilanAwalController extends Controller
         return view('desa.pages.pemerintahan');
     }
     public function rekapulasi()
-    {
-        return view('desa.pages.rekapulasipenduduk');
-    }
+{
+    $rekapulasi = RekapulasiPenduduk::with('petugas')->get();
+    return view('desa.pages.rekapulasipenduduk', compact('rekapulasi'));
+}
      public function kegiatan()
     {
         $dokumentasi = Dokumentasi::with('petugas')->get(); // Ambil semua data dokumentasi
         return view('desa.pages.dokkegiatan', compact('dokumentasi'));
     }
+
+    public function searchPenduduk(Request $request)
+{
+    $search = $request->input('search');
+    $rekapulasi = RekapulasiPenduduk::with('petugas')
+        ->whereHas('petugas', function($query) use ($search) {
+            $query->where('nama_petugas', 'like', "%$search%");
+        })
+        ->orWhere('RT', 'like', "%$search%")
+        ->get();
+    $petugas = Petugas::all();
+    return view('desa.pages.rekapulasipenduduk', compact('rekapulasi', 'petugas'));
+}
+
+public function sortPenduduk(Request $request)
+{
+    $sort = $request->input('sort');
+    $order = $request->input('order', 'asc');
+
+    if ($sort === 'nama_petugas') {
+        $rekapulasi = RekapulasiPenduduk::with(['petugas' => function($query) use ($order) {
+            $query->orderBy('nama_petugas', $order);
+        }])->get();
+    } else {
+        $rekapulasi = RekapulasiPenduduk::with('petugas')->orderBy($sort, $order)->get();
+    }
+
+    $petugas = Petugas::all();
+    return view('desa.pages.rekapulasipenduduk', compact('rekapulasi', 'petugas'));
+}
 }

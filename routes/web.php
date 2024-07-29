@@ -16,6 +16,8 @@ Route::get('/visi-misi', [TampilanAwalController::class, 'visimisi'])->name('vis
 Route::get('/pemerintahan-desa', [TampilanAwalController::class, 'pemerintahan'])->name('pemerintahan');
 Route::get('/dokumentasi-kegiatan', [TampilanAwalController::class, 'kegiatan'])->name('kegiatan');
 Route::get('/rekapulasi-penduduk', [TampilanAwalController::class, 'rekapulasi'])->name('rekapulasi');
+    Route::get('/penduduk/cari', [TampilanAwalController::class, 'searchPenduduk'])->name('penduduk.cari');
+    Route::get('/dashboard/admin/penduduk/urut', [TampilanAwalController::class, 'sortPenduduk'])->name('penduduk.urut');
 
 
 // Admin login & register
