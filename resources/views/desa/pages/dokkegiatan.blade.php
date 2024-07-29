@@ -28,68 +28,38 @@
 
     {{-- navbar --}}
     @include('layouts.navbar')
-    <section>
-        <div class="container mx-auto min-h-screen px-8 mt-7">
-            <div>
-                <div class="p-4 mb-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2"
-                    role="alert">
-                    <span class="font-medium"><a href="/">Home</a> / </span> Dokumentasi Kegiatan
-                </div>
-                <img src="" alt="">
-                <h1 class="text-3xl font-bold text-[#44b744]">Galeri Kegiatan Desa Kedang Murung</h1>
-                <div class="flex flex-col justify-center items-center lg:grid lg:grid-cols-4 gap-6 mt-8">
+   <section>
+    <div class="container mx-auto min-h-screen px-8 mt-7">
+        <div>
+            <div class="p-4 mb-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2" role="alert">
+                <span class="font-medium"><a href="/">Home</a> / </span> Dokumentasi Kegiatan
+            </div>
+            <h1 class="text-3xl font-bold text-[#44b744]">Galeri Kegiatan Desa Kedang Murung</h1>
+            <div class="flex flex-col justify-center items-center lg:grid lg:grid-cols-4 gap-6 mt-8">
+                @foreach($dokumentasi as $item)
                     <div>
-                        <img class="w-96"
-                            src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
-                            alt="">
+                        <img class="w-96 h-64 object-cover cursor-pointer" 
+                             src="{{ asset('storage/dokumentasi/' . $item->foto) }}" 
+                             alt="{{ $item->judul }}"
+                             onclick="openModal('{{ asset('storage/dokumentasi/' . $item->foto) }}', '{{ $item->judul }}')">
                         <div class="text-center mt-4">
-                            <h1 class="text-xl font-bold">Kegiatan KKN Mahasiswa 2024</h1>
+                            <h1 class="text-xl font-bold">{{ $item->judul }}</h1>
                         </div>
                     </div>
-                    <div>
-                        <img class="w-96"
-                            src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
-                            alt="">
-                        <div class="text-center mt-4">
-                            <h1 class="text-xl font-bold">Kegiatan KKN Mahasiswa 2024</h1>
-                        </div>
-                    </div>
-                    <div>
-                        <img class="w-96"
-                            src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
-                            alt="">
-                        <div class="text-center mt-4">
-                            <h1 class="text-xl font-bold">Kegiatan KKN Mahasiswa 2024</h1>
-                        </div>
-                    </div>
-                    <div>
-                        <img class="w-96"
-                            src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
-                            alt="">
-                        <div class="text-center mt-4">
-                            <h1 class="text-xl font-bold">Kegiatan KKN Mahasiswa 2024</h1>
-                        </div>
-                    </div>
-                    <div>
-                        <img class="w-96"
-                            src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
-                            alt="">
-                        <div class="text-center mt-4">
-                            <h1 class="text-xl font-bold">Kegiatan KKN Mahasiswa 2024</h1>
-                        </div>
-                    </div>
-                    <div>
-                        <img class="w-96"
-                            src="https://img.freepik.com/free-photo/men-women-help-each-other-collect-garbage_1150-23976.jpg"
-                            alt="">
-                        <div class="text-center mt-4">
-                            <h1 class="text-xl font-bold">Kegiatan KKN Mahasiswa 2024</h1>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white p-4 rounded-lg max-w-3xl max-h-full overflow-auto">
+            <img id="modalImage" src="" alt="" class="max-w-full h-auto">
+            <h2 id="modalTitle" class="text-xl font-bold mt-4 text-center"></h2>
+            <button onclick="closeModal()" class="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Close</button>
+        </div>
+    </div>
+</section>
     {{-- footer --}}
     @include('layouts.footer')
 
@@ -104,6 +74,25 @@
             menu.classList.toggle('show');
         };
     </script>
+
+    <script>
+function openModal(imageSrc, title) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    
+    modalImage.src = imageSrc;
+    modalTitle.textContent = title;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+}
+
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+}
+</script>
 </body>
 
 </html>

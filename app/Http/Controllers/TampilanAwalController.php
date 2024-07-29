@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Artikel;
+use App\Models\Dokumentasi; // Tambahkan ini
 
 class TampilanAwalController extends Controller
 {
@@ -34,8 +35,9 @@ class TampilanAwalController extends Controller
     {
         return view('desa.pages.pemerintahan');
     }
-    public function kegiatan()
+     public function kegiatan()
     {
-        return view('desa.pages.dokkegiatan');
+        $dokumentasi = Dokumentasi::with('petugas')->get(); // Ambil semua data dokumentasi
+        return view('desa.pages.dokkegiatan', compact('dokumentasi'));
     }
 }
