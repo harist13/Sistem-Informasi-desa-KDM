@@ -15,6 +15,8 @@ use App\Models\Artikel;
 use App\Models\Penduduk;
 use App\Models\RekapulasiPenduduk;
 use App\Models\Dokumentasi;
+use App\Exports\rekappenduduk;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class AdminController extends Controller
@@ -553,6 +555,10 @@ public function hapusDokumentasi($id)
     return redirect()->route('dokumentasi.admin')->with('success', 'Dokumentasi berhasil dihapus.');
 }
 
+public function exportExcel()
+{
+    return Excel::download(new rekappenduduk, 'data_penduduk.xlsx');
+}
 
 }
 

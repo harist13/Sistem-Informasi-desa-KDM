@@ -47,6 +47,7 @@ Route::middleware(['auth:masyarakat'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/dashboard/admin/penduduk/export', [AdminController::class, 'exportExcel'])->name('penduduk.export');
     Route::get('/dashboard/admin/dokumentasi/edit/{id}', [AdminController::class, 'editDokumentasi'])->name('dokumentasi.edit');
 Route::put('/dashboard/admin/dokumentasi/update/{id}', [AdminController::class, 'updateDokumentasi'])->name('dokumentasi.update');
 Route::delete('/dashboard/admin/dokumentasi/hapus/{id}', [AdminController::class, 'hapusDokumentasi'])->name('dokumentasi.hapus');

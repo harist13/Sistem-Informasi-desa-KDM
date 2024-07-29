@@ -7,7 +7,7 @@
                     <div>
                         <h3 class="text-white text-2xl mb-0 uppercase font-semibold">Website Resmi Desa kedang murung
                         </h3>
-                        <p class="text-white text-[14px] font-bold">Kabupaten Bandung Barat, Jawa Barat</p>
+                        <p class="text-white text-[14px] font-bold">Kabupaten Kutai kartanegara, Kalimantan Timur</p>
                     </div>
                 </div>
                 <p class="text-white text-sm">Jl. kedang murung</p>
@@ -16,7 +16,7 @@
                 <div>
                     <h3 class="text-white text-lg mb-2 uppercase font-semibold">Hubungi Kami</h3>
                     <p class="text-white text-[14px]">+62 822-6623181</p>
-                    <p class="text-white text-[14px]">pemdes@kedang murung-padalarang.desa.id</p>
+                    <p class="text-white text-[14px]">pemdes@kedang murung.desa.id</p>
                 </div>
                 <div>
                     <h3 class="text-white text-lg mb-2 uppercase font-semibold">Kategori</h3>
