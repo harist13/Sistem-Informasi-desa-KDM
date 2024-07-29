@@ -14,6 +14,7 @@ use App\Models\Masyarakat;
 use App\Models\Artikel;
 use App\Models\Penduduk;
 use App\Models\RekapulasiPenduduk;
+use App\Models\Dokumentasi;
 
 
 class AdminController extends Controller
@@ -314,10 +315,7 @@ public function hapusArtikel($id)
    
 
    
-    public function surat()
-    {
-        return view('admin.components.pages.surat');
-    }
+   
     public function pemetaan()
     {
         return view('admin.components.pages.pemetaan');
@@ -470,6 +468,89 @@ public function sortPenduduk(Request $request)
 
     $petugas = Petugas::all();
     return view('admin.components.pages.datapenduduk', compact('rekapulasi', 'petugas'));
+}
+
+public function dokumentasi()
+{
+    $dokumentasi = Dokumentasi::with('petugas')->get();
+    return view('admin.components.pages.dokumentasi', compact('dokumentasi'));
+}
+
+public function tambahDokumentasi(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'judul' => 'required|string|max:255',
+        'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    }
+
+    $data = $request->all();
+    $data['id_petugas'] = auth()->id();
+
+    if ($request->hasFile('foto')) {
+        $foto = $request->file('foto');
+        $filename = time() . '.' . $foto->getClientOriginalExtension();
+        $path = $foto->storeAs('public/dokumentasi', $filename);
+        $data['foto'] = $filename;
+    }
+
+    Dokumentasi::create($data);
+
+    return redirect()->route('dokumentasi.admin')->with('success', 'Dokumentasi berhasil ditambahkan.');
+}
+
+public function editDokumentasi($id)
+{
+    $dokumentasi = Dokumentasi::findOrFail($id);
+    return view('admin.components.modals.dokumentasi.editdata', compact('dokumentasi'));
+}
+
+public function updateDokumentasi(Request $request, $id)
+{
+    $validator = Validator::make($request->all(), [
+        'judul' => 'required|string|max:255',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    }
+
+    $dokumentasi = Dokumentasi::findOrFail($id);
+    $data = $request->only(['judul']);
+
+    if ($request->hasFile('foto')) {
+        // Hapus foto lama jika ada
+        if ($dokumentasi->foto) {
+            Storage::delete('public/dokumentasi/' . $dokumentasi->foto);
+        }
+
+        $foto = $request->file('foto');
+        $filename = time() . '.' . $foto->getClientOriginalExtension();
+        $path = $foto->storeAs('public/dokumentasi', $filename);
+        $data['foto'] = $filename;
+    }
+
+    $dokumentasi->update($data);
+
+    return redirect()->route('dokumentasi.admin')->with('success', 'Dokumentasi berhasil diperbarui.');
+}
+
+public function hapusDokumentasi($id)
+{
+    $dokumentasi = Dokumentasi::findOrFail($id);
+    
+    // Hapus foto jika ada
+    if ($dokumentasi->foto) {
+        Storage::delete('public/dokumentasi/' . $dokumentasi->foto);
+    }
+    
+    $dokumentasi->delete();
+
+    return redirect()->route('dokumentasi.admin')->with('success', 'Dokumentasi berhasil dihapus.');
 }
 
 

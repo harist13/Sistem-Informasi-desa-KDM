@@ -61,96 +61,56 @@
                 </div>
             </div>
             <div class="relative overflow-x-auto mt-4 px-4">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <div class="flex justify-end items-center gap-2">
-                        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
-                            class="block my-2 lg:float-end text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                            type="button">
-                            Tambah Data
-                        </button>
-                        @include('admin.components.modals.surat.tambahdata')
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                            class="text-white bg-green-500 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
-                            type="button">Filter Data <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        @include('admin.components.modals.surat.sort')
-                        @include('admin.components.modals.surat.search')
-                    </div>
-                    <thead
-                        class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                No
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Jenis Surat
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Tanggal Pengajuan
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                NIK
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Keterangan
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Status
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Aksi
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                1
-                            </th>
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Kim ZhongLi
-                            </th>
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                ZhongLi Cruest
-                            </th>
-                            <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                012345678
-                            </td>
-                            <td class="px-6 py-4">
-                                <button
-                                    class="px-4 py-2 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-500"
-                                    role="alert">
-                                    <span class="font-medium">Success</span>
-                                </button>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex justify-center items-center space-x-2">
-                                    <button data-modal-target="edit-modal" data-modal-toggle="edit-modal"
-                                        class="block text-white bg-yellow-300 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                        type="button">
-                                        Edit
-                                    </button>
-                                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                        class="block text-white bg-red-700 hover:bg-red-800  font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                        type="button">
-                                        Delete
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        @include('admin.components.modals.surat.editdata')
-                    </tbody>
-                </table>
+              <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <div class="flex justify-end items-center gap-2">
+        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
+            class="block my-2 lg:float-end text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            type="button">
+            Tambah Data
+        </button>
+        @include('admin.components.modals.dokumentasi.tambahdata')
+    </div>
+    <thead class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+            <th scope="col" class="px-6 py-3">No</th>
+            <th scope="col" class="px-6 py-3">Foto dokumentasi</th>
+            <th scope="col" class="px-6 py-3">Judul</th>
+            <th scope="col" class="px-6 py-3">Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($dokumentasi as $index => $item)
+        <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{ $index + 1 }}
+            </th>
+            <td class="px-6 py-4">
+                <img src="{{ asset('storage/dokumentasi/' . $item->foto) }}" alt="{{ $item->judul }}" class="w-20 h-20 object-cover">
+            </td>
+            <td class="px-6 py-4">{{ $item->judul }}</td>
+           <td class="px-6 py-4">
+    <div class="flex justify-center items-center space-x-2">
+        <button data-modal-target="edit-modal-{{ $item->id }}" data-modal-toggle="edit-modal-{{ $item->id }}"
+            class="block text-white bg-yellow-300 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            type="button">
+            Edit
+        </button>
+        <form action="{{ route('dokumentasi.hapus', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus dokumentasi ini?');">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="block text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                Delete
+            </button>
+        </form>
+    </div>
+</td>
+        </tr>
+        @foreach($dokumentasi as $item)
+    @include('admin.components.modals.dokumentasi.editdata', ['dokumentasi' => $item])
+@endforeach
+        @endforeach
+    </tbody>
+</table>
             </div>
             {{-- delete --}}
             <div id="popup-modal" tabindex="-1"

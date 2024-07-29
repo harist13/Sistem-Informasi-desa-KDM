@@ -44,6 +44,11 @@ Route::middleware(['auth:masyarakat'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/dashboard/admin/dokumentasi/edit/{id}', [AdminController::class, 'editDokumentasi'])->name('dokumentasi.edit');
+Route::put('/dashboard/admin/dokumentasi/update/{id}', [AdminController::class, 'updateDokumentasi'])->name('dokumentasi.update');
+Route::delete('/dashboard/admin/dokumentasi/hapus/{id}', [AdminController::class, 'hapusDokumentasi'])->name('dokumentasi.hapus');
+    Route::get('/dashboard/admin/dokumentasi', [AdminController::class, 'dokumentasi'])->name('dokumentasi.admin');
+Route::post('/dashboard/admin/dokumentasi/tambah', [AdminController::class, 'tambahDokumentasi'])->name('dokumentasi.tambah');
     Route::get('/dashboard/admin/penduduk/search', [AdminController::class, 'searchPenduduk'])->name('penduduk.search');
 Route::get('/dashboard/admin/penduduk/sort', [AdminController::class, 'sortPenduduk'])->name('penduduk.sort');
     Route::delete('/dashboard/admin/penduduk/hapus/{id}', [AdminController::class, 'hapusPenduduk'])->name('penduduk.hapus');
