@@ -55,10 +55,8 @@ Route::delete('/dashboard/admin/dokumentasi/hapus/{id}', [AdminController::class
 Route::post('/dashboard/admin/dokumentasi/tambah', [AdminController::class, 'tambahDokumentasi'])->name('dokumentasi.tambah');
     Route::get('/dashboard/admin/penduduk/search', [AdminController::class, 'searchPenduduk'])->name('penduduk.search');
 Route::get('/dashboard/admin/penduduk/sort', [AdminController::class, 'sortPenduduk'])->name('penduduk.sort');
-    Route::delete('/dashboard/admin/penduduk/hapus/{id}', [AdminController::class, 'hapusPenduduk'])->name('penduduk.hapus');
-    Route::post('/dashboard/admin/penduduk/tambah', [AdminController::class, 'tambahPenduduk'])->name('penduduk.tambah');
+    
     Route::get('/dashboard/admin/penduduk/edit/{id}', [AdminController::class, 'editPenduduk'])->name('penduduk.edit');
-Route::put('/dashboard/admin/penduduk/update/{id}', [AdminController::class, 'updatePenduduk'])->name('penduduk.update');
     Route::get('/dashboard/admin', [AdminController::class, 'dashboard'])->name('dashboard.admin');
     Route::get('/dashboard/admin/artikel', [AdminController::class, 'artikel'])->name('artikel.admin');
     Route::post('/dashboard/admin/artikel/tambah', [AdminController::class, 'tambahArtikel'])->name('artikel.tambah');
@@ -74,7 +72,7 @@ Route::delete('/dashboard/admin/artikel/hapus/{id}', [AdminController::class, 'h
     Route::delete('/dashboard/admin/pengaduan/{id}', [AdminController::class, 'hapusPengaduan'])->name('pengaduan.hapus');
     Route::get('/dashboard/admin/petugas', [AdminController::class, 'petugas'])->name('petugas.admin');
      Route::get('/dashboard/admin/penduduk', [AdminController::class, 'penduduk'])->name('penduduk.admin');
-    Route::post('/dashboard/admin/penduduk/tambah', [AdminController::class, 'tambahPenduduk'])->name('penduduk.tambah');
+    Route::post('/admin/penduduk/tambah', [AdminController::class, 'tambahDataPenduduk'])->name('penduduk.tambah');
     Route::get('/dashboard/admin/penduduk/edit/{id}', [AdminController::class, 'editPenduduk'])->name('penduduk.edit');
     Route::put('/dashboard/admin/penduduk/update/{id}', [AdminController::class, 'updatePenduduk'])->name('penduduk.update');
     Route::delete('/dashboard/admin/penduduk/hapus/{id}', [AdminController::class, 'hapusPenduduk'])->name('penduduk.hapus');

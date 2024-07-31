@@ -16,6 +16,7 @@ class CreateRekapulasiPendudukTable extends Migration
         Schema::create('rekapulasi_penduduk', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('petugas_id');
+            $table->string('nama_rt', 50);
             $table->string('RT', 10);
             $table->integer('KK');
             $table->integer('LAKI_LAKI');

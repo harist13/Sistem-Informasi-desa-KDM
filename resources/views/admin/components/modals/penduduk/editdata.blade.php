@@ -21,15 +21,11 @@
     @method('PUT')
     
     <!-- Petugas -->
+   
     <div>
-        <label for="petugas_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Petugas</label>
-        <select name="petugas_id" id="petugas_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-            @foreach($petugas as $p)
-                <option value="{{ $p->id }}" {{ $rekapulasi->petugas_id == $p->id ? 'selected' : '' }}>{{ $p->nama_petugas }}</option>
-            @endforeach
-        </select>
-    </div>
-
+            <label for="nama_rt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama RT</label>
+            <input type="text" name="nama_rt" id="nama_rt" value="{{ $rekapulasi->nama_rt }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+        </div>
     <!-- RT dan KK -->
     <div class="grid grid-cols-2 gap-4">
         <div>

@@ -93,10 +93,12 @@
                         </svg>
                     </button>
                     @include('admin.components.modals.penduduk.sort')
-                    @include('admin.components.modals.penduduk.search')
-                    <a href="{{ route('penduduk.export') }}" class="block lg:w-1/6 my-2 lg:float-end text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                    <a href="{{ route('penduduk.export') }}" class="block lg:w-1/6 my-2 lg:float-end text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:focus:ring-yellow-800">
     Export to Excel
 </a>
+
+                    @include('admin.components.modals.penduduk.search')
+                   
                     <!-- Tambahkan komponen filter dan search jika diperlukan -->
                 </div>
                 @if (session('success'))
@@ -169,7 +171,7 @@
                             @foreach ($rekapulasi as $index => $data)
                                 <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
                                     <td class="px-6 py-4">{{ $index + 1 }}</td>
-                                    <td class="px-6 py-4">{{ $data->petugas->nama_petugas }}</td>
+                                    <td class="px-6 py-4">{{ $data->nama_rt }}</td>
                                     <td class="px-6 py-4">{{ $data->RT }}</td>
                                     <td class="px-6 py-4">{{ $data->KK }}</td>
                                     <td class="px-6 py-4">{{ $data->LAKI_LAKI }}</td>

@@ -330,11 +330,11 @@ public function hapusArtikel($id)
     return view('admin.components.pages.datapenduduk', compact('rekapulasi', 'petugas'));
 }
 
-public function tambahPenduduk(Request $request)
+public function tambahDataPenduduk(Request $request)
 {
     $validator = Validator::make($request->all(), [
-        'petugas_id' => 'required|exists:petugas,id',
-        'RT' => 'required|string',
+        'nama_rt' => 'required|string|max:255',
+        'RT' => 'required|string|max:10',
         'KK' => 'required|integer',
         'LAKI_LAKI' => 'required|integer',
         'PEREMPUAN' => 'required|integer',
@@ -373,7 +373,10 @@ public function tambahPenduduk(Request $request)
         return back()->withErrors($validator)->withInput();
     }
 
-    RekapulasiPenduduk::create($request->all());
+    $data = $request->all();
+    $data['petugas_id'] = auth()->id(); // Assuming the logged-in user is the petugas
+
+    RekapulasiPenduduk::create($data);
 
     return redirect()->route('penduduk.admin')->with('success', 'Data penduduk berhasil ditambahkan.');
 }
@@ -388,8 +391,8 @@ public function editPenduduk($id)
 public function updatePenduduk(Request $request, $id)
 {
     $validator = Validator::make($request->all(), [
-        'petugas_id' => 'required|exists:petugas,id',
-        'RT' => 'required|string',
+        'nama_rt' => 'required|string|max:255',
+        'RT' => 'required|string|max:10',
         'KK' => 'required|integer',
         'LAKI_LAKI' => 'required|integer',
         'PEREMPUAN' => 'required|integer',
@@ -434,6 +437,8 @@ public function updatePenduduk(Request $request, $id)
     return redirect()->route('penduduk.admin')->with('success', 'Data penduduk berhasil diperbarui.');
 }
 
+
+
 public function hapusPenduduk($id)
 {
     $rekapulasi = RekapulasiPenduduk::findOrFail($id);
@@ -445,30 +450,24 @@ public function hapusPenduduk($id)
 public function searchPenduduk(Request $request)
 {
     $search = $request->input('search');
-    $rekapulasi = RekapulasiPenduduk::with('petugas')
-        ->whereHas('petugas', function($query) use ($search) {
-            $query->where('nama_petugas', 'like', "%$search%");
-        })
-        ->orWhere('RT', 'like', "%$search%")
-        ->get();
+    
+    $rekapulasi = RekapulasiPenduduk::where('nama_rt', 'LIKE', "%{$search}%")
+                    ->orWhere('RT', 'LIKE', "%{$search}%")
+                    ->get();
+
     $petugas = Petugas::all();
+
     return view('admin.components.pages.datapenduduk', compact('rekapulasi', 'petugas'));
 }
 
 public function sortPenduduk(Request $request)
 {
-    $sort = $request->input('sort');
+    $sort = $request->input('sort', 'nama_rt');
     $order = $request->input('order', 'asc');
 
-    if ($sort === 'nama_petugas') {
-        $rekapulasi = RekapulasiPenduduk::with(['petugas' => function($query) use ($order) {
-            $query->orderBy('nama_petugas', $order);
-        }])->get();
-    } else {
-        $rekapulasi = RekapulasiPenduduk::with('petugas')->orderBy($sort, $order)->get();
-    }
-
+    $rekapulasi = RekapulasiPenduduk::orderBy($sort, $order)->get();
     $petugas = Petugas::all();
+
     return view('admin.components.pages.datapenduduk', compact('rekapulasi', 'petugas'));
 }
 

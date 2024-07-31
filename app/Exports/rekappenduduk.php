@@ -139,7 +139,7 @@ class rekappenduduk implements FromCollection, WithHeadings, WithMapping, WithSt
 
         return [
             $rekapulasi->id,
-            $rekapulasi->petugas->nama_petugas,
+            $rekapulasi->nama_rt,
             $rekapulasi->RT,
             $rekapulasi->KK,
             $rekapulasi->LAKI_LAKI,

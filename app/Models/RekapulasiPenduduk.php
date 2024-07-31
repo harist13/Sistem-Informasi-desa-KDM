@@ -13,6 +13,7 @@ class RekapulasiPenduduk extends Model
 
     protected $fillable = [
         'petugas_id',
+        'nama_rt',
         'RT',
         'KK',
         'LAKI_LAKI',
