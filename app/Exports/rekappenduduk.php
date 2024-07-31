@@ -66,7 +66,7 @@ class rekappenduduk implements FromCollection, WithHeadings, WithMapping, WithSt
             [
                 'NO', 'NAMA RT', 'RT', 'KK', 
                 'JUMLAH AWAL', 'JUMLAH AWAL', 
-                'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK', 'PENDUDUK',
+                'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT',
                 'MUTASI', 'MUTASI', 'MUTASI', 'MUTASI', 'MUTASI', 'MUTASI', 'MUTASI', 'MUTASI',
                 'JUMLAH AKHIR', 'JUMLAH AKHIR', 'JUMLAH AKHIR',
                 'KETERANGAN'
@@ -208,6 +208,20 @@ class rekappenduduk implements FromCollection, WithHeadings, WithMapping, WithSt
             'fill' => [
                 'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
                 'startColor' => ['rgb' => 'F3F4F6'],
+            ],
+        ]);
+
+        // Add yellow background and borders to header
+        $sheet->getStyle('A1:AI3')->applyFromArray([
+            'fill' => [
+                'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                'startColor' => ['rgb' => 'FFFF00'],
+            ],
+            'borders' => [
+                'allBorders' => [
+                    'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                    'color' => ['rgb' => '000000'],
+                ],
             ],
         ]);
 
