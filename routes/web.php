@@ -87,6 +87,11 @@ Route::post('/dashboard/admin/petugas/edit/{id}', [AdminController::class, 'upda
     Route::get('/dashboard/admin/petugas/filter', [AdminController::class, 'filterPetugas'])->name('petugas.filter');
 Route::get('/dashboard/admin/petugas/search', [AdminController::class, 'searchPetugas'])->name('petugas.search');
 Route::post('/dashboard/admin/pengaduan/{id}/selesai', [AdminController::class, 'selesaikanPengaduan'])->name('pengaduan.selesai');
+    Route::get('/pemerintah/admin', [AdminController::class, 'pemerintahdesa'])->name('pemerintah.admin');
+    Route::post('/pemerintah/admin/tambah', [AdminController::class, 'tambahPemerintahDesa'])->name('pemerintah.tambah');
+    Route::get('/pemerintah/admin/edit/{id}', [AdminController::class, 'editPemerintahDesa'])->name('pemerintah.edit');
+Route::put('/pemerintah/admin/update/{id}', [AdminController::class, 'updatePemerintahDesa'])->name('pemerintah.update');
+Route::delete('/pemerintah/admin/hapus/{id}', [AdminController::class, 'hapusPemerintahDesa'])->name('pemerintah.hapus');
 });
 
 

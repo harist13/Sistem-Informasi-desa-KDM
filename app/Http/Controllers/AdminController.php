@@ -17,6 +17,7 @@ use App\Models\RekapulasiPenduduk;
 use App\Models\Dokumentasi;
 use App\Exports\rekappenduduk;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\PemerintahDesa;
 
 
 class AdminController extends Controller
@@ -557,6 +558,103 @@ public function hapusDokumentasi($id)
 public function exportExcel()
 {
     return Excel::download(new rekappenduduk, 'data_penduduk.xlsx');
+}
+
+ public function pemerintahdesa()
+    {
+        $pemerintahdesas = PemerintahDesa::with('petugas')->get();
+        return view('admin.components.pages.pemerintahdesa', compact('pemerintahdesas'));
+    }
+
+    public function tambahPemerintahDesa(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string|max:255',
+            'jabatan' => 'required|string|max:255',
+            'NIP' => 'required|string|max:255',
+            'Tempat_dan_tanggal_lahir' => 'required|string|max:255',
+            'Agama' => 'required|string|max:255',
+            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+            'pendidikan' => 'required|string|max:255',
+            'alamat' => 'required|string',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $data = $request->all();
+        $data['petugas_id'] = auth()->id();
+
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $filename = time() . '.' . $foto->getClientOriginalExtension();
+            $path = $foto->storeAs('public/pemerintahdesa', $filename);
+            $data['foto'] = $filename;
+        }
+
+        PemerintahDesa::create($data);
+
+        return redirect()->route('pemerintah.admin')->with('success', 'Data pemerintah desa berhasil ditambahkan.');
+    }
+
+    public function editPemerintahDesa($id)
+{
+    $pemerintahdesa = PemerintahDesa::findOrFail($id);
+    return view('admin.components.modals.pemerintahdesa.editpemerintahdesa', compact('pemerintahdesa'));
+}
+
+public function updatePemerintahDesa(Request $request, $id)
+{
+    $validator = Validator::make($request->all(), [
+        'nama' => 'required|string|max:255',
+        'jabatan' => 'required|string|max:255',
+        'NIP' => 'required|string|max:255',
+        'Tempat_dan_tanggal_lahir' => 'required|string|max:255',
+        'Agama' => 'required|string|max:255',
+        'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+        'pendidikan' => 'required|string|max:255',
+        'alamat' => 'required|string',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    }
+
+    $pemerintahdesa = PemerintahDesa::findOrFail($id);
+    $data = $request->except(['_token', '_method', 'foto']);
+
+    if ($request->hasFile('foto')) {
+        // Hapus foto lama
+        if ($pemerintahdesa->foto) {
+            Storage::delete('public/pemerintahdesa/' . $pemerintahdesa->foto);
+        }
+
+        $foto = $request->file('foto');
+        $filename = time() . '.' . $foto->getClientOriginalExtension();
+        $path = $foto->storeAs('public/pemerintahdesa', $filename);
+        $data['foto'] = $filename;
+    }
+
+    $pemerintahdesa->update($data);
+
+    return redirect()->route('pemerintah.admin')->with('success', 'Data pemerintah desa berhasil diperbarui.');
+}
+
+public function hapusPemerintahDesa($id)
+{
+    $pemerintahdesa = PemerintahDesa::findOrFail($id);
+    
+    // Hapus foto jika ada
+    if ($pemerintahdesa->foto) {
+        Storage::delete('public/pemerintahdesa/' . $pemerintahdesa->foto);
+    }
+    
+    $pemerintahdesa->delete();
+
+    return redirect()->route('pemerintah.admin')->with('success', 'Data pemerintah desa berhasil dihapus.');
 }
 
 }
