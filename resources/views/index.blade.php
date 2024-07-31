@@ -265,7 +265,7 @@
     </div>
 </section>
 
-    {{-- map location --}}
+    {{-- map location desa --}}
     <section>
         <div class="container mx-auto px-4 mt-12">
             <h1 class="text-3xl font-semibold mb-3">Lokasi Kami</h1>
