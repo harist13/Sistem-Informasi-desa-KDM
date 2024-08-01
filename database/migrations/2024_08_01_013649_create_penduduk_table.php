@@ -35,10 +35,6 @@ class CreatePendudukTable extends Migration
 
             // Foreign key to petugas (assuming petugas manages penduduk)
             $table->foreignId('petugas_id')->constrained('petugas')->onDelete('cascade');
-
-            // Foreign key to masyarakat
-            $table->string('masyarakat_nik', 16);
-            $table->foreign('masyarakat_nik')->references('nik')->on('masyarakat')->onDelete('cascade');
         });
     }
 

@@ -29,7 +29,6 @@ class Penduduk extends Model
         'pekerjaan',
         'status_penduduk',
         'petugas_id',
-        'masyarakat_nik'
     ];
 
     /**
@@ -43,8 +42,4 @@ class Penduduk extends Model
     /**
      * Get the masyarakat that is related to the penduduk.
      */
-    public function masyarakat()
-    {
-        return $this->belongsTo(Masyarakat::class, 'masyarakat_nik', 'nik');
-    }
 }
