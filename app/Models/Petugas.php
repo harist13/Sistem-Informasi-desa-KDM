@@ -48,4 +48,9 @@ class Petugas extends Authenticatable
     {
         return $this->hasMany(PemerintahDesa::class, 'petugas_id');
     }
+
+     public function kependudukan()
+    {
+        return $this->hasMany(Kependudukan::class, 'petugas_id');
+    }
 }

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Penduduk extends Model
+class Kependudukan extends Model
 {
     use HasFactory;
 
-    protected $table = 'penduduk';
+    protected $table = 'kependudukan';
 
     protected $fillable = [
         'nik',
@@ -31,15 +31,8 @@ class Penduduk extends Model
         'petugas_id',
     ];
 
-    /**
-     * Get the petugas that manages the penduduk.
-     */
     public function petugas()
     {
         return $this->belongsTo(Petugas::class, 'petugas_id');
     }
-
-    /**
-     * Get the masyarakat that is related to the penduduk.
-     */
 }
