@@ -1,5 +1,5 @@
 <nav>
-    <div class="mx-auto max-w-screen-2xl px-4 py-4 mb-8 lg:mb-0">
+    <div class="mx-auto max-w-screen-2xl px-4 py-4">
         <div class="relative h-14">
             <div class="flex justify-between items-center gap-3">
                 <img class="h-12 w-auto hidden md:block lg:block" src="{{ asset('img/logo.png') }}" alt="Your Company">

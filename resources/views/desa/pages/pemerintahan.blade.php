@@ -38,59 +38,52 @@
                 <img src="" alt="">
                 <h1 class="text-3xl font-bold mb-2">Pemerintahan Desa Kedang Murung</h1>
                 <p>Adapun struktural nama pemerintahan yang mengatur di Desa Kedang Murung</p>
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-6">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    No
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Nama Lengkap
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Jabatan
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Periode Jabatan
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr
-                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    1
-                                </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Naruto Uzummaki
-                                </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Kepala Desa
-                                </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    2021 - 2025
-                                </td>
-                            </tr>
-                            <tr
-                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    2
-                                </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Sasuke Uchiha
-                                </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Wakil Kepala Desa
-                                </td>
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    2021 - 2025
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="relative overflow-hidden mt-6">
+                    <div class="flex flex-col justify-center items-center lg:grid lg:grid-cols-4 gap-6"
+                        style="font-family: 'Poppins', sans-serif">
+                        <div class="bg-green-500 shadow-xl rounded-lg max-w-xs">
+                            <a href="{{ route('detailpem') }}">
+                                <img class="w-full rounded-t-lg"
+                                    src="https://img.freepik.com/free-photo/real-people-natural-portrait-happy-guy-smiling-laughing-looking-upbeat-camera-standing-glasses-white-background_1258-65662.jpg?t=st=1722863823~exp=1722867423~hmac=2457a1788e16917040472a2d2c6f75c203292172e1d9ca570742bf4262c6aaa4&w=996"
+                                    alt="">
+                            </a>
+                            <div class="text-center p-4">
+                                <h3 class="text-xl text-white font-bold">Uzummaki Naruto</h3>
+                                <p class="text-white">Kepala Desa</p>
+                                <span class="text-sm text-white opacity-75">2021 - 2024</span>
+                            </div>
+                        </div>
+                        <div class="bg-green-500 shadow-xl rounded-lg max-w-xs">
+                            <img class="w-full rounded-t-lg"
+                                src="https://img.freepik.com/free-photo/real-people-natural-portrait-happy-guy-smiling-laughing-looking-upbeat-camera-standing-glasses-white-background_1258-65662.jpg?t=st=1722863823~exp=1722867423~hmac=2457a1788e16917040472a2d2c6f75c203292172e1d9ca570742bf4262c6aaa4&w=996"
+                                alt="">
+                            <div class="text-center p-4">
+                                <h3 class="text-xl text-white font-bold">Uzummaki Naruto</h3>
+                                <p class="text-white">Kepala Desa</p>
+                                <span class="text-sm text-white opacity-75">2021 - 2024</span>
+                            </div>
+                        </div>
+                        <div class="bg-green-500 shadow-xl rounded-lg max-w-xs">
+                            <img class="w-full rounded-t-lg"
+                                src="https://img.freepik.com/free-photo/real-people-natural-portrait-happy-guy-smiling-laughing-looking-upbeat-camera-standing-glasses-white-background_1258-65662.jpg?t=st=1722863823~exp=1722867423~hmac=2457a1788e16917040472a2d2c6f75c203292172e1d9ca570742bf4262c6aaa4&w=996"
+                                alt="">
+                            <div class="text-center p-4">
+                                <h3 class="text-xl text-white font-bold">Uzummaki Naruto</h3>
+                                <p class="text-white">Kepala Desa</p>
+                                <span class="text-sm text-white opacity-75">2021 - 2024</span>
+                            </div>
+                        </div>
+                        <div class="bg-green-500 shadow-xl rounded-lg max-w-xs">
+                            <img class="w-full rounded-t-lg"
+                                src="https://img.freepik.com/free-photo/real-people-natural-portrait-happy-guy-smiling-laughing-looking-upbeat-camera-standing-glasses-white-background_1258-65662.jpg?t=st=1722863823~exp=1722867423~hmac=2457a1788e16917040472a2d2c6f75c203292172e1d9ca570742bf4262c6aaa4&w=996"
+                                alt="">
+                            <div class="text-center p-4">
+                                <h3 class="text-xl text-white font-bold">Uzummaki Naruto</h3>
+                                <p class="text-white">Kepala Desa</p>
+                                <span class="text-sm text-white opacity-75">2021 - 2024</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

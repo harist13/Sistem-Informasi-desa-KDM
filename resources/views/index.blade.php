@@ -163,32 +163,34 @@
                             <div class="relative h-64 md:h-80 lg:h-96 overflow-hidden rounded-lg">
                                 <!-- Item 1 -->
                                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                    <img src="https://img.freepik.com/free-photo/army-it-professional-examining-national-satellite-surveillance-footage_482257-89885.jpg?t=st=1721407818~exp=1721411418~hmac=15166820f8eb77a038895508d49bbbe7bb35886de798596164f30581ddd5eb3c&w=1380"
-                                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                                        alt="...">
+                                    <img src="https://img.freepik.com/free-photo/image-beautiful-asian-woman-pointing-fingers-left-right-making-decision-showing-two-variants-choices-standing-white-background_1258-89519.jpg?t=st=1722867674~exp=1722871274~hmac=3107d140fe0e2cfc3299126a1ccdb07997964b45e43e06fb7981603bbe07b9d9&w=996"
+                                        class="block w-full bg-cover" alt="...">
+                                    <div
+                                        class="absolute bottom-0 w-full text-white bg-green-600 bg-opacity-50 px-4 py-2 text-center">
+                                        <h1 class="font-bold text-xl lg:text-4xl mb-2">Uzumaki Naruto</h1>
+                                        <p class="text-sm lg:text-lg font-normal">Kepala Desa</p>
+                                    </div>
                                 </div>
                                 <!-- Item 2 -->
                                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                    <img src="https://img.freepik.com/free-photo/army-it-professional-examining-national-satellite-surveillance-footage_482257-89885.jpg?t=st=1721407818~exp=1721411418~hmac=15166820f8eb77a038895508d49bbbe7bb35886de798596164f30581ddd5eb3c&w=1380"
-                                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                                        alt="...">
+                                    <img src="https://img.freepik.com/free-photo/image-beautiful-asian-woman-pointing-fingers-left-right-making-decision-showing-two-variants-choices-standing-white-background_1258-89519.jpg?t=st=1722867674~exp=1722871274~hmac=3107d140fe0e2cfc3299126a1ccdb07997964b45e43e06fb7981603bbe07b9d9&w=996"
+                                        class="block w-full bg-cover" alt="...">
+                                    <div
+                                        class="absolute bottom-0 w-full text-white bg-green-600 bg-opacity-50 px-4 py-2 text-center">
+                                        <h1 class="font-bold text-xl lg:text-4xl mb-2">Uzumaki Naruto</h1>
+                                        <p class="text-sm lg:text-lg font-normal">Kepala Desa</p>
+                                    </div>
                                 </div>
                                 <!-- Item 3 -->
                                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                    <img src="https://img.freepik.com/free-photo/army-it-professional-examining-national-satellite-surveillance-footage_482257-89885.jpg?t=st=1721407818~exp=1721411418~hmac=15166820f8eb77a038895508d49bbbe7bb35886de798596164f30581ddd5eb3c&w=1380"
-                                        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                                        alt="...">
+                                    <img src="https://img.freepik.com/free-photo/image-beautiful-asian-woman-pointing-fingers-left-right-making-decision-showing-two-variants-choices-standing-white-background_1258-89519.jpg?t=st=1722867674~exp=1722871274~hmac=3107d140fe0e2cfc3299126a1ccdb07997964b45e43e06fb7981603bbe07b9d9&w=996"
+                                        class="block w-full bg-cover" alt="...">
+                                    <div
+                                        class="absolute bottom-0 w-full text-white bg-green-600 bg-opacity-50 px-4 py-2 text-center">
+                                        <h1 class="font-bold text-xl lg:text-4xl mb-2">Uzumaki Naruto</h1>
+                                        <p class="text-sm lg:text-lg font-normal">Kepala Desa</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Slider indicators -->
-                            <div
-                                class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-                                <button type="button" class="w-3 h-3 rounded-full" aria-current="true"
-                                    aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                                <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
-                                    aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                                <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
-                                    aria-label="Slide 3" data-carousel-slide-to="2"></button>
                             </div>
                             <!-- Slider controls -->
                             <button type="button"
@@ -228,42 +230,42 @@
 
 
     {{-- galeri kegiatan desa --}}
-   <section>
-    <div class="container mx-auto px-4 mt-14">
-        <div class="lg:flex lg:justify-between lg:items-center">
-            <div>
-                <h1 class="text-3xl font-semibold">Galeri <span class="font-bold text-green-500">
-                        Kegiatan Desa</span></h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias minus veritatis ipsum
-                    reprehenderit alias iure.</p>
-            </div>
-            <button class="bg-green-500 text-white px-4 py-2 rounded hidden lg:block">
+    <section>
+        <div class="container mx-auto px-4 mt-14">
+            <div class="lg:flex lg:justify-between lg:items-center">
+                <div>
+                    <h1 class="text-3xl font-semibold">Galeri <span class="font-bold text-green-500">
+                            Kegiatan Desa</span></h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias minus veritatis ipsum
+                        reprehenderit alias iure.</p>
+                </div>
+                <button class="bg-green-500 text-white px-4 py-2 rounded hidden lg:block">
                     <a href="{{ route('kegiatan') }}">Lihat Semua</a></button>
-        </div>
-         <div class="flex flex-col justify-center items-center lg:grid lg:grid-cols-4 gap-6 mt-8">
-                @foreach($dokumentasi as $item)
+            </div>
+            <div class="flex flex-col justify-center items-center lg:grid lg:grid-cols-4 gap-6 mt-8">
+                @foreach ($dokumentasi as $item)
                     <div>
-                        <img class="w-96 h-64 object-cover cursor-pointer" 
-                             src="{{ asset('storage/dokumentasi/' . $item->foto) }}" 
-                             alt="{{ $item->judul }}"
-                             onclick="openModal('{{ asset('storage/dokumentasi/' . $item->foto) }}', '{{ $item->judul }}')">
+                        <img class="w-96 h-64 object-cover cursor-pointer"
+                            src="{{ asset('storage/dokumentasi/' . $item->foto) }}" alt="{{ $item->judul }}"
+                            onclick="openModal('{{ asset('storage/dokumentasi/' . $item->foto) }}', '{{ $item->judul }}')">
                         <div class="text-center mt-4">
                             <h1 class="text-xl font-bold">{{ $item->judul }}</h1>
                         </div>
                     </div>
                 @endforeach
             </div>
-    </div>
-
-    <!-- Modal -->
-    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white p-4 rounded-lg max-w-3xl max-h-full overflow-auto">
-            <img id="modalImage" src="" alt="" class="max-w-full h-auto">
-            <h2 id="modalTitle" class="text-xl font-bold mt-4 text-center"></h2>
-            <button onclick="closeModal()" class="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Close</button>
         </div>
-    </div>
-</section>
+
+        <!-- Modal -->
+        <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+            <div class="bg-white p-4 rounded-lg max-w-3xl max-h-full overflow-auto">
+                <img id="modalImage" src="" alt="" class="max-w-full h-auto">
+                <h2 id="modalTitle" class="text-xl font-bold mt-4 text-center"></h2>
+                <button onclick="closeModal()"
+                    class="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Close</button>
+            </div>
+        </div>
+    </section>
 
     {{-- map location desa --}}
     <section>
@@ -295,23 +297,23 @@
     </script>
 
     <script>
-function openModal(imageSrc, title) {
-    const modal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalTitle = document.getElementById('modalTitle');
-    
-    modalImage.src = imageSrc;
-    modalTitle.textContent = title;
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-}
+        function openModal(imageSrc, title) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
 
-function closeModal() {
-    const modal = document.getElementById('imageModal');
-    modal.classList.remove('flex');
-    modal.classList.add('hidden');
-}
-</script>
+            modalImage.src = imageSrc;
+            modalTitle.textContent = title;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+    </script>
 </body>
 
 </html>
