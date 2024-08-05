@@ -1,11 +1,14 @@
-<div id="edit-modal-{{ $pemerintahdesa->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<div id="edit-modal-{{ $pemerintahdesa->id }}" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Edit Pemerintah Desa
+                    Edit Data Penduduk
                 </h3>
-                <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="edit-modal-{{ $pemerintahdesa->id }}">
+                <button type="button"
+                    class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="edit-modal-{{ $pemerintahdesa->id }}">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                     </svg>
@@ -13,56 +16,60 @@
                 </button>
             </div>
             <div class="p-4 md:p-5">
-                <form class="space-y-4" action="{{ route('pemerintah.update', $pemerintahdesa->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-                    <div>
-                        <label for="nama-{{ $pemerintahdesa->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                        <input type="text" name="nama" id="nama-{{ $pemerintahdesa->id }}" value="{{ $pemerintahdesa->nama }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                    </div>
-                    <div>
-                        <label for="jabatan-{{ $pemerintahdesa->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jabatan</label>
-                        <input type="text" name="jabatan" id="jabatan-{{ $pemerintahdesa->id }}" value="{{ $pemerintahdesa->jabatan }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                    </div>
-                    <div>
-                        <label for="NIP-{{ $pemerintahdesa->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIP</label>
-                        <input type="text" name="NIP" id="NIP-{{ $pemerintahdesa->id }}" value="{{ $pemerintahdesa->NIP }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                    </div>
-                    <div>
-                        <label for="Tempat_dan_tanggal_lahir-{{ $pemerintahdesa->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat dan Tanggal Lahir</label>
-                        <input type="text" name="Tempat_dan_tanggal_lahir" id="Tempat_dan_tanggal_lahir-{{ $pemerintahdesa->id }}" value="{{ $pemerintahdesa->Tempat_dan_tanggal_lahir }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                    </div>
-                    <div>
-                        <label for="Agama-{{ $pemerintahdesa->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Agama</label>
-                        <input type="text" name="Agama" id="Agama-{{ $pemerintahdesa->id }}" value="{{ $pemerintahdesa->Agama }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                    </div>
-                    <div>
-                        <label for="jenis_kelamin-{{ $pemerintahdesa->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
-                        <select name="jenis_kelamin" id="jenis_kelamin-{{ $pemerintahdesa->id }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                            <option value="Laki-laki" @if ($pemerintahdesa->jenis_kelamin == 'Laki-laki') selected @endif>Laki-laki</option>
-                            <option value="Perempuan" @if ($pemerintahdesa->jenis_kelamin == 'Perempuan') selected @endif>Perempuan</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="pendidikan-{{ $pemerintahdesa->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pendidikan</label>
-                        <input type="text" name="pendidikan" id="pendidikan-{{ $pemerintahdesa->id }}" value="{{ $pemerintahdesa->pendidikan }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                    </div>
-                    <div>
-                        <label for="alamat-{{ $pemerintahdesa->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
-                        <textarea name="alamat" id="alamat-{{ $pemerintahdesa->id }}" rows="3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>{{ $pemerintahdesa->alamat }}</textarea>
-                    </div>
-                    <!-- Tambahkan input fields lainnya sesuai dengan atribut PemerintahDesa -->
-                    <div>
-                        <label for="foto-{{ $pemerintahdesa->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto</label>
-                        <input type="file" name="foto" id="foto-{{ $pemerintahdesa->id }}" accept="image/*" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
-                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">Biarkan kosong jika tidak ingin mengubah foto</p>
-                    </div>
-                    <div>
-                        <p class="mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto Saat Ini:</p>
-                        <img src="{{ asset('storage/pemerintahdesa/' . $pemerintahdesa->foto) }}" alt="{{ $pemerintahdesa->nama }}" class="w-full h-auto object-cover rounded-lg">
-                    </div>
-                    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update Data</button>
-                </form>
+              <form class="space-y-6" action="{{ route('pemerintah.update', $pemerintahdesa->id) }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
+    
+    <div>
+        <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+        <input type="text" name="nama" id="nama" value="{{ $pemerintahdesa->nama }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+    </div>
+    
+    <div>
+        <label for="jabatan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jabatan</label>
+        <input type="text" name="jabatan" id="jabatan" value="{{ $pemerintahdesa->jabatan }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+    </div>
+
+    <div>
+        <label for="NIP" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIP</label>
+        <input type="text" name="NIP" id="NIP" value="{{ $pemerintahdesa->NIP }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+    </div>
+
+    <div>
+        <label for="Tempat_dan_tanggal_lahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat dan Tanggal Lahir</label>
+        <input type="text" name="Tempat_dan_tanggal_lahir" id="Tempat_dan_tanggal_lahir" value="{{ $pemerintahdesa->Tempat_dan_tanggal_lahir }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+    </div>
+
+    <div>
+        <label for="Agama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Agama</label>
+        <input type="text" name="Agama" id="Agama" value="{{ $pemerintahdesa->Agama }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+    </div>
+
+    <div>
+        <label for="jenis_kelamin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
+        <select name="jenis_kelamin" id="jenis_kelamin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+            <option value="Laki-laki" {{ $pemerintahdesa->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+            <option value="Perempuan" {{ $pemerintahdesa->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="pendidikan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pendidikan</label>
+        <input type="text" name="pendidikan" id="pendidikan" value="{{ $pemerintahdesa->pendidikan }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+    </div>
+
+    <div>
+        <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
+        <textarea name="alamat" id="alamat" rows="3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>{{ $pemerintahdesa->alamat }}</textarea>
+    </div>
+
+    <div>
+        <label for="foto" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto (Biarkan kosong jika tidak ingin mengubah)</label>
+        <input type="file" name="foto" id="foto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+    </div>
+
+    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update Data Pemerintah Desa</button>
+</form>
             </div>
         </div>
     </div>
