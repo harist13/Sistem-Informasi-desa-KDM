@@ -112,7 +112,6 @@
             </table>
         </div>
     </div>
-    @include('admin.components.modals.pemerintahdesa.editpemerintahdesa')
 </section>
 
 @include('admin.components.modals.pemerintahdesa.tambahdata')
