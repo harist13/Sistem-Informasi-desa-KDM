@@ -18,6 +18,7 @@ use App\Models\Dokumentasi;
 use App\Exports\rekappenduduk;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\PemerintahDesa;
+use App\Models\Kependudukan;
 
 
 class AdminController extends Controller
@@ -667,6 +668,139 @@ public function searchPemerintahDesa(Request $request)
                         ->get();
 
     return view('admin.components.pages.pemerintahdesa', compact('pemerintahdesas'));
+}
+
+public function kependudukan()
+{
+    $kependudukans = Kependudukan::all();
+    return view('admin.components.pages.kependudukan', compact('kependudukans'));
+}
+
+public function tambahKependudukan(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'nik' => 'required|string|max:16|unique:kependudukan,nik',
+        'nama' => 'required|string|max:255',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'tempat_lahir' => 'required|string|max:255',
+        'tanggal_lahir' => 'required|date',
+        'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+        'alamat' => 'required|string',
+        'rt_rw' => 'required|string|max:10',
+        'kelurahan' => 'required|string|max:255',
+        'kecamatan' => 'required|string|max:255',
+        'kabupaten' => 'required|string|max:255',
+        'provinsi' => 'required|string|max:255',
+        'agama' => 'required|string|max:50',
+        'status_perkawinan' => 'required|string|max:50',
+        'pekerjaan' => 'required|string|max:100',
+        'status_penduduk' => 'required|string|max:50',
+    ]);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    }
+
+    $data = $request->all();
+    $data['petugas_id'] = auth()->id();
+
+    if ($request->hasFile('foto')) {
+        $foto = $request->file('foto');
+        $filename = time() . '.' . $foto->getClientOriginalExtension();
+        $path = $foto->storeAs('public/kependudukan', $filename);
+        $data['foto'] = $filename;
+    }
+
+    Kependudukan::create($data);
+
+    return redirect()->route('kependudukan.admin')->with('success', 'Data kependudukan berhasil ditambahkan.');
+}
+
+public function editKependudukan($id)
+{
+    $kependudukan = Kependudukan::findOrFail($id);
+    return view('admin.components.modals.kependudukan.editkependudukan', compact('kependudukan'));
+}
+
+public function updateKependudukan(Request $request, $id)
+{
+    $validator = Validator::make($request->all(), [
+        'nik' => 'required|string|max:16|unique:kependudukan,nik,' . $id,
+        'nama' => 'required|string|max:255',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'tempat_lahir' => 'required|string|max:255',
+        'tanggal_lahir' => 'required|date',
+        'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+        'alamat' => 'required|string',
+        'rt_rw' => 'required|string|max:10',
+        'kelurahan' => 'required|string|max:255',
+        'kecamatan' => 'required|string|max:255',
+        'kabupaten' => 'required|string|max:255',
+        'provinsi' => 'required|string|max:255',
+        'agama' => 'required|string|max:50',
+        'status_perkawinan' => 'required|string|max:50',
+        'pekerjaan' => 'required|string|max:100',
+        'status_penduduk' => 'required|string|max:50',
+    ]);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    }
+
+    $kependudukan = Kependudukan::findOrFail($id);
+    $data = $request->except(['_token', '_method', 'foto']);
+
+    if ($request->hasFile('foto')) {
+        if ($kependudukan->foto) {
+            Storage::delete('public/kependudukan/' . $kependudukan->foto);
+        }
+
+        $foto = $request->file('foto');
+        $filename = time() . '.' . $foto->getClientOriginalExtension();
+        $path = $foto->storeAs('public/kependudukan', $filename);
+        $data['foto'] = $filename;
+    }
+
+    $kependudukan->update($data);
+
+    return redirect()->route('kependudukan.admin')->with('success', 'Data kependudukan berhasil diperbarui.');
+}
+
+public function hapusKependudukan($id)
+{
+    $kependudukan = Kependudukan::findOrFail($id);
+    
+    if ($kependudukan->foto) {
+        Storage::delete('public/kependudukan/' . $kependudukan->foto);
+    }
+    
+    $kependudukan->delete();
+
+    return redirect()->route('kependudukan.admin')->with('success', 'Data kependudukan berhasil dihapus.');
+}
+
+public function searchKependudukan(Request $request)
+{
+    $search = $request->input('search');
+    
+    $kependudukans = Kependudukan::where('nik', 'LIKE', "%{$search}%")
+                        ->orWhere('nama', 'LIKE', "%{$search}%")
+                        ->orWhere('tempat_lahir', 'LIKE', "%{$search}%")
+                        ->orWhere('tanggal_lahir', 'LIKE', "%{$search}%")
+                        ->orWhere('jenis_kelamin', 'LIKE', "%{$search}%")
+                        ->orWhere('alamat', 'LIKE', "%{$search}%")
+                        ->orWhere('rt_rw', 'LIKE', "%{$search}%")
+                        ->orWhere('kelurahan', 'LIKE', "%{$search}%")
+                        ->orWhere('kecamatan', 'LIKE', "%{$search}%")
+                        ->orWhere('kabupaten', 'LIKE', "%{$search}%")
+                        ->orWhere('provinsi', 'LIKE', "%{$search}%")
+                        ->orWhere('agama', 'LIKE', "%{$search}%")
+                        ->orWhere('status_perkawinan', 'LIKE', "%{$search}%")
+                        ->orWhere('pekerjaan', 'LIKE', "%{$search}%")
+                        ->orWhere('status_penduduk', 'LIKE', "%{$search}%")
+                        ->get();
+
+    return view('admin.components.pages.kependudukan', compact('kependudukans'));
 }
 
 }

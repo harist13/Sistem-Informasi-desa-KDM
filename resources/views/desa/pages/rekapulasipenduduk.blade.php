@@ -50,7 +50,7 @@
                         <form action="{{ route('penduduk.cari') }}" method="GET" class="flex items-center gap-x-1">
                         <input type="text" name="search"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm block py-2 px-4 rounded-md w-60"
-                            placeholder="Cari nama petugas atau RT">
+                            placeholder="Cari nama RT atau RT">
                         <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-md">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
@@ -61,11 +61,11 @@
     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
         <li>
             <a href="{{ route('penduduk.urut', ['sort' => 'nama_petugas', 'order' => 'asc']) }}"
-                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nama Petugas (A-Z)</a>
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nama RT (A-Z)</a>
         </li>
         <li>
             <a href="{{ route('penduduk.urut', ['sort' => 'nama_petugas', 'order' => 'desc']) }}"
-                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nama Petugas (Z-A)</a>
+                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Nama RT (Z-A)</a>
         </li>
         <li>
             <a href="{{ route('penduduk.urut', ['sort' => 'RT', 'order' => 'asc']) }}"

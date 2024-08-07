@@ -20,6 +20,8 @@ Route::get('/dokumentasi-kegiatan', [TampilanAwalController::class, 'kegiatan'])
 Route::get('/rekapulasi-penduduk', [TampilanAwalController::class, 'rekapulasi'])->name('rekapulasi');
 Route::get('/penduduk/cari', [TampilanAwalController::class, 'searchPenduduk'])->name('penduduk.cari');
 Route::get('/dashboard/admin/penduduk/urut', [TampilanAwalController::class, 'sortPenduduk'])->name('penduduk.urut');
+Route::get('/kependudukan', [TampilanAwalController::class, 'kpendudukan'])->name('kpendudukan');
+
 
 
 // Admin login & register
@@ -95,6 +97,13 @@ Route::post('/dashboard/admin/pengaduan/{id}/selesai', [AdminController::class, 
 Route::put('/pemerintah/admin/update/{id}', [AdminController::class, 'updatePemerintahDesa'])->name('pemerintah.update');
 Route::delete('/pemerintah/admin/hapus/{id}', [AdminController::class, 'hapusPemerintahDesa'])->name('pemerintah.hapus');
 Route::get('/admin/pemerintah-desa/search', [AdminController::class, 'searchPemerintahDesa'])->name('pemerintah.search');
+    Route::get('/admin/kependudukan', [AdminController::class, 'kependudukan'])->name('kependudukan.admin');
+    Route::post('/admin/kependudukan/tambah', [AdminController::class, 'tambahKependudukan'])->name('kependudukan.tambah');
+    Route::get('/admin/kependudukan/edit/{id}', [AdminController::class, 'editKependudukan'])->name('kependudukan.edit');
+    Route::put('/admin/kependudukan/update/{id}', [AdminController::class, 'updateKependudukan'])->name('kependudukan.update');
+    Route::delete('/admin/kependudukan/hapus/{id}', [AdminController::class, 'hapusKependudukan'])->name('kependudukan.hapus');
+    Route::get('/admin/kependudukan/search', [AdminController::class, 'searchKependudukan'])->name('kependudukan.search');
+
 });
 
 

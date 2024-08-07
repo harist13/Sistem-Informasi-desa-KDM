@@ -9,6 +9,7 @@ use App\Models\Dokumentasi; // Tambahkan ini
 use App\Models\Petugas; // Tambahkan ini
 use App\Models\RekapulasiPenduduk;
 use App\Models\PemerintahDesa;
+use App\Models\Kependudukan;
 
 class TampilanAwalController extends Controller
 {
@@ -89,5 +90,29 @@ public function sortPenduduk(Request $request)
 
     $petugas = Petugas::all();
     return view('desa.pages.rekapulasipenduduk', compact('rekapulasi', 'petugas'));
+}
+
+public function kpendudukan(Request $request)
+{
+    $search = $request->input('search');
+
+    $kependudukans = Kependudukan::when($search, function ($query) use ($search) {
+        return $query->where('rt_rw', 'like', "%$search%")
+            ->orWhere('nama', 'like', "%$search%")
+            ->orWhere('tempat_lahir', 'like', "%$search%")
+            ->orWhere('tanggal_lahir', 'like', "%$search%")
+            ->orWhere('jenis_kelamin', 'like', "%$search%")
+            ->orWhere('alamat', 'like', "%$search%")
+            ->orWhere('kelurahan', 'like', "%$search%")
+            ->orWhere('kecamatan', 'like', "%$search%")
+            ->orWhere('kabupaten', 'like', "%$search%")
+            ->orWhere('provinsi', 'like', "%$search%")
+            ->orWhere('agama', 'like', "%$search%")
+            ->orWhere('status_perkawinan', 'like', "%$search%")
+            ->orWhere('pekerjaan', 'like', "%$search%")
+            ->orWhere('status_penduduk', 'like', "%$search%");
+    })->get();
+
+    return view('desa.pages.kpendudukan', compact('kependudukans', 'search'));
 }
 }
