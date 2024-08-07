@@ -29,11 +29,12 @@
     {{-- navbar --}}
     @include('layouts.navbar')
     <section class="">
-        <div class="container mx-auto px-6 min-h-screen">
-            <div class="flex justify-between items-center gap-4 pt-20 px-12">
-                <div class="w-1/2">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-8 mt-12 lg:mt-20 lg:px-12">
+                <div class="lg:w-1/2">
                     <h2 class="text-3xl font-bold">Judul Geyzzz</h2>
-                    <p class="text-md text-justify max-w-2xl">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate consectetur veniam ex quo
+                    <p class="text-md text-justify max-w-2xl">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Voluptate consectetur veniam ex quo
                         neque
                         harum magni, laboriosam itaque qui, deserunt quaerat. Inventore asperiores quam enim facere
                         atque
@@ -41,9 +42,32 @@
                         facilis
                         quas labore maxime ratione autem odit sit fuga alias sed quasi.</p>
                 </div>
-                <div class="w-1/2">
-                    <img class="w-full h-auto" src="https://img.freepik.com/free-photo/cascade-boat-clean-china-natural-rural_1417-1356.jpg?t=st=1722911812~exp=1722915412~hmac=74f8963abeb6977af26bfdf4ac0c99fb410559e5dd7f05599139a8a2bf673f3d&w=996"
+                <div class="lg:w-1/2">
+                    <img class="w-full h-auto"
+                        src="https://img.freepik.com/free-photo/cascade-boat-clean-china-natural-rural_1417-1356.jpg?t=st=1722911812~exp=1722915412~hmac=74f8963abeb6977af26bfdf4ac0c99fb410559e5dd7f05599139a8a2bf673f3d&w=996"
                         alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-8 mt-6 lg:mt-12 lg:px-12">
+                <div class="lg:w-1/2 order-2 lg:order-1">
+                    <img class="w-full h-auto"
+                        src="https://img.freepik.com/free-photo/cascade-boat-clean-china-natural-rural_1417-1356.jpg?t=st=1722911812~exp=1722915412~hmac=74f8963abeb6977af26bfdf4ac0c99fb410559e5dd7f05599139a8a2bf673f3d&w=996"
+                        alt="">
+                </div>
+                <div class="lg:w-1/2 order-1 lg:order-2">
+                    <h2 class="text-3xl font-bold">Judul Geyzzz</h2>
+                    <p class="text-md text-justify max-w-2xl">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Voluptate consectetur veniam ex quo
+                        neque
+                        harum magni, laboriosam itaque qui, deserunt quaerat. Inventore asperiores quam enim facere
+                        atque
+                        maxime perferendis eius nostrum. Libero, dolores quisquam nam explicabo tempora, laudantium
+                        facilis
+                        quas labore maxime ratione autem odit sit fuga alias sed quasi.</p>
                 </div>
             </div>
         </div>
