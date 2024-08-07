@@ -49,6 +49,11 @@
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pemerintahan
                                 Desa</a>
                         </li>
+                        <li>
+                            <a href="{{ route('wisata') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Wisata
+                                Desa</a>
+                        </li>
                     </ul>
                 </div>
                 <button id="dropdownDataButton" data-dropdown-toggle="dropdownData" data-dropdown-trigger="hover"

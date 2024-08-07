@@ -42,6 +42,10 @@ class TampilanAwalController extends Controller
     {
         return view('desa.pages.detailpem');
     }
+    public function wisata()
+    {
+        return view('desa.pages.wisata');
+    }
     public function rekapulasi()
 {
     $rekapulasi = RekapulasiPenduduk::with('petugas')->get();

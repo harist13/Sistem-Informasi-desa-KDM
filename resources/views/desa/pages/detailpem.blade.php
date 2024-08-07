@@ -29,24 +29,22 @@
     {{-- navbar --}}
     @include('layouts.navbar')
     <section>
-        <div class="container mx-auto min-h-screen px-8 mt-7">
+        <div class="container mx-auto min-h-screen px-4 lg:px-8 mt-7">
             <div>
                 <div class="p-4 mb-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2"
                     role="alert">
                     <span class="font-medium"><a href="/">Home</a> / </span> Struktur Pemerintahan /
                 </div>
                 <img src="" alt="">
-                <h1 class="text-3xl font-bold mb-2">Pemerintahan Desa Kedang Murung</h1>
-                <p>Adapun struktural nama pemerintahan yang mengatur di Desa Kedang Murung</p>
+                <h1 class="text-xl lg:text-3xl font-bold mb-2">Biodata Diri Struktur Pemerintahan</h1>
                 <div class="relative overflow-hidden mt-6">
-                    <div class="flex justify-center lg:grid lg:grid-cols-4 gap-6"
-                        style="font-family: 'Poppins', sans-serif">
-                        <div class="bg-white shadow-lg w-[1900px]">
-                            <div class="flex gap-6 p-8">
-                                <img class="h-72 rounded-t-lg"
+                    <div class="flex flex-col justify-center gap-6" style="font-family: 'Poppins', sans-serif">
+                        <div class="bg-white shadow-lg w-full">
+                            <div class="flex flex-col lg:flex-row gap-6 p-4 lg:p-8">
+                                <img class="lg:h-72 rounded-lg"
                                     src="https://img.freepik.com/free-photo/real-people-natural-portrait-happy-guy-smiling-laughing-looking-upbeat-camera-standing-glasses-white-background_1258-65662.jpg?t=st=1722863823~exp=1722867423~hmac=2457a1788e16917040472a2d2c6f75c203292172e1d9ca570742bf4262c6aaa4&w=996"
                                     alt="">
-                                <div class="w-[600px] border-2 border-gray-200 p-6">
+                                <div class="w-full lg:w-[650px] border-2 border-gray-200 rounded-lg p-6">
                                     <form class="space-y-4" action="#">
                                         <div class="flex items-center gap-4">
                                             <label for="email"
@@ -100,6 +98,31 @@
                                                 name="alamat" id="" cols="10" rows="5" required placeholder="Jl. Raya Bantul, Jogjakarta"></textarea>
                                         </div>
                                     </form>
+                                </div>
+                                <div>
+                                    <div class="max-w-xs">
+                                        <h1>Related Person</h1>
+                                        <div class="flex items-center gap-3 mt-3">
+                                            <img class="w-28 h-auto"
+                                                src="https://img.freepik.com/free-photo/real-people-natural-portrait-happy-guy-smiling-laughing-looking-upbeat-camera-standing-glasses-white-background_1258-65662.jpg?t=st=1722863823~exp=1722867423~hmac=2457a1788e16917040472a2d2c6f75c203292172e1d9ca570742bf4262c6aaa4&w=996"
+                                                alt="">
+                                            <div>
+                                                <h5 class="text-base font-semibold">Uchiha Sasuke</h5>
+                                                <p class="text-[13px]">Shadow Hokage</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="max-w-xs">
+                                        <div class="flex items-center gap-3 mt-3">
+                                            <img class="w-28 h-auto"
+                                                src="https://img.freepik.com/free-photo/real-people-natural-portrait-happy-guy-smiling-laughing-looking-upbeat-camera-standing-glasses-white-background_1258-65662.jpg?t=st=1722863823~exp=1722867423~hmac=2457a1788e16917040472a2d2c6f75c203292172e1d9ca570742bf4262c6aaa4&w=996"
+                                                alt="">
+                                            <div>
+                                                <h5 class="text-base font-semibold">Uchiha Sasuke</h5>
+                                                <p class="text-[13px]">Shadow Hokage</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

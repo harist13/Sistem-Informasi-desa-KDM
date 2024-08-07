@@ -15,6 +15,7 @@ Route::get('/sejarah', [TampilanAwalController::class, 'sejarah'])->name('sejara
 Route::get('/visi-misi', [TampilanAwalController::class, 'visimisi'])->name('visimisi');
 Route::get('/pemerintahan-desa', [TampilanAwalController::class, 'pemerintahan'])->name('pemerintahan');
 Route::get('/pemerintahan-desa/detail', [TampilanAwalController::class, 'detailPemerintahan'])->name('detailpem');
+Route::get('/wisata', [TampilanAwalController::class, 'wisata'])->name('wisata');
 Route::get('/dokumentasi-kegiatan', [TampilanAwalController::class, 'kegiatan'])->name('kegiatan');
 Route::get('/rekapulasi-penduduk', [TampilanAwalController::class, 'rekapulasi'])->name('rekapulasi');
 Route::get('/penduduk/cari', [TampilanAwalController::class, 'searchPenduduk'])->name('penduduk.cari');
