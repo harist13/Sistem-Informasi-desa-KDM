@@ -21,6 +21,7 @@ Route::get('/rekapulasi-penduduk', [TampilanAwalController::class, 'rekapulasi']
 Route::get('/penduduk/cari', [TampilanAwalController::class, 'searchPenduduk'])->name('penduduk.cari');
 Route::get('/dashboard/admin/penduduk/urut', [TampilanAwalController::class, 'sortPenduduk'])->name('penduduk.urut');
 Route::get('/kependudukan', [TampilanAwalController::class, 'kpendudukan'])->name('kpendudukan');
+Route::get('/kependudukan/sort', [TampilanAwalController::class, 'sortKependudukan'])->name('ks');
 
 
 
@@ -103,7 +104,7 @@ Route::get('/admin/pemerintah-desa/search', [AdminController::class, 'searchPeme
     Route::put('/admin/kependudukan/update/{id}', [AdminController::class, 'updateKependudukan'])->name('kependudukan.update');
     Route::delete('/admin/kependudukan/hapus/{id}', [AdminController::class, 'hapusKependudukan'])->name('kependudukan.hapus');
     Route::get('/admin/kependudukan/search', [AdminController::class, 'searchKependudukan'])->name('kependudukan.search');
-
+Route::get('/admin/kependudukan/sort', [AdminController::class, 'sortKependudukan'])->name('kependudukan.sort');
 });
 
 

@@ -115,4 +115,14 @@ public function kpendudukan(Request $request)
 
     return view('desa.pages.kpendudukan', compact('kependudukans', 'search'));
 }
+
+public function sortKependudukan(Request $request)
+{
+    $sortBy = $request->input('sort_by', 'nama'); // Default sort by nama
+    $sortOrder = $request->input('sort_order', 'asc'); // Default sort order ascending
+
+    $kependudukans = Kependudukan::orderBy($sortBy, $sortOrder)->get();
+
+    return view('desa.pages.kpendudukan', compact('kependudukans'));
+}
 }

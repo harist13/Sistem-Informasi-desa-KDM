@@ -53,82 +53,96 @@
                 </button>
             </div>
         </div>
-        <div class="relative overflow-x-auto mt-4">
-            <div class="flex justify-end items-center gap-2 mb-4">
+        <div class="relative mt-4">
+            <!-- Tombol-tombol di luar container tabel -->
+            <div class="flex justify-end items-center gap-2 mb-4 sticky top-0 bg-white z-10">
                 <button data-modal-target="tambah-kependudukan-modal" data-modal-toggle="tambah-kependudukan-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                     Tambah Data
                 </button>
+                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                    class="text-white bg-green-500 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+                    type="button">
+                    Sort Data 
+                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                    </svg>
+                </button>
                 @include('admin.components.modals.kependudukan.search')
+                @include('admin.components.modals.kependudukan.sort')
             </div>
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">No</th>
-                        <th scope="col" class="px-6 py-3">NIK</th>
-                        <th scope="col" class="px-6 py-3">Nama</th>
-                        <th scope="col" class="px-6 py-3">Tempat Lahir</th>
-                        <th scope="col" class="px-6 py-3">Tanggal Lahir</th>
-                        <th scope="col" class="px-6 py-3">Jenis Kelamin</th>
-                        <th scope="col" class="px-6 py-3">Alamat</th>
-                        <th scope="col" class="px-6 py-3">RT/RW</th>
-                        <th scope="col" class="px-6 py-3">Kelurahan</th>
-                        <th scope="col" class="px-6 py-3">Kecamatan</th>
-                        <th scope="col" class="px-6 py-3">Kabupaten</th>
-                        <th scope="col" class="px-6 py-3">Provinsi</th>
-                        <th scope="col" class="px-6 py-3">Agama</th>
-                        <th scope="col" class="px-6 py-3">Status Perkawinan</th>
-                        <th scope="col" class="px-6 py-3">Pekerjaan</th>
-                        <th scope="col" class="px-6 py-3">Status Penduduk</th>
-                        <th scope="col" class="px-6 py-3">Foto</th>
-                        <th scope="col" class="px-6 py-3">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($kependudukans as $index => $kependudukan)
-                        <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $index + 1 }}
-                            </th>
-                            <td class="px-6 py-4">{{ $kependudukan->nik }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->nama }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->tempat_lahir }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->tanggal_lahir }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->jenis_kelamin }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->alamat }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->rt_rw }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->kelurahan }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->kecamatan }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->kabupaten }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->provinsi }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->agama }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->status_perkawinan }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->pekerjaan }}</td>
-                            <td class="px-6 py-4">{{ $kependudukan->status_penduduk }}</td>
-                            <td class="px-6 py-4">
-                                @if($kependudukan->foto)
-                                    <img src="{{ asset('storage/kependudukan/' . $kependudukan->foto) }}" alt="{{ $kependudukan->nama }}" class="w-20 h-20 object-cover mx-auto">
-                                @else
-                                    No Photo
-                                @endif
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex justify-center items-center space-x-2">
-                                    <button data-modal-target="edit-modal-{{ $kependudukan->id }}" data-modal-toggle="edit-modal-{{ $kependudukan->id }}" class="text-white bg-yellow-300 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
-                                        Edit
-                                    </button>
-                                    <form action="{{ route('kependudukan.hapus', $kependudukan->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                            Delete
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
+            
+            <!-- Container tabel dengan overflow -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">No</th>
+                            <th scope="col" class="px-6 py-3">NIK</th>
+                            <th scope="col" class="px-6 py-3">Nama</th>
+                            <th scope="col" class="px-6 py-3">Tempat Lahir</th>
+                            <th scope="col" class="px-6 py-3">Tanggal Lahir</th>
+                            <th scope="col" class="px-6 py-3">Jenis Kelamin</th>
+                            <th scope="col" class="px-6 py-3">Alamat</th>
+                            <th scope="col" class="px-6 py-3">RT/RW</th>
+                            <th scope="col" class="px-6 py-3">Kelurahan</th>
+                            <th scope="col" class="px-6 py-3">Kecamatan</th>
+                            <th scope="col" class="px-6 py-3">Kabupaten</th>
+                            <th scope="col" class="px-6 py-3">Provinsi</th>
+                            <th scope="col" class="px-6 py-3">Agama</th>
+                            <th scope="col" class="px-6 py-3">Status Perkawinan</th>
+                            <th scope="col" class="px-6 py-3">Pekerjaan</th>
+                            <th scope="col" class="px-6 py-3">Status Penduduk</th>
+                            <th scope="col" class="px-6 py-3">Foto</th>
+                            <th scope="col" class="px-6 py-3">Aksi</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($kependudukans as $index => $kependudukan)
+                            <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $index + 1 }}
+                                </th>
+                                <td class="px-6 py-4">{{ $kependudukan->nik }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->nama }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->tempat_lahir }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->tanggal_lahir }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->jenis_kelamin }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->alamat }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->rt_rw }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->kelurahan }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->kecamatan }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->kabupaten }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->provinsi }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->agama }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->status_perkawinan }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->pekerjaan }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->status_penduduk }}</td>
+                                <td class="px-6 py-4">
+                                    @if($kependudukan->foto)
+                                        <img src="{{ asset('storage/kependudukan/' . $kependudukan->foto) }}" alt="{{ $kependudukan->nama }}" class="w-20 h-20 object-cover mx-auto">
+                                    @else
+                                        No Photo
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex justify-center items-center space-x-2">
+                                        <button data-modal-target="edit-modal-{{ $kependudukan->id }}" data-modal-toggle="edit-modal-{{ $kependudukan->id }}" class="text-white bg-yellow-300 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+                                            Edit
+                                        </button>
+                                        <form action="{{ route('kependudukan.hapus', $kependudukan->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </section>

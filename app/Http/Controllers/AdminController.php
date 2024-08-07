@@ -803,5 +803,16 @@ public function searchKependudukan(Request $request)
     return view('admin.components.pages.kependudukan', compact('kependudukans'));
 }
 
+public function sortKependudukan(Request $request)
+{
+    $sortBy = $request->input('sort_by', 'nama'); // Default sort by nama
+    $sortOrder = $request->input('sort_order', 'asc'); // Default sort order ascending
+
+    $kependudukans = Kependudukan::orderBy($sortBy, $sortOrder)->get();
+
+    return view('admin.components.pages.kependudukan', compact('kependudukans'));
+}
+
+
 }
 
