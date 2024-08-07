@@ -8,6 +8,7 @@ use App\Models\Artikel;
 use App\Models\Dokumentasi; // Tambahkan ini
 use App\Models\Petugas; // Tambahkan ini
 use App\Models\RekapulasiPenduduk;
+use App\Models\PemerintahDesa;
 
 class TampilanAwalController extends Controller
 {
@@ -34,13 +35,16 @@ class TampilanAwalController extends Controller
     {
         return view('desa.pages.visimisi');
     }
-    public function pemerintahan()
+     public function pemerintahan()
     {
-        return view('desa.pages.pemerintahan');
+        $pemerintahdesas = PemerintahDesa::all();
+        return view('desa.pages.pemerintahan', compact('pemerintahdesas'));
     }
-    public function detailPemerintahan()
+
+    public function detailPemerintahan($id)
     {
-        return view('desa.pages.detailpem');
+        $pemerintahdesa = PemerintahDesa::findOrFail($id);
+        return view('desa.pages.detailpem', compact('pemerintahdesa'));
     }
     public function wisata()
     {

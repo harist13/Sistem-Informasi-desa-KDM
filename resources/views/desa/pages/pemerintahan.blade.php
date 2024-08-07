@@ -20,6 +20,24 @@
         #mobile-menu.show {
             display: block;
         }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
     </style>
     @vite('resources/css/app.css')
 </head>
@@ -29,65 +47,35 @@
     {{-- navbar --}}
     @include('layouts.navbar')
     <section>
-        <div class="container mx-auto min-h-screen px-8 mt-7">
-            <div>
-                <div class="p-4 mb-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2"
-                    role="alert">
-                    <span class="font-medium"><a href="/">Home</a> / </span> Struktur Pemerintahan
-                </div>
-                <img src="" alt="">
-                <h1 class="text-3xl font-bold mb-2">Pemerintahan Desa Kedang Murung</h1>
-                <p>Adapun struktural nama pemerintahan yang mengatur di Desa Kedang Murung</p>
-                <div class="relative overflow-hidden mt-6">
-                    <div class="flex flex-col justify-center items-center lg:grid lg:grid-cols-4 gap-6"
-                        style="font-family: 'Poppins', sans-serif">
-                        <div class="bg-green-500 shadow-xl rounded-lg max-w-xs">
-                            <a href="{{ route('detailpem') }}">
-                                <img class="w-full rounded-t-lg"
-                                    src="https://img.freepik.com/free-photo/real-people-natural-portrait-happy-guy-smiling-laughing-looking-upbeat-camera-standing-glasses-white-background_1258-65662.jpg?t=st=1722863823~exp=1722867423~hmac=2457a1788e16917040472a2d2c6f75c203292172e1d9ca570742bf4262c6aaa4&w=996"
-                                    alt="">
-                            </a>
-                            <div class="text-center p-4">
-                                <h3 class="text-xl text-white font-bold">Uzummaki Naruto</h3>
-                                <p class="text-white">Kepala Desa</p>
-                                <span class="text-sm text-white opacity-75">2021 - 2024</span>
-                            </div>
-                        </div>
-                        <div class="bg-green-500 shadow-xl rounded-lg max-w-xs">
-                            <img class="w-full rounded-t-lg"
-                                src="https://img.freepik.com/free-photo/real-people-natural-portrait-happy-guy-smiling-laughing-looking-upbeat-camera-standing-glasses-white-background_1258-65662.jpg?t=st=1722863823~exp=1722867423~hmac=2457a1788e16917040472a2d2c6f75c203292172e1d9ca570742bf4262c6aaa4&w=996"
-                                alt="">
-                            <div class="text-center p-4">
-                                <h3 class="text-xl text-white font-bold">Uzummaki Naruto</h3>
-                                <p class="text-white">Kepala Desa</p>
-                                <span class="text-sm text-white opacity-75">2021 - 2024</span>
-                            </div>
-                        </div>
-                        <div class="bg-green-500 shadow-xl rounded-lg max-w-xs">
-                            <img class="w-full rounded-t-lg"
-                                src="https://img.freepik.com/free-photo/real-people-natural-portrait-happy-guy-smiling-laughing-looking-upbeat-camera-standing-glasses-white-background_1258-65662.jpg?t=st=1722863823~exp=1722867423~hmac=2457a1788e16917040472a2d2c6f75c203292172e1d9ca570742bf4262c6aaa4&w=996"
-                                alt="">
-                            <div class="text-center p-4">
-                                <h3 class="text-xl text-white font-bold">Uzummaki Naruto</h3>
-                                <p class="text-white">Kepala Desa</p>
-                                <span class="text-sm text-white opacity-75">2021 - 2024</span>
-                            </div>
-                        </div>
-                        <div class="bg-green-500 shadow-xl rounded-lg max-w-xs">
-                            <img class="w-full rounded-t-lg"
-                                src="https://img.freepik.com/free-photo/real-people-natural-portrait-happy-guy-smiling-laughing-looking-upbeat-camera-standing-glasses-white-background_1258-65662.jpg?t=st=1722863823~exp=1722867423~hmac=2457a1788e16917040472a2d2c6f75c203292172e1d9ca570742bf4262c6aaa4&w=996"
-                                alt="">
-                            <div class="text-center p-4">
-                                <h3 class="text-xl text-white font-bold">Uzummaki Naruto</h3>
-                                <p class="text-white">Kepala Desa</p>
-                                <span class="text-sm text-white opacity-75">2021 - 2024</span>
-                            </div>
+    <div class="container mx-auto min-h-screen px-8 mt-7">
+        <div>
+            <div class="p-4 mb-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2"
+                role="alert">
+                <span class="font-medium"><a href="/">Home</a> / </span> Struktur Pemerintahan
+            </div>
+            <h1 class="text-3xl font-bold mb-2">Pemerintahan Desa Kedang Murung</h1>
+            <p>Adapun struktural nama pemerintahan yang mengatur di Desa Kedang Murung</p>
+            <div class="relative overflow-hidden mt-6">
+                <div class="card-grid" style="font-family: 'Poppins', sans-serif">
+                    @foreach($pemerintahdesas as $pemerintah)
+                    <div class="card bg-green-500 shadow-xl rounded-lg">
+                        <a href="{{ route('detailpem', $pemerintah->id) }}">
+                            <img class="card-image rounded-t-lg"
+                                src="{{ asset('storage/pemerintahdesa/' . $pemerintah->foto) }}"
+                                alt="{{ $pemerintah->nama }}">
+                        </a>
+                        <div class="text-center p-4 flex-grow flex flex-col justify-center">
+                            <h3 class="text-xl text-white font-bold">{{ $pemerintah->nama }}</h3>
+                            <p class="text-white">{{ $pemerintah->jabatan }}</p>
+                            <span class="text-sm text-white opacity-75">{{ $pemerintah->NIP }}</span>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
     {{-- footer --}}
     @include('layouts.footer')
 
