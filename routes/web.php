@@ -94,6 +94,7 @@ Route::post('/dashboard/admin/pengaduan/{id}/selesai', [AdminController::class, 
     Route::get('/pemerintah/admin/edit/{id}', [AdminController::class, 'editPemerintahDesa'])->name('pemerintah.edit');
 Route::put('/pemerintah/admin/update/{id}', [AdminController::class, 'updatePemerintahDesa'])->name('pemerintah.update');
 Route::delete('/pemerintah/admin/hapus/{id}', [AdminController::class, 'hapusPemerintahDesa'])->name('pemerintah.hapus');
+Route::get('/admin/pemerintah-desa/search', [AdminController::class, 'searchPemerintahDesa'])->name('pemerintah.search');
 });
 
 

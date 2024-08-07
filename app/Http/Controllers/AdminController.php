@@ -657,5 +657,17 @@ public function hapusPemerintahDesa($id)
     return redirect()->route('pemerintah.admin')->with('success', 'Data pemerintah desa berhasil dihapus.');
 }
 
+public function searchPemerintahDesa(Request $request)
+{
+    $search = $request->input('search');
+    
+    $pemerintahdesas = PemerintahDesa::where('nama', 'LIKE', "%{$search}%")
+                        ->orWhere('NIP', 'LIKE', "%{$search}%")
+                        ->orWhere('jabatan', 'LIKE', "%{$search}%")
+                        ->get();
+
+    return view('admin.components.pages.pemerintahdesa', compact('pemerintahdesas'));
+}
+
 }
 
