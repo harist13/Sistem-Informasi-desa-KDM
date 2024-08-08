@@ -63,7 +63,7 @@
                             </div>
                             <button class="bg-green-500 text-white font-bold py-2 px-4 rounded w-full">Login</button>
                             <p class="text-center mt-4">
-                                <a class="no-underline font-bold text-sky-500" href="{{ route('loginMasyarakat') }}">Kembali</a>
+                                <a class="no-underline font-bold text-sky-500" href="{{ route('index') }}">Kembali</a>
                             </p>
                         </form>
                     </div>

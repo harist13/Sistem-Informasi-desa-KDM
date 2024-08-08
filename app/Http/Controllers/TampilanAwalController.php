@@ -14,12 +14,13 @@ use App\Models\Kependudukan;
 class TampilanAwalController extends Controller
 {
     public function index()
-    {
-        $artikels = Artikel::with('petugas')->latest()->take(3)->get();
-        $artikelTerbaru = Artikel::latest()->take(3)->get();
-        $dokumentasi = Dokumentasi::with('petugas')->get(); // Ambil semua data dokumentasi
-        return view('index', compact('artikels', 'artikelTerbaru', 'dokumentasi'));
-    }
+{
+    $artikels = Artikel::with('petugas')->latest()->take(3)->get();
+    $artikelTerbaru = Artikel::latest()->take(3)->get();
+    $dokumentasi = Dokumentasi::with('petugas')->get();
+    $pemerintahdesas = PemerintahDesa::take(3)->get(); // Ambil 3 data pemerintah desa
+    return view('index', compact('artikels', 'artikelTerbaru', 'dokumentasi', 'pemerintahdesas'));
+}
 
     public function berita($id)
     {
@@ -124,5 +125,10 @@ public function sortKependudukan(Request $request)
     $kependudukans = Kependudukan::orderBy($sortBy, $sortOrder)->get();
 
     return view('desa.pages.kpendudukan', compact('kependudukans'));
+}
+
+public function pemetaan()
+{
+    return view('desa.pages.pemetaan');
 }
 }

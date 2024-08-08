@@ -9,7 +9,7 @@ use App\Http\Controllers\TampilanAwalController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', [TampilanAwalController::class, 'index']);
+Route::get('/', [TampilanAwalController::class, 'index'])->name('index');
 Route::get('/berita/{id}', [TampilanAwalController::class, 'berita'])->name('berita.detail');
 Route::get('/sejarah', [TampilanAwalController::class, 'sejarah'])->name('sejarah');
 Route::get('/visi-misi', [TampilanAwalController::class, 'visimisi'])->name('visimisi');
@@ -22,6 +22,7 @@ Route::get('/penduduk/cari', [TampilanAwalController::class, 'searchPenduduk'])-
 Route::get('/dashboard/admin/penduduk/urut', [TampilanAwalController::class, 'sortPenduduk'])->name('penduduk.urut');
 Route::get('/kependudukan', [TampilanAwalController::class, 'kpendudukan'])->name('kpendudukan');
 Route::get('/kependudukan/sort', [TampilanAwalController::class, 'sortKependudukan'])->name('ks');
+Route::get('/pemetaan', [TampilanAwalController::class, 'pemetaan'])->name('pemetaan');
 
 
 
