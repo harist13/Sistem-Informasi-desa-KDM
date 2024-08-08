@@ -28,27 +28,28 @@
 
     {{-- navbar --}}
     @include('layouts.navbar')
-    <section>
-        <div class="container mx-auto min-h-screen px-8 mt-7">
-            <div>
-                <div class="p-4 mb-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2"
-                    role="alert">
-                    <span class="font-medium"><a href="/">Home</a> / </span> Detail pengumuman
+   <section>
+    <div class="container mx-auto min-h-screen px-8 mt-7">
+        <div>
+            <div class="p-4 mb-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2"
+                role="alert">
+                <span class="font-medium"><a href="/">Home</a> / </span> Detail pengumuman
+            </div>
+
+            <!-- PDF Display Section -->
+            <div class="mt-5">
+                <h2 class="text-xl font-bold mb-4">{{ $pengumuman->judul }}</h2>
+                <div class="border rounded-lg overflow-hidden">
+                    <iframe src="{{ asset('storage/pengumuman/' . $pengumuman->file) }}" width="100%" height="600px">
+                        This browser does not support PDFs. Please download the PDF to view it: 
+                        <a href="{{ asset('storage/pengumuman/' . $pengumuman->file) }}">Download PDF</a>.
+                    </iframe>
                 </div>
-               
-                <!-- PDF Display Section -->
-                <div class="mt-5">
-                    <h2 class="text-xl font-bold mb-4">PDF Document</h2>
-                    <div class="border rounded-lg overflow-hidden">
-                        <iframe src="{{ asset('pdf/sample.pdf') }}" width="100%" height="600px">
-                            This browser does not support PDFs. Please download the PDF to view it: 
-                            <a href="{{ asset('pdf/sample.pdf') }}">Download PDF</a>.
-                        </iframe>
-                    </div>
-                </div>
+                <p class="mt-4">Diposting oleh: {{ $pengumuman->petugas->nama_petugas }} | {{ $pengumuman->tanggal }}</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
     {{-- footer --}}
     @include('layouts.footer')
 

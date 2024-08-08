@@ -142,21 +142,21 @@
                 <!-- Sidebar -->
                 <aside class="lg:w-1/3">
                     <!-- Pengumuman Terbaru -->
-                    <div>
-                        <h3 class="text-3xl font-semibold mb-2">Pengumuman Terbaru</h3>
-                        <hr class="border-2 w-1/2">
-                        <div class="mt-4">
-                            @foreach ($artikelTerbaru as $artikelBaru)
-                                <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400"
-                                    role="alert">
-                                    <a href="{{ route('berita.detail', $artikelBaru->id) }}">
-                                        <span class="font-medium">{{ $artikelBaru->judul }}</span>
-                                    </a>
-                                </div>
-                            @endforeach
-
-                        </div>
-                    </div>
+                   
+<div>
+    <h3 class="text-3xl font-semibold mb-2">Pengumuman Terbaru</h3>
+    <hr class="border-2 w-1/2">
+    <div class="mt-4">
+        @foreach ($pengumuman_terbaru as $pengumuman)
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 dark:bg-gray-800 dark:text-green-400"
+                role="alert">
+                <a href="{{ route('detailpengumuman', $pengumuman->id) }}">
+                    <span class="font-medium">{{ $pengumuman->judul }}</span>
+                </a>
+            </div>
+        @endforeach
+    </div>
+</div>
 
                     <!-- Struktur Pemerintahan -->
                  <div class="pt-8">

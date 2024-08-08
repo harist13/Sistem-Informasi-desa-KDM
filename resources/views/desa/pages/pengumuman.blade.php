@@ -103,47 +103,28 @@
     {{-- navbar --}}
     @include('layouts.navbar')
 
-    <section class="container mx-auto px-8 mt-7">
-        <div>
-            <div class="p-4 mb-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2"
-                role="alert">
-                <span class="font-medium"><a href="/">Home</a> / </span> Pengumuman
-            </div>
-            <h1 class="text-3xl font-bold">Pengumuman Desa Kedang Murung</h1>
+   <section class="container mx-auto px-8 mt-7">
+    <div>
+        <div class="p-4 mb-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2"
+            role="alert">
+            <span class="font-medium"><a href="/">Home</a> / </span> Pengumuman
         </div>
+        <h1 class="text-3xl font-bold">Pengumuman Desa Kedang Murung</h1>
+    </div>
 
-        <div class="announcement-container mt-5">
-            <!-- Pengumuman Item 1 -->
-            <div class="card">
-                <img src="path/to/image.png" alt="Pengumuman Image">
-                <div class="content">
-                    <h2>PENGUMUMAN HASIL FINAL "LOMBA BEGERAKKAN SAHUR TRADISIONAL" TAHUN 2023 KOTA BANGUN</h2>
-                    <p><i class="fas fa-calendar-alt"></i> Apr 09, 2023 <br><i class="fas fa-map-marker-alt"></i> Desa Kota Bangun Ulu</p>
-                    <a href="{{ route('detailpengumuman') }}" class="link">selengkapnya ➜</a>
-                </div>
-            </div>
-
-            <!-- Pengumuman Item 2 -->
-            <div class="card">
-                <img src="path/to/image.png" alt="Pengumuman Image">
-                <div class="content">
-                    <h2>PENGUMUMAN HASIL FINAL "LOMBA BEGERAKKAN SAHUR TRADISIONAL" TAHUN 2023 KOTA BANGUN</h2>
-                    <p><i class="fas fa-calendar-alt"></i> Apr 09, 2023 <br><i class="fas fa-map-marker-alt"></i> Desa Kota Bangun Ulu</p>
-                    <a href="#" class="link">selengkapnya ➜</a>
-                </div>
-            </div>
-
-            <!-- Pengumuman Item 3 -->
-            <div class="card">
-                <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRAgjeh_PZSC9gUmlm1dzEkbCsP71owoucsFWhoIYYpp7u1czrj" alt="Pengumuman Image">
-                <div class="content">
-                    <h2>PENGUMUMAN HASIL FINAL "LOMBA BEGERAKKAN SAHUR TRADISIONAL" TAHUN 2023 KOTA BANGUN</h2>
-                    <p><i class="fas fa-calendar-alt"></i> Apr 09, 2023 <br><i class="fas fa-map-marker-alt"></i> Desa Kota Bangun Ulu</p>
-                    <a href="#" class="link">selengkapnya ➜</a>
-                </div>
+    <div class="announcement-container mt-5">
+        @foreach ($pengumumans as $pengumuman)
+        <div class="card">
+            <img src="{{ asset('storage/pengumuman/' . $pengumuman->file) }}" alt="Pengumuman Image">
+            <div class="content">
+                <h2>{{ $pengumuman->judul }}</h2>
+                <p><i class="fas fa-calendar-alt"></i> {{ $pengumuman->tanggal }} <br><i class="fas fa-user-alt"></i> {{ $pengumuman->petugas->nama_petugas }}</p>
+                <a href="{{ route('detailpengumuman', $pengumuman->id) }}" class="link">selengkapnya ➜</a>
             </div>
         </div>
-    </section>
+        @endforeach
+    </div>
+</section>
 
     {{-- footer --}}
     @include('layouts.footer')

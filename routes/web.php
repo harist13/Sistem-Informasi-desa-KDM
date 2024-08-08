@@ -25,7 +25,7 @@ Route::get('/kependudukan/sort', [TampilanAwalController::class, 'sortKependuduk
 Route::get('/pemetaan', [TampilanAwalController::class, 'pemetaan'])->name('pemetaan');
 Route::get('/beritadesa', [TampilanAwalController::class, 'beritadesa'])->name('beritadesa');
 Route::get('/pengumuman', [TampilanAwalController::class, 'pengumuman'])->name('pengumuman');
-Route::get('/detailpengumuman', [TampilanAwalController::class, 'detailpengumuman'])->name('detailpengumuman');
+Route::get('/detailpengumuman/{id}', [TampilanAwalController::class, 'detailPengumuman'])->name('detailpengumuman');
 
 
 

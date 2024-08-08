@@ -10,6 +10,7 @@ use App\Models\Petugas; // Tambahkan ini
 use App\Models\RekapulasiPenduduk;
 use App\Models\PemerintahDesa;
 use App\Models\Kependudukan;
+use App\Models\Pengumuman;
 
 class TampilanAwalController extends Controller
 {
@@ -19,7 +20,8 @@ class TampilanAwalController extends Controller
     $artikelTerbaru = Artikel::latest()->take(3)->get();
     $dokumentasi = Dokumentasi::with('petugas')->get();
     $pemerintahdesas = PemerintahDesa::take(3)->get(); // Ambil 3 data pemerintah desa
-    return view('index', compact('artikels', 'artikelTerbaru', 'dokumentasi', 'pemerintahdesas'));
+    $pengumuman_terbaru = Pengumuman::with('petugas')->latest()->take(3)->get();
+    return view('index', compact('artikels', 'artikelTerbaru', 'dokumentasi', 'pemerintahdesas', 'pengumuman_terbaru'));
 }
 
     public function berita($id)
@@ -27,7 +29,8 @@ class TampilanAwalController extends Controller
         $artikel = Artikel::with('petugas')->findOrFail($id);
         $artikelTerbaru = Artikel::latest()->take(3)->get();
         $pemerintahdesas = PemerintahDesa::take(3)->get(); // Ambil 3 data pemerintah desa
-        return view('desa.pages.berita', compact('artikel', 'artikelTerbaru', 'pemerintahdesas'));
+        $pengumuman_terbaru = Pengumuman::with('petugas')->latest()->take(3)->get();
+        return view('desa.pages.berita', compact('artikel', 'artikelTerbaru', 'pemerintahdesas', 'pengumuman_terbaru'));
     }
 
     public function sejarah()
@@ -148,12 +151,15 @@ public function beritadesa(Request $request)
     return view('desa.pages.beritadesa', compact('artikels', 'artikelTerbaru', 'pemerintahdesas'));
 }
 
-public function pengumuman()
-{
-    return view('desa.pages.pengumuman');
-}
-public function detailpengumuman()
-{
-    return view('desa.pages.detailpengumuman');
-}
+  public function pengumuman()
+    {
+        $pengumumans = Pengumuman::with('petugas')->get();
+        return view('desa.pages.pengumuman', compact('pengumumans'));
+    }
+
+    public function detailPengumuman($id)
+    {
+        $pengumuman = Pengumuman::findOrFail($id);
+        return view('desa.pages.detailpengumuman', compact('pengumuman'));
+    }
 }
