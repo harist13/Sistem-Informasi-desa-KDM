@@ -67,6 +67,8 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                     </svg>
                 </button>
+                 <a href="{{ route('kependuduk.export') }}" class="block lg:w-1/6 my-2 lg:float-end text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:focus:ring-yellow-800">
+    Export to Excel</a>
                 @include('admin.components.modals.kependudukan.search')
                 @include('admin.components.modals.kependudukan.sort')
             </div>

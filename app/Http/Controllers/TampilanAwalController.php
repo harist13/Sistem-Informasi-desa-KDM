@@ -133,12 +133,27 @@ public function pemetaan()
     return view('desa.pages.pemetaan');
 }
 
-public function beritadesa()
-
+public function beritadesa(Request $request)
 {
-    $artikels = Artikel::with('petugas')->latest()->get();
+    $search = $request->input('search');
+    $artikels = Artikel::with('petugas')
+        ->when($search, function ($query) use ($search) {
+            return $query->where('judul', 'like', "%$search%")
+                ->orWhere('deskripsi', 'like', "%$search%");
+        })
+        ->latest()
+        ->paginate(10);
     $artikelTerbaru = Artikel::latest()->take(3)->get();
-    $pemerintahdesas = PemerintahDesa::take(3)->get(); // Ambil 3 data pemerintah desa
+    $pemerintahdesas = PemerintahDesa::take(3)->get();
     return view('desa.pages.beritadesa', compact('artikels', 'artikelTerbaru', 'pemerintahdesas'));
+}
+
+public function pengumuman()
+{
+    return view('desa.pages.pengumuman');
+}
+public function detailpengumuman()
+{
+    return view('desa.pages.detailpengumuman');
 }
 }

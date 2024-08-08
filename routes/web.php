@@ -24,6 +24,10 @@ Route::get('/kependudukan', [TampilanAwalController::class, 'kpendudukan'])->nam
 Route::get('/kependudukan/sort', [TampilanAwalController::class, 'sortKependudukan'])->name('ks');
 Route::get('/pemetaan', [TampilanAwalController::class, 'pemetaan'])->name('pemetaan');
 Route::get('/beritadesa', [TampilanAwalController::class, 'beritadesa'])->name('beritadesa');
+Route::get('/pengumuman', [TampilanAwalController::class, 'pengumuman'])->name('pengumuman');
+Route::get('/detailpengumuman', [TampilanAwalController::class, 'detailpengumuman'])->name('detailpengumuman');
+
+
 
 
 
@@ -108,6 +112,12 @@ Route::get('/admin/pemerintah-desa/search', [AdminController::class, 'searchPeme
     Route::delete('/admin/kependudukan/hapus/{id}', [AdminController::class, 'hapusKependudukan'])->name('kependudukan.hapus');
     Route::get('/admin/kependudukan/search', [AdminController::class, 'searchKependudukan'])->name('kependudukan.search');
 Route::get('/admin/kependudukan/sort', [AdminController::class, 'sortKependudukan'])->name('kependudukan.sort');
+ Route::get('/dashboard/admin/kependudukan/export', [AdminController::class, 'exportKependudukan'])->name('kependuduk.export');
+  Route::get('/admin/pengumuman', [AdminController::class, 'pengumuman'])->name('pengumuman.admin');
+    Route::post('/dashboard/admin/pengumuman/tambah', [AdminController::class, 'tambahPengumuman'])->name('pengumuman.tambah');
+Route::delete('/dashboard/admin/pengumuman/{id}', [AdminController::class, 'hapusPengumuman'])->name('pengumuman.hapus');
+Route::get('/dashboard/admin/pengumuman/edit/{id}', [AdminController::class, 'editPengumuman'])->name('pengumuman.edit');
+Route::put('/dashboard/admin/pengumuman/update/{id}', [AdminController::class, 'updatePengumuman'])->name('pengumuman.update');
 });
 
 

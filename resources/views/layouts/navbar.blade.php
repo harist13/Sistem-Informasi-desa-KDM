@@ -108,7 +108,7 @@
                     data-dropdown-trigger="hover"
                     class="text-white hover:bg-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
                     type="button">
-                    Kegiatan Desa
+                    Informasi
                     <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -122,6 +122,11 @@
                             <a href="{{ route('beritadesa') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                 Berita</a>
+                        </li>
+                         <li>
+                            <a href="{{ route('pengumuman') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                Pengumuman</a>
                         </li>
                         <li>
                             <a href="{{ route('kegiatan') }}"

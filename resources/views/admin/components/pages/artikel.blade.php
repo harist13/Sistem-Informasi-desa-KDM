@@ -39,12 +39,12 @@
     <section>
         <div class="p-4 sm:ml-64">
             <div class="flex flex-col">
-                <h1 class="text-2xl lg:text-4xl font-bold mt-4 mb-2">Halaman Artikel</h1>
+                <h1 class="text-2xl lg:text-4xl font-bold mt-4 mb-2">Halaman Berita</h1>
                 <div class="flex justify-between items-center mb-2">
                     <div class="p-3 mb-0 text-sm text-blue-800 rounded-lg lg:w-full bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
                         role="alert">
                         <i class="fa-solid fa-house mr-1"></i> >
-                        <span class="font-medium">Dashboard</span> > Artikel > Administrator / Staff
+                        <span class="font-medium">Dashboard</span> > Berita > Administrator / Staff
                     </div>
                     <button data-drawer-target="sidebar-multi-level-sidebar"
                         data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar"

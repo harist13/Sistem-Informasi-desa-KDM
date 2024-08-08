@@ -19,6 +19,8 @@ use App\Exports\rekappenduduk;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\PemerintahDesa;
 use App\Models\Kependudukan;
+use App\Exports\KependudukanExport;
+use App\Models\Pengumuman;
 
 
 class AdminController extends Controller
@@ -813,6 +815,94 @@ public function sortKependudukan(Request $request)
     return view('admin.components.pages.kependudukan', compact('kependudukans'));
 }
 
+public function exportKependudukan()
+{
+    return Excel::download(new KependudukanExport, 'data_kependudukan.xlsx');
+}
 
+public function pengumuman()
+{
+    $pengumumans = Pengumuman::all();
+    return view('admin.components.pages.pengumuman', compact('pengumumans'));
+}
+
+public function tambahPengumuman(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'judul' => 'required|string|max:255',
+        'tanggal' => 'required|date',
+        'file' => 'required|file|mimes:pdf,doc,docx,xlsx,xls',
+    ]);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    }
+
+    $data = $request->all();
+    $data['petugas_id'] = auth()->id();
+
+    if ($request->hasFile('file')) {
+        $file = $request->file('file');
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $path = $file->storeAs('public/pengumuman', $filename);
+        $data['file'] = $filename;
+    }
+
+    Pengumuman::create($data);
+
+    return redirect()->route('pengumuman.admin')->with('success', 'Pengumuman berhasil ditambahkan.');
+}
+
+public function hapusPengumuman($id)
+{
+    $pengumuman = Pengumuman::findOrFail($id);
+    
+    // Hapus file jika ada
+    if ($pengumuman->file) {
+        Storage::delete('public/pengumuman/' . $pengumuman->file);
+    }
+    
+    $pengumuman->delete();
+
+    return redirect()->route('pengumuman.admin')->with('success', 'Pengumuman berhasil dihapus.');
+}
+
+public function editPengumuman($id)
+{
+    $pengumuman = Pengumuman::findOrFail($id);
+    return view('admin.components.modals.pengumuman.edit', compact('pengumuman'));
+}
+
+public function updatePengumuman(Request $request, $id)
+{
+    $validator = Validator::make($request->all(), [
+        'judul' => 'required|string|max:255',
+        'tanggal' => 'required|date',
+        'file' => 'nullable|file|mimes:pdf,doc,docx,xlsx,xls',
+    ]);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
+    }
+
+    $pengumuman = Pengumuman::findOrFail($id);
+    $data = $request->except(['_token', '_method']);
+
+    if ($request->hasFile('file')) {
+        // Hapus file lama
+        if ($pengumuman->file) {
+            Storage::delete('public/pengumuman/' . $pengumuman->file);
+        }
+
+        $file = $request->file('file');
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $path = $file->storeAs('public/pengumuman', $filename);
+        $data['file'] = $filename;
+    }
+
+    $pengumuman->update($data);
+
+    return redirect()->route('pengumuman.admin')->with('success', 'Pengumuman berhasil diperbarui.');
+}
 }
 
