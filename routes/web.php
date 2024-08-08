@@ -23,6 +23,8 @@ Route::get('/dashboard/admin/penduduk/urut', [TampilanAwalController::class, 'so
 Route::get('/kependudukan', [TampilanAwalController::class, 'kpendudukan'])->name('kpendudukan');
 Route::get('/kependudukan/sort', [TampilanAwalController::class, 'sortKependudukan'])->name('ks');
 Route::get('/pemetaan', [TampilanAwalController::class, 'pemetaan'])->name('pemetaan');
+Route::get('/beritadesa', [TampilanAwalController::class, 'beritadesa'])->name('beritadesa');
+
 
 
 

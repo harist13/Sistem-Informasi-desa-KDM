@@ -26,7 +26,8 @@ class TampilanAwalController extends Controller
     {
         $artikel = Artikel::with('petugas')->findOrFail($id);
         $artikelTerbaru = Artikel::latest()->take(3)->get();
-        return view('desa.pages.berita', compact('artikel', 'artikelTerbaru'));
+        $pemerintahdesas = PemerintahDesa::take(3)->get(); // Ambil 3 data pemerintah desa
+        return view('desa.pages.berita', compact('artikel', 'artikelTerbaru', 'pemerintahdesas'));
     }
 
     public function sejarah()
@@ -130,5 +131,14 @@ public function sortKependudukan(Request $request)
 public function pemetaan()
 {
     return view('desa.pages.pemetaan');
+}
+
+public function beritadesa()
+
+{
+    $artikels = Artikel::with('petugas')->latest()->get();
+    $artikelTerbaru = Artikel::latest()->take(3)->get();
+    $pemerintahdesas = PemerintahDesa::take(3)->get(); // Ambil 3 data pemerintah desa
+    return view('desa.pages.beritadesa', compact('artikels', 'artikelTerbaru', 'pemerintahdesas'));
 }
 }

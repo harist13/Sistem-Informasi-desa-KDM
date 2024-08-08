@@ -112,7 +112,7 @@
             <div class="flex flex-col lg:flex-row gap-8 mt-3">
                 <!-- Artikel Terbaru -->
                 <div class="flex flex-col lg:w-2/3">
-                    <h1 class="text-3xl font-semibold text-[#282828] mb-2">Artikel <span
+                    <h1 class="text-3xl font-semibold text-[#282828] mb-2">Berita <span
                             class="font-bold text-green-500">Terbaru</span></h1>
                     <hr class="border-2 w-1/2 mb-4">
 
@@ -131,7 +131,11 @@
                             </div>
                         </div>
                     @endforeach
-
+                    <div class="flex justify-left mt-4">
+        <a href="{{ route('beritadesa') }}" class="px-6 py-2 bg-green-500 text-white font-semibold rounded hover:bg-green-600">
+            Lihat Semua
+        </a>
+    </div>
 
 
                 </div>
