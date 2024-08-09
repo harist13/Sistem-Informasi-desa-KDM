@@ -683,12 +683,15 @@ public function tambahKependudukan(Request $request)
     $validator = Validator::make($request->all(), [
         'nik' => 'required|string|max:16|unique:kependudukan,nik',
         'nama' => 'required|string|max:255',
+        'no_kk' => 'required|string|max:255',
         'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'tempat_lahir' => 'required|string|max:255',
         'tanggal_lahir' => 'required|date',
+        'umur' => 'required|string|max:255',
         'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
         'alamat' => 'required|string',
         'rt_rw' => 'required|string|max:10',
+        'dusun' => 'required|string|max:255',
         'kelurahan' => 'required|string|max:255',
         'kecamatan' => 'required|string|max:255',
         'kabupaten' => 'required|string|max:255',
@@ -696,6 +699,8 @@ public function tambahKependudukan(Request $request)
         'agama' => 'required|string|max:50',
         'status_perkawinan' => 'required|string|max:50',
         'pekerjaan' => 'required|string|max:100',
+        'pendidikan' => 'required|string|max:255',
+        'kewarganegaraan' => 'required|string|max:255',
         'status_penduduk' => 'required|string|max:50',
     ]);
 
@@ -729,12 +734,15 @@ public function updateKependudukan(Request $request, $id)
     $validator = Validator::make($request->all(), [
         'nik' => 'required|string|max:16|unique:kependudukan,nik,' . $id,
         'nama' => 'required|string|max:255',
+        'no_kk' => 'required|string|max:255',
         'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'tempat_lahir' => 'required|string|max:255',
         'tanggal_lahir' => 'required|date',
+        'umur' => 'required|string|max:255',
         'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
         'alamat' => 'required|string',
         'rt_rw' => 'required|string|max:10',
+        'dusun' => 'required|string|max:255',
         'kelurahan' => 'required|string|max:255',
         'kecamatan' => 'required|string|max:255',
         'kabupaten' => 'required|string|max:255',
@@ -742,6 +750,8 @@ public function updateKependudukan(Request $request, $id)
         'agama' => 'required|string|max:50',
         'status_perkawinan' => 'required|string|max:50',
         'pekerjaan' => 'required|string|max:100',
+        'pendidikan' => 'required|string|max:255',
+        'kewarganegaraan' => 'required|string|max:255',
         'status_penduduk' => 'required|string|max:50',
     ]);
 

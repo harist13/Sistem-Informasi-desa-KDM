@@ -115,7 +115,7 @@
     <div class="announcement-container mt-5">
         @foreach ($pengumumans as $pengumuman)
         <div class="card">
-            <img src="{{ asset('storage/pengumuman/' . $pengumuman->file) }}" alt="Pengumuman Image">
+            <img src="{{ asset('img/calender.png') }}" alt="Pengumuman Image">
             <div class="content">
                 <h2>{{ $pengumuman->judul }}</h2>
                 <p><i class="fas fa-calendar-alt"></i> {{ $pengumuman->tanggal }} <br><i class="fas fa-user-alt"></i> {{ $pengumuman->petugas->nama_petugas }}</p>

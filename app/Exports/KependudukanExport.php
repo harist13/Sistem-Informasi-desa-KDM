@@ -5,8 +5,11 @@ namespace App\Exports;
 use App\Models\Kependudukan;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class KependudukanExport implements FromCollection, WithHeadings
+class KependudukanExport implements FromCollection, WithHeadings, WithStyles, ShouldAutoSize
 {
     /**
      * @return \Illuminate\Support\Collection
@@ -17,11 +20,14 @@ class KependudukanExport implements FromCollection, WithHeadings
             'id',
             'nik',
             'nama',
+            'no_kk',
             'tempat_lahir',
             'tanggal_lahir',
+            'umur',
             'jenis_kelamin',
             'alamat',
             'rt_rw',
+            'dusun',
             'kelurahan',
             'kecamatan',
             'kabupaten',
@@ -29,6 +35,8 @@ class KependudukanExport implements FromCollection, WithHeadings
             'agama',
             'status_perkawinan',
             'pekerjaan',
+            'pendidikan',
+            'kewarganegaraan',
             'status_penduduk'
         )->get();
     }
@@ -42,11 +50,14 @@ class KependudukanExport implements FromCollection, WithHeadings
             'ID',
             'NIK',
             'Nama',
+            'NO KK',
             'Tempat Lahir',
             'Tanggal Lahir',
+            'Umur',
             'Jenis Kelamin',
             'Alamat',
             'RT/RW',
+            'Dusun',
             'Kelurahan',
             'Kecamatan',
             'Kabupaten',
@@ -54,7 +65,28 @@ class KependudukanExport implements FromCollection, WithHeadings
             'Agama',
             'Status Perkawinan',
             'Pekerjaan',
+            'Pendidikan',
+            'Kewarganegaraan',
             'Status Penduduk',
+        ];
+    }
+
+     public function styles(Worksheet $sheet)
+    {
+        return [
+            1 => [
+                'font' => ['bold' => true],
+                'fill' => [
+                    'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                    'startColor' => ['rgb' => 'FFFF00']
+                ],
+                'borders' => [
+                    'allBorders' => [
+                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                        'color' => ['argb' => '000000'],
+                    ],
+                ],
+            ],
         ];
     }
 }

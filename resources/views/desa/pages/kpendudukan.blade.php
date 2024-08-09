@@ -81,18 +81,15 @@
                             <th scope="col" class="px-6 py-3">No</th>
                             <th scope="col" class="px-6 py-3">RT/RW</th>
                             <th scope="col" class="px-6 py-3">Nama</th>
-                            <th scope="col" class="px-6 py-3">Tempat Lahir</th>
-                            <th scope="col" class="px-6 py-3">Tanggal Lahir</th>
+                            <th scope="col" class="px-6 py-3">Umur</th>
                             <th scope="col" class="px-6 py-3">Jenis Kelamin</th>
-                            <th scope="col" class="px-6 py-3">Alamat</th>
+                            <th scope="col" class="px-6 py-3 min-w-[200px]">Alamat</th>
                             <th scope="col" class="px-6 py-3">Kelurahan</th>
                             <th scope="col" class="px-6 py-3">Kecamatan</th>
                             <th scope="col" class="px-6 py-3">Kabupaten</th>
                             <th scope="col" class="px-6 py-3">Provinsi</th>
                             <th scope="col" class="px-6 py-3">Agama</th>
-                            <th scope="col" class="px-6 py-3">Status Perkawinan</th>
-                            <th scope="col" class="px-6 py-3">Pekerjaan</th>
-                            <th scope="col" class="px-6 py-3">Status Penduduk</th>
+                    
                         </tr>
                     </thead>
                     <tbody>
@@ -103,8 +100,7 @@
                                 </th>
                                 <td class="px-6 py-4">{{ $kependudukan->rt_rw }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->nama }}</td>
-                                <td class="px-6 py-4">{{ $kependudukan->tempat_lahir }}</td>
-                                <td class="px-6 py-4">{{ $kependudukan->tanggal_lahir }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->umur }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->jenis_kelamin }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->alamat }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->kelurahan }}</td>
@@ -112,14 +108,67 @@
                                 <td class="px-6 py-4">{{ $kependudukan->kabupaten }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->provinsi }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->agama }}</td>
-                                <td class="px-6 py-4">{{ $kependudukan->status_perkawinan }}</td>
-                                <td class="px-6 py-4">{{ $kependudukan->pekerjaan }}</td>
-                                <td class="px-6 py-4">{{ $kependudukan->status_penduduk }}</td>
+                              
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
+
+            <br>
+            <br>
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+            <th scope="col" class="px-6 py-3 text-left">Total Penduduk</th>
+            <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan RT</th>
+            <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Dusun</th>
+            <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Status Perkawinan</th>
+            <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Status Penduduk</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Total Penduduk -->
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <td class="px-6 py-4 text-left font-medium text-gray-900 dark:text-white">
+                {{ $kependudukans->count() }}
+            </td>
+            <!-- Jumlah Berdasarkan RT -->
+            <td class="px-6 py-4 text-left">
+                <ul class="list-disc list-inside">
+                    @foreach ($kependudukans->groupBy('rt_rw') as $rt_rw => $penduduk)
+                        <li>RT/RW {{ $rt_rw }}: {{ $penduduk->count() }}</li>
+                    @endforeach
+                </ul>
+            </td>
+
+            <td class="px-6 py-4 text-left">
+                <ul class="list-disc list-inside">
+                    @foreach ($kependudukans->groupBy('dusun') as $dusun => $penduduk)
+                        <li>{{ $dusun }}: {{ $penduduk->count() }}</li>
+                    @endforeach
+                </ul>
+            </td>
+            <!-- Jumlah Berdasarkan Status Perkawinan -->
+            <td class="px-6 py-4 text-left">
+                <ul class="list-disc list-inside">
+                    @foreach ($kependudukans->groupBy('status_perkawinan') as $status_perkawinan => $penduduk)
+                        <li>{{ $status_perkawinan }}: {{ $penduduk->count() }}</li>
+                    @endforeach
+                </ul>
+            </td>
+            <!-- Jumlah Berdasarkan Status Penduduk -->
+            <td class="px-6 py-4 text-left">
+                <ul class="list-disc list-inside">
+                    @foreach ($kependudukans->groupBy('status_penduduk') as $status_penduduk => $penduduk)
+                        <li>{{ $status_penduduk }}: {{ $penduduk->count() }}</li>
+                    @endforeach
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
         </div>
     </div>
 </section>

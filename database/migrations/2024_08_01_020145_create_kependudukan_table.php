@@ -17,20 +17,25 @@ class CreateKependudukanTable extends Migration
             $table->id();
             $table->string('nik', 16)->unique();
             $table->string('nama', 100);
+            $table->string('no_kk', 100);
             $table->string('foto', 255);
             $table->string('tempat_lahir', 100);
             $table->date('tanggal_lahir');
+            $table->string('umur', 100);
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
             $table->text('alamat');
             $table->string('rt_rw', 10);
+            $table->string('dusun', 50);
             $table->string('kelurahan', 100);
             $table->string('kecamatan', 100);
             $table->string('kabupaten', 100);
             $table->string('provinsi', 100);
             $table->string('agama', 50);
-            $table->enum('status_perkawinan', 100);
+            $table->string('status_perkawinan', 100);
             $table->string('pekerjaan', 100);
-            $table->enum('status_penduduk', 100);
+            $table->string('pendidikan', 100);
+            $table->string('kewarganegaraan', 100);
+            $table->string('status_penduduk', 100);
             $table->timestamps();
 
             // Foreign key to petugas (assuming petugas manages penduduk)
@@ -48,3 +53,4 @@ class CreateKependudukanTable extends Migration
         Schema::dropIfExists('kependudukan');
     }
 }
+

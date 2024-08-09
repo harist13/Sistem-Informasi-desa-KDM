@@ -29,6 +29,10 @@
                         <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
                         <input type="text" name="nama" id="nama" value="{{ $kependudukan->nama }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                     </div>
+                    <div>
+                        <label for="no kk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No KK</label>
+                        <input type="text" name="no_kk" id="no_kk" value="{{ $kependudukan->no_kk }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                    </div>
 
                     <div>
                         <label for="jenis_kelamin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
@@ -47,6 +51,10 @@
                         <label for="tanggal_lahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Lahir</label>
                         <input type="date" name="tanggal_lahir" id="tanggal_lahir" value="{{ $kependudukan->tanggal_lahir }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                     </div>
+                    <div>
+                        <label for="umur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Umur</label>
+                        <input type="number" name="umur" id="umur" value="{{ $kependudukan->umur }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                    </div>
                     
                     <div>
                         <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
@@ -58,6 +66,11 @@
                     <div>
                         <label for="rt_rw" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">RT/RW</label>
                         <input type="text" name="rt_rw" id="rt_rw" value="{{ $kependudukan->rt_rw }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                    </div>
+
+                    <div>
+                        <label for="dusun" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dusun</label>
+                        <input type="text" name="dusun" id="dusun" value="{{ $kependudukan->dusun }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                     </div>
 
                     <div>
@@ -88,8 +101,14 @@
 
                     <div>
                         <label for="status_perkawinan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Perkawinan</label>
-                        <input type="text" name="status_perkawinan" id="status_perkawinan" value="{{ $kependudukan->status_perkawinan }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                        <select name="status_perkawinan" id="status_perkawinan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                            <option value="Belum Kawin" {{ $kependudukan->status_perkawinan == 'Belum Kawin' ? 'selected' : '' }}>Belum Kawin</option>
+                            <option value="Kawin" {{ $kependudukan->status_perkawinan == 'Kawin' ? 'selected' : '' }}>Kawin</option>
+                            <option value="Cerai Hidup" {{ $kependudukan->status_perkawinan == 'Cerai Hidup' ? 'selected' : '' }}>Cerai Hidup</option>
+                            <option value="Cerai Mati" {{ $kependudukan->status_perkawinan == 'Cerai Mati' ? 'selected' : '' }}>Cerai Mati</option>
+                        </select>
                     </div>
+
 
                     <div>
                         <label for="pekerjaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pekerjaan</label>
@@ -97,9 +116,24 @@
                     </div>
 
                     <div>
-                        <label for="status_penduduk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Penduduk</label>
-                        <input type="text" name="status_penduduk" id="status_penduduk" value="{{ $kependudukan->status_penduduk }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                        <label for="pendidikan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pendidikan</label>
+                        <input type="text" name="pendidikan" id="pendidikan" value="{{ $kependudukan->pendidikan }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                     </div>
+
+                    <div>
+                        <label for="kewarganegaraan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">kewarganegaraan</label>
+                        <input type="text" name="kewarganegaraan" id="kewarganegaraan" value="{{ $kependudukan->kewarganegaraan }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                    </div>
+
+                    <div>
+                        <label for="status_penduduk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Penduduk</label>
+                        <select name="status_penduduk" id="status_penduduk" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                            <option value="Tetap" {{ $kependudukan->status_penduduk == 'Tetap' ? 'selected' : '' }}>Tetap</option>
+                            <option value="Tidak Tetap" {{ $kependudukan->status_penduduk == 'Tidak Tetap' ? 'selected' : '' }}>Tidak Tetap</option>
+                            <option value="Meninggal" {{ $kependudukan->status_penduduk == 'Meninggal' ? 'selected' : '' }}>Meninggal</option>
+                        </select>
+                    </div>
+
 
                    
 

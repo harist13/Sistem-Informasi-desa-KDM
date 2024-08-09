@@ -85,140 +85,139 @@
                 
                 <div class="relative overflow-x-auto mt-2">
                     <div class="overflow-x-auto">
-                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead
-                            class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border-collapse border border-gray-300 dark:border-gray-600">
+    <thead class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th rowspan="3" class="px-6 py-3">NO</th>
-                                <th rowspan="3" class="px-6 py-3">NAMA RT</th>
-                                <th rowspan="3" class="px-6 py-3">RT</th>
-                                <th rowspan="3" class="px-6 py-3">KK</th>
-                                <th colspan="2" class="px-6 py-3">JUMLAH AWAL</th>
-                                <th colspan="17" class="px-6 py-3">PENDUDUK</th>
-                                <th colspan="8" class="px-6 py-3">MUTASI</th>
-                                <th colspan="3" class="px-6 py-3">JUMLAH AKHIR</th>
-                                <th rowspan="3" class="px-6 py-3">KETERANGAN</th>
+                                <th rowspan="3" class="px-6 py-3 border border-gray-300 dark:border-gray-600">NO</th>
+                                <th rowspan="3" class="px-6 py-3 border border-gray-300 dark:border-gray-600">NAMA RT</th>
+                                <th rowspan="3" class="px-6 py-3 border border-gray-300 dark:border-gray-600">RT</th>
+                                <th rowspan="3" class="px-6 py-3 border border-gray-300 dark:border-gray-600">KK</th>
+                                <th colspan="2" class="px-6 py-3 border border-gray-300 dark:border-gray-600">JUMLAH AWAL</th>
+                                <th colspan="17" class="px-6 py-3 border border-gray-300 dark:border-gray-600">PENDUDUK</th>
+                                <th colspan="8" class="px-6 py-3 border border-gray-300 dark:border-gray-600">MUTASI</th>
+                                <th colspan="3" class="px-6 py-3 border border-gray-300 dark:border-gray-600">JUMLAH AKHIR</th>
+                                <th rowspan="3" class="px-6 py-3 border border-gray-300 dark:border-gray-600">KETERANGAN</th>
                                 
                             </tr>
                             <tr>
-                                <th rowspan="2" class="px-6 py-3">LAKI-LAKI</th>
-                                <th rowspan="2" class="px-6 py-3">PEREMPUAN</th>
-                                <th colspan="7" class="px-6 py-3">PENDIDIKAN</th>
-                                <th colspan="5" class="px-6 py-3">MATA PENCAHARIAN</th>
-                                <th colspan="3" class="px-6 py-3">AGAMA</th>
-                                <th colspan="2" class="px-6 py-3">KEWARGANEGARAAN</th>
-                                <th colspan="2" class="px-6 py-3">LAHIR</th>
-                                <th colspan="2" class="px-6 py-3">MATI</th>
-                                <th colspan="2" class="px-6 py-3">PINDAH</th>
-                                <th colspan="2" class="px-6 py-3">DATANG</th>
-                                <th rowspan="2" class="px-6 py-3">KK</th>
-                                <th rowspan="2" class="px-6 py-3">LK</th>
-                                <th rowspan="2" class="px-6 py-3">PR</th>
+                                <th rowspan="2" class="px-6 py-3 border border-gray-300 dark:border-gray-600">LAKI-LAKI</th>
+                                <th rowspan="2" class="px-6 py-3 border border-gray-300 dark:border-gray-600">PEREMPUAN</th>
+                                <th colspan="7" class="px-6 py-3 border border-gray-300 dark:border-gray-600">PENDIDIKAN</th>
+                                <th colspan="5" class="px-6 py-3 border border-gray-300 dark:border-gray-600">MATA PENCAHARIAN</th>
+                                <th colspan="3" class="px-6 py-3 border border-gray-300 dark:border-gray-600">AGAMA</th>
+                                <th colspan="2" class="px-6 py-3 border border-gray-300 dark:border-gray-600">KEWARGANEGARAAN</th>
+                                <th colspan="2" class="px-6 py-3 border border-gray-300 dark:border-gray-600">LAHIR</th>
+                                <th colspan="2" class="px-6 py-3 border border-gray-300 dark:border-gray-600">MATI</th>
+                                <th colspan="2" class="px-6 py-3 border border-gray-300 dark:border-gray-600">PINDAH</th>
+                                <th colspan="2" class="px-6 py-3 border border-gray-300 dark:border-gray-600">DATANG</th>
+                                <th rowspan="2" class="px-6 py-3 border border-gray-300 dark:border-gray-600">KK</th>
+                                <th rowspan="2" class="px-6 py-3 border border-gray-300 dark:border-gray-600">LK</th>
+                                <th rowspan="2" class="px-6 py-3 border border-gray-300 dark:border-gray-600">PR</th>
                             </tr>
                             <tr>
-                                <th class="px-6 py-3">BH</th>
-                                <th class="px-6 py-3">BS</th>
-                                <th class="px-6 py-3">TK</th>
-                                <th class="px-6 py-3">SD</th>
-                                <th class="px-6 py-3">SLTP</th>
-                                <th class="px-6 py-3">SLTA</th>
-                                <th class="px-6 py-3">PT</th>
-                                <th class="px-6 py-3">TANI</th>
-                                <th class="px-6 py-3">DAGANG</th>
-                                <th class="px-6 py-3">PNS</th>
-                                <th class="px-6 py-3">TNI</th>
-                                <th class="px-6 py-3">SWASTA</th>
-                                <th class="px-6 py-3">ISLAM</th>
-                                <th class="px-6 py-3">KHALOTIK</th>
-                                <th class="px-6 py-3">PROTESTAN</th>
-                                <th class="px-6 py-3">WNI</th>
-                                <th class="px-6 py-3">WNA</th>
-                                <th class="px-6 py-3">LK</th>
-                                <th class="px-6 py-3">PR</th>
-                                <th class="px-6 py-3">LK</th>
-                                <th class="px-6 py-3">PR</th>
-                                <th class="px-6 py-3">LK</th>
-                                <th class="px-6 py-3">PR</th>
-                                <th class="px-6 py-3">LK</th>
-                                <th class="px-6 py-3">PR</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">BH</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">BS</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">TK</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">SD</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">SLTP</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">SLTA</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">PT</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">TANI</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">DAGANG</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">PNS</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">TNI</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">SWASTA</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">ISLAM</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">KHALOTIK</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">PROTESTAN</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">WNI</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">WNA</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">LK</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">PR</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">LK</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">PR</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">LK</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">PR</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">LK</th>
+                                <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">PR</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($rekapulasi as $index => $data)
                                 <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <td class="px-6 py-4">{{ $index + 1 }}</td>
-                                    <td class="px-6 py-4">{{ $data->petugas->nama_petugas }}</td>
-                                    <td class="px-6 py-4">{{ $data->RT }}</td>
-                                    <td class="px-6 py-4">{{ $data->KK }}</td>
-                                    <td class="px-6 py-4">{{ $data->LAKI_LAKI }}</td>
-                                    <td class="px-6 py-4">{{ $data->PEREMPUAN }}</td>
-                                    <td class="px-6 py-4">{{ $data->BH }}</td>
-                                    <td class="px-6 py-4">{{ $data->BS }}</td>
-                                    <td class="px-6 py-4">{{ $data->TK }}</td>
-                                    <td class="px-6 py-4">{{ $data->SD }}</td>
-                                    <td class="px-6 py-4">{{ $data->SLTP }}</td>
-                                    <td class="px-6 py-4">{{ $data->SLTA }}</td>
-                                    <td class="px-6 py-4">{{ $data->PT }}</td>
-                                    <td class="px-6 py-4">{{ $data->TANI }}</td>
-                                    <td class="px-6 py-4">{{ $data->DAGANG }}</td>
-                                    <td class="px-6 py-4">{{ $data->PNS }}</td>
-                                    <td class="px-6 py-4">{{ $data->TNI }}</td>
-                                    <td class="px-6 py-4">{{ $data->SWASTA }}</td>
-                                    <td class="px-6 py-4">{{ $data->ISLAM }}</td>
-                                    <td class="px-6 py-4">{{ $data->KHALOTIK }}</td>
-                                    <td class="px-6 py-4">{{ $data->PROTESTAN }}</td>
-                                    <td class="px-6 py-4">{{ $data->WNI }}</td>
-                                    <td class="px-6 py-4">{{ $data->WNA }}</td>
-                                    <td class="px-6 py-4">{{ $data->LK1 }}</td>
-                                    <td class="px-6 py-4">{{ $data->PR1 }}</td>
-                                    <td class="px-6 py-4">{{ $data->LK2 }}</td>
-                                    <td class="px-6 py-4">{{ $data->PR2 }}</td>
-                                    <td class="px-6 py-4">{{ $data->LK3 }}</td>
-                                    <td class="px-6 py-4">{{ $data->PR3 }}</td>
-                                    <td class="px-6 py-4">{{ $data->LK4 }}</td>
-                                    <td class="px-6 py-4">{{ $data->PR4 }}</td>
-                                    <td class="px-6 py-4">{{ $data->KK2 }}</td>
-                                    <td class="px-6 py-4">{{ $data->LK5 }}</td>
-                                    <td class="px-6 py-4">{{ $data->PR5 }}</td>
-                                    <td class="px-6 py-4">{{ $data->KETERANGAN }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $index + 1 }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->petugas->nama_petugas }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->RT }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->KK }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->LAKI_LAKI }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->PEREMPUAN }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->BH }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->BS }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->TK }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->SD }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->SLTP }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->SLTA }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->PT }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->TANI }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->DAGANG }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->PNS }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->TNI }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->SWASTA }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->ISLAM }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->KHALOTIK }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->PROTESTAN }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->WNI }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->WNA }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->LK1 }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->PR1 }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->LK2 }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->PR2 }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->LK3 }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->PR3 }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->LK4 }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->PR4 }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->KK2 }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->LK5 }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->PR5 }}</td>
+                                    <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $data->KETERANGAN }}</td>
                                   
                                 </tr>
                             @endforeach
                             <tr class="bg-gray-100 text-center font-bold">
-                                <td colspan="2" class="px-6 py-4">Jumlah</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('RT') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('KK') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('LAKI_LAKI') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('PEREMPUAN') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('BH') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('BS') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('TK') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('SD') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('SLTP') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('SLTA') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('PT') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('TANI') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('DAGANG') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('PNS') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('TNI') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('SWASTA') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('ISLAM') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('KHALOTIK') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('PROTESTAN') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('WNI') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('WNA') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('LK1') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('PR1') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('LK2') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('PR2') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('LK3') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('PR3') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('LK4') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('PR4') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('KK2') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('LK5') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('PR5') }}</td>
-                                <td colspan="2" class="px-6 py-4"></td>
+                                <td colspan="2" class="px-6 py-4 border border-gray-300 dark:border-gray-600">Jumlah</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('RT') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('KK') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('LAKI_LAKI') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('PEREMPUAN') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('BH') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('BS') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('TK') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('SD') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('SLTP') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('SLTA') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('PT') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('TANI') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('DAGANG') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('PNS') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('TNI') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('SWASTA') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('ISLAM') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('KHALOTIK') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('PROTESTAN') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('WNI') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('WNA') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('LK1') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('PR1') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('LK2') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('PR2') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('LK3') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('PR3') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('LK4') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('PR4') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('KK2') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('LK5') }}</td>
+                                <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('PR5') }}</td>
+                                <td colspan="2" class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('RT') + $rekapulasi->sum('KK') + $rekapulasi->sum('LAKI_LAKI') + $rekapulasi->sum('PEREMPUAN') + $rekapulasi->sum('BH') + $rekapulasi->sum('BS') + $rekapulasi->sum('TK') + $rekapulasi->sum('SD') + $rekapulasi->sum('SLTP') + $rekapulasi->sum('SLTA') + $rekapulasi->sum('PT') + $rekapulasi->sum('TANI') + $rekapulasi->sum('DAGANG') + $rekapulasi->sum('PNS') + $rekapulasi->sum('TNI') + $rekapulasi->sum('SWASTA') + $rekapulasi->sum('ISLAM') + $rekapulasi->sum('KHALOTIK') + $rekapulasi->sum('PROTESTAN') + $rekapulasi->sum('WNI') + $rekapulasi->sum('WNA') + $rekapulasi->sum('LK1') + $rekapulasi->sum('PR1') + $rekapulasi->sum('LK2') + $rekapulasi->sum('PR2') + $rekapulasi->sum('LK3') + $rekapulasi->sum('PR3') + $rekapulasi->sum('LK4') + $rekapulasi->sum('PR4') + $rekapulasi->sum('KK2') + $rekapulasi->sum('LK5') + $rekapulasi->sum('PR5') }}</td>
                             </tr>
                         </tbody>
                     </table>
