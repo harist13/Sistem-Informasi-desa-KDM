@@ -33,9 +33,9 @@
             <div>
                 <div class="p-4 mb-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2"
                     role="alert">
-                    <span class="font-medium"><a href="/">Home</a> / </span> Sejarah Desa
+                    <span class="font-medium"><a href="/">Home</a> / </span> Tentang Desa
                 </div>
-                <h1 class="text-3xl font-bold">Sejarah Desa Kedang Murung</h1>
+                <h1 class="text-3xl font-bold">Tentang Desa Kedang Murung</h1>
                 <p class="text-justify my-5">Kedang Murung adalah salah satu desa di wilayah kecamatan Kota Bangun, Kabupaten Kutai Kartanegara, Provinsi Kalimantan Timur, Indonesia.</p>
                 <p class="text-justify my-5">Desa Kedang Murung adalah salah satu dari 11 desa yang terletak di Kecamatan Kota Bangun, yang sebelumnya dikenal sebagai Kota Bangun. Sebelum pemekaran, Kecamatan Kota Bangun hanya terdiri dari satu desa. Setelah pemekaran, Kecamatan Kota Bangun dibagi menjadi dua kecamatan, yaitu Kecamatan Kota Bangun Induk dan Kecamatan Kota Bangun Darat. Desa/Wilayah Adat Kedang Murung (adat kota bangun), Kec. Kota Bangun dengan tanda batas Muara Sungai Sunghia Papa dan Gunung Karang Titi dan Desa/Wilayah Adat Sedulang Kec. Kota Bangun dengan tanda batas Gunung Beromba dan Muara Sungai Sunghia Papa.</p>
             </div>

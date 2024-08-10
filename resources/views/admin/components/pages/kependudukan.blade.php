@@ -159,14 +159,18 @@
 
             <br>
             <br>
+
+<div class="overflow-x-auto">
 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
-            <th scope="col" class="px-6 py-3 text-left">Total Penduduk</th>
-            <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan RT</th>
-            <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Dusun</th>
-            <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Status Perkawinan</th>
-            <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Status Penduduk</th>
+            <th scope="col" class="px-6 py-3 text-left min-w-[200px]">Total Penduduk</th>
+            <th scope="col" class="px-6 py-3 text-left min-w-[200px]">Jumlah Berdasarkan RT</th>
+            <th scope="col" class="px-6 py-3 text-left min-w-[200px]">Jumlah Berdasarkan Dusun</th>
+            <th scope="col" class="px-6 py-3 text-left min-w-[200px]">Jumlah Berdasarkan Agama</th>
+            <th scope="col" class="px-6 py-3 text-left min-w-[200px]">Jumlah Berdasarkan Pekerjaan</th>
+            <th scope="col" class="px-6 py-3 text-left min-w-[200px]">Jumlah Berdasarkan Status Perkawinan</th>
+            <th scope="col" class="px-6 py-3 text-left min-w-[200px]">Jumlah Berdasarkan Status Penduduk</th>
         </tr>
     </thead>
     <tbody>
@@ -191,6 +195,22 @@
                     @endforeach
                 </ul>
             </td>
+
+            <td class="px-6 py-4 text-left">
+                <ul class="list-disc list-inside">
+                    @foreach ($kependudukans->groupBy('agama') as $agama => $penduduk)
+                        <li>{{ $agama }}: {{ $penduduk->count() }}</li>
+                    @endforeach
+                </ul>
+            </td>
+
+            <td class="px-6 py-4 text-left">
+                <ul class="list-disc list-inside">
+                    @foreach ($kependudukans->groupBy('pekerjaan') as $pekerjaan => $penduduk)
+                        <li>{{ $pekerjaan }}: {{ $penduduk->count() }}</li>
+                    @endforeach
+                </ul>
+            </td>
             <!-- Jumlah Berdasarkan Status Perkawinan -->
             <td class="px-6 py-4 text-left">
                 <ul class="list-disc list-inside">
@@ -210,6 +230,7 @@
         </tr>
     </tbody>
 </table>
+    </div>
 
 
         </div>

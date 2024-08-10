@@ -43,28 +43,24 @@
                 <div class="relative h-56 overflow-hidden md:h-[550px] z-10">
                     <!-- Item 1 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://img.freepik.com/free-photo/colorful-rainbow-appearing-sky-nature-landscape_23-2151521552.jpg?t=st=1722243810~exp=1722247410~hmac=a32c745f18744b8846fe87571e8997a3c90b9c763c060194dea0826c8e37189c&w=1380"
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Kantor_Desa_Kedang_Murung%2C_Kutai_Kartanegara.JPG"
                             class="absolute block w-full xl:w-screen -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-cover bg-center object-cover"
                             alt="...">
                         <div
                             class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 px-4 py-2 rounded-md text-center">
                             <h1 class="font-bold text-xl lg:text-4xl mb-2">Selamat Datang di Desa Kedang murung</h1>
-                            <p class="text-sm lg:text-lg font-normal">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit.
-                                Alias a iure, fuga inventore porro deleniti sit sunt reprehenderit voluptatum est?</p>
+                            <p class="text-sm lg:text-lg font-normal">salah satu desa kalimantan timur dengan pemandangan alam yang indah dan menarik</p>
                         </div>
                     </div>
                     <!-- Item 2 -->
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://img.freepik.com/free-photo/beautiful-rainbow-nature_23-2151498349.jpg?t=st=1722243840~exp=1722247440~hmac=29f4657f6afc04263508c7b248715b95f3aa1d1e2296bd36cb3a658b439ccdf4&w=996"
+                        <img src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/177/2024/06/06/kedng-murung-873423276.jpg"
                             class="absolute block w-full xl:w-screen -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 bg-cover bg-center object-cover"
                             alt="...">
                         <div
                             class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-3xl font-bold bg-black bg-opacity-50 px-4 py-2 rounded-md text-center">
-                            <h1 class="font-bold text-xl lg:text-4xl mb-2">Pemandangan Alam yang Indah</h1>
-                            <p class="text-sm lg:text-lg font-normal">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit.
-                                Alias a iure, fuga inventore porro deleniti sit sunt reprehenderit voluptatum est?</p>
+                            <h1 class="font-bold text-xl lg:text-4xl mb-2">Wisata Alam yang Indah</h1>
+                            <p class="text-sm lg:text-lg font-normal">Memiliki Tempat wisata yang indah dan menarik untuk di kunjungi yaitu danau Tanjung Sarai</p>
                         </div>
                     </div>
                 </div>

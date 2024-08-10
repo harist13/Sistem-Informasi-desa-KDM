@@ -122,7 +122,9 @@
         <tr>
             <th scope="col" class="px-6 py-3 text-left">Total Penduduk</th>
             <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan RT</th>
-            <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Dusun</th>
+            <th scope="col" class="px-6 py-3 text-left min-w-[200px]">Jumlah Berdasarkan Dusun</th>
+            <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Agama</th>
+            <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Pekerjaan</th>
             <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Status Perkawinan</th>
             <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Status Penduduk</th>
         </tr>
@@ -146,6 +148,22 @@
                 <ul class="list-disc list-inside">
                     @foreach ($kependudukans->groupBy('dusun') as $dusun => $penduduk)
                         <li>{{ $dusun }}: {{ $penduduk->count() }}</li>
+                    @endforeach
+                </ul>
+            </td>
+
+            <td class="px-6 py-4 text-left">
+                <ul class="list-disc list-inside">
+                    @foreach ($kependudukans->groupBy('agama') as $agama => $penduduk)
+                        <li>{{ $agama }}: {{ $penduduk->count() }}</li>
+                    @endforeach
+                </ul>
+            </td>
+
+            <td class="px-6 py-4 text-left">
+                <ul class="list-disc list-inside">
+                    @foreach ($kependudukans->groupBy('pekerjaan') as $pekerjaan => $penduduk)
+                        <li>{{ $pekerjaan }}: {{ $penduduk->count() }}</li>
                     @endforeach
                 </ul>
             </td>

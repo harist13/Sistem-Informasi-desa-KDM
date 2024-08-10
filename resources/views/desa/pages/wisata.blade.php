@@ -43,7 +43,7 @@
                 </div>
                 <div class="lg:w-1/2">
                     <img class="w-full h-auto"
-                        src="https://img.freepik.com/free-photo/cascade-boat-clean-china-natural-rural_1417-1356.jpg?t=st=1722911812~exp=1722915412~hmac=74f8963abeb6977af26bfdf4ac0c99fb410559e5dd7f05599139a8a2bf673f3d&w=996"
+                        src="{{ asset('img/tj.jpg') }}"
                         alt="">
                 </div>
             </div>
@@ -55,7 +55,7 @@
             <div class="flex flex-col lg:flex-row justify-between items-center gap-8 mt-6 lg:mt-12 lg:px-12">
                 <div class="lg:w-1/2 order-2 lg:order-1">
                     <img class="w-full h-auto"
-                        src="https://img.freepik.com/free-photo/cascade-boat-clean-china-natural-rural_1417-1356.jpg?t=st=1722911812~exp=1722915412~hmac=74f8963abeb6977af26bfdf4ac0c99fb410559e5dd7f05599139a8a2bf673f3d&w=996"
+                        src="{{ asset('img/serah.jpg') }}"
                         alt="">
                 </div>
                 <div class="lg:w-1/2 order-1 lg:order-2">
@@ -67,18 +67,87 @@
             </div>
         </div>
     </section>
+ <section class="my-12">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-semibold text-center">Galeri</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
+                <div class="overflow-hidden">
+                    <img src="{{ asset('img/laut.jpg')}}" alt="Galeri 1" class="w-full h-auto cursor-pointer"
+                        onclick="openImageModal(this.src)">
+                </div>
+                <div class="overflow-hidden">
+                    <img src="{{ asset('img/up.jpg')}}"
+                        onclick="openImageModal(this.src)">
+                </div>
+                <div class="overflow-hidden">
+                    <img src="{{ asset('img/pela.jpg') }} " alt="Galeri 3" class="w-full h-auto cursor-pointer"
+                        onclick="openImageModal(this.src)">
+                </div>
+                <div class="overflow-hidden">
+                    <img src="{{ asset('img/3.jpg') }}" alt="Galeri 4" class="w-full h-auto cursor-pointer"
+                        onclick="openImageModal(this.src)">
+                </div>
+                <div class="overflow-hidden">
+                    <img src="{{ asset('img/IMG_0464.jpg') }}" alt="Galeri 4" class="w-full h-auto cursor-pointer"
+                        onclick="openImageModal(this.src)">
+                </div>
+                 <div class="overflow-hidden">
+                    <img src="https://koranusantara.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-13-at-15.26.37.jpeg" alt="Galeri 4" class="w-full h-auto cursor-pointer"
+                        onclick="openImageModal(this.src)">
+                </div>
+                 <div class="overflow-hidden">
+                    <img src="https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/177/2024/06/06/kedng-murung-873423276.jpg" alt="Galeri 4" class="w-full h-auto cursor-pointer"
+                        onclick="openImageModal(this.src)">
+                </div>
+                 <div class="overflow-hidden">
+                    <img src="{{ asset('img/tj.jpg')}}" alt="Galeri 4" class="w-full h-auto cursor-pointer"
+                        onclick="openImageModal(this.src)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- Modal for image view --}}
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="relative">
+            <img id="modalImage" src="" alt="Preview Image" class="max-w-full max-h-screen">
+            <button onclick="closeImageModal()"
+                class="absolute top-4 right-4 text-white text-2xl font-bold">&times;</button>
+        </div>
+    </div>
+
+    <section class="my-12">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-semibold text-center">Video</h2>
+        <div class="flex justify-center mt-8">
+            <div class="w-full lg:w-3/4 xl:w-2/3">
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe class="w-full h-[500px]" src="{{ asset('img/tanjung.mp4') }}" frameborder="0"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     {{-- footer --}}
     @include('layouts.footer')
 
-    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
     <script>
-        // JavaScript untuk mengontrol visibilitas menu mobile
         document.getElementById('menu-button').onclick = function () {
             var menu = document.getElementById('mobile-menu');
             menu.classList.toggle('show');
         };
+
+        function openImageModal(src) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('imageModal').classList.remove('hidden');
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+        }
     </script>
 </body>
 
