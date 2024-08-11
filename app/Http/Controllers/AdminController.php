@@ -21,6 +21,7 @@ use App\Models\PemerintahDesa;
 use App\Models\Kependudukan;
 use App\Exports\KependudukanExport;
 use App\Models\Pengumuman;
+use Illuminate\Support\Facades\Auth;
 
 
 class AdminController extends Controller
@@ -1174,5 +1175,42 @@ public function updatePengumuman(Request $request, $id)
 
     return redirect()->route('pengumuman.admin')->with('success', 'Pengumuman berhasil diperbarui.');
 }
+
+ public function updateProfile(Request $request)
+    {
+        $user = auth()->user();
+
+        $validator = Validator::make($request->all(), [
+            'nama_petugas' => 'required|string|max:100',
+            'password' => 'nullable|string|min:6',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $user->nama_petugas = $request->nama_petugas;
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        if ($request->hasFile('foto')) {
+            // Hapus foto lama jika ada
+            if ($user->foto) {
+                Storage::delete('public/petugas/' . $user->foto);
+            }
+
+            $foto = $request->file('foto');
+            $filename = time() . '.' . $foto->getClientOriginalExtension();
+            $path = $foto->storeAs('public/petugas', $filename);
+            $user->foto = $filename;
+        }
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
+    }
 }
 

@@ -148,7 +148,7 @@
                     </svg>
                     <span
                         class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
-                        Hai, {{ Auth::user()->username }}
+                        Hai, {{ Auth::user()->nama_petugas }}
                     </span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">

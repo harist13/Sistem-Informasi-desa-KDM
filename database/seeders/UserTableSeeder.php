@@ -17,7 +17,7 @@ class UserTableSeeder extends Seeder
         // Buat pengguna superadmin
         $superadmin = Petugas::create([
             'nama_petugas' => 'admin',
-            'username' => 'superadmin@gmail.com',
+            'username' => 'admin',
             'password' => bcrypt('12345678'),
             'telp' => '08123456789',
             'created_at' => now(),

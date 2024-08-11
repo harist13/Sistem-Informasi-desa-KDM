@@ -115,6 +115,7 @@ Route::get('/admin/kependudukan/sort', [AdminController::class, 'sortKependuduka
 Route::delete('/dashboard/admin/pengumuman/{id}', [AdminController::class, 'hapusPengumuman'])->name('pengumuman.hapus');
 Route::get('/dashboard/admin/pengumuman/edit/{id}', [AdminController::class, 'editPengumuman'])->name('pengumuman.edit');
 Route::put('/dashboard/admin/pengumuman/update/{id}', [AdminController::class, 'updatePengumuman'])->name('pengumuman.update');
+Route::put('/dashboard/admin/update-profile', [AdminController::class, 'updateProfile'])->name('admin.updateProfile');
 });
 
 
