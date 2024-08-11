@@ -18,16 +18,25 @@
                     @method('PUT')
                     <div>
                         <label for="judul-{{ $artikel->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul</label>
-                        <input type="text" name="judul" id="judul-{{ $artikel->id }}" value="{{ $artikel->judul }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                        <input type="text" name="judul" id="judul-{{ $artikel->id }}" value="{{ old('judul', $artikel->judul) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                        @error('judul')
+                            <p class="text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <label for="deskripsi-{{ $artikel->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Deskripsi</label>
-                        <textarea name="deskripsi" id="deskripsi-{{ $artikel->id }}" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>{{ $artikel->deskripsi }}</textarea>
+                        <textarea name="deskripsi" id="deskripsi-{{ $artikel->id }}" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>{{ old('deskripsi', $artikel->deskripsi) }}</textarea>
+                        @error('deskripsi')
+                            <p class="text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <label for="gambar-{{ $artikel->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gambar</label>
                         <input type="file" name="gambar" id="gambar-{{ $artikel->id }}" accept="image/*" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                         <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">Biarkan kosong jika tidak ingin mengubah gambar</p>
+                        @error('gambar')
+                            <p class="text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-900 dark:text-white">Gambar Saat Ini:</p>

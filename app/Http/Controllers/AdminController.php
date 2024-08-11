@@ -38,77 +38,114 @@ class AdminController extends Controller
 
     
      public function tambahPetugas(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'nama_petugas' => 'required|string|max:100',
-            'username' => 'required|string|max:50|unique:petugas',
-            'password' => 'required|string|min:6',
-            'telp' => 'nullable|string|max:15',
-            'role' => 'required|exists:roles,name',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+{
+    $validator = Validator::make($request->all(), [
+        'nama_petugas' => 'required|string|max:100',
+        'username' => 'required|string|max:50|unique:petugas,username',
+        'password' => 'required|string|min:6',
+        'telp' => 'nullable|string|max:15|unique:petugas,telp',
+        'role' => 'required|exists:roles,name',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ], [
+        'nama_petugas.required' => 'Nama petugas wajib diisi.',
+        'nama_petugas.string' => 'Nama petugas harus berupa teks.',
+        'nama_petugas.max' => 'Nama petugas maksimal 100 karakter.',
+        'username.required' => 'Username wajib diisi.',
+        'username.string' => 'Username harus berupa teks.',
+        'username.max' => 'Username maksimal 50 karakter.',
+        'username.unique' => 'Username sudah terdaftar.',
+        'password.required' => 'Password wajib diisi.',
+        'password.string' => 'Password harus berupa teks.',
+        'password.min' => 'Password minimal 6 karakter.',
+        'telp.string' => 'Nomor telepon harus berupa teks.',
+        'telp.max' => 'Nomor telepon maksimal 15 karakter.',
+        'telp.unique' => 'Nomor telepon sudah digunakan.',
+        'role.required' => 'Role wajib diisi.',
+        'role.exists' => 'Role yang dipilih tidak valid.',
+        'foto.image' => 'Foto harus berupa file gambar.',
+        'foto.mimes' => 'Foto harus berformat jpeg, png, jpg, atau gif.',
+        'foto.max' => 'Ukuran foto maksimal 2MB.',
+    ]);
 
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-
-        $data = $request->all();
-        
-        if ($request->hasFile('foto')) {
-            $foto = $request->file('foto');
-            $filename = time() . '.' . $foto->getClientOriginalExtension();
-            $path = $foto->storeAs('public/petugas', $filename);
-            $data['foto'] = $filename;
-        }
-
-        $data['password'] = Hash::make($request->password);
-
-        $petugas = Petugas::create($data);
-        $petugas->assignRole($request->role);
-
-        return redirect()->route('petugas.admin')->with('success', 'Petugas berhasil ditambahkan.');
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput()->with('error', 'error, gagal menambahkan data silakan cek inputan kembali');
     }
+
+    $data = $request->all();
+
+    if ($request->hasFile('foto')) {
+        $foto = $request->file('foto');
+        $filename = time() . '.' . $foto->getClientOriginalExtension();
+        $path = $foto->storeAs('public/petugas', $filename);
+        $data['foto'] = $filename;
+    }
+
+    $data['password'] = Hash::make($request->password);
+
+    $petugas = Petugas::create($data);
+    $petugas->assignRole($request->role);
+
+    return redirect()->route('petugas.admin')->with('success', 'Petugas berhasil ditambahkan.');
+}
 
     public function update(Request $request, $id)
-    {
-        $petugas = Petugas::findOrFail($id);
+{
+    $petugas = Petugas::findOrFail($id);
 
-        $validator = Validator::make($request->all(), [
-            'nama_petugas' => 'required|string|max:100',
-            'username' => 'required|string|max:50|unique:petugas,username,' . $id,
-            'password' => 'nullable|string|min:6',
-            'telp' => 'nullable|string|max:15',
-            'role' => 'required|exists:roles,name',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+    $validator = Validator::make($request->all(), [
+        'nama_petugas' => 'required|string|max:100',
+        'username' => 'required|string|max:50|unique:petugas,username,' . $id,
+        'password' => 'nullable|string|min:6',
+        'telp' => 'nullable|string|max:15|unique:petugas,telp,' . $id,
+        'role' => 'required|exists:roles,name',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ], [
+        'nama_petugas.required' => 'Nama petugas wajib diisi.',
+        'nama_petugas.string' => 'Nama petugas harus berupa teks.',
+        'nama_petugas.max' => 'Nama petugas maksimal 100 karakter.',
+        'username.required' => 'Username wajib diisi.',
+        'username.string' => 'Username harus berupa teks.',
+        'username.max' => 'Username maksimal 50 karakter.',
+        'username.unique' => 'Username sudah terdaftar.',
+        'password.string' => 'Password harus berupa teks.',
+        'password.min' => 'Password minimal 6 karakter.',
+        'telp.string' => 'Nomor telepon harus berupa teks.',
+        'telp.max' => 'Nomor telepon maksimal 15 karakter.',
+        'telp.unique' => 'Nomor telepon sudah terdaftar.',
+        'role.required' => 'Role wajib diisi.',
+        'role.exists' => 'Role yang dipilih tidak valid.',
+        'foto.image' => 'Foto harus berupa file gambar.',
+        'foto.mimes' => 'Foto harus berformat jpeg, png, jpg, atau gif.',
+        'foto.max' => 'Ukuran foto maksimal 2MB.',
+    ]);
 
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-
-        $data = $request->except(['_token', 'password']);
-
-        if ($request->hasFile('foto')) {
-            // Delete old photo
-            if ($petugas->foto) {
-                Storage::delete('public/petugas/' . $petugas->foto);
-            }
-
-            $foto = $request->file('foto');
-            $filename = time() . '.' . $foto->getClientOriginalExtension();
-            $path = $foto->storeAs('public/petugas', $filename);
-            $data['foto'] = $filename;
-        }
-
-        if ($request->filled('password')) {
-            $data['password'] = Hash::make($request->password);
-        }
-
-        $petugas->update($data);
-        $petugas->syncRoles($request->role);
-
-        return redirect()->route('petugas.admin')->with('success', 'Data petugas berhasil diperbarui.');
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput()->with('error', 'error, gagal memperbaharui data silakan cek inputan kembali');
     }
+
+    $data = $request->except(['_token', 'password']);
+
+    if ($request->hasFile('foto')) {
+        // Hapus foto lama
+        if ($petugas->foto) {
+            Storage::delete('public/petugas/' . $petugas->foto);
+        }
+
+        $foto = $request->file('foto');
+        $filename = time() . '.' . $foto->getClientOriginalExtension();
+        $path = $foto->storeAs('public/petugas', $filename);
+        $data['foto'] = $filename;
+    }
+
+    if ($request->filled('password')) {
+        $data['password'] = Hash::make($request->password);
+    }
+
+    $petugas->update($data);
+    $petugas->syncRoles($request->role);
+
+    return redirect()->route('petugas.admin')->with('success', 'Data petugas berhasil diperbarui.');
+}
 
      public function edit($id)
     {
@@ -175,10 +212,20 @@ public function tambahArtikel(Request $request)
         'judul' => 'required|string|max:255',
         'deskripsi' => 'required|string',
         'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ], [
+        'judul.required' => 'Judul wajib diisi.',
+        'judul.string' => 'Judul harus berupa teks.',
+        'judul.max' => 'Judul maksimal 255 karakter.',
+        'deskripsi.required' => 'Deskripsi wajib diisi.',
+        'deskripsi.string' => 'Deskripsi harus berupa teks.',
+        'gambar.required' => 'Gambar wajib diunggah.',
+        'gambar.image' => 'File harus berupa gambar.',
+        'gambar.mimes' => 'Gambar harus berformat jpeg, png, jpg, atau gif.',
+        'gambar.max' => 'Ukuran gambar maksimal 2MB.',
     ]);
 
     if ($validator->fails()) {
-        return back()->withErrors($validator)->withInput();
+        return back()->withErrors($validator)->withInput()->with('error', 'Artikel gagal ditambahkan. Silakan cek inputan kembali.');
     }
 
     $data = $request->all();
@@ -197,6 +244,7 @@ public function tambahArtikel(Request $request)
     return redirect()->route('artikel.admin')->with('success', 'Artikel berhasil ditambahkan.');
 }
 
+
 public function editArtikel($id)
 {
     $artikel = Artikel::findOrFail($id);
@@ -211,10 +259,21 @@ public function updateArtikel(Request $request, $id)
         'judul' => 'required|string|max:255',
         'deskripsi' => 'required|string',
         'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ], [
+        'judul.required' => 'Judul wajib diisi.',
+        'judul.string' => 'Judul harus berupa teks.',
+        'judul.max' => 'Judul maksimal 255 karakter.',
+        'deskripsi.required' => 'Deskripsi wajib diisi.',
+        'deskripsi.string' => 'Deskripsi harus berupa teks.',
+        'gambar.image' => 'File harus berupa gambar.',
+        'gambar.mimes' => 'Gambar harus berformat jpeg, png, jpg, atau gif.',
+        'gambar.max' => 'Ukuran gambar maksimal 2MB.',
     ]);
 
     if ($validator->fails()) {
-        return back()->withErrors($validator)->withInput();
+        return back()->withErrors($validator)
+                     ->with('error', 'Artikel gagal diperbarui, silakan cek inputan kembali.')
+                     ->withInput();
     }
 
     $data = $request->except(['_token', '_method']);
@@ -235,6 +294,7 @@ public function updateArtikel(Request $request, $id)
 
     return redirect()->route('artikel.admin')->with('success', 'Artikel berhasil diperbarui.');
 }
+
 
 public function hapusArtikel($id)
 {
@@ -371,19 +431,25 @@ public function tambahDataPenduduk(Request $request)
         'LK5' => 'required|integer',
         'PR5' => 'required|integer',
         'KETERANGAN' => 'nullable|string',
+    ], [
+        'required' => 'Data wajib diisi.',
+        'string' => 'Data harus berupa teks.',
+        'integer' => 'Data harus berupa angka.',
+        'max' => 'Data tidak boleh lebih dari :max karakter.',
     ]);
 
     if ($validator->fails()) {
-        return back()->withErrors($validator)->withInput();
+        return back()->withErrors($validator)->withInput()->with('error', 'Rekapulasi gagal ditambahkan, silakan cek inputan kembali.');
     }
 
     $data = $request->all();
-    $data['petugas_id'] = auth()->id(); // Assuming the logged-in user is the petugas
+    $data['petugas_id'] = auth()->id(); // Mengambil ID petugas yang sedang login
 
     RekapulasiPenduduk::create($data);
 
     return redirect()->route('penduduk.admin')->with('success', 'Data penduduk berhasil ditambahkan.');
 }
+
 
 public function editPenduduk($id)
 {
@@ -429,10 +495,15 @@ public function updatePenduduk(Request $request, $id)
         'LK5' => 'required|integer',
         'PR5' => 'required|integer',
         'KETERANGAN' => 'nullable|string',
+    ], [
+        'required' => 'Data harus diisi.',
+        'string' => 'Data harus berupa teks.',
+        'max' => 'Data tidak boleh lebih dari :max karakter.',
+        'integer' => 'Data harus berupa angka.',
     ]);
 
     if ($validator->fails()) {
-        return back()->withErrors($validator)->withInput();
+        return back()->withErrors($validator)->with('error', 'Rekapulasi gagal diperbarui, silakan cek inputan kembali.')->withInput();
     }
 
     $rekapulasi = RekapulasiPenduduk::findOrFail($id);
@@ -440,6 +511,7 @@ public function updatePenduduk(Request $request, $id)
 
     return redirect()->route('penduduk.admin')->with('success', 'Data penduduk berhasil diperbarui.');
 }
+
 
 
 
@@ -486,10 +558,19 @@ public function tambahDokumentasi(Request $request)
     $validator = Validator::make($request->all(), [
         'judul' => 'required|string|max:255',
         'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ], [
+        'judul.required' => 'Judul harus diisi.',
+        'judul.string' => 'Judul harus berupa teks.',
+        'judul.max' => 'Judul maksimal 255 karakter.',
+        'foto.required' => 'Foto harus diunggah.',
+        'foto.image' => 'File harus berupa gambar.',
+        'foto.mimes' => 'Format foto harus jpeg, png, jpg, atau gif.',
+        'foto.max' => 'Ukuran foto maksimal 2MB.',
     ]);
 
     if ($validator->fails()) {
-        return back()->withErrors($validator)->withInput();
+        return back()->withErrors($validator)->withInput()
+            ->with('error', 'Error, gagal menambahkan data. Silakan cek inputan kembali.');
     }
 
     $data = $request->all();
@@ -503,7 +584,6 @@ public function tambahDokumentasi(Request $request)
     }
 
     Dokumentasi::create($data);
-
     return redirect()->route('dokumentasi.admin')->with('success', 'Dokumentasi berhasil ditambahkan.');
 }
 
@@ -518,10 +598,18 @@ public function updateDokumentasi(Request $request, $id)
     $validator = Validator::make($request->all(), [
         'judul' => 'required|string|max:255',
         'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ], [
+        'judul.required' => 'Judul harus diisi.',
+        'judul.string' => 'Judul harus berupa teks.',
+        'judul.max' => 'Judul maksimal 255 karakter.',
+        'foto.image' => 'File harus berupa gambar.',
+        'foto.mimes' => 'Format foto harus jpeg, png, jpg, atau gif.',
+        'foto.max' => 'Ukuran foto maksimal 2MB.',
     ]);
 
     if ($validator->fails()) {
-        return back()->withErrors($validator)->withInput();
+        return back()->withErrors($validator)->withInput()
+            ->with('error', 'Error, gagal memperbaharui data. Silakan cek inputan kembali.');
     }
 
     $dokumentasi = Dokumentasi::findOrFail($id);
@@ -532,7 +620,6 @@ public function updateDokumentasi(Request $request, $id)
         if ($dokumentasi->foto) {
             Storage::delete('public/dokumentasi/' . $dokumentasi->foto);
         }
-
         $foto = $request->file('foto');
         $filename = time() . '.' . $foto->getClientOriginalExtension();
         $path = $foto->storeAs('public/dokumentasi', $filename);
@@ -540,7 +627,6 @@ public function updateDokumentasi(Request $request, $id)
     }
 
     $dokumentasi->update($data);
-
     return redirect()->route('dokumentasi.admin')->with('success', 'Dokumentasi berhasil diperbarui.');
 }
 
@@ -569,38 +655,52 @@ public function exportExcel()
         return view('admin.components.pages.pemerintahdesa', compact('pemerintahdesas'));
     }
 
-    public function tambahPemerintahDesa(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:255',
-            'jabatan' => 'required|string|max:255',
-            'NIP' => 'required|string|max:255',
-            'Tempat_dan_tanggal_lahir' => 'required|string|max:255',
-            'Agama' => 'required|string|max:255',
-            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
-            'pendidikan' => 'required|string|max:255',
-            'alamat' => 'required|string',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+   public function tambahPemerintahDesa(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'nama' => 'required|string|max:255',
+        'jabatan' => 'required|string|max:255',
+        'NIP' => 'required|string|max:255',
+        'Tempat_dan_tanggal_lahir' => 'required|string|max:255',
+        'Agama' => 'required|string|max:255',
+        'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+        'pendidikan' => 'required|string|max:255',
+        'alamat' => 'required|string',
+        'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ], [
+        'nama.required' => 'Nama harus diisi.',
+        'jabatan.required' => 'Jabatan harus diisi.',
+        'NIP.required' => 'NIP harus diisi.',
+        'Tempat_dan_tanggal_lahir.required' => 'Tempat dan tanggal lahir harus diisi.',
+        'Agama.required' => 'Agama harus diisi.',
+        'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
+        'jenis_kelamin.in' => 'Jenis kelamin harus Laki-laki atau Perempuan.',
+        'pendidikan.required' => 'Pendidikan harus diisi.',
+        'alamat.required' => 'Alamat harus diisi.',
+        'foto.required' => 'Foto harus diunggah.',
+        'foto.image' => 'Foto harus berupa gambar.',
+        'foto.mimes' => 'Foto harus dalam format jpeg, png, jpg, atau gif.',
+        'foto.max' => 'Ukuran foto maksimal adalah 2MB.',
+    ]);
 
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
-
-        $data = $request->all();
-        $data['petugas_id'] = auth()->id();
-
-        if ($request->hasFile('foto')) {
-            $foto = $request->file('foto');
-            $filename = time() . '.' . $foto->getClientOriginalExtension();
-            $path = $foto->storeAs('public/pemerintahdesa', $filename);
-            $data['foto'] = $filename;
-        }
-
-        PemerintahDesa::create($data);
-
-        return redirect()->route('pemerintah.admin')->with('success', 'Data pemerintah desa berhasil ditambahkan.');
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput()->with('error', 'Error, gagal menambahkan data silakan cek inputan kembali.');
     }
+
+    $data = $request->all();
+    $data['petugas_id'] = auth()->id();
+
+    if ($request->hasFile('foto')) {
+        $foto = $request->file('foto');
+        $filename = time() . '.' . $foto->getClientOriginalExtension();
+        $path = $foto->storeAs('public/pemerintahdesa', $filename);
+        $data['foto'] = $filename;
+    }
+
+    PemerintahDesa::create($data);
+
+    return redirect()->route('pemerintah.admin')->with('success', 'Data pemerintah desa berhasil ditambahkan.');
+}
 
     public function editPemerintahDesa($id)
 {
@@ -620,10 +720,23 @@ public function updatePemerintahDesa(Request $request, $id)
         'pendidikan' => 'required|string|max:255',
         'alamat' => 'required|string',
         'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ], [
+        'nama.required' => 'Nama harus diisi.',
+        'jabatan.required' => 'Jabatan harus diisi.',
+        'NIP.required' => 'NIP harus diisi.',
+        'Tempat_dan_tanggal_lahir.required' => 'Tempat dan tanggal lahir harus diisi.',
+        'Agama.required' => 'Agama harus diisi.',
+        'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
+        'jenis_kelamin.in' => 'Jenis kelamin harus Laki-laki atau Perempuan.',
+        'pendidikan.required' => 'Pendidikan harus diisi.',
+        'alamat.required' => 'Alamat harus diisi.',
+        'foto.image' => 'Foto harus berupa gambar.',
+        'foto.mimes' => 'Foto harus dalam format jpeg, png, jpg, atau gif.',
+        'foto.max' => 'Ukuran foto maksimal adalah 2MB.',
     ]);
 
     if ($validator->fails()) {
-        return back()->withErrors($validator)->withInput();
+        return back()->withErrors($validator)->withInput()->with('error', 'Error, gagal memperbaharui data silakan cek inputan kembali.');
     }
 
     $pemerintahdesa = PemerintahDesa::findOrFail($id);
@@ -683,7 +796,7 @@ public function tambahKependudukan(Request $request)
     $validator = Validator::make($request->all(), [
         'nik' => 'required|string|max:16|unique:kependudukan,nik',
         'nama' => 'required|string|max:255',
-        'no_kk' => 'required|string|max:255',
+        'no_kk' => 'required|string|max:255|unique:kependudukan,no_kk',
         'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'tempat_lahir' => 'required|string|max:255',
         'tanggal_lahir' => 'required|date',
@@ -702,10 +815,74 @@ public function tambahKependudukan(Request $request)
         'pendidikan' => 'required|string|max:255',
         'kewarganegaraan' => 'required|string|max:255',
         'status_penduduk' => 'required|string|max:50',
+    ], [
+        'nik.required' => 'NIK harus diisi.',
+        'nik.string' => 'NIK harus berupa teks.',
+        'nik.max' => 'NIK maksimal 16 karakter.',
+        'nik.unique' => 'NIK sudah terdaftar.',
+        'nama.required' => 'Nama harus diisi.',
+        'nama.string' => 'Nama harus berupa teks.',
+        'nama.max' => 'Nama maksimal 255 karakter.',
+        'no_kk.required' => 'Nomor KK harus diisi.',
+        'no_kk.string' => 'Nomor KK harus berupa teks.',
+        'no_kk.max' => 'Nomor KK maksimal 255 karakter.',
+        'no_kk.unique' => 'Nomor KK sudah terdaftar.',
+        'foto.image' => 'File foto harus berupa gambar.',
+        'foto.mimes' => 'Format foto harus jpeg, png, jpg, atau gif.',
+        'foto.max' => 'Ukuran foto maksimal 2MB.',
+        'tempat_lahir.required' => 'Tempat lahir harus diisi.',
+        'tempat_lahir.string' => 'Tempat lahir harus berupa teks.',
+        'tempat_lahir.max' => 'Tempat lahir maksimal 255 karakter.',
+        'tanggal_lahir.required' => 'Tanggal lahir harus diisi.',
+        'tanggal_lahir.date' => 'Tanggal lahir harus berupa tanggal.',
+        'umur.required' => 'Umur harus diisi.',
+        'umur.string' => 'Umur harus berupa teks.',
+        'umur.max' => 'Umur maksimal 255 karakter.',
+        'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
+        'jenis_kelamin.in' => 'Jenis kelamin harus Laki-laki atau Perempuan.',
+        'alamat.required' => 'Alamat harus diisi.',
+        'alamat.string' => 'Alamat harus berupa teks.',
+        'rt_rw.required' => 'RT/RW harus diisi.',
+        'rt_rw.string' => 'RT/RW harus berupa teks.',
+        'rt_rw.max' => 'RT/RW maksimal 10 karakter.',
+        'dusun.required' => 'Dusun harus diisi.',
+        'dusun.string' => 'Dusun harus berupa teks.',
+        'dusun.max' => 'Dusun maksimal 255 karakter.',
+        'kelurahan.required' => 'Kelurahan harus diisi.',
+        'kelurahan.string' => 'Kelurahan harus berupa teks.',
+        'kelurahan.max' => 'Kelurahan maksimal 255 karakter.',
+        'kecamatan.required' => 'Kecamatan harus diisi.',
+        'kecamatan.string' => 'Kecamatan harus berupa teks.',
+        'kecamatan.max' => 'Kecamatan maksimal 255 karakter.',
+        'kabupaten.required' => 'Kabupaten harus diisi.',
+        'kabupaten.string' => 'Kabupaten harus berupa teks.',
+        'kabupaten.max' => 'Kabupaten maksimal 255 karakter.',
+        'provinsi.required' => 'Provinsi harus diisi.',
+        'provinsi.string' => 'Provinsi harus berupa teks.',
+        'provinsi.max' => 'Provinsi maksimal 255 karakter.',
+        'agama.required' => 'Agama harus diisi.',
+        'agama.string' => 'Agama harus berupa teks.',
+        'agama.max' => 'Agama maksimal 50 karakter.',
+        'status_perkawinan.required' => 'Status perkawinan harus diisi.',
+        'status_perkawinan.string' => 'Status perkawinan harus berupa teks.',
+        'status_perkawinan.max' => 'Status perkawinan maksimal 50 karakter.',
+        'pekerjaan.required' => 'Pekerjaan harus diisi.',
+        'pekerjaan.string' => 'Pekerjaan harus berupa teks.',
+        'pekerjaan.max' => 'Pekerjaan maksimal 100 karakter.',
+        'pendidikan.required' => 'Pendidikan harus diisi.',
+        'pendidikan.string' => 'Pendidikan harus berupa teks.',
+        'pendidikan.max' => 'Pendidikan maksimal 255 karakter.',
+        'kewarganegaraan.required' => 'Kewarganegaraan harus diisi.',
+        'kewarganegaraan.string' => 'Kewarganegaraan harus berupa teks.',
+        'kewarganegaraan.max' => 'Kewarganegaraan maksimal 255 karakter.',
+        'status_penduduk.required' => 'Status penduduk harus diisi.',
+        'status_penduduk.string' => 'Status penduduk harus berupa teks.',
+        'status_penduduk.max' => 'Status penduduk maksimal 50 karakter.',
     ]);
 
     if ($validator->fails()) {
-        return back()->withErrors($validator)->withInput();
+        return back()->withErrors($validator)->withInput()
+            ->with('error', 'Error, gagal menambahkan data. Silakan cek inputan kembali.');
     }
 
     $data = $request->all();
@@ -723,6 +900,7 @@ public function tambahKependudukan(Request $request)
     return redirect()->route('kependudukan.admin')->with('success', 'Data kependudukan berhasil ditambahkan.');
 }
 
+
 public function editKependudukan($id)
 {
     $kependudukan = Kependudukan::findOrFail($id);
@@ -734,7 +912,7 @@ public function updateKependudukan(Request $request, $id)
     $validator = Validator::make($request->all(), [
         'nik' => 'required|string|max:16|unique:kependudukan,nik,' . $id,
         'nama' => 'required|string|max:255',
-        'no_kk' => 'required|string|max:255',
+        'no_kk' => 'required|string|max:255|unique:kependudukan,no_kk,' . $id,
         'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'tempat_lahir' => 'required|string|max:255',
         'tanggal_lahir' => 'required|date',
@@ -753,10 +931,74 @@ public function updateKependudukan(Request $request, $id)
         'pendidikan' => 'required|string|max:255',
         'kewarganegaraan' => 'required|string|max:255',
         'status_penduduk' => 'required|string|max:50',
+    ], [
+        'nik.required' => 'NIK harus diisi.',
+        'nik.string' => 'NIK harus berupa teks.',
+        'nik.max' => 'NIK maksimal 16 karakter.',
+        'nik.unique' => 'NIK sudah terdaftar.',
+        'nama.required' => 'Nama harus diisi.',
+        'nama.string' => 'Nama harus berupa teks.',
+        'nama.max' => 'Nama maksimal 255 karakter.',
+        'no_kk.required' => 'Nomor KK harus diisi.',
+        'no_kk.string' => 'Nomor KK harus berupa teks.',
+        'no_kk.max' => 'Nomor KK maksimal 255 karakter.',
+        'no_kk.unique' => 'Nomor KK sudah terdaftar.',
+        'foto.image' => 'File foto harus berupa gambar.',
+        'foto.mimes' => 'Format foto harus jpeg, png, jpg, atau gif.',
+        'foto.max' => 'Ukuran foto maksimal 2MB.',
+        'tempat_lahir.required' => 'Tempat lahir harus diisi.',
+        'tempat_lahir.string' => 'Tempat lahir harus berupa teks.',
+        'tempat_lahir.max' => 'Tempat lahir maksimal 255 karakter.',
+        'tanggal_lahir.required' => 'Tanggal lahir harus diisi.',
+        'tanggal_lahir.date' => 'Tanggal lahir harus berupa tanggal.',
+        'umur.required' => 'Umur harus diisi.',
+        'umur.string' => 'Umur harus berupa teks.',
+        'umur.max' => 'Umur maksimal 255 karakter.',
+        'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
+        'jenis_kelamin.in' => 'Jenis kelamin harus Laki-laki atau Perempuan.',
+        'alamat.required' => 'Alamat harus diisi.',
+        'alamat.string' => 'Alamat harus berupa teks.',
+        'rt_rw.required' => 'RT/RW harus diisi.',
+        'rt_rw.string' => 'RT/RW harus berupa teks.',
+        'rt_rw.max' => 'RT/RW maksimal 10 karakter.',
+        'dusun.required' => 'Dusun harus diisi.',
+        'dusun.string' => 'Dusun harus berupa teks.',
+        'dusun.max' => 'Dusun maksimal 255 karakter.',
+        'kelurahan.required' => 'Kelurahan harus diisi.',
+        'kelurahan.string' => 'Kelurahan harus berupa teks.',
+        'kelurahan.max' => 'Kelurahan maksimal 255 karakter.',
+        'kecamatan.required' => 'Kecamatan harus diisi.',
+        'kecamatan.string' => 'Kecamatan harus berupa teks.',
+        'kecamatan.max' => 'Kecamatan maksimal 255 karakter.',
+        'kabupaten.required' => 'Kabupaten harus diisi.',
+        'kabupaten.string' => 'Kabupaten harus berupa teks.',
+        'kabupaten.max' => 'Kabupaten maksimal 255 karakter.',
+        'provinsi.required' => 'Provinsi harus diisi.',
+        'provinsi.string' => 'Provinsi harus berupa teks.',
+        'provinsi.max' => 'Provinsi maksimal 255 karakter.',
+        'agama.required' => 'Agama harus diisi.',
+        'agama.string' => 'Agama harus berupa teks.',
+        'agama.max' => 'Agama maksimal 50 karakter.',
+        'status_perkawinan.required' => 'Status perkawinan harus diisi.',
+        'status_perkawinan.string' => 'Status perkawinan harus berupa teks.',
+        'status_perkawinan.max' => 'Status perkawinan maksimal 50 karakter.',
+        'pekerjaan.required' => 'Pekerjaan harus diisi.',
+        'pekerjaan.string' => 'Pekerjaan harus berupa teks.',
+        'pekerjaan.max' => 'Pekerjaan maksimal 100 karakter.',
+        'pendidikan.required' => 'Pendidikan harus diisi.',
+        'pendidikan.string' => 'Pendidikan harus berupa teks.',
+        'pendidikan.max' => 'Pendidikan maksimal 255 karakter.',
+        'kewarganegaraan.required' => 'Kewarganegaraan harus diisi.',
+        'kewarganegaraan.string' => 'Kewarganegaraan harus berupa teks.',
+        'kewarganegaraan.max' => 'Kewarganegaraan maksimal 255 karakter.',
+        'status_penduduk.required' => 'Status penduduk harus diisi.',
+        'status_penduduk.string' => 'Status penduduk harus berupa teks.',
+        'status_penduduk.max' => 'Status penduduk maksimal 50 karakter.',
     ]);
 
     if ($validator->fails()) {
-        return back()->withErrors($validator)->withInput();
+        return back()->withErrors($validator)->withInput()
+            ->with('error', 'Error, gagal memperbaharui data. Silakan cek inputan kembali.');
     }
 
     $kependudukan = Kependudukan::findOrFail($id);
@@ -777,6 +1019,7 @@ public function updateKependudukan(Request $request, $id)
 
     return redirect()->route('kependudukan.admin')->with('success', 'Data kependudukan berhasil diperbarui.');
 }
+
 
 public function hapusKependudukan($id)
 {
@@ -842,10 +1085,19 @@ public function tambahPengumuman(Request $request)
         'judul' => 'required|string|max:255',
         'tanggal' => 'required|date',
         'file' => 'required|file|mimes:pdf,doc,docx,xlsx,xls',
+    ], [
+        'judul.required' => 'Judul pengumuman harus diisi.',
+        'judul.string' => 'Judul pengumuman harus berupa teks.',
+        'judul.max' => 'Judul pengumuman tidak boleh lebih dari 255 karakter.',
+        'tanggal.required' => 'Tanggal pengumuman harus diisi.',
+        'tanggal.date' => 'Tanggal pengumuman harus berupa tanggal yang valid.',
+        'file.required' => 'File pengumuman harus diunggah.',
+        'file.file' => 'File yang diunggah harus berupa file.',
+        'file.mimes' => 'File pengumuman harus berformat: pdf, doc, docx, xlsx, atau xls.',
     ]);
 
     if ($validator->fails()) {
-        return back()->withErrors($validator)->withInput();
+        return back()->withErrors($validator)->withInput()->with('error', 'Gagal menambahkan data, silakan cek inputan kembali.');
     }
 
     $data = $request->all();
@@ -889,10 +1141,18 @@ public function updatePengumuman(Request $request, $id)
         'judul' => 'required|string|max:255',
         'tanggal' => 'required|date',
         'file' => 'nullable|file|mimes:pdf,doc,docx,xlsx,xls',
+    ], [
+        'judul.required' => 'Judul pengumuman harus diisi.',
+        'judul.string' => 'Judul pengumuman harus berupa teks.',
+        'judul.max' => 'Judul pengumuman tidak boleh lebih dari 255 karakter.',
+        'tanggal.required' => 'Tanggal pengumuman harus diisi.',
+        'tanggal.date' => 'Tanggal pengumuman harus berupa tanggal yang valid.',
+        'file.file' => 'File yang diunggah harus berupa file.',
+        'file.mimes' => 'File pengumuman harus berformat: pdf, doc, docx, xlsx, atau xls.',
     ]);
 
     if ($validator->fails()) {
-        return back()->withErrors($validator)->withInput();
+        return back()->withErrors($validator)->withInput()->with('error', 'Gagal memperbaharui data, silakan cek inputan kembali.');
     }
 
     $pengumuman = Pengumuman::findOrFail($id);

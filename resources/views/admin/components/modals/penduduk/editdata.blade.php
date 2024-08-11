@@ -25,16 +25,25 @@
     <div>
             <label for="nama_rt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama RT</label>
             <input type="text" name="nama_rt" id="nama_rt" value="{{ $rekapulasi->nama_rt }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                @error('nama_rt')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
         </div>
     <!-- RT dan KK -->
     <div class="grid grid-cols-2 gap-4">
         <div>
             <label for="RT" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">RT</label>
             <input type="text" name="RT" id="RT" value="{{ $rekapulasi->RT }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                @error('RT')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
         </div>
         <div>
             <label for="KK" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">KK</label>
             <input type="number" name="KK" id="KK" value="{{ $rekapulasi->KK }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                @error('KK')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
         </div>
     </div>
 
@@ -47,10 +56,16 @@
             <div>
                 <label for="LAKI_LAKI" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Laki-laki</label>
                 <input type="number" name="LAKI_LAKI" id="LAKI_LAKI" value="{{ $rekapulasi->LAKI_LAKI }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                    @error('LAKI_LAKI')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
             </div>
             <div>
                 <label for="PEREMPUAN" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Perempuan</label>
                 <input type="number" name="PEREMPUAN" id="PEREMPUAN" value="{{ $rekapulasi->PEREMPUAN }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                @error('PEREMPUAN')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
             </div>
         </div>
     </div>
@@ -65,6 +80,9 @@
                 <div>
                     <label for="{{ $edu }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $edu }}</label>
                     <input type="number" name="{{ $edu }}" id="{{ $edu }}" value="{{ $rekapulasi->$edu }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                    @error($edu)
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
             @endforeach
         </div>
@@ -80,6 +98,9 @@
                 <div>
                     <label for="{{ $job }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $job }}</label>
                     <input type="number" name="{{ $job }}" id="{{ $job }}" value="{{ $rekapulasi->$job }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                    @error($job)
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
             @endforeach
         </div>
@@ -95,6 +116,9 @@
                 <div>
                     <label for="{{ $religion }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $religion }}</label>
                     <input type="number" name="{{ $religion }}" id="{{ $religion }}" value="{{ $rekapulasi->$religion }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                    @error($religion)
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
             @endforeach
         </div>
@@ -110,6 +134,9 @@
                 <div>
                     <label for="{{ $citizenship }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $citizenship }}</label>
                     <input type="number" name="{{ $citizenship }}" id="{{ $citizenship }}" value="{{ $rekapulasi->$citizenship }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                    @error($citizenship)
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
             @endforeach
         </div>
@@ -130,10 +157,16 @@
                         <div class="flex-1">
                             <label for="LK{{ $index + 1 }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">LK</label>
                             <input type="number" name="LK{{ $index + 1 }}" id="LK{{ $index + 1 }}" value="{{ $rekapulasi->{'LK' . ($index + 1)} }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                            @error('LK'.($index + 1))
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="flex-1">
                             <label for="PR{{ $index + 1 }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PR</label>
                             <input type="number" name="PR{{ $index + 1 }}" id="PR{{ $index + 1 }}" value="{{ $rekapulasi->{'PR' . ($index + 1)} }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                            @error('PR'.($index + 1))
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -150,14 +183,23 @@
             <div>
                 <label for="KK2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">KK</label>
                 <input type="number" name="KK2" id="KK2" value="{{ $rekapulasi->KK2 }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                @error('KK2')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
             </div>
             <div>
                 <label for="LK5" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">LK</label>
                 <input type="number" name="LK5" id="LK5" value="{{ $rekapulasi->LK5 }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                @error('LK5')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
             </div>
             <div>
                 <label for="PR5" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PR</label>
                 <input type="number" name="PR5" id="PR5" value="{{ $rekapulasi->PR5 }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                @error('PR5')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
             </div>
         </div>
     </div>
@@ -166,6 +208,9 @@
     <div>
         <label for="KETERANGAN" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
         <textarea name="KETERANGAN" id="KETERANGAN" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>{{ $rekapulasi->KETERANGAN }}</textarea>
+        @error('KETERANGAN')
+            <span class="text-red-500 text-sm">{{ $message }}</span>
+        @enderror
     </div>
 
     <!-- Submit Button -->

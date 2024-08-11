@@ -17,59 +17,77 @@
             </button>
             <div class="px-6 py-6 lg:px-8">
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Edit Data Petugas</h3>
-                <form class="space-y-6" action="{{ route('petugas.update', $petugas->id) }}" method="POST" enctype="multipart/form-data">
-                     @csrf
-                    <div>
-                        <label for="nama_petugas"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
-                            Petugas</label>
-                        <input type="text" name="nama_petugas" id="nama_petugas"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            value="{{ $petugas->nama_petugas }}" required>
-                    </div>
-                    <div>
-                        <label for="username"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
-                        <input type="text" name="username" id="username"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            value="{{ $petugas->username }}" required>
-                    </div>
-                    <div>
-                        <label for="password"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password
-                            (Kosongkan jika tidak ingin mengubah)</label>
-                        <input type="password" name="password" id="password"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                    </div>
-                    <div>
-                        <label for="telp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No.
-                            Telp</label>
-                        <input type="text" name="telp" id="telp"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            value="{{ $petugas->telp }}">
-                    </div>
+               <form class="space-y-6" action="{{ route('petugas.update', $petugas->id) }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div>
+        <label for="nama_petugas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Petugas</label>
+        <input type="text" name="nama_petugas" id="nama_petugas"
+            class="bg-gray-50 border @error('nama_petugas') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            value="{{ old('nama_petugas', $petugas->nama_petugas) }}" required>
+        @error('nama_petugas')
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+        @enderror
+    </div>
 
-                    <div>
+    <div>
+        <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+        <input type="text" name="username" id="username"
+            class="bg-gray-50 border @error('username') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            value="{{ old('username', $petugas->username) }}" required>
+        @error('username')
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <div>
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password (Kosongkan jika tidak ingin mengubah)</label>
+        <input type="password" name="password" id="password"
+            class="bg-gray-50 border @error('password') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        @error('password')
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <div>
+        <label for="telp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No. Telp</label>
+        <input type="text" name="telp" id="telp"
+            class="bg-gray-50 border @error('telp') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            value="{{ old('telp', $petugas->telp) }}">
+        @error('telp')
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <div>
         <label for="foto" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Foto</label>
-        <input type="file" name="foto" id="foto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+        <input type="file" name="foto" id="foto"
+            class="bg-gray-50 border @error('foto') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
         @if($petugas->foto)
             <img src="{{ asset('storage/petugas/' . $petugas->foto) }}" alt="Foto Petugas" class="mt-2 w-32 h-32 object-cover">
         @endif
+        @error('foto')
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+        @enderror
     </div>
-                    <div>
-                        <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-                        <select name="role" id="role"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                            @foreach($roles as $role)
-                            <option value="{{ $role->name }}" {{ $petugas->roles->contains('name', $role->name) ? 'selected' : '' }}>
-                                {{ $role->name }}
-                            </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <button type="submit"
-                        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Simpan</button>
-                </form>
+
+    <div>
+        <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
+        <select name="role" id="role"
+            class="bg-gray-50 border @error('role') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            @foreach($roles as $role)
+                <option value="{{ $role->name }}" {{ old('role', $petugas->roles->first()->name ?? '') == $role->name ? 'selected' : '' }}>
+                    {{ $role->name }}
+                </option>
+            @endforeach
+        </select>
+        @error('role')
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Simpan</button>
+</form>
+
             </div>
         </div>
     </div>

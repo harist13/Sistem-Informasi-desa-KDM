@@ -19,15 +19,24 @@
                     <div>
                         <label for="judul-{{ $pengumuman->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul</label>
                         <input type="text" name="judul" id="judul-{{ $pengumuman->id }}" value="{{ $pengumuman->judul }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                        @error('judul')
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <label for="tanggal-{{ $pengumuman->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal</label>
                         <input type="date" name="tanggal" id="tanggal-{{ $pengumuman->id }}" value="{{ $pengumuman->tanggal }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                        @error('tanggal')
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <label for="file-{{ $pengumuman->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">File</label>
                         <input type="file" name="file" id="file-{{ $pengumuman->id }}" accept="application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                         <p class="mt-1 text-sm text-gray-500 dark:text-gray-300">Biarkan kosong jika tidak ingin mengubah file</p>
+                        @error('file')
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-900 dark:text-white">File Saat Ini:</p>

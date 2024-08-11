@@ -52,13 +52,34 @@ class AuthController extends Controller
 
     public function handleMasyarakatRegister(Request $request)
 {
-    $validator = Validator::make($request->all(), [
+     $validator = Validator::make($request->all(), [
         'nik' => 'required|string|size:16|unique:masyarakat',
         'nama' => 'required|string|max:100',
         'password' => 'required|string|min:6|confirmed',
         'telp' => 'nullable|string|max:15',
         'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'email' => 'nullable|string|email|max:100|unique:masyarakat',
+    ], [
+        'nik.required' => 'NIK wajib diisi.',
+        'nik.string' => 'NIK harus berupa string.',
+        'nik.size' => 'NIK harus terdiri dari 16 karakter.',
+        'nik.unique' => 'NIK sudah terdaftar.',
+        'nama.required' => 'Nama wajib diisi.',
+        'nama.string' => 'Nama harus berupa string.',
+        'nama.max' => 'Nama tidak boleh lebih dari 100 karakter.',
+        'password.required' => 'Password wajib diisi.',
+        'password.string' => 'Password harus berupa string.',
+        'password.min' => 'Password minimal 6 karakter.',
+        'password.confirmed' => 'Konfirmasi password tidak cocok.',
+        'telp.string' => 'Nomor telepon harus berupa string.',
+        'telp.max' => 'Nomor telepon tidak boleh lebih dari 15 karakter.',
+        'foto.image' => 'File harus berupa gambar.',
+        'foto.mimes' => 'Format gambar yang diizinkan: jpeg, png, jpg, gif, svg.',
+        'foto.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
+        'email.string' => 'Email harus berupa string.',
+        'email.email' => 'Format email tidak valid.',
+        'email.max' => 'Email tidak boleh lebih dari 100 karakter.',
+        'email.unique' => 'Email sudah terdaftar.',
     ]);
 
     if ($validator->fails()) {
@@ -104,7 +125,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'username' => 'Username or password is incorrect.',
+            'username' => 'Username atau password salah.',
         ]);
     }
 
