@@ -24,7 +24,7 @@ use App\Models\Pengumuman;
 use Illuminate\Support\Facades\Auth;
 
 
-class StaffController extends Controller
+class RtController extends Controller
 {
 
    
@@ -34,7 +34,7 @@ class StaffController extends Controller
     {
         $petugas = Petugas::all();
         $roles = Role::all();
-        return view('staff.components.pages.petugas', compact('petugas', 'roles'));
+        return view('rt.components.pages.petugas', compact('petugas', 'roles'));
     }
 
     
@@ -86,7 +86,7 @@ class StaffController extends Controller
     $petugas = Petugas::create($data);
     $petugas->assignRole($request->role);
 
-    return redirect()->route('petugas.staff')->with('success', 'Petugas berhasil ditambahkan.');
+    return redirect()->route('petugas.rt')->with('success', 'Petugas berhasil ditambahkan.');
 }
 
     public function update(Request $request, $id)
@@ -145,7 +145,7 @@ class StaffController extends Controller
     $petugas->update($data);
     $petugas->syncRoles($request->role);
 
-    return redirect()->route('petugas.staff')->with('success', 'Data petugas berhasil diperbarui.');
+    return redirect()->route('petugas.rt')->with('success', 'Data petugas berhasil diperbarui.');
 }
 
      public function edit($id)
@@ -153,7 +153,7 @@ class StaffController extends Controller
         $petugas = Petugas::findOrFail($id);
         $roles = Role::all();
 
-        return view('staff.components.modals.petugas.editdata', compact('petugas', 'roles'));
+        return view('rt.components.modals.petugas.editdata', compact('petugas', 'roles'));
     }
 
 
@@ -168,7 +168,7 @@ class StaffController extends Controller
         // Hapus petugas
         $petugas->delete();
 
-        return redirect()->route('petugas.staff')->with('success', 'Petugas berhasil dihapus.');
+        return redirect()->route('petugas.rt')->with('success', 'Petugas berhasil dihapus.');
     }
 
     public function filterPetugas(Request $request)
@@ -179,7 +179,7 @@ class StaffController extends Controller
     })->get();
 
     $roles = Role::all();
-    return view('staff.components.pages.petugas', compact('petugas', 'roles'));
+    return view('rt.components.pages.petugas', compact('petugas', 'roles'));
 }
 
 public function searchPetugas(Request $request)
@@ -190,21 +190,21 @@ public function searchPetugas(Request $request)
                 ->get();
 
     $roles = Role::all();
-    return view('staff.components.pages.petugas', compact('petugas', 'roles'));
+    return view('rt.components.pages.petugas', compact('petugas', 'roles'));
 }
 
 
 
     public function dashboard()
     {
-        return view('staff.dashboard');
+        return view('rt.dashboard');
     }
     
 
     public function artikel()
 {
     $artikels = Artikel::with('petugas')->get();
-    return view('staff.components.pages.artikel', compact('artikels'));
+    return view('rt.components.pages.artikel', compact('artikels'));
 }
 
 public function tambahArtikel(Request $request)
@@ -242,14 +242,14 @@ public function tambahArtikel(Request $request)
 
     Artikel::create($data);
 
-    return redirect()->route('artikel.staff')->with('success', 'Artikel berhasil ditambahkan.');
+    return redirect()->route('artikel.rt')->with('success', 'Artikel berhasil ditambahkan.');
 }
 
 
 public function editArtikel($id)
 {
     $artikel = Artikel::findOrFail($id);
-    return view('staff.components.modals.artikel.editdata', compact('artikel'));
+    return view('rt.components.modals.artikel.editdata', compact('artikel'));
 }
 
 public function updateArtikel(Request $request, $id)
@@ -293,7 +293,7 @@ public function updateArtikel(Request $request, $id)
 
     $artikel->update($data);
 
-    return redirect()->route('artikel.staff')->with('success', 'Artikel berhasil diperbarui.');
+    return redirect()->route('artikel.rt')->with('success', 'Artikel berhasil diperbarui.');
 }
 
 
@@ -308,14 +308,14 @@ public function hapusArtikel($id)
     
     $artikel->delete();
 
-    return redirect()->route('artikel.staff')->with('success', 'Artikel berhasil dihapus.');
+    return redirect()->route('artikel.rt')->with('success', 'Artikel berhasil dihapus.');
 }
    
 
      public function pengaduan()
     {
         $pengaduan = Pengaduan::with('masyarakat')->where('status', 'belum diproses')->get();
-        return view('staff.components.pages.pengaduan', compact('pengaduan'));
+        return view('rt.components.pages.pengaduan', compact('pengaduan'));
     }
 
     public function pengaduandiproses()
@@ -323,7 +323,7 @@ public function hapusArtikel($id)
         $pengaduan = Pengaduan::with(['masyarakat', 'tanggapans'])
             ->whereIn('status', ['proses', 'selesai'])
             ->get();
-        return view('staff.components.pages.pengaduandiproses', compact('pengaduan'));
+        return view('rt.components.pages.pengaduandiproses', compact('pengaduan'));
     }
 
     public function pengaduanselesai()
@@ -331,7 +331,7 @@ public function hapusArtikel($id)
         $pengaduan = Pengaduan::with(['masyarakat', 'tanggapans'])
             ->where('status', 'selesai')
             ->get();
-        return view('staff.components.pages.pengaduanselesai', compact('pengaduan'));
+        return view('rt.components.pages.pengaduanselesai', compact('pengaduan'));
     }
 
     public function tanggapiPengaduan(Request $request, $id)
@@ -354,13 +354,13 @@ public function hapusArtikel($id)
             'id_petugas' => auth()->id(),
         ]);
 
-        return redirect()->route('pengaduan.staff')->with('success', 'Pengaduan berhasil ditanggapi.');
+        return redirect()->route('pengaduan.rt')->with('success', 'Pengaduan berhasil ditanggapi.');
     }
 
     public function detailPengaduan($id)
     {
         $pengaduan = Pengaduan::with(['masyarakat', 'tanggapans'])->findOrFail($id);
-        return view('staff.components.modals.pengaduan.detail', compact('pengaduan'));
+        return view('rt.components.modals.pengaduan.detail', compact('pengaduan'));
     }
 
     public function hapusPengaduan($id)
@@ -376,7 +376,7 @@ public function hapusArtikel($id)
     $pengaduan->status = 'selesai';
     $pengaduan->save();
 
-    return redirect()->route('pengaduandiproses.staff')->with('success', 'Pengaduan berhasil diselesaikan.');
+    return redirect()->route('pengaduandiproses.rt')->with('success', 'Pengaduan berhasil diselesaikan.');
 }
     
    
@@ -385,14 +385,14 @@ public function hapusArtikel($id)
    
     public function pemetaan()
     {
-        return view('staff.components.pages.pemetaan');
+        return view('rt.components.pages.pemetaan');
     }
 
     public function penduduk()
 {
     $rekapulasi = RekapulasiPenduduk::with('petugas')->get();
     $petugas = Petugas::all();
-    return view('staff.components.pages.datapenduduk', compact('rekapulasi', 'petugas'));
+    return view('rt.components.pages.datapenduduk', compact('rekapulasi', 'petugas'));
 }
 
 public function tambahDataPenduduk(Request $request)
@@ -448,7 +448,7 @@ public function tambahDataPenduduk(Request $request)
 
     RekapulasiPenduduk::create($data);
 
-    return redirect()->route('penduduk.staff')->with('success', 'Data penduduk berhasil ditambahkan.');
+    return redirect()->route('penduduk.rt')->with('success', 'Data penduduk berhasil ditambahkan.');
 }
 
 
@@ -456,7 +456,7 @@ public function editPenduduk($id)
 {
     $rekapulasi = RekapulasiPenduduk::findOrFail($id);
     $petugas = Petugas::all();
-    return view('staff.components.modals.penduduk.editdata', compact('rekapulasi', 'petugas'));
+    return view('rt.components.modals.penduduk.editdata', compact('rekapulasi', 'petugas'));
 }
 
 public function updatePenduduk(Request $request, $id)
@@ -510,7 +510,7 @@ public function updatePenduduk(Request $request, $id)
     $rekapulasi = RekapulasiPenduduk::findOrFail($id);
     $rekapulasi->update($request->all());
 
-    return redirect()->route('penduduk.staff')->with('success', 'Data penduduk berhasil diperbarui.');
+    return redirect()->route('penduduk.rt')->with('success', 'Data penduduk berhasil diperbarui.');
 }
 
 
@@ -521,7 +521,7 @@ public function hapusPenduduk($id)
     $rekapulasi = RekapulasiPenduduk::findOrFail($id);
     $rekapulasi->delete();
 
-    return redirect()->route('penduduk.staff')->with('success', 'Data penduduk berhasil dihapus.');
+    return redirect()->route('penduduk.rt')->with('success', 'Data penduduk berhasil dihapus.');
 }
 
 public function searchPenduduk(Request $request)
@@ -534,7 +534,7 @@ public function searchPenduduk(Request $request)
 
     $petugas = Petugas::all();
 
-    return view('staff.components.pages.datapenduduk', compact('rekapulasi', 'petugas'));
+    return view('rt.components.pages.datapenduduk', compact('rekapulasi', 'petugas'));
 }
 
 public function sortPenduduk(Request $request)
@@ -545,13 +545,13 @@ public function sortPenduduk(Request $request)
     $rekapulasi = RekapulasiPenduduk::orderBy($sort, $order)->get();
     $petugas = Petugas::all();
 
-    return view('staff.components.pages.datapenduduk', compact('rekapulasi', 'petugas'));
+    return view('rt.components.pages.datapenduduk', compact('rekapulasi', 'petugas'));
 }
 
 public function dokumentasi()
 {
     $dokumentasi = Dokumentasi::with('petugas')->get();
-    return view('staff.components.pages.dokumentasi', compact('dokumentasi'));
+    return view('rt.components.pages.dokumentasi', compact('dokumentasi'));
 }
 
 public function tambahDokumentasi(Request $request)
@@ -585,13 +585,13 @@ public function tambahDokumentasi(Request $request)
     }
 
     Dokumentasi::create($data);
-    return redirect()->route('dokumentasi.staff')->with('success', 'Dokumentasi berhasil ditambahkan.');
+    return redirect()->route('dokumentasi.rt')->with('success', 'Dokumentasi berhasil ditambahkan.');
 }
 
 public function editDokumentasi($id)
 {
     $dokumentasi = Dokumentasi::findOrFail($id);
-    return view('staff.components.modals.dokumentasi.editdata', compact('dokumentasi'));
+    return view('rt.components.modals.dokumentasi.editdata', compact('dokumentasi'));
 }
 
 public function updateDokumentasi(Request $request, $id)
@@ -628,7 +628,7 @@ public function updateDokumentasi(Request $request, $id)
     }
 
     $dokumentasi->update($data);
-    return redirect()->route('dokumentasi.staff')->with('success', 'Dokumentasi berhasil diperbarui.');
+    return redirect()->route('dokumentasi.rt')->with('success', 'Dokumentasi berhasil diperbarui.');
 }
 
 public function hapusDokumentasi($id)
@@ -642,7 +642,7 @@ public function hapusDokumentasi($id)
     
     $dokumentasi->delete();
 
-    return redirect()->route('dokumentasi.staff')->with('success', 'Dokumentasi berhasil dihapus.');
+    return redirect()->route('dokumentasi.rt')->with('success', 'Dokumentasi berhasil dihapus.');
 }
 
 public function exportExcel()
@@ -653,7 +653,7 @@ public function exportExcel()
  public function pemerintahdesa()
     {
         $pemerintahdesas = PemerintahDesa::with('petugas')->get();
-        return view('staff.components.pages.pemerintahdesa', compact('pemerintahdesas'));
+        return view('rt.components.pages.pemerintahdesa', compact('pemerintahdesas'));
     }
 
    public function tambahPemerintahDesa(Request $request)
@@ -700,13 +700,13 @@ public function exportExcel()
 
     PemerintahDesa::create($data);
 
-    return redirect()->route('pemerintah.staff')->with('success', 'Data pemerintah desa berhasil ditambahkan.');
+    return redirect()->route('pemerintah.rt')->with('success', 'Data pemerintah desa berhasil ditambahkan.');
 }
 
     public function editPemerintahDesa($id)
 {
     $pemerintahdesa = PemerintahDesa::findOrFail($id);
-    return view('staff.components.modals.pemerintahdesa.editpemerintahdesa', compact('pemerintahdesa'));
+    return view('rt.components.modals.pemerintahdesa.editpemerintahdesa', compact('pemerintahdesa'));
 }
 
 public function updatePemerintahDesa(Request $request, $id)
@@ -757,7 +757,7 @@ public function updatePemerintahDesa(Request $request, $id)
 
     $pemerintahdesa->update($data);
 
-    return redirect()->route('pemerintah.staff')->with('success', 'Data pemerintah desa berhasil diperbarui.');
+    return redirect()->route('pemerintah.rt')->with('success', 'Data pemerintah desa berhasil diperbarui.');
 }
 
 public function hapusPemerintahDesa($id)
@@ -771,7 +771,7 @@ public function hapusPemerintahDesa($id)
     
     $pemerintahdesa->delete();
 
-    return redirect()->route('pemerintah.staff')->with('success', 'Data pemerintah desa berhasil dihapus.');
+    return redirect()->route('pemerintah.rt')->with('success', 'Data pemerintah desa berhasil dihapus.');
 }
 
 public function searchPemerintahDesa(Request $request)
@@ -783,13 +783,13 @@ public function searchPemerintahDesa(Request $request)
                         ->orWhere('jabatan', 'LIKE', "%{$search}%")
                         ->get();
 
-    return view('staff.components.pages.pemerintahdesa', compact('pemerintahdesas'));
+    return view('rt.components.pages.pemerintahdesa', compact('pemerintahdesas'));
 }
 
 public function kependudukan()
 {
     $kependudukans = Kependudukan::all();
-    return view('staff.components.pages.kependudukan', compact('kependudukans'));
+    return view('rt.components.pages.kependudukan', compact('kependudukans'));
 }
 
 public function tambahKependudukan(Request $request)
@@ -898,14 +898,14 @@ public function tambahKependudukan(Request $request)
 
     Kependudukan::create($data);
 
-    return redirect()->route('kependudukan.staff')->with('success', 'Data kependudukan berhasil ditambahkan.');
+    return redirect()->route('kependudukan.rt')->with('success', 'Data kependudukan berhasil ditambahkan.');
 }
 
 
 public function editKependudukan($id)
 {
     $kependudukan = Kependudukan::findOrFail($id);
-    return view('staff.components.modals.kependudukan.editkependudukan', compact('kependudukan'));
+    return view('rt.components.modals.kependudukan.editkependudukan', compact('kependudukan'));
 }
 
 public function updateKependudukan(Request $request, $id)
@@ -1018,7 +1018,7 @@ public function updateKependudukan(Request $request, $id)
 
     $kependudukan->update($data);
 
-    return redirect()->route('kependudukan.staff')->with('success', 'Data kependudukan berhasil diperbarui.');
+    return redirect()->route('kependudukan.rt')->with('success', 'Data kependudukan berhasil diperbarui.');
 }
 
 
@@ -1032,7 +1032,7 @@ public function hapusKependudukan($id)
     
     $kependudukan->delete();
 
-    return redirect()->route('kependudukan.staff')->with('success', 'Data kependudukan berhasil dihapus.');
+    return redirect()->route('kependudukan.rt')->with('success', 'Data kependudukan berhasil dihapus.');
 }
 
 public function searchKependudukan(Request $request)
@@ -1056,7 +1056,7 @@ public function searchKependudukan(Request $request)
                         ->orWhere('status_penduduk', 'LIKE', "%{$search}%")
                         ->get();
 
-    return view('staff.components.pages.kependudukan', compact('kependudukans'));
+    return view('rt.components.pages.kependudukan', compact('kependudukans'));
 }
 
 public function sortKependudukan(Request $request)
@@ -1066,7 +1066,7 @@ public function sortKependudukan(Request $request)
 
     $kependudukans = Kependudukan::orderBy($sortBy, $sortOrder)->get();
 
-    return view('staff.components.pages.kependudukan', compact('kependudukans'));
+    return view('rt.components.pages.kependudukan', compact('kependudukans'));
 }
 
 public function exportKependudukan()
@@ -1077,7 +1077,7 @@ public function exportKependudukan()
 public function pengumuman()
 {
     $pengumumans = Pengumuman::all();
-    return view('staff.components.pages.pengumuman', compact('pengumumans'));
+    return view('rt.components.pages.pengumuman', compact('pengumumans'));
 }
 
 public function tambahPengumuman(Request $request)
@@ -1113,7 +1113,7 @@ public function tambahPengumuman(Request $request)
 
     Pengumuman::create($data);
 
-    return redirect()->route('pengumuman.staff')->with('success', 'Pengumuman berhasil ditambahkan.');
+    return redirect()->route('pengumuman.rt')->with('success', 'Pengumuman berhasil ditambahkan.');
 }
 
 public function hapusPengumuman($id)
@@ -1127,13 +1127,13 @@ public function hapusPengumuman($id)
     
     $pengumuman->delete();
 
-    return redirect()->route('pengumuman.staff')->with('success', 'Pengumuman berhasil dihapus.');
+    return redirect()->route('pengumuman.rt')->with('success', 'Pengumuman berhasil dihapus.');
 }
 
 public function editPengumuman($id)
 {
     $pengumuman = Pengumuman::findOrFail($id);
-    return view('staff.components.modals.pengumuman.edit', compact('pengumuman'));
+    return view('rt.components.modals.pengumuman.edit', compact('pengumuman'));
 }
 
 public function updatePengumuman(Request $request, $id)
@@ -1173,7 +1173,7 @@ public function updatePengumuman(Request $request, $id)
 
     $pengumuman->update($data);
 
-    return redirect()->route('pengumuman.staff')->with('success', 'Pengumuman berhasil diperbarui.');
+    return redirect()->route('pengumuman.rt')->with('success', 'Pengumuman berhasil diperbarui.');
 }
 
  public function updateProfile(Request $request)
