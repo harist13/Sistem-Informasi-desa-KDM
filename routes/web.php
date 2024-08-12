@@ -33,12 +33,14 @@ Route::get('/detailpengumuman/{id}', [TampilanAwalController::class, 'detailPeng
 
 
 // Admin login & register
+Route::get('/login', [AuthController::class, 'loginAdmin'])->name('login');
 Route::get('/admin/login', [AuthController::class, 'loginAdmin'])->name('loginAdmin');
 Route::post('/admin/login', [AuthController::class, 'handleAdminLogin']);
 Route::get('/admin/register', [AuthController::class, 'registerAdmin'])->name('registerAdmin');
 Route::post('/admin/register', [AuthController::class, 'handleAdminRegister']);
 
 // Masyarakat login & register
+Route::get('/login-masyarakat', [AuthController::class, 'loginMasyarakat'])->name('login.masyarakat');
 Route::get('/masyarakat/login', [AuthController::class, 'loginMasyarakat'])->name('loginMasyarakat');
 Route::post('/masyarakat/login', [AuthController::class, 'handleMasyarakatLogin']);
 Route::get('/masyarakat/register', [AuthController::class, 'registerMasyarakat'])->name('registerMasyarakat');

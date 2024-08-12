@@ -11,7 +11,7 @@ class AuthMiddleware
     public function handle($request, Closure $next, ...$roles)
     {
         if (!Auth::check()) {
-            return redirect('/login');
+            return redirect()->route('login');
         }
 
         $user = Auth::user();
@@ -19,18 +19,6 @@ class AuthMiddleware
             return $next($request);
         }
 
-        if ($user->hasRole('admin')) {
-        
-             abort(403, 'USER DOES NOT HAVE RIGHT ROLE');
-        } elseif ($user->hasRole('staff')) {
-          
-             abort(403, 'USER DOES NOT HAVE RIGHT ROLE');
-        
-        } elseif ($user->hasRole('rt')) {
-          
-             abort(403, 'USER DOES NOT HAVE RIGHT ROLE');
-        }
-
-        return redirect('/login');
+        abort(403, 'USER DOES NOT HAVE RIGHT ROLE');
     }
 }
