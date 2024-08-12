@@ -49,7 +49,7 @@ class CreateRekapulasiPendudukTable extends Migration
             $table->integer('KK2');
             $table->integer('LK5');
             $table->integer('PR5');
-            $table->text('KETERANGAN')->nullable();
+            $table->integer('KETERANGAN')->nullable();
             $table->timestamps();
 
             // Foreign key constraint

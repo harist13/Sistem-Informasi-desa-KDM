@@ -217,7 +217,7 @@
                                 <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('KK2') }}</td>
                                 <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('LK5') }}</td>
                                 <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('PR5') }}</td>
-                                <td colspan="2" class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('RT') + $rekapulasi->sum('KK') + $rekapulasi->sum('LAKI_LAKI') + $rekapulasi->sum('PEREMPUAN') + $rekapulasi->sum('BH') + $rekapulasi->sum('BS') + $rekapulasi->sum('TK') + $rekapulasi->sum('SD') + $rekapulasi->sum('SLTP') + $rekapulasi->sum('SLTA') + $rekapulasi->sum('PT') + $rekapulasi->sum('TANI') + $rekapulasi->sum('DAGANG') + $rekapulasi->sum('PNS') + $rekapulasi->sum('TNI') + $rekapulasi->sum('SWASTA') + $rekapulasi->sum('ISLAM') + $rekapulasi->sum('KHALOTIK') + $rekapulasi->sum('PROTESTAN') + $rekapulasi->sum('WNI') + $rekapulasi->sum('WNA') + $rekapulasi->sum('LK1') + $rekapulasi->sum('PR1') + $rekapulasi->sum('LK2') + $rekapulasi->sum('PR2') + $rekapulasi->sum('LK3') + $rekapulasi->sum('PR3') + $rekapulasi->sum('LK4') + $rekapulasi->sum('PR4') + $rekapulasi->sum('KK2') + $rekapulasi->sum('LK5') + $rekapulasi->sum('PR5') }}</td>
+                                <td colspan="2" class="px-6 py-4 border border-gray-300 dark:border-gray-600">{{ $rekapulasi->sum('KETERANGAN') }}</td>
                             </tr>
                         </tbody>
                     </table>

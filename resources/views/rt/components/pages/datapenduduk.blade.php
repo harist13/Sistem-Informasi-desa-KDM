@@ -56,7 +56,7 @@
     <section>
         <div class="p-4 sm:ml-64">
             <div class="flex flex-col">
-                <h1 class="text-2xl lg:text-4xl font-bold mt-4 mb-2">Data Penduduk</h1>
+                <h1 class="text-2xl lg:text-4xl font-bold mt-4 mb-2">Halaman Rekapulasi Data Penduduk</h1>
                 <div class="flex justify-between items-center mb-2">
                     <div class="p-3 mb-0 text-sm text-blue-800 rounded-lg lg:w-full bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
                         role="alert">
@@ -275,7 +275,8 @@
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('KK2') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('LK5') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('PR5') }}</td>
-                                <td colspan="2" class="px-6 py-4">{{ $rekapulasi->sum('RT') + $rekapulasi->sum('KK') + $rekapulasi->sum('LAKI_LAKI') + $rekapulasi->sum('PEREMPUAN') + $rekapulasi->sum('BH') + $rekapulasi->sum('BS') + $rekapulasi->sum('TK') + $rekapulasi->sum('SD') + $rekapulasi->sum('SLTP') + $rekapulasi->sum('SLTA') + $rekapulasi->sum('PT') + $rekapulasi->sum('TANI') + $rekapulasi->sum('DAGANG') + $rekapulasi->sum('PNS') + $rekapulasi->sum('TNI') + $rekapulasi->sum('SWASTA') + $rekapulasi->sum('ISLAM') + $rekapulasi->sum('KHALOTIK') + $rekapulasi->sum('PROTESTAN') + $rekapulasi->sum('WNI') + $rekapulasi->sum('WNA') + $rekapulasi->sum('LK1') + $rekapulasi->sum('PR1') + $rekapulasi->sum('LK2') + $rekapulasi->sum('PR2') + $rekapulasi->sum('LK3') + $rekapulasi->sum('PR3') + $rekapulasi->sum('LK4') + $rekapulasi->sum('PR4') + $rekapulasi->sum('KK2') + $rekapulasi->sum('LK5') + $rekapulasi->sum('PR5') }}</td>
+                                <td class="px-6 py-4">{{ $rekapulasi->sum('KETERANGAN') }}</td>
+                                <td colspan="2" class="px-6 py-4"></td>
                             </tr>
                         </tbody>
                     </table>

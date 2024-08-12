@@ -431,7 +431,7 @@ public function tambahDataPenduduk(Request $request)
         'KK2' => 'required|integer',
         'LK5' => 'required|integer',
         'PR5' => 'required|integer',
-        'KETERANGAN' => 'nullable|string',
+        'KETERANGAN' => 'nullable|integer',
     ], [
         'required' => 'Data wajib diisi.',
         'string' => 'Data harus berupa teks.',
@@ -495,7 +495,7 @@ public function updatePenduduk(Request $request, $id)
         'KK2' => 'required|integer',
         'LK5' => 'required|integer',
         'PR5' => 'required|integer',
-        'KETERANGAN' => 'nullable|string',
+        'KETERANGAN' => 'nullable|integer',
     ], [
         'required' => 'Data harus diisi.',
         'string' => 'Data harus berupa teks.',

@@ -39,7 +39,7 @@
     <section>
         <div class="p-4 sm:ml-64">
             <div class="flex flex-col">
-                <h1 class="text-2xl lg:text-4xl font-bold mt-4 mb-2">Selamat Datang di Halaman Dashboard</h1>
+                <h1 class="text-2xl lg:text-4xl font-bold mt-4 mb-2">Halaman Dokumentasi</h1>
                 <div class="flex justify-between items-center mb-2">
                     <div class="p-3 mb-0 text-sm text-blue-800 rounded-lg lg:w-1/2 bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
                         role="alert">

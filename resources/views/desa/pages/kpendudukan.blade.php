@@ -152,6 +152,7 @@
             <th scope="col" class="px-6 py-3 text-left min-w-[200px]">Jumlah Berdasarkan Dusun</th>
             <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Agama</th>
             <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Pekerjaan</th>
+            <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Pendidikan</th>
             <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Status Perkawinan</th>
             <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan Status Penduduk</th>
         </tr>
@@ -194,6 +195,14 @@
                     @endforeach
                 </ul>
             </td>
+
+             <td class="px-6 py-4 text-left">
+                <ul class="list-disc list-inside">
+                    @foreach ($kependudukans->groupBy('pendidikan') as $pendidikan => $penduduk)
+                        <li>{{ $pendidikan }}: {{ $penduduk->count() }}</li>
+                    @endforeach
+                </ul>
+            </td>
             <!-- Jumlah Berdasarkan Status Perkawinan -->
             <td class="px-6 py-4 text-left">
                 <ul class="list-disc list-inside">
@@ -233,6 +242,9 @@
         </div>
         <div class="swiper-slide">
             <canvas id="pekerjaanChart"></canvas>
+        </div>
+         <div class="swiper-slide">
+            <canvas id="pendidikanChart"></canvas>
         </div>
         <div class="swiper-slide">
             <canvas id="statusPerkawinanChart"></canvas>
@@ -398,6 +410,19 @@ function generateColors(num) {
         );
         pekerjaanLabels.forEach((label, index) => {
             addToSummaryTable(`Pekerjaan ${label}`, pekerjaanData[index]);
+        });
+
+        // Pendidikan Chart
+        const pendidikanLabels = {!! json_encode($kependudukans->groupBy('pendidikan')->keys()) !!};
+        const pendidikanData = {!! json_encode($kependudukans->groupBy('pendidikan')->map->count()->values()) !!};
+        createChart(
+            document.getElementById('pendidikanChart').getContext('2d'),
+            pendidikanLabels,
+            pendidikanData,
+            'Jumlah Berdasarkan Pendidikan'
+        );
+        pendidikanLabels.forEach((label, index) => {
+            addToSummaryTable(`Pendidikan ${label}`, pendidikanData[index]);
         });
 
         // Status Perkawinan Chart

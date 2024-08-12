@@ -32,7 +32,7 @@
 <body>
 
     {{-- sidebar --}}
-    @include('admin.components.layouts.sidebar')
+    @include('rt.components.layouts.sidebar')
     <section>
         <div class="p-4 sm:ml-64">
             <div class="flex flex-col">
@@ -64,7 +64,7 @@
                     Sebagai {{ Auth::user()->roles->pluck('name')->implode(', ') }}
                 </marquee>
             </div>
-            @include('admin.components.modals.editprofile.editprofil')
+            @include('rt.components.modals.editprofile.editprofil')
         </div>
     </section>
 
