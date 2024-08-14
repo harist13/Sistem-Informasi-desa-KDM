@@ -57,6 +57,8 @@ class rekappenduduk implements FromCollection, WithHeadings, WithMapping, WithSt
             'KK2' => $collection->sum('KK2'),
             'LK5' => $collection->sum('LK5'),
             'PR5' => $collection->sum('PR5'),
+            'KETERANGAN' => $collection->sum('KETERANGAN'),
+
         ];
     }
 
@@ -133,7 +135,8 @@ class rekappenduduk implements FromCollection, WithHeadings, WithMapping, WithSt
                 $rekapulasi->KK2,
                 $rekapulasi->LK5,
                 $rekapulasi->PR5,
-                '',
+                $rekapulasi->KETERANGAN,
+                
             ];
         }
 
