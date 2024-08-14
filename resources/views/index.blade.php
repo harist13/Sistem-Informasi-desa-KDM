@@ -208,8 +208,7 @@
                 <div>
                     <h1 class="text-3xl font-semibold">Galeri <span class="font-bold text-green-500">
                             Kegiatan Desa</span></h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias minus veritatis ipsum
-                        reprehenderit alias iure.</p>
+                    <p>Berikut ini adalah dokumentasi kegiatan desa.</p>
                 </div>
                 <button class="bg-green-500 text-white px-4 py-2 rounded hidden lg:block">
                     <a href="{{ route('kegiatan') }}">Lihat Semua</a></button>
