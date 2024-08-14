@@ -16,7 +16,7 @@
         </div>
     </div>
 </nav>
-<nav class="bg-[#228B22] relative z-20">
+<nav class="bg-[#228B22] relative z-20 mt-6">
     <div class="mx-auto max-w-screen-2xl px-4">
         <div class="relative flex justify-between h-16 items-center">
             <!-- Desktop Menu -->
@@ -44,7 +44,11 @@
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Visi
                                 dan Misi</a>
                         </li>
-                       
+                        <li>
+                            <a href="{{ route('pemerintahan') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pemerintahan
+                                Desa</a>
+                        </li>
                         <li>
                             <a href="{{ route('wisata') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Wisata
@@ -65,11 +69,11 @@
                 <div id="dropdownData"
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDataButton">
-                         <li>
+                        <li>
                             <a href="{{ route('kpendudukan') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Data
                                 Kependudukan
-                                </a>
+                            </a>
                         </li>
                         <li>
                             <a href="{{ route('rekapulasi') }}"
@@ -77,7 +81,7 @@
                                 Rekapulasi
                                 Desa</a>
                         </li>
-                         <li>
+                        <li>
                             <a href="{{ route('pemerintahan') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pemerintahan
                                 Desa</a>
@@ -98,7 +102,7 @@
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownServiceButton">
                         <li>
-                            <a href="{{ route ('pemetaan') }}"
+                            <a href="{{ route('pemetaan') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                 Pemetaan Desa</a>
                         </li>
@@ -117,13 +121,14 @@
                 </button>
                 <div id="dropdownActivity"
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownAvtivityButton">
-                         <li>
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                        aria-labelledby="dropdownAvtivityButton">
+                        <li>
                             <a href="{{ route('beritadesa') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                 Berita</a>
                         </li>
-                         <li>
+                        <li>
                             <a href="{{ route('pengumuman') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                 Pengumuman</a>
@@ -166,7 +171,7 @@
                 <div class="absolute inset-y-0 right-0 flex justify-between items-center gap-x-3">
                     <div class="flex items-center gap-x-2">
                         <input type="text"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block py-2 px-4 rounded-md"
+                            class="bg-gray-50 border w-[150px] border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block py-2 px-4 rounded-md"
                             placeholder="Cari artikel disini">
                         <button class="bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-4 rounded-md"><i
                                 class="fa-solid fa-magnifying-glass"></i></button>
@@ -221,6 +226,11 @@
                         <li>
                             <a href="{{ route('pemerintahan') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pemerintahan
+                                Desa</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('wisata') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Wisata
                                 Desa</a>
                         </li>
                     </ul>
