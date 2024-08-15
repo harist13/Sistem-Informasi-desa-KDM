@@ -243,9 +243,21 @@
                     class="absolute z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-1/2 origin-top-left">
                     <ul class="py-2 text-sm text-gray-700">
                         <li>
-                            <a href="#"
+                            <a href="{{ route('kpendudukan') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Data
-                                Penduduk Desa</a>
+                                Kependudukan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('rekapulasi') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Data
+                                Rekapulasi
+                                Desa</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('pemerintahan') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pemerintahan
+                                Desa</a>
                         </li>
                     </ul>
                 </div>
@@ -256,7 +268,7 @@
                 <button id="mobileDropdownServiceButton" data-dropdown-toggle="mobileDropdownService"
                     data-dropdown-trigger="hover"
                     class="text-white hover:bg-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex items-center justify-between w-full mt-1">
-                    Layanan Desa
+                    Pemetaan Desa
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -267,19 +279,9 @@
                     class="absolute z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-1/2 origin-top-left">
                     <ul class="py-2 text-sm text-gray-700">
                         <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pelayanan
-                                Administrasi</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Layanan
-                                Kesehatan</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Layanan
-                                Kependudukan</a>
+                            <a href="{{ route('pemetaan') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                Pemetaan Desa</a>
                         </li>
                     </ul>
                 </div>
@@ -290,7 +292,7 @@
                 <button id="mobileDropdownActivityButton" data-dropdown-toggle="mobileDropdownActivity"
                     data-dropdown-trigger="hover"
                     class="text-white hover:bg-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex items-center justify-between w-full mt-1">
-                    Kegiatan Desa
+                    Informasi
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -300,6 +302,16 @@
                 <div id="mobileDropdownActivity"
                     class="absolute z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-1/2 origin-top-left">
                     <ul class="py-2 text-sm text-gray-700">
+                        <li>
+                            <a href="{{ route('beritadesa') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                Berita</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('pengumuman') }}"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                Pengumuman</a>
+                        </li>
                         <li>
                             <a href="{{ route('kegiatan') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dokumentasi
@@ -314,7 +326,7 @@
                 <button id="mobileDropdownAuthButton" data-dropdown-toggle="mobileDropdownAuth"
                     data-dropdown-trigger="hover"
                     class="text-white hover:bg-green-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex items-center justify-between w-full mt-1">
-                    Autentikasi
+                    Login
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
