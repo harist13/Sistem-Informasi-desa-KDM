@@ -16,7 +16,7 @@
         </div>
     </div>
 </nav>
-<nav class="bg-[#228B22] relative z-20 mt-6">
+<nav class="bg-[#228B22] relative z-20 mt-6 lg:mt-0">
     <div class="mx-auto max-w-screen-2xl px-4">
         <div class="relative flex justify-between h-16 items-center">
             <!-- Desktop Menu -->
@@ -43,11 +43,6 @@
                             <a href="{{ route('visimisi') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Visi
                                 dan Misi</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('pemerintahan') }}"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pemerintahan
-                                Desa</a>
                         </li>
                         <li>
                             <a href="{{ route('wisata') }}"
@@ -222,11 +217,6 @@
                             <a href="{{ route('visimisi') }}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Visi
                                 dan Misi</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('pemerintahan') }}"
-                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pemerintahan
-                                Desa</a>
                         </li>
                         <li>
                             <a href="{{ route('wisata') }}"

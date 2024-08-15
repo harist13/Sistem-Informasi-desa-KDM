@@ -112,7 +112,7 @@
         <h1 class="text-3xl font-bold">Pengumuman Desa Kedang Murung</h1>
     </div>
 
-    <div class="announcement-container mt-5">
+    <div class="announcement-container mt-5 min-h-screen">
         @foreach ($pengumumans as $pengumuman)
         <div class="card">
             <img src="{{ asset('img/calender.png') }}" alt="Pengumuman Image">
