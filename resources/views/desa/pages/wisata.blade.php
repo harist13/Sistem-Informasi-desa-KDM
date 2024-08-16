@@ -33,7 +33,7 @@
     <section class="">
         <div class="container mx-auto px-6">
             <br>
-            <h1 class="text-[24px] font-bold">Wisata Danau Tanjung Sarai</h1>
+            <h1 class="text-[24px] lg:text-4xl lg:text-center font-bold">Wisata Danau Tanjung Sarai</h1>
             <div class="flex flex-col lg:flex-row justify-between items-center gap-8 mt-6 lg:mt-20 lg:px-12">
                 <div class="lg:w-1/2">
                     <p class="text-md text-justify max-w-2xl">Di Desa Kedang Murung yang terletak di Kecamatan Kota
@@ -155,10 +155,9 @@
         }
         tElementById('mobile-menu');
         menu.classList.toggle('show');
-        };
+
         entById('mobile-menu');
         menu.classList.toggle('show');
-        };
     </script>
 </body>
 
