@@ -71,7 +71,7 @@ class rekappenduduk implements FromCollection, WithHeadings, WithMapping, WithSt
                 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT', 'PENDUDUK MENURUT',
                 'MUTASI', 'MUTASI', 'MUTASI', 'MUTASI', 'MUTASI', 'MUTASI', 'MUTASI', 'MUTASI',
                 'JUMLAH AKHIR', 'JUMLAH AKHIR', 'JUMLAH AKHIR',
-                'KETERANGAN'
+                'JUMLAH JIWA'
             ],
             [
                 '', '', '', '', 

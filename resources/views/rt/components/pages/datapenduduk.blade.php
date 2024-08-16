@@ -131,7 +131,7 @@
                                 <th colspan="17" class="px-6 py-3">PENDUDUK</th>
                                 <th colspan="8" class="px-6 py-3">MUTASI</th>
                                 <th colspan="3" class="px-6 py-3">JUMLAH AKHIR</th>
-                                <th rowspan="3" class="px-6 py-3">KETERANGAN</th>
+                                <th rowspan="3" class="px-6 py-3">JUMLAH JIWA</th>
                                 <th rowspan="3" class="px-6 py-3">AKSI</th>
                             </tr>
                             <tr>

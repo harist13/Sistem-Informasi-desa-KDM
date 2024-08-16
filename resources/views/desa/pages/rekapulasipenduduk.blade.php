@@ -114,7 +114,7 @@
                                     <th colspan="3" class="px-6 py-3 border border-gray-300 dark:border-gray-600">
                                         JUMLAH AKHIR</th>
                                     <th rowspan="3" class="px-6 py-3 border border-gray-300 dark:border-gray-600">
-                                        KETERANGAN</th>
+                                        JUMLAH JIWA</th>
 
                                 </tr>
                                 <tr>

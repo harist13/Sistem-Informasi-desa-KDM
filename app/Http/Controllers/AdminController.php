@@ -797,7 +797,7 @@ public function tambahKependudukan(Request $request)
     $validator = Validator::make($request->all(), [
         'nik' => 'required|string|max:16|unique:kependudukan,nik',
         'nama' => 'required|string|max:255',
-        'no_kk' => 'required|string|max:255|unique:kependudukan,no_kk',
+        'no_kk' => 'required|string|max:255',
         'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'tempat_lahir' => 'required|string|max:255',
         'tanggal_lahir' => 'required|date',
@@ -827,7 +827,6 @@ public function tambahKependudukan(Request $request)
         'no_kk.required' => 'Nomor KK harus diisi.',
         'no_kk.string' => 'Nomor KK harus berupa teks.',
         'no_kk.max' => 'Nomor KK maksimal 255 karakter.',
-        'no_kk.unique' => 'Nomor KK sudah terdaftar.',
         'foto.image' => 'File foto harus berupa gambar.',
         'foto.mimes' => 'Format foto harus jpeg, png, jpg, atau gif.',
         'foto.max' => 'Ukuran foto maksimal 2MB.',
@@ -913,7 +912,7 @@ public function updateKependudukan(Request $request, $id)
     $validator = Validator::make($request->all(), [
         'nik' => 'required|string|max:16|unique:kependudukan,nik,' . $id,
         'nama' => 'required|string|max:255',
-        'no_kk' => 'required|string|max:255|unique:kependudukan,no_kk,' . $id,
+        'no_kk' => 'required|string|max:255',
         'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         'tempat_lahir' => 'required|string|max:255',
         'tanggal_lahir' => 'required|date',
@@ -943,7 +942,6 @@ public function updateKependudukan(Request $request, $id)
         'no_kk.required' => 'Nomor KK harus diisi.',
         'no_kk.string' => 'Nomor KK harus berupa teks.',
         'no_kk.max' => 'Nomor KK maksimal 255 karakter.',
-        'no_kk.unique' => 'Nomor KK sudah terdaftar.',
         'foto.image' => 'File foto harus berupa gambar.',
         'foto.mimes' => 'Format foto harus jpeg, png, jpg, atau gif.',
         'foto.max' => 'Ukuran foto maksimal 2MB.',
@@ -1041,8 +1039,6 @@ public function searchKependudukan(Request $request)
     
     $kependudukans = Kependudukan::where('nik', 'LIKE', "%{$search}%")
                         ->orWhere('nama', 'LIKE', "%{$search}%")
-                        ->orWhere('tempat_lahir', 'LIKE', "%{$search}%")
-                        ->orWhere('tanggal_lahir', 'LIKE', "%{$search}%")
                         ->orWhere('jenis_kelamin', 'LIKE', "%{$search}%")
                         ->orWhere('alamat', 'LIKE', "%{$search}%")
                         ->orWhere('rt_rw', 'LIKE', "%{$search}%")

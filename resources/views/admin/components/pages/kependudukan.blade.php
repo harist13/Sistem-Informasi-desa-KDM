@@ -93,6 +93,7 @@
                     <thead class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">No</th>
+                            <th scope="col" class="px-6 py-3">RT/RW</th>
                             <th scope="col" class="px-6 py-3">NIK</th>
                             <th scope="col" class="px-6 py-3">Nama</th>
                             <th scope="col" class="px-6 py-3">No KK</th>
@@ -101,7 +102,6 @@
                             <th scope="col" class="px-6 py-3">Umur</th>
                             <th scope="col" class="px-6 py-3">Jenis Kelamin</th>
                             <th scope="col" class="px-6 py-3">Alamat</th>
-                            <th scope="col" class="px-6 py-3">RT/RW</th>
                             <th scope="col" class="px-6 py-3">Dusun</th>
                             <th scope="col" class="px-6 py-3">Kelurahan</th>
                             <th scope="col" class="px-6 py-3">Kecamatan</th>
@@ -123,6 +123,7 @@
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $index + 1 }}
                                 </th>
+                                <td class="px-6 py-4">{{ $kependudukan->rt_rw }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->nik }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->nama }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->no_kk }}</td>
@@ -131,7 +132,6 @@
                                 <td class="px-6 py-4">{{ $kependudukan->umur }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->jenis_kelamin }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->alamat }}</td>
-                                <td class="px-6 py-4">{{ $kependudukan->rt_rw }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->dusun }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->kelurahan }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->kecamatan }}</td>

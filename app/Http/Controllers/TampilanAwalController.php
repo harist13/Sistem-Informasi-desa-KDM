@@ -104,8 +104,6 @@ public function kpendudukan(Request $request)
     $kependudukans = Kependudukan::when($search, function ($query) use ($search) {
         return $query->where('rt_rw', 'like', "%$search%")
             ->orWhere('nama', 'like', "%$search%")
-            ->orWhere('tempat_lahir', 'like', "%$search%")
-            ->orWhere('tanggal_lahir', 'like', "%$search%")
             ->orWhere('jenis_kelamin', 'like', "%$search%")
             ->orWhere('alamat', 'like', "%$search%")
             ->orWhere('kelurahan', 'like', "%$search%")
