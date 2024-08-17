@@ -21,13 +21,21 @@
                     @method('PUT')
                     
                     <div>
-                        <label for="nik" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
-                        <input type="text" name="nik" id="nik" value="{{ $kependudukan->nik }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                        @error('nik')
+                        <label for="rt_rw" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">RT/RW</label>
+                        <input type="text" name="rt_rw" id="rt_rw" value="{{ $kependudukan->rt_rw }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                         @error('rt_rw')
                         <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
-                    
+
+                    <div>
+                        <label for="nama_rt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama RT</label>
+                        <input type="text" name="nama_rt" id="nama_rt" value="{{ $kependudukan->nama_rt }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                         @error('nama_rt')
+                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
                     <div>
                         <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
                         <input type="text" name="nama" id="nama" value="{{ $kependudukan->nama }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
@@ -35,6 +43,16 @@
                         <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
+                    
+                    <div>
+                        <label for="nik" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
+                        <input type="text" name="nik" id="nik" value="{{ $kependudukan->nik }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                        @error('nik')
+                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    
+                    
                     <div>
                         <label for="no kk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No KK</label>
                         <input type="text" name="no_kk" id="no_kk" value="{{ $kependudukan->no_kk }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
@@ -87,14 +105,6 @@
                     </div>
 
                     <div>
-                        <label for="rt_rw" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">RT/RW</label>
-                        <input type="text" name="rt_rw" id="rt_rw" value="{{ $kependudukan->rt_rw }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                         @error('rt_rw')
-                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div>
                         <label for="dusun" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dusun</label>
                         <input type="text" name="dusun" id="dusun" value="{{ $kependudukan->dusun }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                          @error('dusun')
@@ -136,11 +146,17 @@
 
                     <div>
                         <label for="agama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Agama</label>
-                        <input type="text" name="agama" id="agama" value="{{ $kependudukan->agama }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                         @error('agama')
-                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                        <select name="agama" id="agama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                            <option value="" disabled>Pilih Agama</option>
+                            <option value="ISLAM" {{ $kependudukan->agama == 'ISLAM' ? 'selected' : '' }}>ISLAM</option>
+                            <option value="KHATOLIK" {{ $kependudukan->agama == 'KHATOLIK' ? 'selected' : '' }}>KHATOLIK</option>
+                            <option value="PROTESTAN" {{ $kependudukan->agama == 'PROTESTAN' ? 'selected' : '' }}>PROTESTAN</option>
+                        </select>
+                        @error('agama')
+                            <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
+
 
                     <div>
                         <label for="status_perkawinan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Perkawinan</label>
@@ -156,41 +172,66 @@
                     </div>
 
 
-                    <div>
+                   <div>
                         <label for="pekerjaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pekerjaan</label>
-                        <input type="text" name="pekerjaan" id="pekerjaan" value="{{ $kependudukan->pekerjaan }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                         @error('pekerjaan')
-                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                        <select name="pekerjaan" id="pekerjaan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                            <option value="" disabled>Pilih Pekerjaan</option>
+                            <option value="TANI" {{ $kependudukan->pekerjaan == 'TANI' ? 'selected' : '' }}>TANI</option>
+                            <option value="DAGANG" {{ $kependudukan->pekerjaan == 'DAGANG' ? 'selected' : '' }}>DAGANG</option>
+                            <option value="PNS" {{ $kependudukan->pekerjaan == 'PNS' ? 'selected' : '' }}>PNS</option>
+                            <option value="NELAYAN" {{ $kependudukan->pekerjaan == 'NELAYAN' ? 'selected' : '' }}>NELAYAN</option>
+                            <option value="SWASTA" {{ $kependudukan->pekerjaan == 'SWASTA' ? 'selected' : '' }}>SWASTA</option>
+                        </select>
+                        @error('pekerjaan')
+                            <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <div>
+
+                   <div>
                         <label for="pendidikan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pendidikan</label>
-                        <input type="text" name="pendidikan" id="pendidikan" value="{{ $kependudukan->pendidikan }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                         @error('pendidikan')
-                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                        <select name="pendidikan" id="pendidikan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                            <option value="" disabled>Pilih Pendidikan</option>
+                            <option value="BUTA HURUF" {{ $kependudukan->pendidikan == 'BUTA HURUF' ? 'selected' : '' }}>BUTA HURUF</option>
+                            <option value="BUTA SEKOLAH" {{ $kependudukan->pendidikan == 'BUTA SEKOLAH' ? 'selected' : '' }}>BUTA SEKOLAH</option>
+                            <option value="TK" {{ $kependudukan->pendidikan == 'TK' ? 'selected' : '' }}>TK</option>
+                            <option value="SD" {{ $kependudukan->pendidikan == 'SD' ? 'selected' : '' }}>SD</option>
+                            <option value="SLTP" {{ $kependudukan->pendidikan == 'SLTP' ? 'selected' : '' }}>SLTP</option>
+                            <option value="SLTA" {{ $kependudukan->pendidikan == 'SLTA' ? 'selected' : '' }}>SLTA</option>
+                            <option value="PERGURUAN TINGGI" {{ $kependudukan->pendidikan == 'PERGURUAN TINGGI' ? 'selected' : '' }}>PERGURUAN TINGGI</option>
+                        </select>
+                        @error('pendidikan')
+                            <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <div>
-                        <label for="kewarganegaraan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">kewarganegaraan</label>
-                        <input type="text" name="kewarganegaraan" id="kewarganegaraan" value="{{ $kependudukan->kewarganegaraan }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                         @error('kewarganegaraan')
-                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+
+                   <div>
+                        <label for="kewarganegaraan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kewarganegaraan</label>
+                        <select name="kewarganegaraan" id="kewarganegaraan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                            <option value="" disabled>Pilih Kewarganegaraan</option>
+                            <option value="WNI" {{ $kependudukan->kewarganegaraan == 'WNI' ? 'selected' : '' }}>WNI</option>
+                            <option value="WNA" {{ $kependudukan->kewarganegaraan == 'WNA' ? 'selected' : '' }}>WNA</option>
+                        </select>
+                        @error('kewarganegaraan')
+                            <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <div>
+
+                   <div>
                         <label for="status_penduduk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Penduduk</label>
                         <select name="status_penduduk" id="status_penduduk" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                            <option value="Tetap" {{ $kependudukan->status_penduduk == 'Tetap' ? 'selected' : '' }}>Tetap</option>
-                            <option value="Tidak Tetap" {{ $kependudukan->status_penduduk == 'Tidak Tetap' ? 'selected' : '' }}>Tidak Tetap</option>
-                            <option value="Meninggal" {{ $kependudukan->status_penduduk == 'Meninggal' ? 'selected' : '' }}>Meninggal</option>
+                            <option value="LAHIR" {{ $kependudukan->status_penduduk == 'LAHIR' ? 'selected' : '' }}>LAHIR</option>
+                            <option value="MATI" {{ $kependudukan->status_penduduk == 'MATI' ? 'selected' : '' }}>MATI</option>
+                            <option value="PINDAH" {{ $kependudukan->status_penduduk == 'PINDAH' ? 'selected' : '' }}>PINDAH</option>
+                            <option value="DATANG" {{ $kependudukan->status_penduduk == 'DATANG' ? 'selected' : '' }}>DATANG</option>
                         </select>
-                         @error('status_penduduk')
-                        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                        @error('status_penduduk')
+                            <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
+
 
 
                    

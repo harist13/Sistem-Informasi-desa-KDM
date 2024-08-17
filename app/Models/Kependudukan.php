@@ -14,6 +14,7 @@ class Kependudukan extends Model
     protected $fillable = [
         'nik',
         'nama',
+        'nama_rt',
         'no_kk',
         'foto',
         'tempat_lahir',

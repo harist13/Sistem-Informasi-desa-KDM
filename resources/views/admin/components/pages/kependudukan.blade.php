@@ -94,8 +94,9 @@
                         <tr>
                             <th scope="col" class="px-6 py-3">No</th>
                             <th scope="col" class="px-6 py-3">RT/RW</th>
+                            <th scope="col" class="px-6 py-3">Nama RT</th>
+                            <th scope="col" class="px-6 py-3">Nama Penduduk</th>
                             <th scope="col" class="px-6 py-3">NIK</th>
-                            <th scope="col" class="px-6 py-3">Nama</th>
                             <th scope="col" class="px-6 py-3">No KK</th>
                             <th scope="col" class="px-6 py-3">Tempat Lahir</th>
                             <th scope="col" class="px-6 py-3">Tanggal Lahir</th>
@@ -124,8 +125,9 @@
                                     {{ $index + 1 }}
                                 </th>
                                 <td class="px-6 py-4">{{ $kependudukan->rt_rw }}</td>
-                                <td class="px-6 py-4">{{ $kependudukan->nik }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->nama_rt }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->nama }}</td>
+                                <td class="px-6 py-4">{{ $kependudukan->nik }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->no_kk }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->tempat_lahir }}</td>
                                 <td class="px-6 py-4">{{ $kependudukan->tanggal_lahir }}</td>
