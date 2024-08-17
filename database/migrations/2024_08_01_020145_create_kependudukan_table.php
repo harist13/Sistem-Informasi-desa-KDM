@@ -17,6 +17,7 @@ class CreateKependudukanTable extends Migration
             $table->id();
             $table->string('nik', 16)->unique();
             $table->string('nama', 100);
+            $table->string('nama_rt', 50);
             $table->string('no_kk', 100);
             $table->string('foto', 255)->nullable();
             $table->string('tempat_lahir', 100);
