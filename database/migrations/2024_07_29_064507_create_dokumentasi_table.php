@@ -16,7 +16,7 @@ class CreateDokumentasiTable extends Migration
         Schema::create('dokumentasi', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_petugas');
-            $table->string('foto', 255);
+            $table->string('foto', 255)->nullable();
             $table->string('judul', 100);
             $table->timestamps();
 

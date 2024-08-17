@@ -160,7 +160,7 @@
                                 <th class="px-6 py-3">TANI</th>
                                 <th class="px-6 py-3">DAGANG</th>
                                 <th class="px-6 py-3">PNS</th>
-                                <th class="px-6 py-3">TNI</th>
+                                <th class="px-6 py-3">NELAYAN</th>
                                 <th class="px-6 py-3">SWASTA</th>
                                 <th class="px-6 py-3">ISLAM</th>
                                 <th class="px-6 py-3">KHALOTIK</th>
@@ -196,7 +196,7 @@
                                     <td class="px-6 py-4">{{ $data->TANI }}</td>
                                     <td class="px-6 py-4">{{ $data->DAGANG }}</td>
                                     <td class="px-6 py-4">{{ $data->PNS }}</td>
-                                    <td class="px-6 py-4">{{ $data->TNI }}</td>
+                                    <td class="px-6 py-4">{{ $data->NELAYAN }}</td>
                                     <td class="px-6 py-4">{{ $data->SWASTA }}</td>
                                     <td class="px-6 py-4">{{ $data->ISLAM }}</td>
                                     <td class="px-6 py-4">{{ $data->KHALOTIK }}</td>
@@ -257,7 +257,7 @@
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('TANI') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('DAGANG') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('PNS') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('TNI') }}</td>
+                                <td class="px-6 py-4">{{ $rekapulasi->sum('NELAYAN') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('SWASTA') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('ISLAM') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('KHALOTIK') }}</td>

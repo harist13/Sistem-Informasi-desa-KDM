@@ -13,7 +13,7 @@ class CreatePengaduanTable extends Migration
             $table->date('tgl_pengaduan');
             $table->string('nik', 16);
             $table->text('isi_laporan');
-            $table->string('foto', 255);
+            $table->string('foto', 255)->nullable();
             $table->enum('status', ['belum diproses', 'proses', 'selesai']);
             $table->timestamps();
 

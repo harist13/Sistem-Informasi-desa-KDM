@@ -28,7 +28,7 @@ class RekapulasiPenduduk extends Model
         'TANI',
         'DAGANG',
         'PNS',
-        'TNI',
+        'NELAYAN',
         'SWASTA',
         'ISLAM',
         'KHALOTIK',

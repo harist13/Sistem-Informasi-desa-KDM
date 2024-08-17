@@ -156,7 +156,7 @@
                                     <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">TANI</th>
                                     <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">DAGANG</th>
                                     <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">PNS</th>
-                                    <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">TNI</th>
+                                    <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">NELAYAN</th>
                                     <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">SWASTA</th>
                                     <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">ISLAM</th>
                                     <th class="px-6 py-3 border border-gray-300 dark:border-gray-600">KHALOTIK</th>
@@ -209,7 +209,7 @@
                                         <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">
                                             {{ $data->PNS }}</td>
                                         <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">
-                                            {{ $data->TNI }}</td>
+                                            {{ $data->NELAYAN }}</td>
                                         <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">
                                             {{ $data->SWASTA }}</td>
                                         <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">
@@ -281,7 +281,7 @@
                                     <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">
                                         {{ $rekapulasi->sum('PNS') }}</td>
                                     <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">
-                                        {{ $rekapulasi->sum('TNI') }}</td>
+                                        {{ $rekapulasi->sum('NELAYAN') }}</td>
                                     <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">
                                         {{ $rekapulasi->sum('SWASTA') }}</td>
                                     <td class="px-6 py-4 border border-gray-300 dark:border-gray-600">

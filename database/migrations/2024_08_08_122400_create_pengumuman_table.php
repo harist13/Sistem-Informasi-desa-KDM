@@ -18,7 +18,7 @@ class CreatePengumumanTable extends Migration
             $table->foreignId('petugas_id')->constrained('petugas')->onDelete('cascade');
             $table->string('judul', 255);
             $table->date('tanggal');
-            $table->string('file', 255);
+            $table->string('file', 255)->nullable();
             $table->timestamps();
         });
     }

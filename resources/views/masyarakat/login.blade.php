@@ -12,7 +12,7 @@
 </head>
 
 <body class="bg-cover object-cover"
-    style="background-image: url('https://img.freepik.com/free-photo/green-landscape-with-mountain_181624-10229.jpg?t=st=1721143672~exp=1721147272~hmac=706521f787e4bd733a7c13d7392d4cdb9fc198f91c1478d7047c27a97fcb9cf2&w=1380')">
+    style="background-image: url('https://i.pinimg.com/originals/13/67/8e/13678e13661844593564d8587f112ba6.jpg')">
 
     <section>
         <div class="container mx-auto">

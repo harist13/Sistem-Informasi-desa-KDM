@@ -10,7 +10,7 @@
     @vite('resources/css/app.css')
 </head>
 <body class="bg-cover object-cover"
-    style="background-image: url('https://okeborneo.com/wp-content/uploads/2024/06/WhatsApp-Image-2024-06-05-at-10.25.12.jpeg')">
+    style="background-image: url('https://i.pinimg.com/originals/13/67/8e/13678e13661844593564d8587f112ba6.jpg')">
     <section>
         <div class="container mx-auto">
             <div class="flex items-center justify-center min-h-screen">

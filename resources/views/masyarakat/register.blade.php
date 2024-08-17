@@ -10,7 +10,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-cover object-cover" style="background-image: url('https://img.freepik.com/free-photo/green-landscape-with-mountain_181624-10229.jpg?t=st=1721143672~exp=1721147272~hmac=706521f787e4bd733a7c13d7392d4cdb9fc198f91c1478d7047c27a97fcb9cf2&w=1380')">
+<body class="bg-cover object-cover" style="background-image: url('https://i.pinimg.com/originals/13/67/8e/13678e13661844593564d8587f112ba6.jpg')">
 
     <section>
         <div class="container mx-auto">
@@ -67,6 +67,10 @@
                                     <span class="text-red-500 text-xs italic">{{ $message }}</span>
                                 @enderror
                             </div>
+                             <div class="mb-6">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for="password_confirmation">Konfirmasi Password</label>
+                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password_confirmation" name="password_confirmation" type="password" placeholder="Konfirmasi password anda" required>
+                            </div>
                             <div class="mb-6">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="foto">Foto</label>
                                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="foto" name="foto" type="file">
@@ -74,10 +78,7 @@
                                     <span class="text-red-500 text-xs italic">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="mb-6">
-                                <label class="block text-gray-700 text-sm font-bold mb-2" for="password_confirmation">Konfirmasi Password</label>
-                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password_confirmation" name="password_confirmation" type="password" placeholder="Konfirmasi password anda" required>
-                            </div>
+                           
                             <button class="bg-green-500 text-white font-bold py-2 px-4 rounded w-full">Daftar</button>
                             <p class="text-center mt-4">Sudah punya akun?
                                 <a class="no-underline font-bold text-sky-500" href="{{ route('loginMasyarakat') }}">Masuk disini</a>
