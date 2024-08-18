@@ -92,7 +92,7 @@
 
                 <div class="relative overflow-x-auto mt-2">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                   <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead
                             class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
@@ -152,12 +152,6 @@
                         </thead>
                         <tbody>
                             @foreach ($rekapulasi as $index => $data)
-                                @php
-                                    $jumlahAkhirKK = $data->KK;
-                                    $jumlahAkhirLK = $data->LK1 + $data->LK2 + $data->LK3 + $data->LK4;
-                                    $jumlahAkhirPR = $data->PR1 + $data->PR2 + $data->PR3 + $data->PR4;
-                                    $jumlahJiwa = $jumlahAkhirLK + $jumlahAkhirPR;
-                                @endphp
                                 <tr class="bg-white text-center border-b dark:bg-gray-800 dark:border-gray-700">
                                     <td class="px-6 py-4">{{ $index + 1 }}</td>
                                     <td class="px-6 py-4">{{ $data->nama_rt }}</td>
@@ -190,11 +184,10 @@
                                     <td class="px-6 py-4">{{ $data->PR3 }}</td>
                                     <td class="px-6 py-4">{{ $data->LK4 }}</td>
                                     <td class="px-6 py-4">{{ $data->PR4 }}</td>
-                                     <td class="px-6 py-4">{{ $jumlahAkhirKK }}</td>
-                                    <td class="px-6 py-4">{{ $jumlahAkhirLK }}</td>
-                                    <td class="px-6 py-4">{{ $jumlahAkhirPR }}</td>
-                                    <!-- Kolom Jumlah Jiwa -->
-                                    <td class="px-6 py-4">{{ $jumlahJiwa }}</td>
+                                    <td class="px-6 py-4">{{ $data->KK2 }}</td>
+                                    <td class="px-6 py-4">{{ $data->LK5 }}</td>
+                                    <td class="px-6 py-4">{{ $data->PR5 }}</td>
+                                    <td class="px-6 py-4">{{ $data->KETERANGAN }}</td>
                                     <td class="px-6 py-4">
                                         <div class="flex justify-center items-center space-x-2">
                                             <button data-modal-target="edit-modal-{{ $data->id }}"
@@ -252,10 +245,10 @@
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('PR3') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('LK4') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('PR4') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum(function ($data) { return $data->KK; }) }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum(function ($data) { return $data->LK1 + $data->LK2 + $data->LK3 + $data->LK4; }) }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum(function ($data) { return $data->PR1 + $data->PR2 + $data->PR3 + $data->PR4; }) }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum(function ($data) { return $data->LK1 + $data->LK2 + $data->LK3 + $data->LK4 + $data->PR1 + $data->PR2 + $data->PR3 + $data->PR4; }) }}</td>
+                                <td class="px-6 py-4">{{ $rekapulasi->sum('KK2') }}</td>
+                                <td class="px-6 py-4">{{ $rekapulasi->sum('LK5') }}</td>
+                                <td class="px-6 py-4">{{ $rekapulasi->sum('PR5') }}</td>
+                                <td class="px-6 py-4">{{ $rekapulasi->sum('KETERANGAN') }}</td>
                                 <td colspan="2" class="px-6 py-4"></td>
                             </tr>
                         </tbody>
