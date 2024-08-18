@@ -416,7 +416,7 @@ public function tambahDataPenduduk(Request $request)
         'TNI' => 'required|integer',
         'SWASTA' => 'required|integer',
         'ISLAM' => 'required|integer',
-        'KHALOTIK' => 'required|integer',
+        'KHATOLIK' => 'required|integer',
         'PROTESTAN' => 'required|integer',
         'WNI' => 'required|integer',
         'WNA' => 'required|integer',
@@ -480,7 +480,7 @@ public function updatePenduduk(Request $request, $id)
         'TNI' => 'required|integer',
         'SWASTA' => 'required|integer',
         'ISLAM' => 'required|integer',
-        'KHALOTIK' => 'required|integer',
+        'KHATOLIK' => 'required|integer',
         'PROTESTAN' => 'required|integer',
         'WNI' => 'required|integer',
         'WNA' => 'required|integer',
@@ -803,7 +803,7 @@ public function tambahKependudukan(Request $request)
         'tempat_lahir' => 'required|string|max:255',
         'tanggal_lahir' => 'required|date',
         'umur' => 'required|string|max:255',
-        'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+        'jenis_kelamin' => 'required|string',
         'alamat' => 'required|string',
         'rt_rw' => 'required|string|max:10',
         'dusun' => 'required|string|max:255',
@@ -843,7 +843,7 @@ public function tambahKependudukan(Request $request)
         'umur.string' => 'Umur harus berupa teks.',
         'umur.max' => 'Umur maksimal 255 karakter.',
         'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
-        'jenis_kelamin.in' => 'Jenis kelamin harus Laki-laki atau Perempuan.',
+        'jenis_kelamin.string' => 'Jenis kelamin harus berupa text.',
         'alamat.required' => 'Alamat harus diisi.',
         'alamat.string' => 'Alamat harus berupa teks.',
         'rt_rw.required' => 'RT/RW harus diisi.',
@@ -899,7 +899,98 @@ public function tambahKependudukan(Request $request)
         $data['foto'] = $filename;
     }
 
-    Kependudukan::create($data);
+    $kependudukan = Kependudukan::create($data);
+    
+    // Update rekapitulasi
+    $rekapulasi = RekapulasiPenduduk::firstOrCreate(
+        ['RT' => $kependudukan->rt_rw],
+        [
+            'petugas_id' => auth()->id(),
+            'nama_rt' => $kependudukan->nama_rt,
+            'RT' => $kependudukan->rt_rw,
+            'KK' => 0,
+            'LAKI_LAKI' => 0,
+            'PEREMPUAN' => 0,
+            'BH' => 0,
+            'BS' => 0,
+            'TK' => 0,
+            'SD' => 0,
+            'SLTP' => 0,
+            'SLTA' => 0,
+            'PT' => 0,
+            'TANI' => 0,
+            'DAGANG' => 0,
+            'PNS' => 0,
+            'NELAYAN' => 0,
+            'SWASTA' => 0,
+            'ISLAM' => 0,
+            'KHATOLIK' => 0,
+            'PROTESTAN' => 0,
+            'WNI' => 0,
+            'WNA' => 0,
+            'LK1' => 0,
+            'PR1' => 0,
+            'LK2' => 0,
+            'PR2' => 0,
+            'LK3' => 0,
+            'PR3' => 0,
+            'LK4' => 0,
+            'PR4' => 0,
+            'KK2' => 0,
+            'LK5' => 0,
+            'PR5' => 0,
+            
+        ]
+    );
+    
+    $rekapulasi->increment('KK');
+    $rekapulasi->increment($kependudukan->jenis_kelamin == 'LAKI-LAKI' ? 'LAKI_LAKI' : 'PEREMPUAN');
+    $rekapulasi->increment(strtoupper($kependudukan->pendidikan));
+    $rekapulasi->increment(strtoupper($kependudukan->pekerjaan));
+    $rekapulasi->increment(strtoupper($kependudukan->agama));
+    $rekapulasi->increment(strtoupper($kependudukan->kewarganegaraan));
+    
+    // Tambahkan logika untuk status_penduduk jika diperlukan
+    // Logika untuk status_penduduk
+    if ($kependudukan->status_penduduk == 'LAHIR') {
+        if ($kependudukan->jenis_kelamin == 'LAKI-LAKI') {
+            $rekapulasi->increment('LK1');
+        } else {
+            $rekapulasi->increment('PR1');
+        }
+    } elseif ($kependudukan->status_penduduk == 'MATI') {
+        if ($kependudukan->jenis_kelamin == 'LAKI-LAKI') {
+            $rekapulasi->increment('LK2');
+        } else {
+            $rekapulasi->increment('PR2');
+        }
+    } elseif ($kependudukan->status_penduduk == 'PINDAH') {
+        if ($kependudukan->jenis_kelamin == 'LAKI-LAKI') {
+            $rekapulasi->increment('LK3');
+        } else {
+            $rekapulasi->increment('PR3');
+        }
+    } elseif ($kependudukan->status_penduduk == 'DATANG') {
+        if ($kependudukan->jenis_kelamin == 'LAKI-LAKI') {
+            $rekapulasi->increment('LK4');
+        } else {
+            $rekapulasi->increment('PR4');
+        }
+    }
+    
+     // Hitung jumlah akhir dan jumlah jiwa
+    $jumlahAkhirKK = $rekapulasi->KK;
+    $jumlahAkhirLK = $rekapulasi->LK1 + $rekapulasi->LK2 + $rekapulasi->LK3 + $rekapulasi->LK4;
+    $jumlahAkhirPR = $rekapulasi->PR1 + $rekapulasi->PR2 + $rekapulasi->PR3 + $rekapulasi->PR4;
+    $jumlahJiwa = $jumlahAkhirLK + $jumlahAkhirPR;
+
+    // Update kolom KK2, LK5, PR5, dan KETERANGAN
+    $rekapulasi->KK2 = $jumlahAkhirKK;
+    $rekapulasi->LK5 = $jumlahAkhirLK;
+    $rekapulasi->PR5 = $jumlahAkhirPR;
+    $rekapulasi->KETERANGAN = $jumlahJiwa;
+    
+    $rekapulasi->save();
 
     return redirect()->route('kependudukan.admin')->with('success', 'Data kependudukan berhasil ditambahkan.');
 }
@@ -922,7 +1013,7 @@ public function updateKependudukan(Request $request, $id)
         'tempat_lahir' => 'required|string|max:255',
         'tanggal_lahir' => 'required|date',
         'umur' => 'required|string|max:255',
-        'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+        'jenis_kelamin' => 'required|string',
         'alamat' => 'required|string',
         'rt_rw' => 'required|string|max:10',
         'dusun' => 'required|string|max:255',
@@ -962,7 +1053,7 @@ public function updateKependudukan(Request $request, $id)
         'umur.string' => 'Umur harus berupa teks.',
         'umur.max' => 'Umur maksimal 255 karakter.',
         'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
-        'jenis_kelamin.in' => 'Jenis kelamin harus Laki-laki atau Perempuan.',
+        'jenis_kelamin.string' => 'Jenis kelamin harus berupa text.',
         'alamat.required' => 'Alamat harus diisi.',
         'alamat.string' => 'Alamat harus berupa teks.',
         'rt_rw.required' => 'RT/RW harus diisi.',
@@ -1008,7 +1099,8 @@ public function updateKependudukan(Request $request, $id)
             ->with('error', 'Error, gagal memperbaharui data. Silakan cek inputan kembali.');
     }
 
-    $kependudukan = Kependudukan::findOrFail($id);
+     $kependudukan = Kependudukan::findOrFail($id);
+    $oldData = $kependudukan->toArray();
     $data = $request->except(['_token', '_method', 'foto']);
 
     if ($request->hasFile('foto')) {
@@ -1022,20 +1114,153 @@ public function updateKependudukan(Request $request, $id)
         $data['foto'] = $filename;
     }
 
+    // Update data kependudukan
     $kependudukan->update($data);
 
+    // Update rekapitulasi
+    $rekapulasi = RekapulasiPenduduk::where('RT', $kependudukan->rt_rw)->first();
+    
+    if ($rekapulasi) {
+        // Mengurangi nilai lama
+        $this->decrementRekapulasi($rekapulasi, $oldData);
+        
+        // Menambah nilai baru
+        $this->incrementRekapulasi($rekapulasi, $kependudukan);
+        
+        // Hitung ulang jumlah akhir dan jumlah jiwa
+        $this->recalculateRekapulasi($rekapulasi);
+        
+        $rekapulasi->save();
+    }
+
     return redirect()->route('kependudukan.admin')->with('success', 'Data kependudukan berhasil diperbarui.');
+}
+
+private function decrementRekapulasi($rekapulasi, $oldData)
+{
+    $rekapulasi->decrement($oldData['jenis_kelamin'] == 'LAKI-LAKI' ? 'LAKI_LAKI' : 'PEREMPUAN');
+    $rekapulasi->decrement(strtoupper($oldData['pendidikan']));
+    $rekapulasi->decrement(strtoupper($oldData['pekerjaan']));
+    $rekapulasi->decrement(strtoupper($oldData['agama']));
+    $rekapulasi->decrement(strtoupper($oldData['kewarganegaraan']));
+    
+    // Kurangi status penduduk lama
+    $this->decrementStatusPenduduk($rekapulasi, $oldData['status_penduduk'], $oldData['jenis_kelamin']);
+}
+
+private function incrementRekapulasi($rekapulasi, $newData)
+{
+    $rekapulasi->increment($newData->jenis_kelamin == 'LAKI-LAKI' ? 'LAKI_LAKI' : 'PEREMPUAN');
+    $rekapulasi->increment(strtoupper($newData->pendidikan));
+    $rekapulasi->increment(strtoupper($newData->pekerjaan));
+    $rekapulasi->increment(strtoupper($newData->agama));
+    $rekapulasi->increment(strtoupper($newData->kewarganegaraan));
+    
+    // Tambah status penduduk baru
+    $this->incrementStatusPenduduk($rekapulasi, $newData->status_penduduk, $newData->jenis_kelamin);
+}
+
+private function decrementStatusPenduduk($rekapulasi, $status, $jenisKelamin)
+{
+    $column = $jenisKelamin == 'LAKI-LAKI' ? 'LK' : 'PR';
+    switch ($status) {
+        case 'LAHIR':
+            $rekapulasi->decrement($column . '1');
+            break;
+        case 'MATI':
+            $rekapulasi->decrement($column . '2');
+            break;
+        case 'PINDAH':
+            $rekapulasi->decrement($column . '3');
+            break;
+        case 'DATANG':
+            $rekapulasi->decrement($column . '4');
+            break;
+    }
+}
+
+private function incrementStatusPenduduk($rekapulasi, $status, $jenisKelamin)
+{
+    $column = $jenisKelamin == 'LAKI-LAKI' ? 'LK' : 'PR';
+    switch ($status) {
+        case 'LAHIR':
+            $rekapulasi->increment($column . '1');
+            break;
+        case 'MATI':
+            $rekapulasi->increment($column . '2');
+            break;
+        case 'PINDAH':
+            $rekapulasi->increment($column . '3');
+            break;
+        case 'DATANG':
+            $rekapulasi->increment($column . '4');
+            break;
+    }
+}
+
+private function recalculateRekapulasi($rekapulasi)
+{
+    $jumlahAkhirLK = $rekapulasi->LK1 + $rekapulasi->LK2 + $rekapulasi->LK3 + $rekapulasi->LK4;
+    $jumlahAkhirPR = $rekapulasi->PR1 + $rekapulasi->PR2 + $rekapulasi->PR3 + $rekapulasi->PR4;
+    $jumlahJiwa = $jumlahAkhirLK + $jumlahAkhirPR;
+
+    $rekapulasi->LK5 = $jumlahAkhirLK;
+    $rekapulasi->PR5 = $jumlahAkhirPR;
+    $rekapulasi->KETERANGAN = $jumlahJiwa;
 }
 
 
 public function hapusKependudukan($id)
 {
     $kependudukan = Kependudukan::findOrFail($id);
-    
+    $rekapulasi = RekapulasiPenduduk::where('RT', $kependudukan->rt_rw)->first();
+
+    if ($rekapulasi) {
+        // Kurangi nilai-nilai yang sesuai di rekapitulasi
+        $rekapulasi->decrement('KK');
+        $rekapulasi->decrement($kependudukan->jenis_kelamin == 'LAKI-LAKI' ? 'LAKI_LAKI' : 'PEREMPUAN');
+        $rekapulasi->decrement(strtoupper($kependudukan->pendidikan));
+        $rekapulasi->decrement(strtoupper($kependudukan->pekerjaan));
+        $rekapulasi->decrement(strtoupper($kependudukan->agama));
+        $rekapulasi->decrement(strtoupper($kependudukan->kewarganegaraan));
+
+        // Kurangi nilai sesuai status_penduduk
+        if ($kependudukan->status_penduduk == 'LAHIR') {
+            $rekapulasi->decrement($kependudukan->jenis_kelamin == 'LAKI-LAKI' ? 'LK1' : 'PR1');
+        } elseif ($kependudukan->status_penduduk == 'MATI') {
+            $rekapulasi->decrement($kependudukan->jenis_kelamin == 'LAKI-LAKI' ? 'LK2' : 'PR2');
+        } elseif ($kependudukan->status_penduduk == 'PINDAH') {
+            $rekapulasi->decrement($kependudukan->jenis_kelamin == 'LAKI-LAKI' ? 'LK3' : 'PR3');
+        } elseif ($kependudukan->status_penduduk == 'DATANG') {
+            $rekapulasi->decrement($kependudukan->jenis_kelamin == 'LAKI-LAKI' ? 'LK4' : 'PR4');
+        }
+
+        // Hitung ulang jumlah akhir dan jumlah jiwa
+        $jumlahAkhirKK = $rekapulasi->KK;
+        $jumlahAkhirLK = $rekapulasi->LK1 + $rekapulasi->LK2 + $rekapulasi->LK3 + $rekapulasi->LK4;
+        $jumlahAkhirPR = $rekapulasi->PR1 + $rekapulasi->PR2 + $rekapulasi->PR3 + $rekapulasi->PR4;
+        $jumlahJiwa = $jumlahAkhirLK + $jumlahAkhirPR;
+
+        // Update kolom KK2, LK5, PR5, dan KETERANGAN
+        $rekapulasi->KK2 = $jumlahAkhirKK;
+        $rekapulasi->LK5 = $jumlahAkhirLK;
+        $rekapulasi->PR5 = $jumlahAkhirPR;
+        $rekapulasi->KETERANGAN = $jumlahJiwa;
+
+        $rekapulasi->save();
+
+        // Jika semua data kependudukan untuk RT ini telah dihapus, hapus juga rekapitulasi
+        if (Kependudukan::where('rt_rw', $kependudukan->rt_rw)->count() == 1) {
+            $rekapulasi->delete();
+        }
+    }
+
+    // Hapus foto jika ada
     if ($kependudukan->foto) {
         Storage::delete('public/kependudukan/' . $kependudukan->foto);
     }
-    
+
+    // Hapus data kependudukan
     $kependudukan->delete();
 
     return redirect()->route('kependudukan.admin')->with('success', 'Data kependudukan berhasil dihapus.');

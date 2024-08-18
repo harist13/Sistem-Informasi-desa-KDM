@@ -61,11 +61,11 @@
                         @enderror
                     </div>
 
-                    <div>
+                   <div>
                         <label for="jenis_kelamin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
                         <select name="jenis_kelamin" id="jenis_kelamin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                            <option value="Laki-laki" {{ $kependudukan->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-                            <option value="Perempuan" {{ $kependudukan->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                            <option value="LAKI-LAKI" {{ $kependudukan->jenis_kelamin == 'LAKI-LAKI' ? 'selected' : '' }}>LAKI-LAKI</option>
+                            <option value="PEREMPUAN" {{ $kependudukan->jenis_kelamin == 'PEREMPUAN' ? 'selected' : '' }}>PEREMPUAN</option>
                         </select>
                          @error('jenis_kelamin')
                         <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
@@ -188,17 +188,17 @@
                     </div>
 
 
-                   <div>
+                    <div>
                         <label for="pendidikan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pendidikan</label>
                         <select name="pendidikan" id="pendidikan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                             <option value="" disabled>Pilih Pendidikan</option>
-                            <option value="BUTA HURUF" {{ $kependudukan->pendidikan == 'BUTA HURUF' ? 'selected' : '' }}>BUTA HURUF</option>
-                            <option value="BUTA SEKOLAH" {{ $kependudukan->pendidikan == 'BUTA SEKOLAH' ? 'selected' : '' }}>BUTA SEKOLAH</option>
+                            <option value="BH" {{ $kependudukan->pendidikan == 'BH' ? 'selected' : '' }}>BH</option>
+                            <option value="BS" {{ $kependudukan->pendidikan == 'BS' ? 'selected' : '' }}>BS</option>
                             <option value="TK" {{ $kependudukan->pendidikan == 'TK' ? 'selected' : '' }}>TK</option>
                             <option value="SD" {{ $kependudukan->pendidikan == 'SD' ? 'selected' : '' }}>SD</option>
                             <option value="SLTP" {{ $kependudukan->pendidikan == 'SLTP' ? 'selected' : '' }}>SLTP</option>
                             <option value="SLTA" {{ $kependudukan->pendidikan == 'SLTA' ? 'selected' : '' }}>SLTA</option>
-                            <option value="PERGURUAN TINGGI" {{ $kependudukan->pendidikan == 'PERGURUAN TINGGI' ? 'selected' : '' }}>PERGURUAN TINGGI</option>
+                            <option value="PT" {{ $kependudukan->pendidikan == 'PT' ? 'selected' : '' }}>PT</option>
                         </select>
                         @error('pendidikan')
                             <p class="text-red-600 text-sm mt-1">{{ $message }}</p>

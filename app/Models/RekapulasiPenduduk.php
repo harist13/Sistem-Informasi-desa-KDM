@@ -31,7 +31,7 @@ class RekapulasiPenduduk extends Model
         'NELAYAN',
         'SWASTA',
         'ISLAM',
-        'KHALOTIK',
+        'KHATOLIK',
         'PROTESTAN',
         'WNI',
         'WNA',
@@ -53,4 +53,9 @@ class RekapulasiPenduduk extends Model
     {
         return $this->belongsTo(Petugas::class, 'petugas_id');
     }
+
+    public function penduduk()
+{
+    return $this->hasMany(Kependudukan::class, 'rt_rw', 'RT');
+}
 }

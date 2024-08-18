@@ -117,7 +117,7 @@
                         </div>
                     @endif
             </div>
-            <div class="relative overflow-x-auto mt-2">
+           <div class="relative overflow-x-auto mt-2">
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead
@@ -163,7 +163,7 @@
                                 <th class="px-6 py-3">NELAYAN</th>
                                 <th class="px-6 py-3">SWASTA</th>
                                 <th class="px-6 py-3">ISLAM</th>
-                                <th class="px-6 py-3">KHALOTIK</th>
+                                <th class="px-6 py-3">KHATOLIK</th>
                                 <th class="px-6 py-3">PROTESTAN</th>
                                 <th class="px-6 py-3">WNI</th>
                                 <th class="px-6 py-3">WNA</th>
@@ -199,7 +199,7 @@
                                     <td class="px-6 py-4">{{ $data->NELAYAN }}</td>
                                     <td class="px-6 py-4">{{ $data->SWASTA }}</td>
                                     <td class="px-6 py-4">{{ $data->ISLAM }}</td>
-                                    <td class="px-6 py-4">{{ $data->KHALOTIK }}</td>
+                                    <td class="px-6 py-4">{{ $data->KHATOLIK }}</td>
                                     <td class="px-6 py-4">{{ $data->PROTESTAN }}</td>
                                     <td class="px-6 py-4">{{ $data->WNI }}</td>
                                     <td class="px-6 py-4">{{ $data->WNA }}</td>
@@ -223,7 +223,7 @@
                                                 type="button">
                                                 Edit
                                             </button>
-                                            <form action="{{ route('penduduk.hapus.staff', $data->id) }}" method="POST"
+                                            <form action="{{ route('penduduk.hapus', $data->id) }}" method="POST"
                                                 onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                                 @csrf
                                                 @method('DELETE')
@@ -234,7 +234,7 @@
                                             </form>
                                         </div>
                                         @foreach ($rekapulasi as $data)
-                                            @include('staff.components.modals.penduduk.editdata', [
+                                            @include('admin.components.modals.penduduk.editdata', [
                                                 'rekapulasi' => $data,
                                             ])
                                         @endforeach
@@ -243,7 +243,7 @@
                             @endforeach
                             <tr class="bg-gray-100 text-center font-bold">
                                 <td colspan="2" class="px-6 py-4">Jumlah</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('RT') }}</td>
+                                <td class="px-6 py-4">{{ $rekapulasi->count('RT') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('KK') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('LAKI_LAKI') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('PEREMPUAN') }}</td>
@@ -260,7 +260,7 @@
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('NELAYAN') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('SWASTA') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('ISLAM') }}</td>
-                                <td class="px-6 py-4">{{ $rekapulasi->sum('KHALOTIK') }}</td>
+                                <td class="px-6 py-4">{{ $rekapulasi->sum('KHATOLIK') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('PROTESTAN') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('WNI') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('WNA') }}</td>

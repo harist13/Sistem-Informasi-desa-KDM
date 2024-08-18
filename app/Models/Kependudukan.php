@@ -41,4 +41,9 @@ class Kependudukan extends Model
     {
         return $this->belongsTo(Petugas::class, 'petugas_id');
     }
+
+    public function rekapulasi()
+{
+    return $this->belongsTo(RekapulasiPenduduk::class, 'rt_rw', 'RT');
+}
 }

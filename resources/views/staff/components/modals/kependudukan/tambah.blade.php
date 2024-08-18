@@ -57,8 +57,8 @@
                     <div>
                         <label for="jenis_kelamin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kelamin</label>
                         <select name="jenis_kelamin" id="jenis_kelamin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                            <option value="Laki-laki">Laki-laki</option>
-                            <option value="Perempuan">Perempuan</option>
+                            <option value="LAKI-LAKI">LAKI-LAKI</option>
+                            <option value="PEREMPUAN">PEREMPUAN</option>
                         </select>
                         @error('jenis_kelamin')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>
@@ -170,17 +170,17 @@
                         @enderror
                     </div>
 
-                    <div>
+                     <div>
                         <label for="pendidikan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pendidikan</label>
                         <select name="pendidikan" id="pendidikan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                             <option value="" disabled selected>Pilih Pendidikan</option>
-                            <option value="BUTA HURUF">BUTA HURUF</option>
-                            <option value="BUTA SEKOLAH">BUTA SEKOLAH</option>
+                            <option value="BH">BH</option>
+                            <option value="BS">BS</option>
                             <option value="TK">TK</option>
                             <option value="SD">SD</option>
                             <option value="SLTP">SLTP</option>
                             <option value="SLTA">SLTA</option>
-                            <option value="PERGURUAN TINGGI">PERGURUAN TINGGI</option>
+                            <option value="PT">PT</option>
                         </select>
                         @error('pendidikan')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>

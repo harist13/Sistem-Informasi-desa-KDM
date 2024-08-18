@@ -23,7 +23,7 @@ class CreateKependudukanTable extends Migration
             $table->string('tempat_lahir', 100);
             $table->date('tanggal_lahir');
             $table->string('umur', 100);
-            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->string('jenis_kelamin', 50);
             $table->text('alamat');
             $table->string('rt_rw', 10);
             $table->string('dusun', 50);

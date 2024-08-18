@@ -34,7 +34,7 @@ class CreateRekapulasiPendudukTable extends Migration
             $table->integer('NELAYAN');
             $table->integer('SWASTA');
             $table->integer('ISLAM');
-            $table->integer('KHALOTIK');
+            $table->integer('KHATOLIK');
             $table->integer('PROTESTAN');
             $table->integer('WNI');
             $table->integer('WNA');
