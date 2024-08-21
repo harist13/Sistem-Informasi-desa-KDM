@@ -105,7 +105,6 @@
                                 <th colspan="8" class="px-6 py-3">MUTASI</th>
                                 <th colspan="3" class="px-6 py-3">JUMLAH AKHIR</th>
                                 <th rowspan="3" class="px-6 py-3">JUMLAH JIWA</th>
-                                <th rowspan="3" class="px-6 py-3">AKSI</th>
                             </tr>
                             <tr>
                                 <th rowspan="2" class="px-6 py-3">LAKI-LAKI</th>
@@ -188,30 +187,7 @@
                                     <td class="px-6 py-4">{{ $data->LK5 }}</td>
                                     <td class="px-6 py-4">{{ $data->PR5 }}</td>
                                     <td class="px-6 py-4">{{ $data->KETERANGAN }}</td>
-                                    <td class="px-6 py-4">
-                                        <div class="flex justify-center items-center space-x-2">
-                                            <button data-modal-target="edit-modal-{{ $data->id }}"
-                                                data-modal-toggle="edit-modal-{{ $data->id }}"
-                                                class="block text-white bg-yellow-300 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                                type="button">
-                                                Edit
-                                            </button>
-                                            <form action="{{ route('penduduk.hapus', $data->id) }}" method="POST"
-                                                onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
-                                                    class="block text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                                    Delete
-                                                </button>
-                                            </form>
-                                        </div>
-                                        @foreach ($rekapulasi as $data)
-                                            @include('admin.components.modals.penduduk.editdata', [
-                                                'rekapulasi' => $data,
-                                            ])
-                                        @endforeach
-                                    </td>
+                                   
                                 </tr>
                             @endforeach
                             <tr class="bg-gray-100 text-center font-bold">
@@ -249,7 +225,7 @@
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('LK5') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('PR5') }}</td>
                                 <td class="px-6 py-4">{{ $rekapulasi->sum('KETERANGAN') }}</td>
-                                <td colspan="2" class="px-6 py-4"></td>
+                                
                             </tr>
                         </tbody>
                     </table>

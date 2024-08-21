@@ -144,8 +144,9 @@
             <br>
             <br>
             <h2 class="text-2xl font-bold mb-4">Tabel Jumlah Penduduk</h2>
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    <thead class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 sm:table-auto md:table-fixed">
+        <thead class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             <th scope="col" class="px-6 py-3 text-left">Total Penduduk</th>
             <th scope="col" class="px-6 py-3 text-left">Jumlah Berdasarkan RT</th>
@@ -222,10 +223,11 @@
         </tr>
     </tbody>
 </table>
+</div>
 <br>
 <br>
 <br>
-<h2 class="text-2xl font-bold mb-4">Data Grafik Penduduk</h2>
+<h2 class="text-2xl font-bold mb-4">Data Statistik Penduduk</h2>
 <div class="swiper mySwiper mt-8">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
