@@ -157,7 +157,7 @@
                                         <button data-modal-target="edit-modal-{{ $kependudukan->id }}" data-modal-toggle="edit-modal-{{ $kependudukan->id }}" class="text-white bg-yellow-300 hover:bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
                                             Edit
                                         </button>
-                                        <form action="{{ route('kependudukan.hapus', $kependudukan->id) }}" method="POST">
+                                        <form action="{{ route('kependudukan.hapus.staff', $kependudukan->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">

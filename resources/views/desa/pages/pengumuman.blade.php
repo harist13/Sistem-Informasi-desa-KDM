@@ -89,6 +89,25 @@
             gap: 1.5rem;
         }
 
+        .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    @media (min-width: 640px) {
+        .sm\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .lg\:grid-cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
         @media (min-width: 768px) {
             .announcement-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -103,23 +122,27 @@
     {{-- navbar --}}
     @include('layouts.navbar')
 
-   <section class="container mx-auto px-8 mt-7">
+   <section class="container mx-auto px-4 sm:px-6 lg:px-8 mt-7">
     <div>
-        <div class="p-4 mb-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2"
-            role="alert">
+        <div class="p-4 mb-3 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 mt-2" role="alert">
             <span class="font-medium"><a href="/">Home</a> / </span> Pengumuman
         </div>
-        <h1 class="text-3xl font-bold">Pengumuman Desa Kedang Murung</h1>
+        <h1 class="text-3xl font-bold mb-6">Pengumuman Desa Kedang Murung</h1>
     </div>
 
-    <div class="announcement-container mt-5 min-h-screen">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
         @foreach ($pengumumans as $pengumuman)
-        <div class="card">
-            <img src="{{ asset('img/calender.png') }}" alt="Pengumuman Image">
-            <div class="content">
-                <h2>{{ $pengumuman->judul }}</h2>
-                <p><i class="fas fa-calendar-alt"></i> {{ $pengumuman->tanggal }} <br><i class="fas fa-user-alt"></i> {{ $pengumuman->petugas->nama_petugas }}</p>
-                <a href="{{ route('detailpengumuman', $pengumuman->id) }}" class="link">selengkapnya ➜</a>
+        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div class="relative pb-48 overflow-hidden">
+                <img class="absolute inset-0 h-full w-full object-cover" src="{{ asset('img/calender.png') }}" alt="Pengumuman Image">
+            </div>
+            <div class="p-4 flex flex-col h-48">
+                <h2 class="text-lg font-semibold text-blue-700 mb-2 line-clamp-2">{{ $pengumuman->judul }}</h2>
+                <div class="text-sm text-gray-600 mb-2 flex-grow">
+                    <p class="mb-1"><i class="fas fa-calendar-alt mr-2"></i>{{ $pengumuman->tanggal }}</p>
+                    <p><i class="fas fa-user-alt mr-2"></i>{{ $pengumuman->petugas->nama_petugas }}</p>
+                </div>
+                <a href="{{ route('detailpengumuman', $pengumuman->id) }}" class="inline-block px-4 py-2 bg-blue-600 text-white text-center rounded hover:bg-blue-700 transition-colors duration-300">Selengkapnya</a>
             </div>
         </div>
         @endforeach

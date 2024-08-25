@@ -16,7 +16,7 @@
                 <div>
                     <h3 class="text-white text-lg mb-2 uppercase font-semibold">Hubungi Kami</h3>
                     <p class="text-white text-[14px]">+62 822-6623181</p>
-                    <p class="text-white text-[14px]">pemdes@kedang murung.desa.id</p>
+                    <p class="text-white text-[14px]">desakedangmurung@gmail.com</p>
                 </div>
                 <div>
                     <h3 class="text-white text-lg mb-2 uppercase font-semibold">Kategori</h3>

@@ -11,7 +11,7 @@
                     </a>
                 </div>
                 <p class="text-[#282828] text-[14px] hidden lg:block"><i class="fa-solid fa-envelope mr-1"></i>
-                    pemdes@kedangmurung.desa.id</p>
+                    desakedangmurung@gmail.com</p>
             </div>
         </div>
     </div>
