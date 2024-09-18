@@ -60,6 +60,8 @@ Route::middleware(['auth:masyarakat'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
+
+    Route::post('/admin/kependudukan/import', [AdminController::class, 'importKependudukan'])->name('kependudukan.import');
     Route::get('/dashboard/admin/penduduk/export', [AdminController::class, 'exportExcel'])->name('penduduk.export');
     Route::get('/dashboard/admin/dokumentasi/edit/{id}', [AdminController::class, 'editDokumentasi'])->name('dokumentasi.edit');
 Route::put('/dashboard/admin/dokumentasi/update/{id}', [AdminController::class, 'updateDokumentasi'])->name('dokumentasi.update');
@@ -123,6 +125,8 @@ Route::put('/dashboard/admin/update-profile', [AdminController::class, 'updatePr
 
 
 Route::middleware(['auth', 'role:staff'])->group(function () {
+    Route::post('/staff/kependudukan/import', [StaffController::class, 'importKependudukan'])->name('kependudukan.import.staff');
+
     Route::get('/dashboard/staff/penduduk/export', [StaffController::class, 'exportExcel'])->name('penduduk.export.staff');
     Route::get('/dashboard/staff/dokumentasi/edit/{id}', [StaffController::class, 'editDokumentasi'])->name('dokumentasi.edit.staff');
 Route::put('/dashboard/staff/dokumentasi/update/{id}', [StaffController::class, 'updateDokumentasi'])->name('dokumentasi.update.staff');
@@ -185,6 +189,8 @@ Route::put('/dashboard/staff/update-profile', [StaffController::class, 'updatePr
 });
 
 Route::middleware(['auth', 'role:rt'])->group(function () {
+    Route::post('/rt/kependudukan/import', [RtController::class, 'importKependudukan'])->name('kependudukan.import.rt');
+
      Route::get('/dashboard/rt/penduduk/export', [RtController::class, 'exportExcel'])->name('penduduk.export.rt');
     Route::get('/dashboard/rt/dokumentasi/edit/{id}', [RtController::class, 'editDokumentasi'])->name('dokumentasi.edit.rt');
 Route::put('/dashboard/rt/dokumentasi/update/{id}', [RtController::class, 'updateDokumentasi'])->name('dokumentasi.update.rt');

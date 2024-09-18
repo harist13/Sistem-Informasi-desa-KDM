@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <p class="text-white text-[12px] text-center mt-8 lg:mt-12">Copyright © 2024 KKN Desa kedang murung. All Rights
+        <p class="text-white text-[12px] text-center mt-8 lg:mt-12">Copyright © 2024 KKN UNMUL Desa kedang murung. All Rights
             Reserved.</p>
     </div>
 </section>

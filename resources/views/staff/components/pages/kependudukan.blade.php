@@ -55,23 +55,41 @@
         </div>
         <div class="relative mt-4">
             <!-- Tombol-tombol di luar container tabel -->
-            <div class="flex justify-end items-center gap-2 mb-4 sticky top-0 bg-white z-10">
-                <button data-modal-target="tambah-kependudukan-modal" data-modal-toggle="tambah-kependudukan-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-                    Tambah Data
-                </button>
-                <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                    class="text-white bg-green-500 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
-                    type="button">
-                    Sort Data 
-                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                    </svg>
-                </button>
-                 <a href="{{ route('kependuduk.export.staff') }}" class="block lg:w-1/6 my-2 lg:float-end text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:focus:ring-yellow-800">
-    Export to Excel</a>
-                @include('staff.components.modals.kependudukan.search')
-                @include('staff.components.modals.kependudukan.sort')
-            </div>
+           <div class="flex flex-wrap justify-end items-center gap-4 mb-4 sticky top-0 bg-white z-10">
+    <form action="{{ route('kependudukan.import.staff') }}" method="POST" enctype="multipart/form-data" class="flex items-center space-x-2">
+        @csrf
+        <input type="file" name="file" accept=".xlsx, .xls" class="border p-2 rounded">
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Import Excel</button>
+    </form>
+
+    <button data-modal-target="tambah-kependudukan-modal" data-modal-toggle="tambah-kependudukan-modal"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        type="button">
+        Tambah Data
+    </button>
+
+    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+        class="text-white bg-green-500 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center"
+        type="button">
+        Sort Data
+        <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+        </svg>
+    </button>
+
+    <a href="{{ route('kependuduk.export.staff') }}"
+        class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:focus:ring-yellow-800">
+        Export to Excel
+    </a>
+</div>
+
+<!-- Pencarian diletakkan di bawah tombol Export -->
+<div class="flex justify-end mt-4">
+    @include('staff.components.modals.kependudukan.search')
+</div>
+
+@include('staff.components.modals.kependudukan.sort')
+
              @if (session('success'))
                         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
                             role="alert">

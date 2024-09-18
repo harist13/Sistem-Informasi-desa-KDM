@@ -22,6 +22,7 @@ use App\Models\Kependudukan;
 use App\Exports\KependudukanExport;
 use App\Models\Pengumuman;
 use Illuminate\Support\Facades\Auth;
+use App\Imports\KependudukanImport;
 
 
 class AdminController extends Controller
@@ -46,7 +47,7 @@ class AdminController extends Controller
         'password' => 'required|string|min:6',
         'telp' => 'nullable|string|max:15|unique:petugas,telp',
         'role' => 'required|exists:roles,name',
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048',
     ], [
         'nama_petugas.required' => 'Nama petugas wajib diisi.',
         'nama_petugas.string' => 'Nama petugas harus berupa teks.',
@@ -99,7 +100,7 @@ class AdminController extends Controller
         'password' => 'nullable|string|min:6',
         'telp' => 'nullable|string|max:15|unique:petugas,telp,' . $id,
         'role' => 'required|exists:roles,name',
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048',
     ], [
         'nama_petugas.required' => 'Nama petugas wajib diisi.',
         'nama_petugas.string' => 'Nama petugas harus berupa teks.',
@@ -212,7 +213,7 @@ public function tambahArtikel(Request $request)
     $validator = Validator::make($request->all(), [
         'judul' => 'required|string|max:255',
         'deskripsi' => 'required|string',
-        'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:3048',
     ], [
         'judul.required' => 'Judul wajib diisi.',
         'judul.string' => 'Judul harus berupa teks.',
@@ -259,7 +260,7 @@ public function updateArtikel(Request $request, $id)
     $validator = Validator::make($request->all(), [
         'judul' => 'required|string|max:255',
         'deskripsi' => 'required|string',
-        'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048',
     ], [
         'judul.required' => 'Judul wajib diisi.',
         'judul.string' => 'Judul harus berupa teks.',
@@ -558,7 +559,7 @@ public function tambahDokumentasi(Request $request)
 {
     $validator = Validator::make($request->all(), [
         'judul' => 'required|string|max:255',
-        'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:3048',
     ], [
         'judul.required' => 'Judul harus diisi.',
         'judul.string' => 'Judul harus berupa teks.',
@@ -598,7 +599,7 @@ public function updateDokumentasi(Request $request, $id)
 {
     $validator = Validator::make($request->all(), [
         'judul' => 'required|string|max:255',
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048',
     ], [
         'judul.required' => 'Judul harus diisi.',
         'judul.string' => 'Judul harus berupa teks.',
@@ -667,7 +668,7 @@ public function exportExcel()
         'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
         'pendidikan' => 'required|string|max:255',
         'alamat' => 'required|string',
-        'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:3048',
     ], [
         'nama.required' => 'Nama harus diisi.',
         'jabatan.required' => 'Jabatan harus diisi.',
@@ -720,7 +721,7 @@ public function updatePemerintahDesa(Request $request, $id)
         'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
         'pendidikan' => 'required|string|max:255',
         'alamat' => 'required|string',
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048',
     ], [
         'nama.required' => 'Nama harus diisi.',
         'jabatan.required' => 'Jabatan harus diisi.',
@@ -799,7 +800,7 @@ public function tambahKependudukan(Request $request)
         'nama' => 'required|string|max:255',
         'nama_rt' => 'required|string|max:255',
         'no_kk' => 'required|string|max:255',
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048',
         'tempat_lahir' => 'required|string|max:255',
         'tanggal_lahir' => 'required|date',
         'umur' => 'required|string|max:255',
@@ -1009,7 +1010,7 @@ public function updateKependudukan(Request $request, $id)
         'nama' => 'required|string|max:255',
         'nama_rt' => 'required|string|max:255',
         'no_kk' => 'required|string|max:255',
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048',
         'tempat_lahir' => 'required|string|max:255',
         'tanggal_lahir' => 'required|date',
         'umur' => 'required|string|max:255',
@@ -1412,7 +1413,7 @@ public function updatePengumuman(Request $request, $id)
         $validator = Validator::make($request->all(), [
             'nama_petugas' => 'required|string|max:100',
             'password' => 'nullable|string|min:6',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048',
         ]);
 
         if ($validator->fails()) {
@@ -1440,6 +1441,23 @@ public function updatePengumuman(Request $request, $id)
         $user->save();
 
         return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
+    }
+
+     public function importKependudukan(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        $file = $request->file('file');
+
+        try {
+            Excel::import(new KependudukanImport, $file);
+
+            return redirect()->route('kependudukan.admin')->with('success', 'Data penduduk berhasil diimpor.');
+        } catch (\Exception $e) {
+            return redirect()->route('kependudukan.admin')->with('error', 'Gagal mengimpor data: ' . $e->getMessage());
+        }
     }
 }
 
